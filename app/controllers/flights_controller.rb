@@ -14,6 +14,12 @@ class FlightsController < ApplicationController
     head :no_content
   end
 
+  # GET '/flights'
+  def index
+    flights = Flight.all.select { |flight| flight.reservation.count < flight.vehicle.pax_capacity }
+    render json: flights
+  end
+
   private
 
   def flight_params
