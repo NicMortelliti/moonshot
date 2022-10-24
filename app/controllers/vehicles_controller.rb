@@ -19,6 +19,17 @@ class VehiclesController < ApplicationController
     render json: Vehicle.all
   end
 
+  # PATCH '/vehicles/[:id]
+  def update
+    vehicle = find_vehicle
+    if vehicle
+      vehicle.update(vehicle_params)
+      render json: vehicle, status: :created
+    else
+      render json: { error: 'Vehicle not found' }, status: :not_found
+    end
+  end
+
   private
 
   def vehicle_params
