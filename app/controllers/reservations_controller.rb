@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
 
   # POST /reservations
   def create
-    reservation = @current_user.reservation.create!(reservation_params)
+    reservation = @current_user.reservations.create!(reservation_params)
     render json: reservation
   end
 
@@ -14,6 +14,11 @@ class ReservationsController < ApplicationController
     head :no_content
   end
 
+  # GET '/reservations'
+  def index
+    render json: @current_user.reservations
+  end
+
   private
 
   def appointment_params
@@ -21,7 +26,7 @@ class ReservationsController < ApplicationController
   end
 
   def find_reservation
-    @current_user.reservation.find(params[:id])
+    @current_user.reservations.find(params[:id])
   end
 
 end
