@@ -7,9 +7,20 @@ class FlightsController < ApplicationController
     render json: flight, status: :created
   end
 
+  # DESTROY '/flights/[:id]'
+  def destroy
+    flight = find_flight
+    flight.destroy
+    head :no_content
+  end
+
   private
 
   def flight_params
     params.permit(:origin, :destination, :departure, :arrival, :origin_image, :destination_image)
+  end
+
+  def find_flight
+    Flight.find(params[:id])
   end
 end
