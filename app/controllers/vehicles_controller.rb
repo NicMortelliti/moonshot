@@ -14,6 +14,11 @@ class VehiclesController < ApplicationController
     head :no_content
   end
 
+  # GET '/vehicles'
+  def index
+    render json: Vehicle.all
+  end
+
   private
 
   def vehicle_params
