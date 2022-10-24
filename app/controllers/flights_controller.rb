@@ -20,6 +20,17 @@ class FlightsController < ApplicationController
     render json: flights
   end
 
+  # PATCH '/flights/[:id]'
+  def update
+    flight = find_flight
+    if flight
+      flight.update(flight_params)
+      render json: flight, status: :created
+    else
+      render json: { error: 'Flight not found' }, status: :not_found
+    end
+  end
+
   private
 
   def flight_params
