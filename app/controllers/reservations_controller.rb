@@ -19,9 +19,20 @@ class ReservationsController < ApplicationController
     render json: @current_user.reservations
   end
 
+  # PATCH '/reservations/[:id]'
+  def update
+    reservation = find_reservation
+    if reservation
+      reservation.update(reservation_params)
+      render json: reservation, status: :created
+    else
+      render json: { error: 'Reservation not found' }, status: :not_found
+    end
+  end
+
   private
 
-  def appointment_params
+  def reservation_params
     params.permit(:user_id, :flight_id)
   end
 
