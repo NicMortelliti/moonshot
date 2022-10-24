@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :flights, only: [:create, :index, :update, :destroy]
   resources :reservations, only: [:create, :index, :update, :destroy]
-  resources :users, only: [:create, :index, :show, :update, :destroy]
+  resources :users, only: [:create, :index, :update, :destroy]
   resources :vehicles, only: [:create, :index, :update, :destroy]
+
+  get '/me', to: 'users#show'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
