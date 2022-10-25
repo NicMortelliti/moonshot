@@ -36,6 +36,19 @@ class UsersController < ApplicationController
     end
   end
 
+  # DELETE '/users/[:id]'
+  def destroy
+    user = find_user
+
+    # Only allow users or admins to delete profile
+    if user == @current_user || @current_user.admin == true
+      user.delete
+      head :no_content
+    else
+      render :user_not_found_response
+    end
+  end
+
   private
 
   def user_params
@@ -45,5 +58,9 @@ class UsersController < ApplicationController
 
   def find_user
     User.find_by(id: params[:id])
+  end
+
+  def user_not_found_response
+    render json: { error: 'User not found' }, status: :not_found
   end
 end
