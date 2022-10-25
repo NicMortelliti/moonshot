@@ -24,10 +24,26 @@ class UsersController < ApplicationController
     render json: users, status: :ok
   end
 
+  # PATCH '/appointments/[:id]'
+  def update
+    user = find_user
+    # Only allow users or admins to update profile
+    if user == @current_user || @current_user.admin == true
+      user.update(user_params)
+      render json: user, status: :created
+    else
+      render json: { error: 'User not found' }, status: :not_found
+    end
+  end
+
   private
 
   def user_params
     params.permit(:first_name, :last_name, :email, :password, :password_confirmation)
           .with_defaults(admin: false)
+  end
+
+  def find_user
+    User.find_by(id: params[:id])
   end
 end
