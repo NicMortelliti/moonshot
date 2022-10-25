@@ -15,6 +15,15 @@ class UsersController < ApplicationController
     render json: @current_user
   end
 
+  # GET /users
+  def index
+    # Break out of this method if user isn't an admin
+    return unless @current_user.admin
+
+    users = User.all
+    render json: users, status: :ok
+  end
+
   private
 
   def user_params
