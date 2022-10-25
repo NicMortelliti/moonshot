@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     render json: { errors: e.record.errors.full_messages }, status: :unauthorized
   end
 
-  # GET /users
+  # GET /me
   def show
     render json: @current_user
   end
