@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       user.update(user_params)
       render json: user, status: :created
     else
-      render json: { error: 'User not found' }, status: :not_found
+      render :user_not_found_response
     end
   end
 
