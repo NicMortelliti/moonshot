@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :reservations, only: [:create, :index, :update, :destroy]
   resources :users, only: [:create, :index, :update, :destroy]
   resources :vehicles, only: [:create, :index, :update, :destroy]
+  resources :sessions, only: [:create]
 
   get '/me', to: 'users#show'
 
