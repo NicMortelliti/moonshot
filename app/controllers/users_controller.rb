@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     render json: users, status: :ok
   end
 
-  # PATCH '/appointments/[:id]'
+  # PATCH '/users/[:id]'
   def update
     user = find_user
     # Only allow users or admins to update profile
