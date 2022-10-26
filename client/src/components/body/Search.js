@@ -37,13 +37,86 @@ function Search({ setResults }) {
   };
 
   // Update form fields from state
-  const handleFormFieldChange = (e) =>
+  const handleFormFieldChange = (e) => {
+    // Set value according to input type
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
     setFormData({
       ...formData,
-      [e.target.id]: e.target.value,
+      [e.target.id]: value,
     });
+  };
 
-  return <div>Search</div>;
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Origin
+          <input
+            id="origin"
+            type="text"
+            value={formData.origin}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <label>
+          Destination
+          <input
+            id="destination"
+            type="text"
+            value={formData.destination}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <label>
+          Round Trip?
+          <input
+            id="roundTrip"
+            type="checkbox"
+            checked={formData.roundTrip}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <label>
+          Depart
+          <input
+            id="departureDate"
+            type="date"
+            value={formData.departureDate}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        {/* Only display return field if roundtrip is true */}
+        {formData.roundTrip && (
+          <label>
+            Return
+            <input
+              id="returnDate"
+              type="date"
+              value={formData.returnDate}
+              onChange={(e) => handleFormFieldChange(e)}
+            />
+          </label>
+        )}
+        <label>
+          Number of Passengers
+          <input
+            id="numPassengers"
+            type="number"
+            value={formData.numPassengers}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <div>
+          <button type="submit">{isLoading ? "Loading..." : "Submit"}</button>
+        </div>
+      </form>
+      {errors.map((err) => (
+        <p key={err}>{err}</p>
+      ))}
+    </div>
+  );
 }
 
 export default Search;
