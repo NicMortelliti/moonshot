@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+// Components
+import Login from "./account/Login";
 import Signup from "./account/Signup";
 
 function App() {
@@ -7,6 +10,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header"></header>
+      <Login setUser={setUser} />
       <Signup setUser={setUser} />
     </div>
   );
