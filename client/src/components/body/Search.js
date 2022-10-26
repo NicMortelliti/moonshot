@@ -7,8 +7,8 @@ function Search({ setResults }) {
     origin: "",
     destination: "",
     roundTrip: true,
-    departureDatetime: "",
-    returnDatetime: "",
+    departureDate: "",
+    returnDate: "",
     numPassengers: 1,
   });
 
@@ -22,8 +22,8 @@ function Search({ setResults }) {
     const url = `/flights
     ?origin=${formData.origin}
     &destination=${formData.destination}
-    &departure=${formData.departureDatetime}
-    &return=${formData.returnDatetime}
+    &departure=${formData.departureDate}
+    &return=${formData.returnDate}
     &num_pax=${formData.numPassengers}`;
 
     fetch(url).then((r) => {
