@@ -38,7 +38,36 @@ function EditAccount({ user, setUser }) {
       [e.target.id]: e.target.value,
     });
 
-  return <div>EditAccount</div>;
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          First Name
+          <input
+            id="firstName"
+            type="text"
+            value={formData.firstName}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <label>
+          Last Name
+          <input
+            id="lastName"
+            type="text"
+            value={formData.lastName}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <div>
+          <button type="submit">{isLoading ? "Loading..." : "Submit"}</button>
+        </div>
+      </form>
+      {errors.map((err) => (
+        <p key={err}>{err}</p>
+      ))}
+    </div>
+  );
 }
 
 export default EditAccount;
