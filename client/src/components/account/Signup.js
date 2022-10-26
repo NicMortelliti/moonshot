@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Signup() {
+function Signup({ setUser, setShowLogin }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ function Signup() {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => setUser(user));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -44,7 +44,64 @@ function Signup() {
       [e.target.id]: e.target.value,
     });
 
-  return <div>Signup</div>;
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          First Name
+          <input
+            id="firstName"
+            type="text"
+            value={formData.firstName}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <label>
+          Last Name
+          <input
+            id="lastName"
+            type="text"
+            value={formData.lastName}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <label>
+          Email
+          <input
+            id="email"
+            type="email"
+            value={formData.email}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            id="password"
+            type="password"
+            value={formData.password}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <label>
+          Repeat Password
+          <input
+            id="passwordConfirmation"
+            type="password"
+            value={formData.passwordConfirmation}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <div>
+          <button type="submit">{isLoading ? "Loading..." : "Submit"}</button>
+          <button onClick={() => setShowLogin(true)}>I have an account</button>
+        </div>
+      </form>
+      {errors.map((err) => (
+        <p key={err}>{err}</p>
+      ))}
+    </div>
+  );
 }
 
 export default Signup;
