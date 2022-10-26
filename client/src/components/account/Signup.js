@@ -37,6 +37,14 @@ function Signup() {
       }
     });
   };
+
+  const handleFormFieldChange = (e) =>
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+
+  return <div>Signup</div>;
 }
 
 export default Signup
