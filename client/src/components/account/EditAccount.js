@@ -1,10 +1,36 @@
 import React, { useState } from "react";
 
-function EditAccount({ user }) {
+function EditAccount({ user, setUser }) {
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: user.first_name,
     lastName: user.last_name,
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    setIsLoading(true);
+
+    fetch(`/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+      }),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  };
 
   const handleFormFieldChange = (e) =>
     setFormData({
@@ -12,7 +38,6 @@ function EditAccount({ user }) {
       [e.target.id]: e.target.value,
     });
 
-function EditAccount() {
   return <div>EditAccount</div>;
 }
 
