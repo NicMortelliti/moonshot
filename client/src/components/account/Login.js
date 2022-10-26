@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Login({ setUser }) {
+function Login({ setUser, setShowLogin }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -38,7 +38,40 @@ function Login({ setUser }) {
       ...formData,
       [e.target.id]: e.target.value,
     });
-  return <div>Login</div>;
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Email
+          <input
+            id="email"
+            type="email"
+            value={formData.email}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            id="password"
+            type="password"
+            value={formData.password}
+            onChange={(e) => handleFormFieldChange(e)}
+          />
+        </label>
+        <div>
+          <button type="submit">{isLoading ? "Loading..." : "Log In"}</button>
+          <p>
+            Don't have an account?
+            <button onClick={() => setShowLogin(false)}>Signup</button>
+          </p>
+        </div>
+      </form>
+      {errors.map((err) => (
+        <p key={err}>{err}</p>
+      ))}
+    </div>
+  );
 }
 
 export default Login;
