@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from "react";
 
 function Signup() {
   const [errors, setErrors] = useState([]);
@@ -47,4 +47,4 @@ function Signup() {
   return <div>Signup</div>;
 }
 
-export default Signup
+export default Signup;
