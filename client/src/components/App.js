@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 // Components
-import Login from "./account/Login";
-import Signup from "./account/Signup";
+import { AccountBox } from "./account";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -10,8 +9,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header"></header>
-      <Login setUser={setUser} />
-      <Signup setUser={setUser} />
+      {
+        // Display account login/signup box if user is not set
+        !user && <AccountBox setUser={setUser} />
+      }
     </div>
   );
 }

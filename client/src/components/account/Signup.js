@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Signup({ setUser, setShowLogin }) {
+function Signup({ setUser, setActive }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -94,7 +94,7 @@ function Signup({ setUser, setShowLogin }) {
         </label>
         <div>
           <button type="submit">{isLoading ? "Loading..." : "Submit"}</button>
-          <button onClick={() => setShowLogin(true)}>I have an account</button>
+          <button onClick={() => setActive("login")}>I have an account</button>
         </div>
       </form>
       {errors.map((err) => (

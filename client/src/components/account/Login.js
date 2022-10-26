@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Login({ setUser, setShowLogin }) {
+function Login({ setUser, setActive }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -63,7 +63,7 @@ function Login({ setUser, setShowLogin }) {
           <button type="submit">{isLoading ? "Loading..." : "Log In"}</button>
           <p>
             Don't have an account?
-            <button onClick={() => setShowLogin(false)}>Signup</button>
+            <button onClick={() => setActive("signup")}>Signup</button>
           </p>
         </div>
       </form>
