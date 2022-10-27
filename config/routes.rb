@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :locations
   resources :flights, only: [:create, :index, :update, :destroy]
   resources :reservations, only: [:create, :index, :update, :destroy]
   resources :users, only: [:create, :index, :update, :destroy]
