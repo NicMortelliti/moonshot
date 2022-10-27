@@ -1,7 +1,7 @@
 class Flight < ApplicationRecord
   validates :vehicle_id, presence: true
   validates :origin, presence: true, length: { in: 2..254 }
-  validates :destination, presence: true, length: { in: 2..254 }
+  validates :destination, presence: true, length: { in: 2..254 }, uniqueness: { scope: :origin }
   validates :origin_image, presence: true
   validates :destination_image, presence: true
   validates :departure, presence: true
