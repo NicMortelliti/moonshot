@@ -19,14 +19,16 @@ function Search({ setResults }) {
     setIsLoading(true);
 
     // Construct url string with search params
-    const url = `/flights
-    ?origin=${formData.origin}
-    &destination=${formData.destination}
-    &departure=${formData.departureDate}
-    &return=${formData.returnDate}
-    &num_pax=${formData.numPassengers}`;
+    const url = [
+      `/flights?`,
+      `origin=${formData.origin}`,
+      `&destination=${formData.destination}`,
+      `&departure=${formData.departureDate}`,
+      `&return=${formData.returnDate}`,
+      `&num_pax=${formData.numPassengers}`,
+    ];
 
-    fetch(url).then((r) => {
+    fetch(url.join("")).then((r) => {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((results) => setResults(results));
