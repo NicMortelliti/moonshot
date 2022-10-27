@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 2022_10_27_204649) do
     t.datetime "arrival"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "origin_image"
-    t.string "destination_image"
     t.bigint "distance"
   end
 
