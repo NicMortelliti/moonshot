@@ -79,8 +79,8 @@ Vehicle.all.each do |i|
     arrival = departure + (dist.abs / 32_000).hours
     Flight.create({
                     vehicle_id: i.id,
-                    origin: origin.id,
-                    destination: destination.id,
+                    origin_id: origin.id,
+                    destination_id: destination.id,
                     distance: dist.abs,
                     departure: departure,
                     arrival: arrival
