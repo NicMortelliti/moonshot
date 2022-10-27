@@ -8,6 +8,10 @@ export function Body(props) {
   return (
     <div>
       <Search setResults={setResults} />
+      {results.map((each) => (
+        <p>
+          {`${each.origin.name} -> ${each.destination.name}`}
+        </p>
       ))}
     </div>
   );
