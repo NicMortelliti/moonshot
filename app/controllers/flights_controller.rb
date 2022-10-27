@@ -6,7 +6,7 @@ class FlightsController < ApplicationController
     # Break out of this method if user isn't an admin
     return unless @current_user.admin
 
-    flight = Flight.create!(flight_params)
+    flight = Flight.create!(create_flight_params)
     render json: flight, status: :created
   end
 
