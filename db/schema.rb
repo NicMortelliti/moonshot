@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_24_202628) do
+ActiveRecord::Schema.define(version: 2022_10_27_191334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 2022_10_24_202628) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "origin_image"
     t.string "destination_image"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "icao"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reservations", force: :cascade do |t|
