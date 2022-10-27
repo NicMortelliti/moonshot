@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Seed users
+puts 'Seeding users 🧑‍🚀'
+User.create({ first_name: 'Nic', last_name: 'Mortelliti', email: 'npm@gmail.com', password: '123', password_confirmation: '123' })
+
 # Seed vehicles
 puts 'Seeding vehicles 🚀'
 Vehicle.create({ make: 'Jetson', model: 'S380', name: 'Astro', pax_capacity: 42, image: 'placeholder' })
@@ -57,7 +61,7 @@ puts 'Seeding flights. This may take a while... 🛸'
 # For each vehicle
 Vehicle.all.each do |i|
   # Each vehicle has a random number of flights assigned to it
-  rand(20..200).times do
+  rand(10..20).times do
     # Assign a random origin from location
     origin = Location.find(1 + rand(Location.count))
 
