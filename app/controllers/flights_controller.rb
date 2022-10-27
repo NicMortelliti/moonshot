@@ -22,8 +22,16 @@ class FlightsController < ApplicationController
 
   # GET '/flights'
   def index
+    # Filter flights on origin
+    flights = Flight.all.select { |flight| flight.origin.name == flight_params[:origin] }
+
     flights = Flight.all.select { |flight| flight.reservation.count < flight.vehicle.pax_capacity }
     render json: flights
+    if flights
+      render json: flights, status: :ok
+    else
+      render json: { error: 'No flights found' }, status: :not_found
+    end
   end
 
   # PATCH '/flights/[:id]'
