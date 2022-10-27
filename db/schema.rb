@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2022_10_27_195332) do
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "icao"
-    t.string "type"
+    t.string "macro_place"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "dist_to_sun"
