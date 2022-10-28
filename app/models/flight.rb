@@ -10,4 +10,7 @@ class Flight < ApplicationRecord
   belongs_to :origin, class_name: 'Location'
   belongs_to :destination, class_name: 'Location'
   belongs_to :vehicle
+
+  # Set order of objects to ascending by departure date/time
+  default_scope { order(departure: :asc) }
 end
