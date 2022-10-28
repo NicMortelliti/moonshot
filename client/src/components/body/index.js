@@ -9,9 +9,7 @@ export function Body(props) {
     <div>
       <Search setResults={setResults} />
       {results.map((each) => (
-        <p>
-          {`${each.origin.name} -> ${each.destination.name}`}
-        </p>
+        <p key={each.id}>{`${each.origin.name} -> ${each.destination.name}`}</p>
       ))}
     </div>
   );
