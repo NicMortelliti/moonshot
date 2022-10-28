@@ -23,10 +23,10 @@ class FlightsController < ApplicationController
   # GET '/flights'
   def index
     # Filter flights on origin
-    flights = Flight.all.select { |flight| flight.origin.name == flight_params[:origin] }
+    flights = Flight.all.select { |flight| flight.origin.name.downcase.include?(flight_params[:origin].downcase) }
 
     # Filter resulting flights on destination
-    flights = flights.select { |flight| flight.destination.name == flight_params[:destination] }
+    flights = flights.select { |flight| flight.destination.name.downcase.include?(flight_params[:destination].downcase) }
 
     render json: flights
     if flights
