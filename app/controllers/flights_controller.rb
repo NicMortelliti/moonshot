@@ -25,7 +25,9 @@ class FlightsController < ApplicationController
     # Filter flights on origin
     flights = Flight.all.select { |flight| flight.origin.name == flight_params[:origin] }
 
-    flights = Flight.all.select { |flight| flight.reservation.count < flight.vehicle.pax_capacity }
+    # Filter resulting flights on destination
+    flights = flights.select { |flight| flight.destination.name == flight_params[:destination] }
+
     render json: flights
     if flights
       render json: flights, status: :ok
