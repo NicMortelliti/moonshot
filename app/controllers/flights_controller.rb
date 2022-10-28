@@ -27,13 +27,15 @@ class FlightsController < ApplicationController
 
     # Filter resulting flights on destination
     flights = flights.select { |flight| flight.destination.name.downcase.include?(flight_params[:destination].downcase) }
+    # Filter flights on destination
+    #flights = flights.all.select { |flight| flight.destination == flight_params.destination }
+
+    # Filter flights on departure date
+    #flights = flights.all.select { |flight| flight.departure == flight_params.departure }
+
+    # Filter flights on number of open reservations
 
     render json: flights
-    if flights
-      render json: flights, status: :ok
-    else
-      render json: { error: 'No flights found' }, status: :not_found
-    end
   end
 
   # PATCH '/flights/[:id]'
@@ -43,7 +45,7 @@ class FlightsController < ApplicationController
 
     flight = find_flight
     if flight
-      flight.update(flight_params)
+      flight.update(create_flight_params)
       render json: flight, status: :created
     else
       render json: { error: 'Flight not found' }, status: :not_found
@@ -53,6 +55,10 @@ class FlightsController < ApplicationController
   private
 
   def flight_params
+    params.permit(:origin, :destination, :departure, :return, :num_pax)
+  end
+
+  def create_flight_params
     params.permit(:origin, :destination, :departure, :arrival, :origin_image, :destination_image)
   end
 
