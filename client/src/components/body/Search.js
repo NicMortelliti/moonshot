@@ -60,7 +60,7 @@ function Search({ results, setResults }) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch("/flights?search=origins").then((r) => {
+    fetch("/locations").then((r) => {
       setIsLoading(false);
       if (r.ok) {
         r.json()
@@ -79,7 +79,7 @@ function Search({ results, setResults }) {
         <button
           key={each.id}
           id={id}
-          value={each.name}
+          value={each.id}
           onClick={() => setFormData({ ...formData, origin: each.name })}>
           <h4>{each.name}</h4>
           <h5>{each.macro_place}</h5>
