@@ -22,16 +22,10 @@ class FlightsController < ApplicationController
 
   # GET '/flights'
   def index
-    case params[:search]
+    case search_flight_params[:search]
     when 'origins'
-      flights = Flight.all.origin.name.uniq
+      flights = Flight.select('DISTINCT ON (origin_id) *')
     end
-    # Filter flights on origin
-    # flights = Flight.all.select { |flight| flight.origin.name.downcase.include?(flight_params[:origin].downcase) }
-
-    # Filter resulting flights on destination
-    # flights = flights.select { |flight| flight.destination.name.downcase.include?(flight_params[:destination].downcase) }
-
     render json: flights
   end
 
@@ -51,7 +45,7 @@ class FlightsController < ApplicationController
 
   private
 
-  def flight_params
+  def search_flight_params
     params.permit(:search, :destination, :departure, :return, :num_pax)
   end
 
