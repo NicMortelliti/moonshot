@@ -23,8 +23,8 @@ class FlightsController < ApplicationController
   # GET '/flights'
   def index
     case search_flight_params[:search]
-    when 'origins'
-      flights = Flight.select('DISTINCT ON (origin_id) *')
+    when 'origin'
+      flights = Flight.all.select { |flight| flight.origin_id == search_flight_params[:value].to_i }
     end
     render json: flights
   end
@@ -46,7 +46,7 @@ class FlightsController < ApplicationController
   private
 
   def search_flight_params
-    params.permit(:search, :destination, :departure, :return, :num_pax)
+    params.permit(:search, :value)
   end
 
   def create_flight_params
