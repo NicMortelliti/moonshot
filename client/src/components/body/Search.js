@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function Search({ results, setResults }) {
   const [errors, setErrors] = useState([]);
@@ -38,9 +38,6 @@ function Search({ results, setResults }) {
       }
     });
   };
-  useEffect(() => {
-    console.log(formData);
-  }, [formData, setFormData]);
 
   // Update form fields from state
   const handleFormFieldChange = (e) => {
@@ -52,7 +49,6 @@ function Search({ results, setResults }) {
       ...formData,
       [e.target.id]: value,
     });
-    console.log(e);
   };
 
   // Display search box and fetch origins from API
@@ -72,16 +68,31 @@ function Search({ results, setResults }) {
     });
   };
 
+  // Handle origin selection
+  const handleOriginSelection = (e, field) => {
+    e.preventDefault();
+    setErrors([]);
+    setIsLoading(true);
+    fetch(`/flights?search=${field}&value=${e.target.id}`).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((data) => setResults(data));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  };
+
   // Display available choices to user
   const RenderChoicePage = (id) =>
     results.map((each) => {
       return (
         <button
           key={each.id}
-          id={id}
+          id={each.id}
           value={each.id}
-          onClick={() => setFormData({ ...formData, origin: each.name })}>
-          <h4>{each.name}</h4>
+          onClick={(e) => handleOriginSelection(e, "origin")}>
+          <h4>{each.name ? each.name : each.destination.name}</h4>
           <h5>{each.macro_place}</h5>
         </button>
       );
@@ -92,16 +103,7 @@ function Search({ results, setResults }) {
       {showSearchBox ? (
         <div>
           <form onSubmit={handleSubmit}>
-            {/* <label>
-              Origin
-              <input
-                id="origin"
-                type="text"
-                value={formData.origin}
-                onChange={(e) => handleFormFieldChange(e)}
-              />
-            </label> */}
-            <RenderChoicePage id="origin" />
+            <RenderChoicePage />
             <label>
               Destination
               <input
