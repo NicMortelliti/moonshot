@@ -1,5 +1,5 @@
 class FlightSerializer < ActiveModel::Serializer
-  attributes :departure, :arrival, :origin, :destination
+  attributes :id, :origin_id
 
-  has_one :vehicle
+  has_one :origin
 end
