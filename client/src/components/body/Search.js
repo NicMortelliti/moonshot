@@ -44,24 +44,23 @@ function Search({ results, setResults }) {
 
   // Update form fields from state
   const handleFormFieldChange = (e) => {
-      // Set value according to input type
-      const value =
-        e.target.type === "checkbox" ? e.target.checked : e.target.value;
-  
-      setFormData({
-        ...formData,
-        [e.target.id]: value,
-      });
-      console.log(e);
-    };
+    // Set value according to input type
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
+    setFormData({
+      ...formData,
+      [e.target.id]: value,
+    });
+    console.log(e);
+  };
 
   // Display search box and fetch origins from API
   const handleShowSearch = (e) => {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-
-    fetch("/locations").then((r) => {
+    fetch("/flights?search=origins").then((r) => {
       setIsLoading(false);
       if (r.ok) {
         r.json()
