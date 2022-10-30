@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import ButtonTile from "../widgets/ButtonTile";
 
 function Search({ results, setResults }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(false);
+  const [origins, setOrigins] = useState([]);
+  const [destinations, setDestinations] = useState([]);
   const [formData, setFormData] = useState({
     origin: "",
     destination: "",
@@ -41,22 +44,18 @@ function Search({ results, setResults }) {
 
   // Update form fields from state
   const handleFormFieldChange = (e) => {
-    // Set value according to input type
-    const value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
-
     setFormData({
       ...formData,
       [e.target.id]: value,
     });
   };
 
-  // Display search box and fetch origins from API
+  // Display search box and fetch flights from API
   const handleShowSearch = (e) => {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch("/locations").then((r) => {
+    fetch("/flights").then((r) => {
       setIsLoading(false);
       if (r.ok) {
         r.json()
@@ -68,33 +67,26 @@ function Search({ results, setResults }) {
     });
   };
 
-  // Handle origin selection
-  const handleOriginSelection = (e, field) => {
-    e.preventDefault();
-    setErrors([]);
-    setIsLoading(true);
-    fetch(`/flights?search=${field}&value=${e.target.id}`).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((data) => setResults(data));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
+  // Find unique locations
+  const uniqueLocations = (flights) => {
+    let origins = [];
+    let destinations = [];
+    flights.map((each) => {
+      !origins.includes(each.origin.name) && origins.append(each.origin);
     });
+    console.log(origins)
   };
 
   // Display available choices to user
-  const RenderChoicePage = (id) =>
+  const RenderChoicePanel = (id) =>
     results.map((each) => {
       return (
-        <button
-          key={each.id}
+        <ButtonTile
           id={each.id}
-          value={each.id}
-          onClick={(e) => handleOriginSelection(e, "origin")}>
-          <h4>{each.name ? each.name : each.destination.name}</h4>
-          <h5>{each.macro_place}</h5>
-        </button>
+          title={each.name}
+          subtitle={each.macro_place}
+          handleClick={fetchDataFromAPI}
+        />
       );
     });
 
@@ -103,55 +95,7 @@ function Search({ results, setResults }) {
       {showSearchBox ? (
         <div>
           <form onSubmit={handleSubmit}>
-            <RenderChoicePage />
-            <label>
-              Destination
-              <input
-                id="destination"
-                type="text"
-                value={formData.destination}
-                onChange={(e) => handleFormFieldChange(e)}
-              />
-            </label>
-            <label>
-              Round Trip?
-              <input
-                id="roundTrip"
-                type="checkbox"
-                checked={formData.roundTrip}
-                onChange={(e) => handleFormFieldChange(e)}
-              />
-            </label>
-            <label>
-              Depart
-              <input
-                id="departureDate"
-                type="date"
-                value={formData.departureDate}
-                onChange={(e) => handleFormFieldChange(e)}
-              />
-            </label>
-            {/* Only display return field if roundtrip is true */}
-            {formData.roundTrip && (
-              <label>
-                Return
-                <input
-                  id="returnDate"
-                  type="date"
-                  value={formData.returnDate}
-                  onChange={(e) => handleFormFieldChange(e)}
-                />
-              </label>
-            )}
-            <label>
-              Number of Passengers
-              <input
-                id="numPassengers"
-                type="number"
-                value={formData.numPassengers}
-                onChange={(e) => handleFormFieldChange(e)}
-              />
-            </label>
+            <RenderChoicePanel />
             <div>
               <button type="submit">
                 {isLoading ? "Loading..." : "Submit"}
