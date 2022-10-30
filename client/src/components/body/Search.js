@@ -5,8 +5,6 @@ function Search({ results, setResults }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(false);
-  const [origins, setOrigins] = useState([]);
-  const [destinations, setDestinations] = useState([]);
   const [formData, setFormData] = useState({
     origin: "",
     destination: "",
@@ -46,7 +44,7 @@ function Search({ results, setResults }) {
   const handleFormFieldChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.id]: value,
+      [e.target.id]: e.target.value,
     });
   };
 
@@ -55,7 +53,7 @@ function Search({ results, setResults }) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch("/flights").then((r) => {
+    fetch("/origins").then((r) => {
       setIsLoading(false);
       if (r.ok) {
         r.json()
@@ -67,26 +65,26 @@ function Search({ results, setResults }) {
     });
   };
 
-  // Find unique locations
-  const uniqueLocations = (flights) => {
-    let origins = [];
-    let destinations = [];
-    flights.map((each) => {
-      !origins.includes(each.origin.name) && origins.append(each.origin);
-    });
-    console.log(origins)
+  // Update form data
+  const updateFormDataOnClick = (e, each) => {
+    e.preventDefault();
+    const field = !formData.origin ? "origin" : "destination";
+
+    setFormData({ ...formData, [field]: each.id });
+    console.log(`${field}: ${each.name} -> ${each.id}`);
   };
 
   // Display available choices to user
   const RenderChoicePanel = (id) =>
     results.map((each) => {
       return (
-        <ButtonTile
-          id={each.id}
-          title={each.name}
-          subtitle={each.macro_place}
-          handleClick={fetchDataFromAPI}
-        />
+        <button
+          key={each.id}
+          id={id}
+          name="origin"
+          onClick={(e) => updateFormDataOnClick(e, each)}>
+          {each.name}
+        </button>
       );
     });
 
@@ -102,6 +100,8 @@ function Search({ results, setResults }) {
               </button>
             </div>
           </form>
+          <h1>{formData.origin && `origin: ${formData.origin}`}</h1>
+          <h1>{formData.destination && `destination: ${formData.destination}`}</h1>
           {errors.map((err) => (
             <p key={err}>{err}</p>
           ))}
