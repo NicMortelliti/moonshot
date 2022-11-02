@@ -78,13 +78,13 @@ function Search({ results, setResults }) {
   const RenderChoicePanel = (id) =>
     results.map((each) => {
       return (
-        <button
-          key={each.id}
+        <ButtonTile
           id={id}
           name="origin"
-          onClick={(e) => updateFormDataOnClick(e, each)}>
-          {each.name}
-        </button>
+          handleClick={(e) => updateFormDataOnClick(e, each)}>
+          title={each.name}
+	  subtitle={each.macro_place}
+        />
       );
     });
 
