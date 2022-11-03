@@ -80,10 +80,9 @@ function Search({ results, setResults }) {
       return (
         <ButtonTile
           id={id}
-          name="origin"
-          handleClick={(e) => updateFormDataOnClick(e, each)}>
           title={each.name}
-	  subtitle={each.macro_place}
+          subtitle={each.macro_place}
+          // handleClick={updateFormDataOnClick}
         />
       );
     });
