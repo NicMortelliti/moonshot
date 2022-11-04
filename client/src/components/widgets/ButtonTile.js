@@ -4,12 +4,18 @@ import styled from "styled-components"
 function ButtonTile({id, title, subtitle}) {
 
  const Button = styled.button`
-	background: palevioletred;
+ 	background: rgba(255,255,255,0.4);
+ 	//background: rgb(3,39,86,0.8);
+	//background: linear-gradient(180deg, rgba(3,39,86,1) 0%, rgba(2,87,151,1) 100%);
 	color: white;
 	border-radius: 0;
-	border: 2px solid palevioletred;
-	margin: 0 1em;
+	border: 2px solid rgb(37,129,187);
+	border: linear-gradient(180deg, rgba(37,129,187,1) 0%, rgba(133,213,253,1) 100%);
+	backdrop-filter: blur(10px);
+	margin: 1em 1em;
 	padding: 0.25em 1em;
+	width: 8em;
+	height: 8em;
 	`
  return (
     <Button key={id} value={id} onClick={(e) => console.log(e)}>
