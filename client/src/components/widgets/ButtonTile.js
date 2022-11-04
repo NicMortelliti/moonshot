@@ -19,7 +19,6 @@ function ButtonTile({id, title, subtitle, handleClick}) {
     <Button key={id} onClick={(e) => handleClick(e,id)}>
       <h4>{title}</h4>
       <h5>{subtitle}</h5>
-	  <p>{id}</p>
     </Button>
   );
 }
