@@ -66,23 +66,23 @@ function Search({ results, setResults }) {
   };
 
   // Update form data
-  const updateFormDataOnClick = (e, each) => {
+  const updateFormDataOnClick = (e, id) => {
     e.preventDefault();
     const field = !formData.origin ? "origin" : "destination";
 
-    setFormData({ ...formData, [field]: each.id });
-    console.log(`${field}: ${each.name} -> ${each.id}`);
+    setFormData({ ...formData, [field]: id });
+    // console.log(`${field}: ${e.name} -> ${e.id}`);
   };
 
   // Display available choices to user
-  const RenderChoicePanel = (id) =>
+  const RenderChoicePanel = () =>
     results.map((each) => {
       return (
         <ButtonTile
-          id={id}
+          id={each.id}
           title={each.name}
           subtitle={each.macro_place}
-          // handleClick={updateFormDataOnClick}
+          handleClick={updateFormDataOnClick}
         />
       );
     });
