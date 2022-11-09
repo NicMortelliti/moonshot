@@ -14,6 +14,7 @@ function ButtonTile({id, title, subtitle, handleClick}) {
 	padding: 0.25em 1em;
 	width: 8em;
 	height: 8em;
+  cursor: pointer;
 	`
  return (
     <Button key={id} onClick={(e) => handleClick(e,id)}>
