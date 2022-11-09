@@ -72,7 +72,6 @@ function Search() {
     const field = !formData.origin ? "origin" : "destination";
 
     setFormData({ ...formData, [field]: id });
-    // console.log(`${field}: ${e.name} -> ${e.id}`);
   };
 
   // Display available choices to user
