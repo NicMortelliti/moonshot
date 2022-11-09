@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ButtonTile from "../widgets/ButtonTile";
 
-function Search({ results, setResults }) {
+function Search() {
+  const [results, setResults] = useState([]);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(false);
@@ -100,7 +101,9 @@ function Search({ results, setResults }) {
             </div>
           </form>
           <h1>{formData.origin && `origin: ${formData.origin}`}</h1>
-          <h1>{formData.destination && `destination: ${formData.destination}`}</h1>
+          <h1>
+            {formData.destination && `destination: ${formData.destination}`}
+          </h1>
           {errors.map((err) => (
             <p key={err}>{err}</p>
           ))}

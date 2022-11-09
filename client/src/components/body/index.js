@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 //  Components
-import Search from "./Search";
+import Search from "../search/Search";
 
 export function Body(props) {
-  const [results, setResults] = useState([]);
-
   return (
     <div>
-      <Search results={results} setResults={setResults} />
+      <Search />
     </div>
   );
 }
