@@ -97,6 +97,11 @@ function Search() {
       {showSearchBox ? (
         <div>
           <form onSubmit={handleSubmit}>
+            <h3>
+              {!formData.origin
+                ? "Where are we blasting off from?"
+                : "Great! Where should we land?"}
+            </h3>
             <SearchPanel
               inputDataArray={results}
               handleClick={updateFormDataOnClick}
