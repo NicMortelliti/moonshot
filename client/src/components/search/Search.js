@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ButtonTile from "../widgets/ButtonTile";
+import SearchPanel from "./SearchPanel";
 
 function Search() {
   const [results, setResults] = useState([]);
@@ -72,27 +72,35 @@ function Search() {
     const field = !formData.origin ? "origin" : "destination";
 
     setFormData({ ...formData, [field]: id });
+
+    fetchResults(field, id);
   };
 
-  // Display available choices to user
-  const RenderChoicePanel = () =>
-    results.map((each) => {
-      return (
-        <ButtonTile
-          id={each.id}
-          title={each.name}
-          subtitle={each.macro_place}
-          handleClick={updateFormDataOnClick}
-        />
-      );
+  // Fetch results from API
+  const fetchResults = (field, id) => {
+    setErrors([]);
+    setIsLoading(true);
+    fetch(`/destinations?origin=${id}`).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((data) => {
+          setResults(data);
+        });
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
     });
+  };
 
   return (
     <div>
       {showSearchBox ? (
         <div>
           <form onSubmit={handleSubmit}>
-            <RenderChoicePanel />
+            <SearchPanel
+              inputDataArray={results}
+              handleClick={updateFormDataOnClick}
+            />
             <div>
               <button type="submit">
                 {isLoading ? "Loading..." : "Submit"}
