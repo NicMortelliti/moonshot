@@ -107,9 +107,7 @@ function Search() {
               handleClick={updateFormDataOnClick}
             />
             <div>
-              <button type="submit">
-                {isLoading ? "Loading..." : "Submit"}
-              </button>
+              {formData.returnDate && <button type="submit">Submit</button>}
             </div>
           </form>
           <h1>{formData.origin && `origin: ${formData.origin}`}</h1>
