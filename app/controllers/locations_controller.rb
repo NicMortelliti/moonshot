@@ -9,4 +9,10 @@ class LocationsController < ApplicationController
 
     render json: locations, status: :ok
   end
+
+  def destinations
+    locations = Location.all.select { |location| location.origins.any? { |each| each.destination_id == params[:origin].to_i } }
+
+    render json: locations, status: :ok
+  end
 end

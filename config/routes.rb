@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get '/me', to: 'users#show'
   get '/origins', to: 'locations#origins'
+  get '/destinations', to: 'locations#destinations'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
