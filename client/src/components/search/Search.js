@@ -73,11 +73,11 @@ function Search() {
 
     setFormData({ ...formData, [field]: id });
 
-    fetchResults(field, id);
+    fetchDestinations(id);
   };
 
-  // Fetch results from API
-  const fetchResults = (field, id) => {
+  // Fetch destinations results from API
+  const fetchDestinations = (id) => {
     setErrors([]);
     setIsLoading(true);
     fetch(`/destinations?origin=${id}`).then((r) => {
