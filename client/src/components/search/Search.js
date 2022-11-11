@@ -10,7 +10,7 @@ function Search() {
     origin: "",
     destination: "",
     departureDate: "",
-    numPassengers: 1,
+    numPassengers: "",
   });
 
   // Send search params to API
@@ -68,13 +68,17 @@ function Search() {
   const updateFormDataOnClick = (e, id) => {
     e.preventDefault();
     let field;
-    if (formData.destination) {
+    if (!formData.numPassengers) {
+      field = "numPassengers";
+    } else if (formData.destination) {
       field = "departureDate";
     } else if (formData.origin) {
       field = "destination";
     } else {
       field = "origin";
     }
+
+    console.log(field);
 
     setFormData({ ...formData, [field]: id });
 
@@ -127,18 +131,34 @@ function Search() {
         <div>
           <form onSubmit={handleSubmit}>
             <h3>
-              {!formData.origin
+              {!formData.numPassengers
+                ? "How many people in your space party?"
+                : !formData.origin
                 ? "Where are we blasting off from?"
                 : "Great! Where should we land?"}
             </h3>
-            <SearchPanel
-              inputDataArray={results}
-              handleClick={updateFormDataOnClick}
-            />
+            {!formData.numPassengers ? (
+              <SearchPanel
+                inputDataArray={[
+                  { id: 1, name: 1 },
+                  { id: 2, name: 2 },
+                  { id: 3, name: 3 },
+                ]}
+                handleClick={updateFormDataOnClick}
+              />
+            ) : (
+              <SearchPanel
+                inputDataArray={results}
+                handleClick={updateFormDataOnClick}
+              />
+            )}
             <div>
               {formData.returnDate && <button type="submit">Submit</button>}
             </div>
           </form>
+          <h1>
+            {formData.numPassengers && `passengers: ${formData.numPassengers}`}
+          </h1>
           <h1>{formData.origin && `origin: ${formData.origin}`}</h1>
           <h1>
             {formData.destination && `destination: ${formData.destination}`}

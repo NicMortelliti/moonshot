@@ -23,7 +23,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-function ButtonTile({ id, title, subtitle, handleClick }) {
+function ButtonTile({ id, title, subtitle = null, handleClick }) {
   return (
     <Button key={id} onClick={(e) => handleClick(e, id)}>
       <h4>{title}</h4>
