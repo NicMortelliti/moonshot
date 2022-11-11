@@ -92,4 +92,8 @@ Vehicle.all.each do |i|
   end
 end
 
+# Seed Reservations
+puts 'Seeding reservations 🔖'
+Reservation.create({ user_id: 1, flight_id: rand(1..Flight.all.count) })
+
 puts 'Done seeding ✅'
