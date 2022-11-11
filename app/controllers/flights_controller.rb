@@ -22,8 +22,10 @@ class FlightsController < ApplicationController
 
   # GET '/flights'
   def index
-    flights = Flight.all
-    render json: flights
+    flights = Flight.all.select { |flight| flight.origin_id == search_flight_params[:origin].to_i }
+    flights = flights.select { |flight| flight.destination_id == search_flight_params[:destination].to_i }
+
+    render json: flights, status: :ok
   end
 
   # PATCH '/flights/[:id]'
@@ -43,7 +45,7 @@ class FlightsController < ApplicationController
   private
 
   def search_flight_params
-    params.permit(:search, :value, :origin)
+    params.permit(:origin, :destination)
   end
 
   def create_flight_params

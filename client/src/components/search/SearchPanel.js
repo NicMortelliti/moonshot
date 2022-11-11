@@ -10,8 +10,8 @@ function SearchPanel({ inputDataArray, handleClick }) {
       <ButtonTile
         key={each.id}
         id={each.id}
-        title={each.name}
-        subtitle={each.macro_place}
+        title={each.name ? each.name : each.departure}
+        subtitle={each.macro_place ? each.macro_place : each.arrival}
         handleClick={handleClick}
       />
     );

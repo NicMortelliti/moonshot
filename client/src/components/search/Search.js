@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchPanel from "./SearchPanel";
 
 function Search() {
@@ -9,9 +9,7 @@ function Search() {
   const [formData, setFormData] = useState({
     origin: "",
     destination: "",
-    roundTrip: true,
     departureDate: "",
-    returnDate: "",
     numPassengers: 1,
   });
 
@@ -69,11 +67,19 @@ function Search() {
   // Update form data
   const updateFormDataOnClick = (e, id) => {
     e.preventDefault();
-    const field = !formData.origin ? "origin" : "destination";
+    let field;
+    if (formData.destination) {
+      field = "departureDate";
+    } else if (formData.origin) {
+      field = "destination";
+    } else {
+      field = "origin";
+    }
 
     setFormData({ ...formData, [field]: id });
 
-    fetchDestinations(id);
+    field === "destination" && fetchFlights(id);
+    field === "origin" && fetchDestinations(id);
   };
 
   // Fetch destinations results from API
@@ -91,6 +97,29 @@ function Search() {
       }
     });
   };
+
+  const fetchFlights = (destinationId) => {
+    setErrors([]);
+    setIsLoading(true);
+    fetch(
+      `/flights?origin=${formData.origin}&destination=${destinationId}`
+    ).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((data) => {
+          setResults(data);
+        });
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  };
+
+  // ! TEST
+  useEffect(() => {
+    console.log(results);
+  }, [results, setResults]);
+  // ! TEST
 
   return (
     <div>
@@ -113,6 +142,9 @@ function Search() {
           <h1>{formData.origin && `origin: ${formData.origin}`}</h1>
           <h1>
             {formData.destination && `destination: ${formData.destination}`}
+          </h1>
+          <h1>
+            {formData.departureDate && `Departure: ${formData.departureDate}`}
           </h1>
           {errors.map((err) => (
             <p key={err}>{err}</p>
