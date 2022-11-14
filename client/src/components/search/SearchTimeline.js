@@ -3,17 +3,24 @@ import React from "react";
 function SearchTimeline({
   origin,
   destination,
+  flight,
   originSetter,
   destinationSetter,
+  flightSetter,
 }) {
   const reset = (e) => {
     switch (e.target.name) {
       case "origin":
         destinationSetter("");
         originSetter("");
+        flightSetter("");
         break;
       case "destination":
         destinationSetter("");
+        flightSetter("");
+        break;
+      case "flight":
+        flightSetter("");
         break;
       default:
         break;
@@ -29,6 +36,11 @@ function SearchTimeline({
       {destination ? (
         <button name="destination" onClick={(e) => reset(e)}>
           {destination.name}, {destination.macro_place}
+        </button>
+      ) : null}
+      {flight ? (
+        <button name="flight" onClick={(e) => reset(e)}>
+          {flight.id} {flight.departure}
         </button>
       ) : null}
     </div>
