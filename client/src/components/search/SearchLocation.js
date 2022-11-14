@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function SearchLocation({ data, setter, blockedLocation }) {
-  const handleClick = (e, data) => {
+  const handleClick = (e, location) => {
     e.preventDefault();
-    setter(data);
+    setter(location);
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, []);
-
-  const RenderButtons = () => {
+  const RenderButtons = () =>
     data.map((each) => {
-      if (blockedLocation !== each.id) {
+      if (
+        // Only run this if statement if blockedLocation
+        // exists (i.e. Only run if origin has already
+        // been selected)
+        typeof blockedLocation != undefined &&
+        blockedLocation.macro_place !== each.macro_place
+      ) {
         return (
           <button
             key={each.id}
@@ -21,9 +23,10 @@ function SearchLocation({ data, setter, blockedLocation }) {
             {each.name}
           </button>
         );
+      } else {
+        return null;
       }
     });
-  };
 
   return <RenderButtons />;
 }

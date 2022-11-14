@@ -19,7 +19,7 @@ function App() {
       <header className="App-header"></header>
       {
         // Display account login/signup box if user is not set
-        !user ? <AccountBox setUser={setUser} /> : <Body />
+        !user ? <AccountBox setUser={setUser} /> : <Body user={user} />
       }
     </div>
   );
