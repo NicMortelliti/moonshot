@@ -30,7 +30,7 @@ Vehicle.create({ make: 'Jetson', model: 'S320', name: 'Henry', pax_capacity: 6, 
 
 Vehicle.create({ make: 'Camacho', model: 'Thundercat', name: 'Jaga', pax_capacity: 12, image: 'placehodler' })
 Vehicle.create({ make: 'Camacho', model: 'Thundercat', name: 'Lion-O', pax_capacity: 12, image: 'placehodler' })
-Vehicle.create({ make: 'Camacho', model: 'Thundercat', name: 'Pantrho', pax_capacity: 12, image: 'placehodler' })
+Vehicle.create({ make: 'Camacho', model: 'Thundercat', name: 'Panthro', pax_capacity: 12, image: 'placehodler' })
 Vehicle.create({ make: 'Camacho', model: 'Thundercat', name: 'Tygra', pax_capacity: 12, image: 'placehodler' })
 Vehicle.create({ make: 'Camacho', model: 'Thundercat', name: 'Cheetara', pax_capacity: 12, image: 'placehodler' })
 Vehicle.create({ make: 'Camacho', model: 'Thundercat', name: 'WilyKat', pax_capacity: 12, image: 'placehodler' })
