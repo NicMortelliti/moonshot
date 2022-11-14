@@ -21,7 +21,7 @@ function SearchFlights({ data, setter }) {
             {each.destination.name}, {each.destination.macro_place}
           </p>
           <p>
-            {each.vehicle.name} ({each.vehicle.pax_capacity})
+            {each.vehicle.name} ({each.reservations_remaining} seats remaining!)
           </p>
         </button>
       );

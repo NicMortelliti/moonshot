@@ -5,6 +5,10 @@ class Flight < ApplicationRecord
   validates :departure, presence: true
   validates :arrival, presence: true
 
+  def reservations_remaining
+    vehicle.pax_capacity - reservations.count
+  end
+
   has_many :reservations
   has_many :users, through: :reservations
   belongs_to :origin, class_name: 'Location'
