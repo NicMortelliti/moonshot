@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import SearchPanel from "./SearchPanel";
+import SearchNumber from "./SearchNumber";
 
 function Search() {
   const [results, setResults] = useState([]);
@@ -127,54 +126,8 @@ function Search() {
 
   return (
     <div>
-      {showSearchBox ? (
-        <div>
-          <form onSubmit={handleSubmit}>
-            <h3>
-              {!formData.numPassengers
-                ? "How many people in your space party?"
-                : !formData.origin
-                ? "Where are we blasting off from?"
-                : "Great! Where should we land?"}
-            </h3>
-            {!formData.numPassengers ? (
-              <SearchPanel
-                inputDataArray={[
-                  { id: 1, name: 1 },
-                  { id: 2, name: 2 },
-                  { id: 3, name: 3 },
-                ]}
-                handleClick={updateFormDataOnClick}
-              />
-            ) : (
-              <SearchPanel
-                inputDataArray={results}
-                handleClick={updateFormDataOnClick}
-              />
-            )}
-            <div>
-              {formData.returnDate && <button type="submit">Submit</button>}
-            </div>
-          </form>
-          <h1>
-            {formData.numPassengers && `passengers: ${formData.numPassengers}`}
-          </h1>
-          <h1>{formData.origin && `origin: ${formData.origin}`}</h1>
-          <h1>
-            {formData.destination && `destination: ${formData.destination}`}
-          </h1>
-          <h1>
-            {formData.departureDate && `Departure: ${formData.departureDate}`}
-          </h1>
-          {errors.map((err) => (
-            <p key={err}>{err}</p>
-          ))}
-        </div>
-      ) : (
-        <button onClick={(e) => handleShowSearch(e)}>
-          {isLoading ? "Loading..." : "Search"}
-        </button>
-      )}
+        <SearchNumber min={1} max={6} setter={setNumPassengers} />
+      {numPassengers ? <p># of Passengers: {numPassengers}</p> : null}
     </div>
   );
 }
