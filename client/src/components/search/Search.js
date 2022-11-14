@@ -89,7 +89,7 @@ function Search({ user }) {
       {selectedOrigin && <p>{selectedOrigin.id}</p>}
       {selectedDestination && <p>{selectedDestination.id}</p>}
       {selectedFlight && <p>{selectedFlight.id}</p>}
-      {errors ? errors.map((each) => <p key={each}>each</p>) : null}
+      {errors ? errors.map((each) => <p key={each}>{each}</p>) : null}
     </div>
   );
 }
