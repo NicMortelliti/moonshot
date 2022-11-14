@@ -85,10 +85,6 @@ function Search({ user }) {
           </button>
         ) : null}
       </form>
-      {selectedNumPassengers && <p>{selectedNumPassengers}</p>}
-      {selectedOrigin && <p>{selectedOrigin.id}</p>}
-      {selectedDestination && <p>{selectedDestination.id}</p>}
-      {selectedFlight && <p>{selectedFlight.id}</p>}
       {errors ? errors.map((each) => <p key={each}>{each}</p>) : null}
     </div>
   );
