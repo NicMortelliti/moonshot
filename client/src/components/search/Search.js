@@ -4,11 +4,12 @@ import React, { useEffect, useState } from "react";
 import SearchLocation from "./SearchLocation";
 import SearchNumber from "./SearchNumber";
 import SearchFlights from "./SearchFlights";
+import SearchTimeline from "./SearchTimeline";
 
 function Search({ user }) {
   const [apiResults, setApiResults] = useState("");
   const [flightResults, setFlightResults] = useState("");
-  const [selectedNumPassengers, setSelectedNumPassengers] = useState("");
+  const [selectedNumPassengers, setSelectedNumPassengers] = useState(1);
   const [selectedOrigin, setSelectedOrigin] = useState("");
   const [selectedDestination, setSelectedDestination] = useState("");
   const [selectedFlight, setSelectedFlight] = useState("");
@@ -33,8 +34,8 @@ function Search({ user }) {
   // Post reservation to backend
   const submitBooking = (e) => {
     e.preventDefault();
-
     setIsLoading(true);
+    setErrors([]);
 
     fetch("/reservations", {
       method: "POST",
@@ -57,17 +58,23 @@ function Search({ user }) {
 
   return (
     <div>
+      <SearchTimeline
+        origin={selectedOrigin}
+        destination={selectedDestination}
+        originSetter={setSelectedOrigin}
+        destinationSetter={setSelectedDestination}
+      />
       <form onSubmit={(e) => submitBooking(e)}>
-        {!selectedNumPassengers ? (
-          <SearchNumber min={1} max={6} setter={setSelectedNumPassengers} />
-        ) : null}
-        {selectedNumPassengers && !selectedOrigin ? (
+        {/* Display origin options */}
+        {!selectedOrigin && apiResults ? (
           <SearchLocation
             data={apiResults}
             setter={setSelectedOrigin}
             blockedLocation="null"
           />
         ) : null}
+
+        {/* Display destination options */}
         {selectedOrigin && !selectedDestination ? (
           <SearchLocation
             data={apiResults}
@@ -75,10 +82,16 @@ function Search({ user }) {
             blockedLocation={selectedOrigin}
           />
         ) : null}
+
+        {/* Trigger search fetch */}
         {selectedDestination && !flightResults ? getFlights() : null}
-        {flightResults ? (
+
+        {/* Display search results */}
+        {selectedDestination && flightResults ? (
           <SearchFlights data={flightResults} setter={setSelectedFlight} />
         ) : null}
+
+        {/* Display submit button */}
         {selectedFlight ? (
           <button type="submit">
             {isLoading ? "Loading..." : "Book Flight!"}
