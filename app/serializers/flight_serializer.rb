@@ -3,4 +3,5 @@ class FlightSerializer < ActiveModel::Serializer
 
   has_one :origin
   has_one :destination
+  has_one :vehicle
 end
