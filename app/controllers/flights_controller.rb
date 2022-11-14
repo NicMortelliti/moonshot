@@ -22,10 +22,20 @@ class FlightsController < ApplicationController
 
   # GET '/flights'
   def index
-    flights = Flight.all.select { |flight| flight.origin_id == search_flight_params[:origin].to_i }
-    flights = flights.select { |flight| flight.destination_id == search_flight_params[:destination].to_i }
+    flights = Flight.all
+    locations = flights.select 
+    if search_flight_params[:origin]
+      flights = flights.select { |flight| flight.origin_id == search_flight_params[:origin].to_i }
+      puts "Origin selected is: #{search_flight_params[:origin]}"
+    end
 
-    render json: flights, status: :ok
+    if search_flight_params[:num_passengers]
+      flights = flights.select { |flight| flight.reservations.count + search_flight_params[:num_passengers].to_i <= flight.vehicle.pax_capacity  }
+      puts "Number of passengers selected is: #{search_flight_params[:num_passengers]}"
+    end
+
+    # flights = flights.select { |flight| flight.destination_id == search_flight_params[:destination].to_i }
+    render json: locations, status: :ok
   end
 
   # PATCH '/flights/[:id]'
@@ -45,7 +55,7 @@ class FlightsController < ApplicationController
   private
 
   def search_flight_params
-    params.permit(:origin, :destination)
+    params.permit(:origin, :destination, :num_passengers)
   end
 
   def create_flight_params
