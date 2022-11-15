@@ -7,6 +7,7 @@ import NavBar from "./navbar/NavBar";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [displayedPage, setDisplayedPage] = useState("main");
 
   // auto-login
   useEffect(() => {
@@ -15,19 +16,30 @@ function App() {
     });
   }, []);
 
+  const RenderAccountControl = () => {
+    return <AccountBox setUser={setUser} />;
+  };
+
+  const RenderAppUI = () => {
+    return (
+      <div>
+        <Body
+          user={user}
+          displayedPage={displayedPage}
+          setDisplayedPage={setDisplayedPage}
+        />
+      </div>
+    );
+  };
+
   return (
     <div>
       <header className="App-header"></header>
+      <NavBar user={user}  setUser={setUser} setDisplayedPage={setDisplayedPage} />
       {
-        // Display account login/signup box if user is not set
-        !user ? (
-          <AccountBox setUser={setUser} />
-        ) : (
-          <div>
-            <NavBar setUser={setUser} />
-            <Body user={user} />
-          </div>
-        )
+        // Display account login/signup box if user is not set.
+        // Otherwise, display app for user.
+        !user ? <RenderAccountControl /> : <RenderAppUI />
       }
     </div>
   );
