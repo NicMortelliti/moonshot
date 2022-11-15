@@ -15,7 +15,9 @@ function NavBar({ user, setUser, setDisplayedPage }) {
         </>
       ) : null}
       <button onClick={() => setDisplayedPage("status")}>Flight Status</button>
-      <Logout setUser={setUser} setDisplayedPage={setDisplayedPage} />
+      {user ? (
+        <Logout setUser={setUser} setDisplayedPage={setDisplayedPage} />
+      ) : null}
     </div>
   );
 }
