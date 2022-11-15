@@ -2,6 +2,7 @@ import React from "react";
 
 //  Components
 import Search from "../search/Search";
+import { ReservationBox } from "../reservations";
 
 export function Body({ user, displayedPage, setDisplayedPage }) {
   const RenderPage = () => {
@@ -13,7 +14,7 @@ export function Body({ user, displayedPage, setDisplayedPage }) {
       case "checkin":
         return <p>Check-In page placeholder</p>;
       case "reservations":
-        return <p>Reservations page placeholder</p>;
+        return <ReservationBox />;
       case "status":
         return <p>Status page placeholder</p>;
       default:
