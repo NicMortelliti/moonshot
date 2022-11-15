@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+// Components
+import ReservationCard from "./ReservationCard";
+
 function ReservationsList() {
   const [apiResults, setApiResults] = useState("");
 
@@ -12,20 +15,7 @@ function ReservationsList() {
 
   // Display a card for each reservation
   const RenderCards = () =>
-    apiResults.map((each) => {
-      return (
-        <div key={each.id}>
-          <h3>From:</h3>
-          <p>
-            {each.origin.name}, {each.origin.macro_place}
-          </p>
-          <h3>To:</h3>
-          <p>
-            {each.destination.name}, {each.destination.macro_place}
-          </p>
-        </div>
-      );
-    });
+    apiResults.map((each) => <ReservationCard data={each} />);
 
   return <div>{apiResults ? <RenderCards /> : null}</div>;
 }
