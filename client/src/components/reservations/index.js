@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReservationCancel from "./ReservationCancel";
 import ReservationChange from "./ReservationChange";
 
 // Components
@@ -17,6 +18,14 @@ export function ReservationBox() {
 
   return (
     <div>
+      {displayCancelConfirmation ? (
+        <ReservationCancel
+          data={selectedReservation}
+          reservationsList={apiResults}
+          reservationsListSetter={setApiResults}
+          displayedSetter={setDisplayCancelConfirmation}
+        />
+      ) : null}
       {selectedReservation ? (
         <ReservationChange data={selectedReservation} />
       ) : (

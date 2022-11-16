@@ -4,7 +4,6 @@ function ReservationCancel({
   data,
   reservationsList,
   reservationsListSetter,
-  displayed,
   displayedSetter,
 }) {
   const handleCancel = () => {
@@ -24,19 +23,16 @@ function ReservationCancel({
     );
 
     reservationsListSetter(newList);
+    displayedSetter(false);
   };
 
   return (
     <div>
-      {displayed ? (
-        <div>
-          <h2>Are you sure you want to cancel this reservation?</h2>
-          <button onClick={() => handleCancel()}>
-            Yes (This will permanently cancel your reservation)
-          </button>
-          <button onClick={() => displayedSetter(false)}>No</button>
-        </div>
-      ) : null}
+      <h2>Are you sure you want to cancel this reservation?</h2>
+      <button onClick={() => handleCancel()}>
+        Yes (This will permanently cancel your reservation)
+      </button>
+      <button onClick={() => displayedSetter(false)}>No</button>
     </div>
   );
 }

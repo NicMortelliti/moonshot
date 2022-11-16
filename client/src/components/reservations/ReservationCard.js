@@ -1,26 +1,14 @@
 import React, { useState } from "react";
 import ReservationCancel from "./ReservationCancel";
 
-function ReservationCard({
-  data,
-  setter,
-  reservationsList,
-  reservationsListSetter,
-}) {
+function ReservationCard({ data, setter, reservationCancelSetter }) {
   // Display cancel confirmation and complete
   // cancellation if confirmed
-  const cancelReservation = () => {
-    setConfirmationDisplayed(true);
+  const cancelReservation = (e) => {
+    reservationCancelSetter(true);
     console.log("Displaying confirmation");
-    return (
-      <ReservationCancel
-        data={data}
-        reservationsList={reservationsList}
-        reservationsListSetter={reservationsListSetter}
-        displayed={confirmationDisplayed}
-        displayedSetter={setConfirmationDisplayed}
-      />
-    );
+    setter(e, data);
+    reservationCancelSetter(true);
   };
 
   return (
@@ -42,7 +30,7 @@ function ReservationCard({
         <h5>{data.destination.icao}</h5>
       </div>
       <button onClick={(e) => setter(e, data)}>Change reservation</button>
-      <button onClick={() => cancelReservation()}>Cancel reservation</button>
+      <button onClick={(e) => cancelReservation(e)}>Cancel reservation</button>
       <h3>Confirmation:</h3>
       <button>Trip details</button>
     </div>
