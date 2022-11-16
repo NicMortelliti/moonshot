@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 // Components
 import ReservationCard from "./ReservationCard";
 
-function ReservationsList() {
-  const [apiResults, setApiResults] = useState("");
-
+function ReservationsList({
+  reservationSetter,
+  reservationsList,
+  reservationsListSetter,
+}) {
   // Fetch users reservations
   useEffect(() => {
     fetch("/reservations")
       .then((response) => response.json())
-      .then((results) => setApiResults(results));
+      .then((results) => reservationsListSetter(results));
   }, []);
 
   // Display a card for each reservation
   const RenderCards = () =>
-    apiResults.map((each) => <ReservationCard data={each} />);
+    reservationsList.map((each) => (
+      <ReservationCard
+        data={each}
+        setter={reservationSetter}
+        reservationsList={reservationsList}
+        reservationsListSetter={reservationsListSetter}
+      />
+    ));
 
-  return <div>{apiResults ? <RenderCards /> : null}</div>;
+  return <div>{reservationsList ? <RenderCards /> : null}</div>;
 }
 
 export default ReservationsList;
