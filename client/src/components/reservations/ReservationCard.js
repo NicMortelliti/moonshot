@@ -34,6 +34,7 @@ function ReservationCard({
       <p>
         {data.flight.departure} - {data.flight.arrival}
       </p>
+      <p>Flight {data.flight.id}</p>
       <div>
         <h3>
           {data.origin.name}, {data.origin.macro_place}
