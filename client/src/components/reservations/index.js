@@ -7,6 +7,8 @@ import ReservationsList from "./ReservationsList";
 export function ReservationBox() {
   const [selectedReservation, setSelectedReservation] = useState();
   const [apiResults, setApiResults] = useState("");
+  const [displayCancelConfirmation, setDisplayCancelConfirmation] =
+    useState(false);
 
   const handleReservationClick = (e, data) => {
     e.preventDefault();
@@ -22,6 +24,7 @@ export function ReservationBox() {
           reservationSetter={handleReservationClick}
           reservationsList={apiResults}
           reservationsListSetter={setApiResults}
+          reservationCancelSetter={setDisplayCancelConfirmation}
         />
       )}
     </div>

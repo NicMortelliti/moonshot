@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReservationCancel from "./ReservationCancel";
 
 function ReservationCard({
   data,
@@ -6,31 +7,24 @@ function ReservationCard({
   reservationsList,
   reservationsListSetter,
 }) {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleCancel = () => {
-    setIsLoading(true);
-    fetch(`/reservations/${data.id}`, { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setIsLoading(false);
-        console.log(`Cancelled reservation ${data.id}`);
-        removeFromReservationsList();
-      }
-    });
-  };
-
-  // Remove deleted reservation from reservations list
-  const removeFromReservationsList = () => {
-    let newList = [];
-    reservationsList.map((each) =>
-      each.id !== data.id ? newList.push(each) : null
+  // Display cancel confirmation and complete
+  // cancellation if confirmed
+  const cancelReservation = () => {
+    setConfirmationDisplayed(true);
+    console.log("Displaying confirmation");
+    return (
+      <ReservationCancel
+        data={data}
+        reservationsList={reservationsList}
+        reservationsListSetter={reservationsListSetter}
+        displayed={confirmationDisplayed}
+        displayedSetter={setConfirmationDisplayed}
+      />
     );
-
-    reservationsListSetter(newList);
   };
 
   return (
-    <div key={data.id} style={{ border: "1px solid red" }}>
+    <div style={{ border: "1px solid red" }}>
       <p>
         {data.flight.departure} - {data.flight.arrival}
       </p>
@@ -48,9 +42,7 @@ function ReservationCard({
         <h5>{data.destination.icao}</h5>
       </div>
       <button onClick={(e) => setter(e, data)}>Change reservation</button>
-      <button onClick={() => handleCancel()}>
-        {isLoading ? "Loading..." : "Cancel reservation"}
-      </button>
+      <button onClick={() => cancelReservation()}>Cancel reservation</button>
       <h3>Confirmation:</h3>
       <button>Trip details</button>
     </div>

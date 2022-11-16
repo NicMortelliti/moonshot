@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ReservationCancel from "./ReservationCancel";
 
 // Components
 import ReservationCard from "./ReservationCard";
@@ -7,6 +8,7 @@ function ReservationsList({
   reservationSetter,
   reservationsList,
   reservationsListSetter,
+  reservationCancelSetter,
 }) {
   // Fetch users reservations
   useEffect(() => {
@@ -19,10 +21,12 @@ function ReservationsList({
   const RenderCards = () =>
     reservationsList.map((each) => (
       <ReservationCard
+        key={each.id}
         data={each}
         setter={reservationSetter}
         reservationsList={reservationsList}
         reservationsListSetter={reservationsListSetter}
+        reservationCancelSetter={reservationCancelSetter}
       />
     ));
 
