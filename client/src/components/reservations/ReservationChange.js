@@ -1,6 +1,6 @@
 import React from "react";
 
-function ReservationChange({ data }) {
+function ReservationChange({ data, setDisplayChangePage }) {
   return (
     <div>
       <p>
@@ -19,7 +19,9 @@ function ReservationChange({ data }) {
         <h5>{data.destination.icao}</h5>
       </div>
       <button>Submit changes</button>
-      <button>Cancel changes</button>
+      <button onClick={() => setDisplayChangePage(false)}>
+        Cancel changes
+      </button>
       <h3>Confirmation:</h3>
     </div>
   );

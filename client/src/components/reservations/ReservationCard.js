@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "react-moment";
 
 function ReservationCard({
   data,
@@ -23,23 +24,29 @@ function ReservationCard({
     }
   };
 
+  // Format date
+  const formatDate = (date) => (
+    <Moment format="ddd MMM DD, YYYY">{new Date(date)}</Moment>
+  );
+
   return (
     <div style={{ border: "1px solid red" }}>
       <p>
-        {data.flight.departure} - {data.flight.arrival}
+        {formatDate(data.flight.departure)} - {formatDate(data.flight.arrival)}
       </p>
-      <p>Flight {data.flight.id}</p>
       <div>
-        <h3>
-          {data.origin.name}, {data.origin.macro_place}
-        </h3>
-        <h5>{data.origin.icao}</h5>
+        <p>Flight {data.flight.id}</p>
       </div>
       <div>
-        <h3>
-          {data.destination.name}, {data.destination.macro_place}
-        </h3>
-        <h5>{data.destination.icao}</h5>
+        <p>
+          {data.origin.name}, {data.origin.macro_place}({data.origin.icao})
+        </p>
+      </div>
+      <div>
+        <p>
+          {data.destination.name}, {data.destination.macro_place} (
+          {data.destination.icao})
+        </p>
       </div>
       <button name="change" onClick={(e) => modifyReservation(e)}>
         Change reservation
