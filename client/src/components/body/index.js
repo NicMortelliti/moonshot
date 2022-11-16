@@ -3,12 +3,13 @@ import React from "react";
 //  Components
 import Search from "../search/Search";
 import { ReservationBox } from "../reservations";
+import Main from "./Main";
 
 export function Body({ user, displayedPage, setDisplayedPage }) {
   const RenderPage = () => {
     switch (displayedPage) {
       case "main":
-        return <p>Main page placeholder</p>;
+        return <Main />;
       case "search":
         return <Search user={user} />;
       case "checkin":
