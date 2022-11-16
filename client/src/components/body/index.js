@@ -19,7 +19,6 @@ export function Body({ user, displayedPage, setDisplayedPage }) {
         return <p>Status page placeholder</p>;
       default:
         return <p>Main page placeholder</p>;
-        break;
     }
   };
 

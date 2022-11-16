@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import ReservationCancel from "./ReservationCancel";
+import React, { useEffect, useState } from "react";
 
 // Components
 import ReservationCard from "./ReservationCard";
@@ -9,28 +8,29 @@ function ReservationsList({
   reservationsList,
   reservationsListSetter,
   reservationCancelSetter,
+  reservationChangeSetter,
 }) {
-  // Fetch users reservations
-  useEffect(() => {
-    fetch("/reservations")
-      .then((response) => response.json())
-      .then((results) => reservationsListSetter(results));
-  }, []);
-
   // Display a card for each reservation
   const RenderCards = () =>
-    reservationsList.map((each) => (
-      <ReservationCard
-        key={each.id}
-        data={each}
-        setter={reservationSetter}
-        reservationsList={reservationsList}
-        reservationsListSetter={reservationsListSetter}
-        reservationCancelSetter={reservationCancelSetter}
-      />
-    ));
+    reservationsList
+      ? reservationsList.map((each) => (
+          <ReservationCard
+            key={each.id}
+            data={each}
+            setter={reservationSetter}
+            reservationsList={reservationsList}
+            reservationsListSetter={reservationsListSetter}
+            reservationCancelSetter={reservationCancelSetter}
+            reservationChangeSetter={reservationChangeSetter}
+          />
+        ))
+      : null;
 
-  return <div>{reservationsList ? <RenderCards /> : null}</div>;
+  return (
+    <div>
+      <RenderCards />
+    </div>
+  );
 }
 
 export default ReservationsList;

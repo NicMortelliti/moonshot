@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 function ReservationCancel({
   data,
+  dataSetter,
   reservationsList,
   reservationsListSetter,
   displayedSetter,
+  setErrors,
 }) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Send destroy verb to reservation ID on backend
   const handleCancel = () => {
+    setIsLoading(true);
     fetch(`/reservations/${data.id}`, { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        console.log(`Cancelled reservation ${data.id}`);
+        setIsLoading(false);
+        setErrors(["Successfully cancelled reservation"]);
         removeFromReservationsList();
+      } else {
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   };
@@ -30,7 +39,9 @@ function ReservationCancel({
     <div>
       <h2>Are you sure you want to cancel this reservation?</h2>
       <button onClick={() => handleCancel()}>
-        Yes (This will permanently cancel your reservation)
+        {isLoading
+          ? "Loading..."
+          : "Yes (This will permanently cancel your reservation)"}
       </button>
       <button onClick={() => displayedSetter(false)}>No</button>
     </div>

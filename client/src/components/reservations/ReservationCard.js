@@ -1,14 +1,26 @@
-import React, { useState } from "react";
-import ReservationCancel from "./ReservationCancel";
+import React from "react";
 
-function ReservationCard({ data, setter, reservationCancelSetter }) {
+function ReservationCard({
+  data,
+  setter,
+  reservationCancelSetter,
+  reservationChangeSetter,
+}) {
   // Display cancel confirmation and complete
   // cancellation if confirmed
-  const cancelReservation = (e) => {
-    reservationCancelSetter(true);
-    console.log("Displaying confirmation");
+  const modifyReservation = (e) => {
     setter(e, data);
-    reservationCancelSetter(true);
+
+    switch (e.target.name) {
+      case "cancel":
+        reservationCancelSetter(true);
+        return null;
+      case "change":
+        reservationChangeSetter(true);
+        return null;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -29,8 +41,12 @@ function ReservationCard({ data, setter, reservationCancelSetter }) {
         </h3>
         <h5>{data.destination.icao}</h5>
       </div>
-      <button onClick={(e) => setter(e, data)}>Change reservation</button>
-      <button onClick={(e) => cancelReservation(e)}>Cancel reservation</button>
+      <button name="change" onClick={(e) => modifyReservation(e)}>
+        Change reservation
+      </button>
+      <button name="cancel" onClick={(e) => modifyReservation(e)}>
+        Cancel reservation
+      </button>
       <h3>Confirmation:</h3>
       <button>Trip details</button>
     </div>

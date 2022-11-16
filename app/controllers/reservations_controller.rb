@@ -10,8 +10,12 @@ class ReservationsController < ApplicationController
   # DESTROY '/reservations/[:id]'
   def destroy
     reservation = find_reservation
-    reservation.destroy
-    head :no_content
+    if reservation
+      reservation.destroy
+      head :no_content
+    else
+      render json: { error: 'Reservation not found' }, status: :not_found
+    end
   end
 
   # GET '/reservations'
