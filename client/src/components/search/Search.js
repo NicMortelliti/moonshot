@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 // Custom components
 import SearchLocation from "./SearchLocation";
-import SearchNumber from "./SearchNumber";
 import SearchFlights from "./SearchFlights";
 import SearchTimeline from "./SearchTimeline";
 import SearchBookingDetails from "./SearchBookingDetails";
@@ -10,7 +9,6 @@ import SearchBookingDetails from "./SearchBookingDetails";
 function Search({ user }) {
   const [apiResults, setApiResults] = useState("");
   const [flightResults, setFlightResults] = useState("");
-  const [selectedNumPassengers, setSelectedNumPassengers] = useState(1);
   const [selectedOrigin, setSelectedOrigin] = useState("");
   const [selectedDestination, setSelectedDestination] = useState("");
   const [selectedFlight, setSelectedFlight] = useState("");
@@ -27,7 +25,7 @@ function Search({ user }) {
 
   // Fetch flights matching search criteria
   const getFlights = () => {
-    const url = `/flights?num_passengers=${selectedNumPassengers}&origin=${selectedOrigin.id}&destination=${selectedDestination.id}`;
+    const url = `/flights?num_passengers=1&origin=${selectedOrigin.id}&destination=${selectedDestination.id}`;
     fetch(url)
       .then((response) => response.json())
       .then((results) => setFlightResults(results));
