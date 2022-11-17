@@ -12,6 +12,7 @@ function ReservationDetails({ data }) {
         <p>
           {data.vehicle.make} {data.vehicle.model} "{data.vehicle.name}"
         </p>
+        <p>Total passenger seats: {data.vehicle.pax_capacity}</p>
       </div>
     </div>
   );
