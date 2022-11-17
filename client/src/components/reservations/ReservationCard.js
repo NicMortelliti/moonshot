@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Moment from "react-moment";
+import ReservationDetails from "./ReservationDetails";
 
 function ReservationCard({
   data,
@@ -7,6 +8,8 @@ function ReservationCard({
   reservationCancelSetter,
   reservationChangeSetter,
 }) {
+  const [showDetails, setShowDetails] = useState(false);
+
   // Display cancel confirmation and complete
   // cancellation if confirmed
   const modifyReservation = (e) => {
@@ -29,14 +32,15 @@ function ReservationCard({
     <Moment format="ddd MMM DD, YYYY">{new Date(date)}</Moment>
   );
 
+  // Display trip details
+  const RenderDetails = () =>
+    showDetails ? <ReservationDetails data={data} /> : null;
+
   return (
     <div style={{ border: "1px solid red" }}>
       <p>
         {formatDate(data.flight.departure)} - {formatDate(data.flight.arrival)}
       </p>
-      <div>
-        <p>Flight {data.flight.id}</p>
-      </div>
       <div>
         <p>
           {data.origin.name}, {data.origin.macro_place}({data.origin.icao})
@@ -54,8 +58,10 @@ function ReservationCard({
       <button name="cancel" onClick={(e) => modifyReservation(e)}>
         Cancel reservation
       </button>
-      <h3>Confirmation:</h3>
-      <button>Trip details</button>
+      <button onClick={() => setShowDetails(!showDetails)}>
+        {showDetails ? "Hide details" : "Show details"}
+      </button>
+      <RenderDetails />
     </div>
   );
 }
