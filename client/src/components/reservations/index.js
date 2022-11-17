@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // Components
-import ReservationsList from "./ReservationsList";
+import ReservationCard from "./ReservationCard";
 import ReservationCancel from "./ReservationCancel";
 import ReservationChange from "./ReservationChange";
 
@@ -46,18 +46,30 @@ export function ReservationBox() {
 
   // Display reservation change component
   const RenderReservationChange = () =>
-    displayChangePage ? <ReservationChange data={selectedReservation} /> : null;
+    displayChangePage ? (
+      <ReservationChange
+        data={selectedReservation}
+        setDisplayChangePage={setDisplayChangePage}
+      />
+    ) : null;
 
   // Display reservations list component
   const RenderReservationsList = () =>
-    reservationsList ? (
-      <ReservationsList
-        reservationSetter={handleReservationClick}
-        reservationsList={reservationsList}
-        reservationCancelSetter={setDisplayCancelConfirmation}
-        reservationChangeSetter={setDisplayChangePage}
-      />
-    ) : null;
+    reservationsList.length > 0 ? (
+      reservationsList.map((each) => (
+        <ReservationCard
+          key={each.id}
+          data={each}
+          setter={handleReservationClick}
+          reservationsList={reservationsList}
+          reservationsListSetter={setReservationsList}
+          reservationCancelSetter={setDisplayCancelConfirmation}
+          reservationChangeSetter={setDisplayChangePage}
+        />
+      ))
+    ) : (
+      <h1>You have no reservations</h1>
+    );
 
   // Render messages for user
   const RenderErrors = () => errors.map((each) => <p key={each}>{each}</p>);

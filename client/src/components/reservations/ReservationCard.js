@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import Moment from "react-moment";
+import ReservationDetails from "./ReservationDetails";
 
 function ReservationCard({
   data,
@@ -6,6 +8,8 @@ function ReservationCard({
   reservationCancelSetter,
   reservationChangeSetter,
 }) {
+  const [showDetails, setShowDetails] = useState(false);
+
   // Display cancel confirmation and complete
   // cancellation if confirmed
   const modifyReservation = (e) => {
@@ -23,23 +27,30 @@ function ReservationCard({
     }
   };
 
+  // Format date
+  const formatDate = (date) => (
+    <Moment format="ddd MMM DD, YYYY">{new Date(date)}</Moment>
+  );
+
+  // Display trip details
+  const RenderDetails = () =>
+    showDetails ? <ReservationDetails data={data} /> : null;
+
   return (
     <div style={{ border: "1px solid red" }}>
       <p>
-        {data.flight.departure} - {data.flight.arrival}
+        {formatDate(data.flight.departure)} - {formatDate(data.flight.arrival)}
       </p>
-      <p>Flight {data.flight.id}</p>
       <div>
-        <h3>
-          {data.origin.name}, {data.origin.macro_place}
-        </h3>
-        <h5>{data.origin.icao}</h5>
+        <p>
+          {data.origin.name}, {data.origin.macro_place}({data.origin.icao})
+        </p>
       </div>
       <div>
-        <h3>
-          {data.destination.name}, {data.destination.macro_place}
-        </h3>
-        <h5>{data.destination.icao}</h5>
+        <p>
+          {data.destination.name}, {data.destination.macro_place} (
+          {data.destination.icao})
+        </p>
       </div>
       <button name="change" onClick={(e) => modifyReservation(e)}>
         Change reservation
@@ -47,8 +58,10 @@ function ReservationCard({
       <button name="cancel" onClick={(e) => modifyReservation(e)}>
         Cancel reservation
       </button>
-      <h3>Confirmation:</h3>
-      <button>Trip details</button>
+      <button onClick={() => setShowDetails(!showDetails)}>
+        {showDetails ? "Hide details" : "Show details"}
+      </button>
+      <RenderDetails />
     </div>
   );
 }
