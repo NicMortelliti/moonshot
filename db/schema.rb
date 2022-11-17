@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_10_27_204649) do
   enable_extension "plpgsql"
 
   create_table "flights", force: :cascade do |t|
-    t.string "vehicle_id"
+    t.integer "vehicle_id"
     t.integer "origin_id"
     t.integer "destination_id"
     t.datetime "departure"
