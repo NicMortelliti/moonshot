@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Route, Switch } from "react-router-dom";
 
 // Components
-import { AccountBox } from "./components/account";
-import { Body } from "./components/body";
-import NavBar from "./components/navbar/NavBar";
 import Login from "./features/User/Login";
 import Signup from "./features/User/Signup";
+import Dashboard from "./features/User/Dashboard";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -36,19 +35,11 @@ function App() {
 
   return (
     <div>
-      <header className="App-header"></header>
-      <NavBar
-        user={user}
-        setUser={setUser}
-        setDisplayedPage={setDisplayedPage}
-      />
-      {
-        // Display account login/signup box if user is not set.
-        // Otherwise, display app for user.
-        !user ? <RenderAccountControl /> : <RenderAppUI />
-      }
-      <Login />
-      <Signup />
+      <Switch>
+        <Route exact component={Login} path="/sessions" />
+        <Route exact component={Signup} path="/users" />
+        <Route exact component={Dashboard} path="/" />
+      </Switch>
     </div>
   );
 }
