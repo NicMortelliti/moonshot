@@ -43,5 +43,4 @@ class ReservationsController < ApplicationController
   def find_reservation
     @current_user.reservations.find(params[:id])
   end
-
 end

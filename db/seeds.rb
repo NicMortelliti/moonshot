@@ -8,7 +8,8 @@
 
 # Seed users
 puts 'Seeding users 🧑‍🚀'
-User.create({ first_name: 'Nic', last_name: 'Mortelliti', email: 'npm@gmail.com', password: '123', password_confirmation: '123' })
+User.create({ first_name: 'Nic', last_name: 'Mortelliti', email: 'npm@gmail.com', password: '123',
+              password_confirmation: '123' })
 
 # Seed vehicles
 puts 'Seeding vehicles 🚀'
