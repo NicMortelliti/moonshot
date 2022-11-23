@@ -1,107 +1,59 @@
-import React, { useState } from "react";
+import React, { Fragment, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
+import { signupUser, userSelector, clearState } from "./UserSlice";
+import { useHistory } from "react-router-dom";
+import toast from "react-hot-toast";
 
-function Signup({ setUser, setActive }) {
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    passwordConfirmation: "",
-  });
+const Signup = () => {
+  const dispatch = useDispatch();
+  const { register, errors, handleSubmit } = useForm();
+  const history = useHistory();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors([]);
-    setIsLoading(true);
-
-    fetch("/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        email: formData.email,
-        password: formData.password,
-        password_confirmation: formData.passwordConfirmation,
-      }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
+  const { isFetching, isSuccess, isError, errorMessage } =
+    useSelector(userSelector);
+  const onSubmit = (data) => {
+    dispatch(signupUser(data));
   };
 
-  const handleFormFieldChange = (e) =>
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
+  // Initialize form data
+  useEffect(() => {
+    return () => {
+      dispatch(clearState());
+    };
+  }, []);
+
+  // Try dispatching
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clearState());
+      history.push("/");
+    }
+
+    if (isError) {
+      toast.error(errorMessage);
+      dispatch(clearState());
+    }
+  }, [isSuccess, isError]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          First Name
-          <input
-            id="firstName"
-            type="text"
-            value={formData.firstName}
-            onChange={(e) => handleFormFieldChange(e)}
-          />
-        </label>
-        <label>
-          Last Name
-          <input
-            id="lastName"
-            type="text"
-            value={formData.lastName}
-            onChange={(e) => handleFormFieldChange(e)}
-          />
-        </label>
-        <label>
-          Email
-          <input
-            id="email"
-            type="email"
-            value={formData.email}
-            onChange={(e) => handleFormFieldChange(e)}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            id="password"
-            type="password"
-            value={formData.password}
-            onChange={(e) => handleFormFieldChange(e)}
-          />
-        </label>
-        <label>
-          Repeat Password
-          <input
-            id="passwordConfirmation"
-            type="password"
-            value={formData.passwordConfirmation}
-            onChange={(e) => handleFormFieldChange(e)}
-          />
-        </label>
+    <Fragment>
+      <div>
+        <h2>Sign up for an account</h2>
+      </div>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)} method="POST">
+          {/* //TODO Form placeholder */}
+        </form>
         <div>
-          <button type="submit">{isLoading ? "Loading..." : "Submit"}</button>
-          <button onClick={() => setActive("login")}>I have an account</button>
+          <span>
+            Or <Link to={login}>Login</Link>
+          </span>
         </div>
-      </form>
-      {errors.map((err) => (
-        <p key={err}>{err}</p>
-      ))}
-    </div>
+      </div>
+    </Fragment>
   );
-}
+};
 
 export default Signup;
