@@ -1,11 +1,8 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { loginApi } from "../services/login";
+import { userSlice } from "../features/User/UserSlice";
 
-export const store = configureStore({
+export default configureStore({
   reducer: {
-    [loginApi.reducerPath]: loginApi.reducer,
+    user: userSlice.reducer,
   },
-  // Adding the api middleware enables caching, invalidation, polling,
-  // and other useful features of `rtk-query`.
-  middleware: (getDefaultMiddleware)=> getDefaultMiddleware().concat(loginApi.middleware),
 });
