@@ -5,9 +5,7 @@ class Reservation < ApplicationRecord
   validate :reservation_count_within_limit, on: :create
 
   def reservation_count_within_limit
-    unless flight.vehicle.pax_capacity > flight.reservations.count
-      errors.add(:reservations, 'Exceeded passenger limit')
-    end
+    errors.add(:reservations, 'Exceeded passenger limit') unless flight.vehicle.pax_capacity > flight.reservations.count
   end
 
   belongs_to :user
