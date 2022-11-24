@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 
 // Components
+import { PrivateRoute } from "./helpers/PrivateRoute";
 import Login from "./features/User/Login";
 import Signup from "./features/User/Signup";
 import Dashboard from "./features/User/Dashboard";
@@ -38,7 +39,7 @@ function App() {
       <Switch>
         <Route exact component={Login} path="/sessions" />
         <Route exact component={Signup} path="/users" />
-        <Route exact component={Dashboard} path="/" />
+        <PrivateRoute exact component={Dashboard} path="/" />
       </Switch>
     </div>
   );
