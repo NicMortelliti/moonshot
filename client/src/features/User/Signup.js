@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const Signup = () => {
   const dispatch = useDispatch();
-  const { register, errors, handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
   const history = useHistory();
 
   const { isFetching, isSuccess, isError, errorMessage } =
@@ -17,14 +17,12 @@ const Signup = () => {
     dispatch(signupUser(data));
   };
 
-  // Initialize form data
   useEffect(() => {
     return () => {
       dispatch(clearState());
     };
   }, []);
 
-  // Try dispatching
   useEffect(() => {
     if (isSuccess) {
       dispatch(clearState());
@@ -40,16 +38,83 @@ const Signup = () => {
   return (
     <Fragment>
       <div>
-        <h2>Sign up for an account</h2>
-      </div>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)} method="POST">
-          {/* //TODO Form placeholder */}
-        </form>
         <div>
-          <span>
-            Or <Link to={login}>Login</Link>
-          </span>
+          <h2>Sign Up to your account</h2>
+        </div>
+        <div>
+          <div>
+            <form onSubmit={handleSubmit(onSubmit)} method="POST">
+              <div>
+                <label htmlFor="name">Name</label>
+                <div>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="email">Email address</label>
+                <div>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="password">Password</label>
+                <div>
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <button type="submit">
+                  {isFetching ? (
+                    <Fragment>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24">
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"></circle>
+                        <path
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+
+                      <p>Signing up</p>
+                    </Fragment>
+                  ) : (
+                    <p> Sign up</p>
+                  )}
+                </button>
+              </div>
+            </form>
+            <div>
+              <span>
+                Or <Link to="login"> Login</Link>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </Fragment>

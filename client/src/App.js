@@ -1,48 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Components
-import { PrivateRoute } from "./helpers/PrivateRoute";
 import Login from "./features/User/Login";
 import Signup from "./features/User/Signup";
 import Dashboard from "./features/User/Dashboard";
+import { PrivateRoute } from "./helpers/PrivateRoute";
 
-function App() {
-  const [user, setUser] = useState(null);
-  const [displayedPage, setDisplayedPage] = useState("main");
-
-  // auto-login
-  useEffect(() => {
-    fetch("/me").then((r) => {
-      r.ok && r.json().then((user) => setUser(user));
-    });
-  }, []);
-
-  const RenderAccountControl = () => {
-    return <AccountBox setUser={setUser} />;
-  };
-
-  const RenderAppUI = () => {
-    return (
-      <div>
-        <Body
-          user={user}
-          displayedPage={displayedPage}
-          setDisplayedPage={setDisplayedPage}
-        />
-      </div>
-    );
-  };
-
+const App = () => {
   return (
-    <div>
-      <Switch>
-        <Route exact component={Login} path="/sessions" />
-        <Route exact component={Signup} path="/users" />
-        <PrivateRoute exact component={Dashboard} path="/" />
-      </Switch>
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route exact component={Login} path="/login" />
+          <Route exact component={Signup} path="/signup" />
+          <PrivateRoute exact component={Dashboard} path="/" />
+        </Switch>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
