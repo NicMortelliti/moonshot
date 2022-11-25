@@ -45,13 +45,25 @@ const Signup = () => {
           <div>
             <form onSubmit={handleSubmit(onSubmit)} method="POST">
               <div>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="first_name">First Name</label>
                 <div>
                   <input
-                    id="name"
-                    name="name"
+                    id="first_name"
+                    name="first_name"
                     type="text"
-                    autoComplete="name"
+                    autoComplete="first_name"
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="last_name">Last Name</label>
+                <div>
+                  <input
+                    id="last_name"
+                    name="last_name"
+                    type="text"
+                    autoComplete="last_name"
                     required
                   />
                 </div>

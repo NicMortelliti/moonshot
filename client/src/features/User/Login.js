@@ -16,12 +16,14 @@ const Login = () => {
     dispatch(loginUser(data));
   };
 
+  // Return user state to default
   useEffect(() => {
     return () => {
       dispatch(clearState());
     };
   }, []);
 
+  // Handle state updates depending on promise status
   useEffect(() => {
     if (isError) {
       toast.error(errorMessage);
