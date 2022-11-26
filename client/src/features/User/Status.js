@@ -8,8 +8,8 @@ const Status = () => {
   const user = useSelector((state) => state.user);
 
   return (
-    <div>
-      <div style={{ border: "solid" }}>
+    <div style={{ display: "flex" }}>
+      <div style={{ border: "solid", flex: 1, margin: ".5em" }}>
         <label htmlFor="" style={{ backgroundColor: "black", color: "white" }}>
           API Comms
         </label>
@@ -24,12 +24,20 @@ const Status = () => {
         </p>
       </div>
       {user.errorMessages ? (
-        <div style={{ border: "solid", borderColor: "red" }}>
+        <div
+          style={{
+            border: "solid",
+            borderColor: "red",
+            flex: 1,
+            margin: ".5em",
+          }}>
           <label htmlFor="" style={{ backgroundColor: "red", color: "white" }}>
             Errors from API
           </label>
           {user.errorMessages.map((each) => (
-            <p style={{ backgroundColor: "lightcoral", color: "white" }}>
+            <p
+              key={each}
+              style={{ backgroundColor: "lightcoral", color: "white" }}>
               {each}
             </p>
           ))}
