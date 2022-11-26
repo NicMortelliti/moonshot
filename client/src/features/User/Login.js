@@ -44,11 +44,10 @@ const Login = () => {
         <p>isFetching: {user.isFetching ? "true" : "false"}</p>
         <p>isSuccess: {user.isSuccess ? "true" : "false"}</p>
         <p>isError: {user.isError ? "true" : "false"}</p>
-        {user.userData ? (
+        {user.data ? (
           <p>
-            {user.userData.id} {user.userData.first_name}{" "}
-            {user.userData.last_name} {user.userData.email}{" "}
-            {user.userData.admin}
+            {user.data.id} {user.data.first_name} {user.data.last_name}{" "}
+            {user.data.email} {user.data.admin}
           </p>
         ) : null}
       </div>

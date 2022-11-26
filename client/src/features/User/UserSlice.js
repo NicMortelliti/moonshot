@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   name: "user",
   initialState: {
-    userData: [],
+    data: [],
     isFetching: false,
     isSuccess: false,
     isError: false,
@@ -41,7 +41,7 @@ const userSlice = createSlice({
       state.isFetching = true;
     },
     [fetchUserLogin.fulfilled](state, action) {
-      state.userData = action.payload;
+      state.data = action.payload;
       state.isFetching = false;
     },
     [fetchUserLogin.error](state, action) {
