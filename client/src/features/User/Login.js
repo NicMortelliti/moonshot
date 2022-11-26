@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { useForm } from "react-hook-form";
 
 // Store
@@ -44,6 +44,11 @@ const Login = () => {
       />
       <div>
         <button onClick={(e) => handleSubmit(e)}>Login</button>
+      </div>
+      <div>
+        <span>
+          Or <Link to="signup"> Signup</Link>
+        </span>
       </div>
       <div>
         <Status />
