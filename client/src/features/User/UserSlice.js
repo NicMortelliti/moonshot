@@ -63,13 +63,14 @@ const userSlice = createSlice({
         state.isFetching = true;
       })
       .addCase(fetchUserLogin.fulfilled, (state, action) => {
+        state.errorMessages = action.payload.errors;
         state.data = action.payload;
         state.isError = false;
         state.isFetching = false;
         state.isSuccess = true;
       })
       .addCase(fetchUserLogin.rejected, (state, action) => {
-        state.errorMessages = action.payload;
+        state.errorMessages = action.errors;
         state.isError = true;
         state.isFetching = false;
       })

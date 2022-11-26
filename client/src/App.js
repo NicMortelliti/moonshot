@@ -12,7 +12,7 @@ const App = () => {
     <div className="App">
       <Router>
         <Switch>
-          {/* <Route exact component={Login} path="/login" /> */}
+          <Route exact component={Login} path="/login" />
           <Route exact component={Signup} path="/signup" />
           {/* <PrivateRoute exact component={Dashboard} path="/" /> */}
         </Switch>

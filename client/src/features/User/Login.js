@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 // import { useForm } from "react-hook-form";
+
+// Store
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserLogin } from "./UserSlice";
 // import toast from "react-hot-toast";
 // import { useHistory } from "react-router-dom";
+
+// Components
+import Status from "./Status";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -41,15 +46,7 @@ const Login = () => {
         <button onClick={(e) => handleSubmit(e)}>Login</button>
       </div>
       <div>
-        <p>isFetching: {user.isFetching ? "true" : "false"}</p>
-        <p>isSuccess: {user.isSuccess ? "true" : "false"}</p>
-        <p>isError: {user.isError ? "true" : "false"}</p>
-        {user.data ? (
-          <p>
-            {user.data.id} {user.data.first_name} {user.data.last_name}{" "}
-            {user.data.email} {user.data.admin}
-          </p>
-        ) : null}
+        <Status />
       </div>
     </div>
   );

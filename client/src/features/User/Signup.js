@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 // import { useForm } from "react-hook-form";
+
+// Store
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserSignup } from "./UserSlice";
 // import toast from "react-hot-toast";
 // import { useHistory } from "react-router-dom";
+
+// Components
+import Status from "./Status";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -75,38 +80,9 @@ const Signup = () => {
       <div>
         <button onClick={(e) => handleSubmit(e)}>Signup</button>
       </div>
-      <div style={{ border: "solid" }}>
-        <label htmlFor="" style={{ backgroundColor: "black", color: "white" }}>
-          API Comms
-        </label>
-        <p style={user.isFetching ? { backgroundColor: "lightblue" } : {}}>
-          isFetching: {user.isFetching ? "true" : "false"}
-        </p>
-        <p style={user.isSuccess ? { backgroundColor: "lightgreen" } : {}}>
-          isSuccess: {user.isSuccess ? "true" : "false"}
-        </p>
-        <p style={user.isError ? { backgroundColor: "lightcoral" } : {}}>
-          isError: {user.isError ? "true" : "false"}
-        </p>
+      <div>
+        <Status />
       </div>
-      {user.errorMessages ? (
-        <div style={{ border: "solid", borderColor: "red" }}>
-          {user.errorMessages.map((each) => (
-            <p style={{ backgroundColor: "lightcoral", color: "white" }}>
-              {each}
-            </p>
-          ))}
-        </div>
-      ) : null}
-
-      {user.data ? (
-        <div>
-          <p>
-            {user.data.id} {user.data.first_name} {user.data.last_name}{" "}
-            {user.data.email} {user.data.admin}
-          </p>
-        </div>
-      ) : null}
     </div>
   );
 };
