@@ -28,6 +28,17 @@ export const fetchUserLogin = createAsyncThunk(
   }
 );
 
+// User Logout
+export const fetchUserLogout = createAsyncThunk("users/fetchUserLogout", () => {
+  return fetch("/logout", { method: "DELETE" }).then((r) => {
+    if (r.ok) {
+      return null;
+    } else {
+      r.json().then((err) => err.errors);
+    }
+  });
+});
+
 // User Signup
 export const fetchUserSignup = createAsyncThunk(
   "users/fetchUserSignup",
@@ -56,6 +67,9 @@ const userSlice = createSlice({
     userSignup(state, action) {
       state.user = action.payload;
     },
+    clearSate(state) {
+      state.user = initialState;
+    },
   },
   extraReducers(builder) {
     builder
@@ -63,13 +77,25 @@ const userSlice = createSlice({
         state.isFetching = true;
       })
       .addCase(fetchUserLogin.fulfilled, (state, action) => {
-        state.errorMessages = action.payload.errors;
-        state.data = action.payload;
-        state.isError = false;
-        state.isFetching = false;
-        state.isSuccess = true;
+        state = initialState;
       })
       .addCase(fetchUserLogin.rejected, (state, action) => {
+        state.errorMessages = action.errors;
+        state.isError = true;
+        state.isFetching = false;
+      })
+
+      // Logout User
+      .addCase(fetchUserLogout.pending, (state) => {
+        state.isFetching = true;
+      })
+      .addCase(fetchUserLogout.fulfilled, (state, action) => {
+        state.errorMessages = action.payload.errors;
+        state.data = clearState();
+        state.isError = false;
+        state.isSuccess = true;
+      })
+      .addCase(fetchUserLogout.rejected, (state, action) => {
         state.errorMessages = action.errors;
         state.isError = true;
         state.isFetching = false;
@@ -94,6 +120,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { userLogin, userSignup } = userSlice.actions;
+export const { clearState, userLogin, userSignup } = userSlice.actions;
 
 export default userSlice.reducer;

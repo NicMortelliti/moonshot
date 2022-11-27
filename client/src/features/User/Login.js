@@ -4,9 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 
 // Store
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserLogin } from "./UserSlice";
+import { clearState, fetchUserLogin } from "./UserSlice";
 // import toast from "react-hot-toast";
-// import { useHistory } from "react-router-dom";
 
 // Components
 import Status from "./Status";
@@ -33,7 +32,7 @@ const Login = () => {
   useEffect(() => {
     if (user.isError) {
       // toast.error(errorMessage);
-      // dispatch(clearState());
+      dispatch(clearState());
       return;
     }
 
