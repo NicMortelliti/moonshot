@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 // import { useForm } from "react-hook-form";
 
 // Store
@@ -27,6 +27,21 @@ const Login = () => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  // Set history
+  const history = useHistory();
+  useEffect(() => {
+    if (user.isError) {
+      // toast.error(errorMessage);
+      // dispatch(clearState());
+      return;
+    }
+
+    if (user.isSuccess) {
+      // dispatch(clearState());
+      history.push("/");
+    }
+  }, [user.isSuccess, user.isError]);
 
   return (
     <div>
