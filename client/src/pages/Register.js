@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
+import { register, reset } from "../features/auth/authSlice";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +17,29 @@ const Register = () => {
   // Destructure to make it easier to work with within the component
   const { first_name, last_name, email, password, password2 } = formData;
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // Grab properties from auth state
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    // Display errors if there are any
+    if (isError) {
+      toast.error(message);
+    }
+
+    // If successful, navigate to home page
+    if (isSuccess || user) {
+      navigate("/");
+    }
+
+    // Set everything back to default values
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -22,6 +49,14 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (password !== password2) {
+      toast.error("Passwords do not match");
+    } else {
+      const userData = { first_name, last_name, email, password };
+
+      dispatch(register(userData));
+    }
   };
 
   return (
@@ -74,7 +109,7 @@ const Register = () => {
             placeholder="Confirm password"
             onChange={onChange}
           />
-          <button type="submit">Submit</button>
+          <button type="submit">{isLoading ? "Loading..." : "Submit"}</button>
         </form>
       </section>
     </>
