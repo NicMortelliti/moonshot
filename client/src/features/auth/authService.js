@@ -9,6 +9,18 @@ const register = async (userData) => {
   return response.json();
 };
 
+// Login User
+const login = async (userData) => {
+  const response = await fetch("/sessions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userData),
+  });
+  return response.json();
+};
+
 // Logout User
 const logout = async () => {
   const response = await fetch("/sessions", { method: "DELETE" });
@@ -18,6 +30,7 @@ const logout = async () => {
 
 const authService = {
   register,
+  login,
   logout,
 };
 
