@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // Components
 import Header from "./components/Header";
@@ -10,6 +11,17 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 
 const App = () => {
+  // Grab properties from auth state
+  const { isError, isSuccess, message } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (message && isError) {
+      message.errors.map((each) => {
+        toast.error(each);
+      });
+    }
+  }, [isError]);
+
   return (
     <>
       <Router>

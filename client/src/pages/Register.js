@@ -37,7 +37,7 @@ const Register = () => {
     }
 
     // Set everything back to default values
-    dispatch(reset());
+    // dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
@@ -62,6 +62,7 @@ const Register = () => {
   return (
     <>
       <section className="heading">
+        <toast />
         <h1>
           <FaUser /> Register
         </h1>

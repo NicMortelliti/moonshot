@@ -3,7 +3,7 @@ import { handleResponse } from "../../helpers/helpers";
 import authService from "./authService";
 
 const initialState = {
-  user: null,
+  user: null, // Null prevents checks for user === true from returning true
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -15,13 +15,9 @@ export const register = createAsyncThunk(
   "auth/register",
   async (user, { rejectWithValue }) => {
     try {
-      const response = await authService.register(user);
-      if (response.ok) {
-        return response.data;
-      }
+      return await authService.register(user);
     } catch (error) {
-      console.log("Here! There was an error in the register!");
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error);
     }
   }
 );
@@ -33,7 +29,6 @@ export const login = createAsyncThunk(
     try {
       return await authService.login(user);
     } catch (error) {
-      console.log("All bad");
       return rejectWithValue(error);
     }
   }
@@ -42,16 +37,26 @@ export const login = createAsyncThunk(
 // Re-Login User with cookie
 export const reLogin = createAsyncThunk(
   "auth/relogin",
-  async (_args, thunkAPI) => {
-    const response = await authService.reLogin();
-    const data = await response;
-    return data;
+  async (_args, { rejectWithValue }) => {
+    try {
+      return await authService.reLogin();
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
 );
 
-export const logout = createAsyncThunk("auth/logout", async () => {
-  await authService.logout();
-});
+// Logout user
+export const logout = createAsyncThunk(
+  "auth/logout",
+  async (_args, { rejectWithValue }) => {
+    try {
+      return await authService.logout();
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -67,74 +72,88 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(register.pending, (state) => {
+        state.user = null;
+        state.isError = false;
+        state.isSuccess = false;
         state.isLoading = true;
+        state.message = null;
       })
       .addCase(register.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
         state.user = action.payload;
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = null;
       })
       .addCase(register.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
         state.user = null;
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.payload;
       })
       .addCase(login.pending, (state) => {
-        state.isLoading = true;
-        state.isSuccess = false;
+        state.user = null;
         state.isError = false;
-        state.user = "";
-        state.message = [];
+        state.isSuccess = false;
+        state.isLoading = true;
+        state.message = null;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.isError = false;
         state.user = action.payload;
-        state.message = [];
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = null;
       })
       .addCase(login.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = false;
+        state.user = null;
         state.isError = true;
-        state.user = "";
+        state.isSuccess = false;
+        state.isLoading = false;
         state.message = action.payload;
       })
       .addCase(reLogin.pending, (state) => {
-        state.isLoading = true;
-        state.isSuccess = false;
+        state.user = null;
         state.isError = false;
-        state.message = [];
-        state.user = "";
+        state.isSuccess = false;
+        state.isLoading = true;
+        state.message = null;
       })
       .addCase(reLogin.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.isError = false;
-        state.message = [];
         state.user = action.payload;
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = null;
       })
       .addCase(reLogin.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = false;
+        state.user = null;
         state.isError = true;
-        state.message = action.error;
-        state.user = [];
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.payload;
       })
       .addCase(logout.pending, (state) => {
+        state.user = null;
+        state.isError = false;
+        state.isSuccess = false;
         state.isLoading = true;
+        state.message = null;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.isLoading = false;
-        state.isSuccess = true;
         state.user = null;
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = null;
       })
       .addCase(logout.rejected, (state, action) => {
-        state.isLoading = false;
+        // state.user = null;
         state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
         state.message = action.payload;
-        state.user = null;
       });
   },
 });

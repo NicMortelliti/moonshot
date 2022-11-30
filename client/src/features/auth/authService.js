@@ -7,7 +7,7 @@ const register = async (userData) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
   });
-  return response.json();
+  return handleResponse(response);
 };
 
 // Login User
@@ -22,6 +22,7 @@ const login = async (userData) => {
   return handleResponse(response);
 };
 
+// Re-Login user
 const reLogin = async () => {
   const response = await fetch("/me");
   return handleResponse(response);
@@ -30,8 +31,7 @@ const reLogin = async () => {
 // Logout User
 const logout = async () => {
   const response = await fetch("/sessions", { method: "DELETE" });
-
-  return response.json();
+  return handleResponse(response);
 };
 
 const authService = {
