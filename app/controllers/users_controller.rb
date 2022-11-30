@@ -12,7 +12,11 @@ class UsersController < ApplicationController
 
   # GET /me
   def show
-    render json: @current_user
+    if @current_user
+      render json: @current_user
+    else
+      render :not_authorized_response
+    end
   end
 
   # GET /users
@@ -62,5 +66,9 @@ class UsersController < ApplicationController
 
   def user_not_found_response
     render json: { error: 'User not found' }, status: :not_found
+  end
+  
+  def not_authorized_response
+    render json: {error: 'Not authorized'}, status: :not_authorized
   end
 end

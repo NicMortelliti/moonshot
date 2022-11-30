@@ -34,9 +34,11 @@ const Login = () => {
     }
 
     // Set everything back to default values
-    dispatch(reset());
+    // dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
+  // Update formData when user enters
+  // data in the fields
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -44,6 +46,7 @@ const Login = () => {
     }));
   };
 
+  // Submit formData to API
   const onSubmit = (e) => {
     e.preventDefault();
 

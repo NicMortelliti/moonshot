@@ -1,3 +1,5 @@
+import { handleResponse } from "../../helpers/helpers";
+
 // Register user
 const register = async (userData) => {
   const response = await fetch("/users", {
@@ -5,7 +7,6 @@ const register = async (userData) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
   });
-
   return response.json();
 };
 
@@ -21,6 +22,11 @@ const login = async (userData) => {
   return response.json();
 };
 
+const reLogin = async () => {
+  const response = await fetch("/me");
+  return handleResponse(response);
+};
+
 // Logout User
 const logout = async () => {
   const response = await fetch("/sessions", { method: "DELETE" });
@@ -30,6 +36,7 @@ const logout = async () => {
 
 const authService = {
   register,
+  reLogin,
   login,
   logout,
 };
