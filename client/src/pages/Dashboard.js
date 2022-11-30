@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+// Components
+import { reLogin } from "../features/auth/authSlice";
 import ReservationList from "../components/ReservationList";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   // Redirect if user not logged in
   useEffect(() => {
@@ -13,6 +17,13 @@ const Dashboard = () => {
       navigate("/login");
     }
   }, [user, navigate]);
+
+  // Refresh user session if possible
+  useEffect(() => {
+    if (!user) {
+      dispatch(reLogin());
+    }
+  }, []);
 
   return (
     <>

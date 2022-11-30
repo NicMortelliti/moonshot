@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { handleResponse } from "../../helpers/helpers";
 import authService from "./authService";
 
 const initialState = {
@@ -6,50 +7,45 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: "",
+  message: null,
 };
 
 // Register user
 export const register = createAsyncThunk(
   "auth/register",
-  async (user, thunkAPI) => {
+  async (user, { rejectWithValue }) => {
     try {
-      return await authService.register(user);
+      const response = await authService.register(user);
+      if (response.ok) {
+        return response.data;
+      }
     } catch (error) {
-      const message =
-        (error.response && error.response.data && error.data.reponse.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
+      console.log("Here! There was an error in the register!");
+      return rejectWithValue(error.response.data);
     }
   }
 );
 
 // Login User
-export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
-  try {
-    return await authService.login(user);
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.reponse.data.message) ||
-      error.message ||
-      error.toString();
-
-    return thunkAPI.rejectWithValue(message);
+export const login = createAsyncThunk(
+  "auth/login",
+  async (user, { rejectWithValue }) => {
+    try {
+      return await authService.login(user);
+    } catch (error) {
+      console.log("All bad");
+      return rejectWithValue(error);
+    }
   }
-});
+);
 
 // Re-Login User with cookie
 export const reLogin = createAsyncThunk(
   "auth/relogin",
   async (_args, thunkAPI) => {
-    try {
-      const response = await authService.reLogin();
-      return response;
-    } catch (err) {
-      return thunkAPI.rejectWithValue(err.message);
-    }
+    const response = await authService.reLogin();
+    const data = await response;
+    return data;
   }
 );
 
@@ -86,31 +82,45 @@ export const authSlice = createSlice({
       })
       .addCase(login.pending, (state) => {
         state.isLoading = true;
+        state.isSuccess = false;
+        state.isError = false;
+        state.user = "";
+        state.message = [];
       })
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
+        state.isError = false;
         state.user = action.payload;
+        state.message = [];
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
+        state.isSuccess = false;
         state.isError = true;
+        state.user = "";
         state.message = action.payload;
-        state.user = null;
       })
       .addCase(reLogin.pending, (state) => {
         state.isLoading = true;
+        state.isSuccess = false;
+        state.isError = false;
+        state.message = [];
+        state.user = "";
       })
       .addCase(reLogin.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
+        state.isError = false;
+        state.message = [];
         state.user = action.payload;
       })
       .addCase(reLogin.rejected, (state, action) => {
         state.isLoading = false;
+        state.isSuccess = false;
         state.isError = true;
-        state.message = action.payload;
-        state.user = null;
+        state.message = action.error;
+        state.user = [];
       })
       .addCase(logout.pending, (state) => {
         state.isLoading = true;

@@ -67,8 +67,8 @@ class UsersController < ApplicationController
   def user_not_found_response
     render json: { error: 'User not found' }, status: :not_found
   end
-  
+
   def not_authorized_response
-    render json: {error: 'Not authorized'}, status: :not_authorized
+    render json: { error: 'Not authorized' }, status: :not_authorized
   end
 end

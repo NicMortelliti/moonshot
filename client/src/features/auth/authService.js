@@ -19,7 +19,7 @@ const login = async (userData) => {
     },
     body: JSON.stringify(userData),
   });
-  return response.json();
+  return handleResponse(response);
 };
 
 const reLogin = async () => {

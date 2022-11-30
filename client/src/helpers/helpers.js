@@ -1,7 +1,7 @@
 export const handleResponse = (res) => {
   if (res.ok) {
-    return res.json();
+    return res.json().then((results) => results);
   } else {
-    return Promise.reject(res.json());
+    return res.json().then((results) => Promise.reject(results));
   }
 };
