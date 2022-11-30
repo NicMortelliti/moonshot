@@ -3,16 +3,23 @@ import { FaRocket, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
+import { getReservations } from "../features/reservations/reservationSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
+  // Handle logout
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
     navigate("/");
+  };
+
+  // Handle reservations fetch
+  const reservations = () => {
+    dispatch(getReservations());
   };
 
   return (
@@ -35,6 +42,9 @@ const Header = () => {
               <button onClick={onLogout}>
                 <FaSignOutAlt /> Logout
               </button>
+            </li>
+            <li>
+              <button onClick={reservations}>MY TRIPS</button>
             </li>
           </>
         ) : (

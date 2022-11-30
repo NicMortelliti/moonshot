@@ -1,10 +1,9 @@
+import { handleResponse } from "../../helpers/helpers";
+
 // Get user reservations
 const getReservations = async () => {
   const response = await fetch("/reservations");
-
-  console.log(response);
-
-  return response.json();
+  return handleResponse(response);
 };
 
 const reservationService = {

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Components
 import { reLogin } from "../features/auth/authSlice";
-import ReservationList from "../components/ReservationList";
+import ReservationList from "../components/reservations/ReservationList";
 
 const Dashboard = () => {
   const navigate = useNavigate();

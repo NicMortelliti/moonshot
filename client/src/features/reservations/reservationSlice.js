@@ -6,22 +6,17 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: "",
+  message: null,
 };
 
 // Fetch user reservations
 export const getReservations = createAsyncThunk(
   "reservations/get",
-  async (thunkAPI) => {
+  async (_args, { rejectWithValue }) => {
     try {
       return await reservationService.getReservations();
     } catch (error) {
-      const message =
-        (error.response && error.response.data && error.data.reponse.message) ||
-        error.message ||
-        error.toString();
-
-      return thunkAPI.rejectWithValue(message);
+      return rejectWithValue(error);
     }
   }
 );
@@ -36,18 +31,25 @@ export const reservationSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getReservations.pending, (state) => {
+        state.reservations = null;
+        state.isError = false;
+        state.isSuccess = false;
         state.isLoading = true;
+        state.message = null;
       })
       .addCase(getReservations.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
         state.reservations = action.payload;
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = null;
       })
       .addCase(getReservations.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
         state.reservations = null;
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.payload;
       });
   },
 });
