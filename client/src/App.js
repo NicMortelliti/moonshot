@@ -28,9 +28,9 @@ const App = () => {
         <div className="App">
           <Header />
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/*" element={<Dashboard />} />
+            <Route eaxt path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
           </Routes>
         </div>
       </Router>

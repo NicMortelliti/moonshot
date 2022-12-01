@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Routes, Route } from "react-router-dom";
 
 // Components
 import { reLogin } from "../features/auth/authSlice";
@@ -32,13 +33,12 @@ const Dashboard = () => {
         <h1>
           {user ? `Welcome, ${user.first_name}!` : "No user logged in 😦"}
         </h1>
-        <p>Reservations</p>
       </section>
       <section>
-        <Booking />
-      </section>
-      <section>
-        <ReservationList />
+        <Routes>
+          <Route path="my-trips" element={<ReservationList />} />
+          <Route path="flight-search" element={<Booking />} />
+        </Routes>
       </section>
     </>
   );
