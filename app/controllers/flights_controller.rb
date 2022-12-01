@@ -4,7 +4,6 @@ class FlightsController < ApplicationController
   # POST '/flights'
   def create
     return unless @current_user.admin # Break out of this method if user isn't an admin
-
     flight = Flight.create!(create_flight_params)
     render json: flight, status: :created
   end
@@ -12,7 +11,6 @@ class FlightsController < ApplicationController
   # DESTROY '/flights/[:id]'
   def destroy
     return unless @current_user.admin # Break out of this method if user isn't an admin
-
     flight = find_flight
     flight.destroy
     head :no_content
@@ -38,8 +36,7 @@ class FlightsController < ApplicationController
     flights = Flight.all.select { |flight| flight.origin_id == search_params[:origin].to_i }
     flights = flights.select { |flight| flight.destination_id == search_params[:destination].to_i }
 
-    # Remove flights that don't have enough open seats left
-    flights = flights.select do |flight|
+    flights = flights.select do |flight| # Remove flights that don't have enough open seats left
       (flight.reservations.count + search_params[:num_passengers].to_i) <= flight.vehicle.pax_capacity
     end
 
@@ -49,7 +46,6 @@ class FlightsController < ApplicationController
   # PATCH '/flights/[:id]'
   def update
     return unless @current_user.admin # Break out of this method if user isn't an admin
-
     flight = find_flight
     if flight
       flight.update(create_flight_params)
