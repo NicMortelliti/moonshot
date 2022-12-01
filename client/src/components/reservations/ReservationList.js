@@ -12,7 +12,7 @@ const ReservationList = () => {
     <>
       {reservations
         ? reservations.map((reservation) => (
-            <ReservationCard reservation={reservation} />
+            <ReservationCard key={reservation.id} reservation={reservation} />
           ))
         : null}
     </>

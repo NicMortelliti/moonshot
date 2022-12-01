@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // Components
 import { reLogin } from "../features/auth/authSlice";
 import ReservationList from "../components/reservations/ReservationList";
+import Booking from "../components/booking/Booking";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -32,6 +33,9 @@ const Dashboard = () => {
           {user ? `Welcome, ${user.first_name}!` : "No user logged in 😦"}
         </h1>
         <p>Reservations</p>
+      </section>
+      <section>
+        <Booking />
       </section>
       <section>
         <ReservationList />

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { getReservations } from "../features/reservations/reservationSlice";
+import { getOrigins } from "../features/booking/bookingSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -20,6 +21,11 @@ const Header = () => {
   // Handle reservations fetch
   const reservations = () => {
     dispatch(getReservations());
+  };
+
+  // Handle navigate to booking page
+  const book = () => {
+    dispatch(getOrigins());
   };
 
   return (
@@ -42,6 +48,9 @@ const Header = () => {
               <button onClick={onLogout}>
                 <FaSignOutAlt /> Logout
               </button>
+            </li>
+            <li>
+              <button onClick={book}>BOOK</button>
             </li>
             <li>
               <button onClick={reservations}>MY TRIPS</button>
