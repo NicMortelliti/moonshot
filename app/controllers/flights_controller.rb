@@ -3,8 +3,7 @@ class FlightsController < ApplicationController
 
   # POST '/flights'
   def create
-    # Break out of this method if user isn't an admin
-    return unless @current_user.admin
+    return unless @current_user.admin # Break out of this method if user isn't an admin
 
     flight = Flight.create!(create_flight_params)
     render json: flight, status: :created
@@ -12,8 +11,7 @@ class FlightsController < ApplicationController
 
   # DESTROY '/flights/[:id]'
   def destroy
-    # Break out of this method if user isn't an admin
-    return unless @current_user.admin
+    return unless @current_user.admin # Break out of this method if user isn't an admin
 
     flight = find_flight
     flight.destroy
@@ -50,8 +48,7 @@ class FlightsController < ApplicationController
 
   # PATCH '/flights/[:id]'
   def update
-    # Break out of this method if user isn't an admin
-    return unless @current_user.admin
+    return unless @current_user.admin # Break out of this method if user isn't an admin
 
     flight = find_flight
     if flight
