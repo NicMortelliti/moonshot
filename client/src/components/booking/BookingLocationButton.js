@@ -14,6 +14,7 @@ const BookingLocationButton = ({ data }) => {
   const dispatch = useDispatch();
   const { origin, destination } = useSelector((state) => state.booking);
 
+  // Set selected origin and destination, then dispatch API calls
   const setLocation = () => {
     if (!origin) {
       dispatch(setOriginId(id));
