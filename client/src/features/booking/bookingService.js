@@ -19,7 +19,22 @@ const getFlights = async (origin, destination) => {
   return handleResponse(response);
 };
 
+const bookFlight = async (userId, flightId) => {
+  const response = await fetch("/reservations", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      flight_id: flightId,
+    }),
+  });
+  return handleResponse(response);
+};
+
 const bookingService = {
+  bookFlight,
   getOrigins,
   getDestinations,
   getFlights,

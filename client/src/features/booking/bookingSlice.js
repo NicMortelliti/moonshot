@@ -48,19 +48,24 @@ export const getFlights = createAsyncThunk(
   }
 );
 
+// Send flight booking to API
+export const bookFlight = createAsyncThunk(
+  "booking/book",
+  async ({ userId, flightId }, { rejectWithValue }) => {
+    try {
+      return await bookingService.bookFlight(userId, flightId);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const bookingSlice = createSlice({
   name: "booking",
   initialState,
   reducers: {
-    reset: (state) => {
-      state.data = null;
-      state.origin = null;
-      state.destination = null;
-      state.flight = null;
-      state.isError = false;
-      state.isSuccess = false;
-      state.isLoading = false;
-      state.message = null;
+    reset: () => {
+      return initialState;
     },
     setOriginId: (state, action) => {
       return {
@@ -161,6 +166,36 @@ export const bookingSlice = createSlice({
         state.data = null;
         state.origin = null;
         state.destination = null;
+        state.flight = null;
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.payload;
+      })
+      .addCase(bookFlight.pending, (state) => {
+        state.data = null;
+        // state.origin = null;
+        // state.destination = null;
+        state.flight = null;
+        state.isError = false;
+        state.isSuccess = false;
+        state.isLoading = true;
+        state.message = null;
+      })
+      .addCase(bookFlight.fulfilled, (state, action) => {
+        state.data = null;
+        state.origin = null;
+        state.destination = null;
+        state.flight = action.payload;
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = null;
+      })
+      .addCase(bookFlight.rejected, (state, action) => {
+        state.data = null;
+        // state.origin = null;
+        // state.destination = null;
         state.flight = null;
         state.isError = true;
         state.isSuccess = false;

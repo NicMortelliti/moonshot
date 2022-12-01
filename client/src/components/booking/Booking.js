@@ -3,16 +3,22 @@ import { useSelector } from "react-redux";
 
 // Components
 import { default as Location } from "./BookingLocationButton";
+import { default as Flight } from "./BookingFlightButton";
+import { default as Confirmation } from "./BookingConfirmation";
 
 const Booking = () => {
   // Grab properties from reservation state
-  const { data } = useSelector((state) => state.booking);
+  const { data, destination, flight } = useSelector((state) => state.booking);
 
   return (
     <>
-      {data
-        ? data.map((eachData) => <Location key={eachData.id} data={eachData} />)
-        : null}
+      {data && !destination ? (
+        data.map((eachData) => <Location key={eachData.id} data={eachData} />)
+      ) : data && destination ? (
+        data.map((eachData) => <Flight key={eachData.id} data={eachData} />)
+      ) : flight ? (
+        <Confirmation data={flight} />
+      ) : null}
     </>
   );
 };
