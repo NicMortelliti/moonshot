@@ -23,19 +23,21 @@ class FlightsController < ApplicationController
   # GET '/flights'
   def index
     flights = Flight.all.select { |flight| flight.origin_id == search_params[:origin].to_i }
-    
-    # If origin AND destination ID's are provided, retrieve flights with those values
-    if search_params[:destination]
+
+    # If user hasn't selected destination yet, return unique destinations from selected origin.
+    if search_params[:origin] && search_params[:destination]
       flights = flights.select { |flight| flight.destination_id == search_params[:destination].to_i }
-    
-    # Otherwise, user hasn't selected destination yet. Return unique destinations from selected origin.
+
+      # Remove flights that don't have enough open seats left
+      flights = flights.select do |flight|
+        (flight.reservations.count + search_params[:num_passengers].to_i) <= flight.vehicle.pax_capacity
+      end
+
+    # If origin AND destination ID's are provided, retrieve flights with those values
     else
       flights = flights.uniq { |flight| flight.destination_id }
-    end
-
-    # Remove flights that don't have enough open seats left
-    flights = flights.select do |flight|
-      (flight.reservations.count + search_params[:num_passengers].to_i) <= flight.vehicle.pax_capacity
+      destinations = flights.map { |flight| flight.destination }
+      render json: destinations, status: :ok and return
     end
 
     render json: flights, status: :ok
