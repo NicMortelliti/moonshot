@@ -23,7 +23,11 @@ class FlightsController < ApplicationController
   # GET '/flights'
   def index
     flights = Flight.all.select { |flight| flight.origin_id == search_params[:origin].to_i }
-    flights = flights.select { |flight| flight.destination_id == search_params[:destination].to_i }
+    if search_params[:destination]
+      flights = flights.select { |flight| flight.destination_id == search_params[:destination].to_i }
+    else
+      flights = flights.uniq { |flight| flight.destination_id }
+    end
     flights = flights.select do |flight|
       (flight.reservations.count + search_params[:num_passengers].to_i) <= flight.vehicle.pax_capacity
     end
