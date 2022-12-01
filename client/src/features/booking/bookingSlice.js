@@ -24,12 +24,11 @@ export const getOrigins = createAsyncThunk(
   }
 );
 
-// Set location
+// Get list of destinations
 export const getDestinations = createAsyncThunk(
   "booking/destinations",
-  async (id, state, { rejectWithValue }) => {
+  async (_args, { rejectWithValue }) => {
     try {
-      state.origin = id;
       return await bookingService.getDestinations();
     } catch (error) {
       return rejectWithValue(error);
@@ -53,6 +52,12 @@ export const bookingSlice = createSlice({
       state.isSuccess = false;
       state.isLoading = false;
       state.message = null;
+    },
+    setOriginId: (state, action) => {
+      return {
+        ...state,
+        origin: action.payload,
+      };
     },
   },
   extraReducers: (builder) => {
@@ -99,7 +104,7 @@ export const bookingSlice = createSlice({
       })
       .addCase(getDestinations.fulfilled, (state, action) => {
         state.data = action.payload;
-        state.origin = null;
+        // state.origin = null;
         state.destination = null;
         state.flight = null;
         state.isError = false;
@@ -120,5 +125,5 @@ export const bookingSlice = createSlice({
   },
 });
 
-export const { reset } = bookingSlice.actions;
+export const { reset, setOriginId } = bookingSlice.actions;
 export default bookingSlice.reducer;

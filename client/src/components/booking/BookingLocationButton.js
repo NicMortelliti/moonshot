@@ -2,6 +2,7 @@ import React from "react";
 import Moment from "react-moment";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  setOriginId,
   getDestinations,
   getFlights,
 } from "../../features/booking/bookingSlice";
@@ -13,17 +14,17 @@ const BookingLocationButton = ({ data }) => {
   const dispatch = useDispatch();
   const { origin, destination } = useSelector((state) => state.booking);
 
-  const setLocation = (e) => {
-    e.preventDefault();
+  const setLocation = () => {
     if (!origin) {
-      dispatch(getDestinations(id));
+      dispatch(setOriginId(id));
+      dispatch(getDestinations());
     } else if (origin && !destination) {
-      dispatch(getFlights(id));
+      dispatch(getFlights());
     }
   };
 
   return (
-    <button onClick={(e) => setLocation(e)}>
+    <button onClick={() => setLocation()}>
       <h5>{macro_place}</h5>
       <p>{name}</p>
     </button>
