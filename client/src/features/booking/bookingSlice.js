@@ -27,17 +27,26 @@ export const getOrigins = createAsyncThunk(
 // Get list of destinations
 export const getDestinations = createAsyncThunk(
   "booking/destinations",
-  async (_args, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      return await bookingService.getDestinations();
+      return await bookingService.getDestinations(id);
     } catch (error) {
       return rejectWithValue(error);
     }
   }
 );
 
-// TODO Get Flights
-export const getFlights = () => console.log("Feature not yet implemented");
+// Get list of flights
+export const getFlights = createAsyncThunk(
+  "booking/flights",
+  async ({ origin, id }, { rejectWithValue }) => {
+    try {
+      return await bookingService.getFlights(origin, id);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 export const bookingSlice = createSlice({
   name: "booking",
@@ -57,6 +66,12 @@ export const bookingSlice = createSlice({
       return {
         ...state,
         origin: action.payload,
+      };
+    },
+    setDestinationId: (state, action) => {
+      return {
+        ...state,
+        destination: action.payload,
       };
     },
   },
@@ -121,9 +136,39 @@ export const bookingSlice = createSlice({
         state.isSuccess = false;
         state.isLoading = false;
         state.message = action.payload;
+      })
+      .addCase(getFlights.pending, (state) => {
+        state.data = null;
+        // state.origin = null;
+        // state.destination = null;
+        state.flight = null;
+        state.isError = false;
+        state.isSuccess = false;
+        state.isLoading = true;
+        state.message = null;
+      })
+      .addCase(getFlights.fulfilled, (state, action) => {
+        state.data = action.payload;
+        // state.origin = null;
+        // state.destination = null;
+        state.flight = null;
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = null;
+      })
+      .addCase(getFlights.rejected, (state, action) => {
+        state.data = null;
+        state.origin = null;
+        state.destination = null;
+        state.flight = null;
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.payload;
       });
   },
 });
 
-export const { reset, setOriginId } = bookingSlice.actions;
+export const { reset, setOriginId, setDestinationId } = bookingSlice.actions;
 export default bookingSlice.reducer;
