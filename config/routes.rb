@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resource :sessions # Singular resource allows destroy action without session ID
 
   get '/me', to: 'users#show'
-  get 'destinations', to: 'flights#destinations_from'
+  get '/origins', to: 'flights#origins'
+  get '/destinations', to: 'flights#destinations_from'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

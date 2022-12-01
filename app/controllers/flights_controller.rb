@@ -20,11 +20,18 @@ class FlightsController < ApplicationController
     head :no_content
   end
 
+  # Get '/origins/'
+  def origins
+    origins = Flight.all.uniq { |flight| flight.origin_id } # Only return flights with unique origins
+    origins = origins.map { |flight| flight.origin } # Only return the associated origin data
+    render json: origins, status: :ok
+  end
+
   # GET '/destinations/[:id]'
   def destinations_from
     destinations = Flight.all.select { |flight| flight.origin_id == search_params[:origin].to_i }
-    destinations = destinations.uniq { |flight| flight.destination_id }
-    destinations = destinations.map { |flight| flight.destination }
+    destinations = destinations.uniq { |flight| flight.destination_id } # Only return flights with unique destinations
+    destinations = destinations.map { |flight| flight.destination } # Only return the associated destination data
     render json: destinations, status: :ok
   end
 
