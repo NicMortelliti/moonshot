@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 // Components
 import { default as Location } from "./BookingLocationButton";
@@ -17,22 +17,38 @@ const Booking = () => {
     console.log(data, flight, origin, destination);
     switch (null) {
       case origin:
-        data.map((eachData) => <Location key={eachData.id} data={eachData} />);
-        break;
+        console.log("Getting origins...");
+        return data.map((eachData) => (
+          <Location key={eachData.id} data={eachData} />
+        ));
       case destination:
-        data.map((eachData) => <Flight key={eachData.id} data={eachData} />);
-        break;
+        console.log("Getting Destinations...");
+        return data.map((eachData) => (
+          <Location key={eachData.id} data={eachData} />
+        ));
       case flight:
-        <Routes>
-          <Route path="confirmation" element={<Confirmation data={flight} />} />
-        </Routes>;
-        break;
-
+        console.log("Getting Flights...");
+        return data.map((eachData) => (
+          <Flight key={eachData.id} data={eachData} />
+        ));
       default:
         break;
     }
   };
 
-  return <>{data ? determineWhatToRender() : null}</>;
+  return (
+    <>
+      {data ? (
+        determineWhatToRender()
+      ) : flight ? (
+        <Routes>
+          <Route
+            path="/flight-search/confirmation"
+            element={<Confirmation data={flight} />}
+          />
+        </Routes>
+      ) : null}
+    </>
+  );
 };
 export default Booking;

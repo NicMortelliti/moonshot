@@ -29,7 +29,7 @@ const App = () => {
           <Header />
           <Routes>
             <Route path="/*" element={<Dashboard />} />
-            <Route eaxt path="/login" element={<Login />} />
+            <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
           </Routes>
         </div>
