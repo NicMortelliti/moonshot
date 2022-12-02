@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { getReservations } from "../features/reservations/reservationSlice";
-import { getOrigins } from "../features/booking/bookingSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -26,7 +25,6 @@ const Header = () => {
 
   // Handle navigate to booking page
   const book = () => {
-    dispatch(getOrigins());
     navigate("/flight-search");
   };
 
