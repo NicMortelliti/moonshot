@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Moment from "react-moment";
 import { bookFlight } from "../../features/booking/bookingSlice";
+import { formatDate } from "../../helpers/helpers";
 
 const BookingFlightButton = ({ data }) => {
   // Destructure props
@@ -25,11 +26,6 @@ const BookingFlightButton = ({ data }) => {
   const sendBooking = () => {
     dispatch(bookFlight({ userId, flightId }));
     navigate("/flight-search/confirmation");
-  };
-
-  // Format date
-  const formatDate = (date) => {
-    return <Moment format="MMM DD, YYYY">{new Date(date)}</Moment>;
   };
 
   // If flights remaining seats are below 'n' display seats remaining

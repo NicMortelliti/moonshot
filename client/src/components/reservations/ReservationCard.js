@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Moment from "react-moment";
+import { formatDate } from "../../helpers/helpers";
 
 const ReservationCard = ({ reservation }) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -11,11 +12,6 @@ const ReservationCard = ({ reservation }) => {
     destination,
     vehicle,
   } = reservation;
-
-  // Format date
-  const formatDate = (date) => (
-    <Moment format="ddd MMM DD, YYYY">{new Date(date)}</Moment>
-  );
 
   return (
     <div>
