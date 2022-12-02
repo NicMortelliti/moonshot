@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setOriginId,
-  setDestinationId,
+  setOrigin,
+  setDestination,
   getDestinations,
   getFlights,
 } from "../../features/booking/bookingSlice";
@@ -17,10 +17,10 @@ const BookingLocationButton = ({ data }) => {
   // Set selected origin and destination, then dispatch API calls
   const setLocation = () => {
     if (!origin) {
-      dispatch(setOriginId(id));
+      dispatch(setOrigin(data));
       dispatch(getDestinations(id));
     } else if (origin && !destination) {
-      dispatch(setDestinationId(id));
+      dispatch(setDestination(data));
       dispatch(getFlights({ origin, id }));
     }
   };

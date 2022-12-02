@@ -12,9 +12,11 @@ const getDestinations = async (origin) => {
   return handleResponse(response);
 };
 
-const getFlights = async (origin, destination) => {
+// Get list of flights with selected origin and destination
+const getFlights = async (origin, destinationId) => {
+  const { id: originId } = origin;
   const response = await fetch(
-    `/flights?num_passengers=1&origin=${origin}&destination=${destination}`
+    `/flights?num_passengers=1&origin=${originId}&destination=${destinationId}`
   );
   return handleResponse(response);
 };

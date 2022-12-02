@@ -67,13 +67,13 @@ export const bookingSlice = createSlice({
     reset: () => {
       return initialState;
     },
-    setOriginId: (state, action) => {
+    setOrigin: (state, action) => {
       return {
         ...state,
         origin: action.payload,
       };
     },
-    setDestinationId: (state, action) => {
+    setDestination: (state, action) => {
       return {
         ...state,
         destination: action.payload,
@@ -205,5 +205,5 @@ export const bookingSlice = createSlice({
   },
 });
 
-export const { reset, setOriginId, setDestinationId } = bookingSlice.actions;
+export const { reset, setOrigin, setDestination } = bookingSlice.actions;
 export default bookingSlice.reducer;

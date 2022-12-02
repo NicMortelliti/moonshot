@@ -47,11 +47,8 @@ const Booking = () => {
 
   return (
     <>
-      {data ? (
-        determineWhatToRender() // Render booking selection buttons
-      ) : flight ? (
-        <Confirmation data={flight} /> // Render booking confirmation
-      ) : null}
+      {data ? determineWhatToRender() : null}
+      {flight ? <Confirmation data={flight} /> : null}
     </>
   );
 };
