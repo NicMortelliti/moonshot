@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getReservations } from "../../features/reservations/reservationSlice";
+import { useNavigate } from "react-router-dom";
 
 // Components
 import ReservationCard from "./ReservationCard";
 
 const ReservationList = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Get reservations from API when component loads
   useEffect(() => {
@@ -16,13 +18,33 @@ const ReservationList = () => {
   // Grab properties from reservation state
   const { reservations } = useSelector((state) => state.reservations);
 
-  const RenderReservations = () => {
-    return reservations.map((reservation) => (
-      <ReservationCard key={reservation.id} reservation={reservation} />
-    ));
+  // Redirect user to the booking page
+  const redirectToBooking = () => {
+    navigate("/flight-search");
   };
 
-  return <>{reservations ? <RenderReservations /> : null}</>;
+  // Display each reservation or a message to user
+  const RenderReservations = () => {
+    if (reservations && reservations.length !== 0) {
+      // Display reservations if there are any
+      return reservations.map((reservation) => (
+        <ReservationCard key={reservation.id} reservation={reservation} />
+      ));
+    } else {
+      return (
+        <>
+          <p>You have no reservations.</p>
+          <button onClick={redirectToBooking}>Book one!</button>
+        </>
+      );
+    }
+  };
+
+  return (
+    <>
+      <RenderReservations />
+    </>
+  );
 };
 
 export default ReservationList;

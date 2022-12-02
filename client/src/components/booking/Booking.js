@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Routes, Route } from "react-router-dom";
 
 // Components
 import { default as Location } from "./BookingLocationButton";
@@ -8,7 +7,7 @@ import { default as Flight } from "./BookingFlightButton";
 import { default as Confirmation } from "./BookingConfirmation";
 
 const Booking = () => {
-  // Grab properties from reservation state
+  // Grab properties from booking state
   const { flight, origin, destination, data } = useSelector(
     (state) => state.booking
   );
