@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Moment from "react-moment";
 import { formatDate } from "../../helpers/helpers";
 
 const ReservationCard = ({ reservation }) => {

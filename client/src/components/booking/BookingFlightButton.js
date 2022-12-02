@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Moment from "react-moment";
 import { bookFlight } from "../../features/booking/bookingSlice";
 import { formatDate } from "../../helpers/helpers";
 
