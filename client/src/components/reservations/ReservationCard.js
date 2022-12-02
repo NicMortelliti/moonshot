@@ -1,16 +1,33 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { formatDate } from "../../helpers/helpers";
+import { deleteReservation } from "../../features/reservations/reservationSlice";
 
 const ReservationCard = ({ reservation }) => {
   const [showDetails, setShowDetails] = useState(false);
 
+  const dispatch = useDispatch();
+
   // Destructure props
   const {
-    flight: { id, departure, arrival },
+    id: reservationId,
+    flight: { id: flightId, departure, arrival },
     origin,
     destination,
     vehicle,
   } = reservation;
+
+  // Modify/Cancel reservation
+  const modifyReservation = (e) => {
+    switch (e.target.name) {
+      case "cancel":
+        dispatch(deleteReservation(reservationId));
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <div>
@@ -30,10 +47,10 @@ const ReservationCard = ({ reservation }) => {
         </div>
         {/* <button name="change" onClick={(e) => modifyReservation(e)}>
           Change reservation
-        </button>
+        </button> */}
         <button name="cancel" onClick={(e) => modifyReservation(e)}>
           Cancel reservation
-        </button> */}
+        </button>
         <button onClick={() => setShowDetails(!showDetails)}>
           {showDetails ? "Hide details" : "Show details"}
         </button>
@@ -41,7 +58,7 @@ const ReservationCard = ({ reservation }) => {
           <section>
             <div>
               <h3>Flight #</h3>
-              <p>{id}</p>
+              <p>{flightId}</p>
             </div>
             <div>
               <h3>Spacecraft</h3>

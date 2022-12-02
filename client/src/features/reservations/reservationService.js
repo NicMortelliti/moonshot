@@ -6,7 +6,15 @@ const getReservations = async () => {
   return handleResponse(response);
 };
 
+// Delete user reservation
+const deleteReservation = async (id) => {
+  console.log(id);
+  const response = await fetch(`/reservations/${id}`, { method: "DELETE" });
+  return handleResponse(response);
+};
+
 const reservationService = {
+  deleteReservation,
   getReservations,
 };
 

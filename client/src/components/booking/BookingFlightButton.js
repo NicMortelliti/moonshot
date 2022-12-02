@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { bookFlight } from "../../features/booking/bookingSlice";
 import { formatDate } from "../../helpers/helpers";
 
@@ -16,7 +15,6 @@ const BookingFlightButton = ({ data }) => {
     reservations_remaining,
   } = data;
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id: userId } = useSelector((state) => state.auth);
 

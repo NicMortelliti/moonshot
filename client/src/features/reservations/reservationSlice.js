@@ -21,6 +21,18 @@ export const getReservations = createAsyncThunk(
   }
 );
 
+// Delete user reservation
+export const deleteReservation = createAsyncThunk(
+  "reservations/delete",
+  async (id, { rejectWithValue }) => {
+    try {
+      return await reservationService.deleteReservation(id);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 // Reservation slice
 export const reservationSlice = createSlice({
   name: "reservation",
@@ -46,6 +58,27 @@ export const reservationSlice = createSlice({
       })
       .addCase(getReservations.rejected, (state, action) => {
         state.reservations = null;
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.payload;
+      })
+      .addCase(deleteReservation.pending, (state) => {
+        // state.reservations = null;
+        state.isError = false;
+        state.isSuccess = false;
+        state.isLoading = true;
+        state.message = null;
+      })
+      .addCase(deleteReservation.fulfilled, (state, action) => {
+        state.reservations = action.payload;
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = null;
+      })
+      .addCase(deleteReservation.rejected, (state, action) => {
+        // state.reservations = null;
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;

@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
     reservation = find_reservation
     if reservation
       reservation.destroy
-      head :no_content
+      render json: @current_user.reservations
     else
       render json: { error: 'Reservation not found' }, status: :not_found
     end
