@@ -38,16 +38,8 @@ const Booking = () => {
 
   return (
     <>
-      {data ? (
-        determineWhatToRender()
-      ) : flight ? (
-        <Routes>
-          <Route
-            path="/flight-search/confirmation"
-            element={<Confirmation data={flight} />}
-          />
-        </Routes>
-      ) : null}
+      {data ? determineWhatToRender() : null}
+      {flight ? <Confirmation data={flight} /> : null}
     </>
   );
 };

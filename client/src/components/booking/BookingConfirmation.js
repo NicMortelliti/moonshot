@@ -25,7 +25,7 @@ const BookingConfirmation = ({ data }) => {
   // Close confirmation window and clear out booking store
   const closeConfirmation = () => {
     dispatch(reset());
-    navigate("/");
+    navigate("/my-trips");
   };
 
   return (

@@ -20,7 +20,7 @@ const Header = () => {
 
   // Handle reservations fetch
   const reservations = () => {
-    dispatch(getReservations());
+    // dispatch(getReservations());
     navigate("/my-trips");
   };
 
