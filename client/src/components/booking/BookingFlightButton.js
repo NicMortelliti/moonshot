@@ -18,12 +18,13 @@ const BookingFlightButton = ({ data }) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { flight } = useSelector((state) => state.booking);
   const { id: userId } = useSelector((state) => state.auth);
 
   // Send booking request to API
   const sendBooking = () => {
     dispatch(bookFlight({ userId, flightId }));
-    navigate("/");
+    navigate("/flight-search/confirmation");
   };
 
   // Format date
