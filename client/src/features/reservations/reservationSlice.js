@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import reservationService from "./reservationService";
+import { toast } from "react-toastify";
 
 const initialState = {
   reservations: null,
@@ -28,6 +29,7 @@ export const deleteReservation = createAsyncThunk(
     try {
       return await reservationService.deleteReservation(id);
     } catch (error) {
+      toast.warn(error.error);
       return rejectWithValue(error);
     }
   }

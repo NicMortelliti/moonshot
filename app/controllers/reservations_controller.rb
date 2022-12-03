@@ -20,7 +20,12 @@ class ReservationsController < ApplicationController
 
   # GET '/reservations'
   def index
-    render json: @current_user.reservations
+    reservations = @current_user.reservations
+    if reservations.length > 0
+      render json: reservations, status: :ok
+    else
+      render json: { error: 'No reservations found.' }, status: :not_found
+    end
   end
 
   # PATCH '/reservations/[:id]'

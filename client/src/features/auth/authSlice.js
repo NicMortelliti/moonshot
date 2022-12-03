@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
+import { toast } from "react-toastify";
 
 const initialState = {
   user: null, // Null prevents checks for user === true from returning true
@@ -16,6 +17,7 @@ export const register = createAsyncThunk(
     try {
       return await authService.register(user);
     } catch (error) {
+      error.errors.map((each) => toast.error(each));
       return rejectWithValue(error);
     }
   }
@@ -28,6 +30,7 @@ export const login = createAsyncThunk(
     try {
       return await authService.login(user);
     } catch (error) {
+      error.errors.map((each) => toast.error(each));
       return rejectWithValue(error);
     }
   }
@@ -40,6 +43,7 @@ export const reLogin = createAsyncThunk(
     try {
       return await authService.reLogin();
     } catch (error) {
+      toast.error("Please log in or create an account");
       return rejectWithValue(error);
     }
   }

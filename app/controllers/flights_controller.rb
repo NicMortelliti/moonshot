@@ -4,6 +4,7 @@ class FlightsController < ApplicationController
   # POST '/flights'
   def create
     return unless @current_user.admin # Break out of this method if user isn't an admin
+
     flight = Flight.create!(create_flight_params)
     render json: flight, status: :created
   end
@@ -11,6 +12,7 @@ class FlightsController < ApplicationController
   # DESTROY '/flights/[:id]'
   def destroy
     return unless @current_user.admin # Break out of this method if user isn't an admin
+
     flight = find_flight
     flight.destroy
     head :no_content
@@ -40,12 +42,21 @@ class FlightsController < ApplicationController
       (flight.reservations.count + search_params[:num_passengers].to_i) <= flight.vehicle.pax_capacity
     end
 
-    render json: flights, status: :ok
+    # Remove flights that the user is already booked on from the return object
+    user_reservations = @current_user.reservations.pluck(:flight_id)
+    flights = flights.reject { |flight| user_reservations.include? flight.id.to_s }
+
+    if flights.length > 0
+      render json: flights, status: :ok
+    else
+      render json: { error: "Sorry, we didn't find any flights with that search criteria." }, status: :not_found
+    end
   end
 
   # PATCH '/flights/[:id]'
   def update
     return unless @current_user.admin # Break out of this method if user isn't an admin
+
     flight = find_flight
     if flight
       flight.update(create_flight_params)

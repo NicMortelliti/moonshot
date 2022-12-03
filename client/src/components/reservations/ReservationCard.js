@@ -24,6 +24,10 @@ const ReservationCard = ({ reservation }) => {
         dispatch(deleteReservation(reservationId));
         break;
 
+      // TODO Implement modify reservation here
+      case "change":
+        break;
+
       default:
         break;
     }
@@ -37,7 +41,7 @@ const ReservationCard = ({ reservation }) => {
         </p>
         <div>
           <p>
-            {origin.name}, {origin.macro_place}({origin.icao})
+            {origin.name}, {origin.macro_place} ({origin.icao})
           </p>
         </div>
         <div>

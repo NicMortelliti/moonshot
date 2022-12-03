@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import bookingService from "./bookingService";
+import { toast } from "react-toastify";
 
 const initialState = {
   data: null, // Null prevents checks for data === true from returning true
@@ -19,6 +20,7 @@ export const getOrigins = createAsyncThunk(
     try {
       return await bookingService.getOrigins();
     } catch (error) {
+      toast.warn(error.error);
       return rejectWithValue(error);
     }
   }
@@ -31,6 +33,7 @@ export const getDestinations = createAsyncThunk(
     try {
       return await bookingService.getDestinations(id);
     } catch (error) {
+      toast.warn(error.error);
       return rejectWithValue(error);
     }
   }
@@ -43,6 +46,7 @@ export const getFlights = createAsyncThunk(
     try {
       return await bookingService.getFlights(origin, id);
     } catch (error) {
+      toast.warn(error.error);
       return rejectWithValue(error);
     }
   }
@@ -55,6 +59,7 @@ export const bookFlight = createAsyncThunk(
     try {
       return await bookingService.bookFlight(userId, flightId);
     } catch (error) {
+      toast.warn(error.error);
       return rejectWithValue(error);
     }
   }
