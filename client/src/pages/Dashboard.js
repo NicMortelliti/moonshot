@@ -9,6 +9,7 @@ import ReservationList from "../components/reservations/ReservationList";
 import Booking from "../components/booking/Booking";
 import { default as Confirmation } from "../components/booking/BookingConfirmation";
 import bookingService from "../features/booking/bookingService";
+import Profile from "../components/profile/Profile";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const Dashboard = () => {
         <Routes>
           <Route path="my-trips" element={<ReservationList />} />
           <Route path="flight-search" element={<Booking />} />
-          {/* <Route path="confirmation" element={<Confirmation data={flight} />} /> */}
+          <Route path="my-profile" element={<Profile />} />
         </Routes>
       </section>
     </>
