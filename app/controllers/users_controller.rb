@@ -30,14 +30,10 @@ class UsersController < ApplicationController
 
   # PATCH '/users/[:id]'
   def update
-    user = find_user
-    # Only allow users or admins to update profile
-    if user == @current_user || @current_user.admin == true
-      user.update(user_params)
-      render json: user, status: :created
-    else
-      render :user_not_found_response
-    end
+    return unless @current_user
+
+    @current_user.update(user_params)
+    render json: @current_user, status: :ok
   end
 
   # DELETE '/users/[:id]'

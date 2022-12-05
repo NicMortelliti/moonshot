@@ -57,6 +57,18 @@ export const logout = createAsyncThunk(
   }
 );
 
+// Update user profile data (e.g. change password)
+export const updateUserData = createAsyncThunk(
+  "auth/updateUserData",
+  async ({ userId, userData }, { rejectWithValue }) => {
+    try {
+      return await authService.updateUserData({ userId, userData });
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -148,6 +160,27 @@ export const authSlice = createSlice({
         state.message = null;
       })
       .addCase(logout.rejected, (state, action) => {
+        // state.user = null;
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.payload;
+      })
+      .addCase(updateUserData.pending, (state) => {
+        // state.user = null;
+        state.isError = false;
+        state.isSuccess = false;
+        state.isLoading = true;
+        state.message = null;
+      })
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = null;
+      })
+      .addCase(updateUserData.rejected, (state, action) => {
         // state.user = null;
         state.isError = true;
         state.isSuccess = false;

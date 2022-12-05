@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { FaUser } from "react-icons/fa";
 import ProfilePassword from "./ProfilePassword";
 
 const ProfileForm = () => {
   const [displaySection, setDisplaySection] = useState(null);
+
+  const {
+    user: { first_name: firstName, last_name: lastName },
+  } = useSelector((state) => state.auth);
 
   // Switch function that will only display the selected
   // profile update section. For example, if the "change
@@ -43,9 +46,14 @@ const ProfileForm = () => {
     <div>
       <div className="heading">
         <h1>
-          <FaUser /> Login
+          <FaUser /> Your profile
         </h1>
-        <p>Profile details</p>
+        <div name="first-last-name-container">
+          <label htmlFor="first-last-name">Name</label>
+          <p name="first-last-name">
+            {firstName} {lastName}
+          </p>
+        </div>
       </div>
       <div>
         <Button field="password" text="Change password" />
