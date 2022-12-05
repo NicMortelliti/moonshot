@@ -7,9 +7,11 @@ import ProfilePassword from "./ProfilePassword";
 const ProfileForm = () => {
   const [displaySection, setDisplaySection] = useState(null);
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
+  // Switch function that will only display the selected
+  // profile update section. For example, if the "change
+  // password" button is clicked, the 'displaySection'
+  // is set to 'password'. When the switch finds the case
+  // 'password' it will then render the password change section.
   const RenderSection = () => {
     switch (displaySection) {
       case "password":
@@ -18,6 +20,23 @@ const ProfileForm = () => {
       default:
         return null;
     }
+  };
+
+  // This function will render a button with the specified
+  // field ('name') and text (button label). Meant to be a
+  // shared component so we can add more profile update
+  // sections in the future.
+  const Button = ({ field, text }) => {
+    return (
+      <button
+        name={field}
+        onClick={() =>
+          setDisplaySection(displaySection === field ? null : field)
+        }
+      >
+        {text}
+      </button>
+    );
   };
 
   return (
@@ -29,16 +48,7 @@ const ProfileForm = () => {
         <p>Profile details</p>
       </div>
       <div>
-        <button
-          name="password"
-          onClick={(e) =>
-            setDisplaySection(
-              displaySection === e.target.name ? null : e.target.name
-            )
-          }
-        >
-          Change password
-        </button>
+        <Button field="password" text="Change password" />
       </div>
       <RenderSection />
     </div>
