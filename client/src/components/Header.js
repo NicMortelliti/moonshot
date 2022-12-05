@@ -29,9 +29,11 @@ const Header = () => {
         {user ? (
           <>
             <li>
-              <FaUser />
-              {user.first_name.charAt(0).toUpperCase() +
-                user.first_name.slice(1)}
+              <button onClick={() => navigate("/my-profile")}>
+                <FaUser />
+                {user.first_name.charAt(0).toUpperCase() +
+                  user.first_name.slice(1)}
+              </button>
             </li>
             <li>
               <button onClick={onLogout}>
