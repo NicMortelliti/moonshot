@@ -3,7 +3,6 @@ import { FaRocket, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
-import { getReservations } from "../features/reservations/reservationSlice";
 import { getOrigins } from "../features/booking/bookingSlice";
 
 const Header = () => {
@@ -16,18 +15,6 @@ const Header = () => {
     dispatch(logout());
     dispatch(reset());
     navigate("/");
-  };
-
-  // Handle reservations fetch
-  const reservations = () => {
-    // dispatch(getReservations());
-    navigate("/my-trips");
-  };
-
-  // Handle navigate to booking page
-  const book = () => {
-    dispatch(getOrigins());
-    navigate("/flight-search");
   };
 
   return (
@@ -52,10 +39,10 @@ const Header = () => {
               </button>
             </li>
             <li>
-              <button onClick={book}>BOOK</button>
+              <button onClick={() => navigate("/flight-search")}>BOOK</button>
             </li>
             <li>
-              <button onClick={reservations}>MY TRIPS</button>
+              <button onClick={() => navigate("/my-trips")}>MY TRIPS</button>
             </li>
           </>
         ) : (
