@@ -23,10 +23,26 @@ const ProfilePassword = () => {
       <form onSubmit={onSubmit}>
         <input
           type="password"
-          id="password"
+          id="currentPassword"
           name="currentPassword"
           value={currentPassword}
           placeholder="Enter your current password"
+          onChange={onChange}
+        />
+        <input
+          type="password"
+          id="newPassword"
+          name="newPassword"
+          value={newPassword}
+          placeholder="Enter new password"
+          onChange={onChange}
+        />
+        <input
+          type="password"
+          id="newPassword2"
+          name="newPassword2"
+          value={newPassword2}
+          placeholder="Re-enter new password"
           onChange={onChange}
         />
         <button type="submit">Submit</button>

@@ -29,7 +29,14 @@ const ProfileForm = () => {
         <p>Profile details</p>
       </div>
       <div>
-        <button onClick={() => setDisplaySection("password")}>
+        <button
+          name="password"
+          onClick={(e) =>
+            setDisplaySection(
+              displaySection === e.target.name ? null : e.target.name
+            )
+          }
+        >
           Change password
         </button>
       </div>
