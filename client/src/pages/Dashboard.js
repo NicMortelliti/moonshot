@@ -7,14 +7,12 @@ import { Routes, Route } from "react-router-dom";
 import { reLogin } from "../features/auth/authSlice";
 import ReservationList from "../components/reservations/ReservationList";
 import Booking from "../components/booking/Booking";
-import { default as Confirmation } from "../components/booking/BookingConfirmation";
-import bookingService from "../features/booking/bookingService";
 import Profile from "../components/profile/Profile";
+import ConfirmDialog from "../components/dialogs/ConfirmDialog";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
-  const { flight } = useSelector((state) => state.booking);
   const dispatch = useDispatch();
 
   // Redirect if user not logged in
@@ -34,9 +32,7 @@ const Dashboard = () => {
   return (
     <>
       <section>
-        <h1>
-          {user ? `Welcome, ${user.first_name}!` : "No user logged in 😦"}
-        </h1>
+        <ConfirmDialog />
       </section>
       <section>
         <Routes>

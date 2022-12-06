@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bookFlight } from "../../features/booking/bookingSlice";
+import { confirmDialog } from "../../features/dialogs/dialogSlice";
 import { formatDate } from "../../helpers/helpers";
 
 const BookingFlightButton = ({ data }) => {
@@ -34,26 +35,31 @@ const BookingFlightButton = ({ data }) => {
     }
   };
 
+  const messages = [{ message: "Are you sure you want to book this flight?" }];
+  const buttons = [{ button: "Confirm" }, { button: "Cancel" }];
+
   return (
-    <button onClick={() => sendBooking()}>
-      <p>Flight {flightId}</p>
-      <p>
-        {originName}, {originMacroName}
-      </p>
-      <p>to</p>
-      <p>
-        {destinationName}, {destinationMacroName}
-      </p>
-      <p>{formatDate(departure)}</p>
-      <p>{formatDate(arrival)}</p>
-      <section>
-        <p>"{vehicleName}"</p>
+    <div>
+      <button onClick={() => dispatch(confirmDialog({ messages, buttons }))}>
+        <p>Flight {flightId}</p>
         <p>
-          {vehicleMake} {vehicleModel}
+          {originName}, {originMacroName}
         </p>
-      </section>
-      {seats(reservations_remaining)}
-    </button>
+        <p>to</p>
+        <p>
+          {destinationName}, {destinationMacroName}
+        </p>
+        <p>{formatDate(departure)}</p>
+        <p>{formatDate(arrival)}</p>
+        <section>
+          <p>"{vehicleName}"</p>
+          <p>
+            {vehicleMake} {vehicleModel}
+          </p>
+        </section>
+        {seats(reservations_remaining)}
+      </button>
+    </div>
   );
 };
 
