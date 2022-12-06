@@ -20,7 +20,7 @@ const Booking = () => {
     (state) => state.booking
   );
 
-  // This function determines where we're at in terms
+  // This function determines where we're at in terms of
   // booking workflow. If 'origin' is yet to be set
   // the switch method stops at case 'origin' and
   // retrieves a list of origins from the backend.
