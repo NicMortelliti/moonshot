@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { bookFlight } from "../../features/booking/bookingSlice";
 
 // Components
 import { default as Location } from "./BookingLocationButton";
@@ -8,6 +9,9 @@ import { default as Confirmation } from "./BookingConfirmation";
 import { getOrigins } from "../../features/booking/bookingSlice";
 
 const Booking = () => {
+  const [isConfirmationDisplayed, setIsConfirmationDisplayed] = useState(false);
+  const [flightIdSelected, setFlightIdSelected] = useState(null);
+
   const dispatch = useDispatch();
 
   // Get reservations from API when component loads
@@ -15,7 +19,8 @@ const Booking = () => {
     dispatch(getOrigins());
   }, []);
 
-  // Grab properties from booking state
+  // Destructure props
+  const { id: userId } = useSelector((state) => state.auth);
   const { flight, origin, destination, data } = useSelector(
     (state) => state.booking
   );
@@ -29,27 +34,56 @@ const Booking = () => {
   const determineWhatToRender = () => {
     switch (null) {
       case origin:
-        console.log("Getting origins...");
         return data.map((eachData) => (
           <Location key={eachData.id} data={eachData} />
         ));
       case destination:
-        console.log("Getting Destinations...");
         return data.map((eachData) => (
           <Location key={eachData.id} data={eachData} />
         ));
       case flight:
-        console.log("Getting Flights...");
         return data.map((eachData) => (
-          <Flight key={eachData.id} data={eachData} />
+          <Flight
+            key={eachData.id}
+            data={eachData}
+            setIsConfirmationDisplayed={setIsConfirmationDisplayed}
+            setFlightIdSelected={setFlightIdSelected}
+          />
         ));
       default:
         break;
     }
   };
 
+  // Clear local states for confirmation dialog
+  const clearLocalDialogStates = () => {
+    setIsConfirmationDisplayed(false);
+    setFlightIdSelected(null);
+  };
+
+  // Send booking request to API
+  const sendBooking = () => {
+    dispatch(bookFlight({ userId, flightId: flightIdSelected }));
+    clearLocalDialogStates();
+  };
+
+  const RenderConfirmationDialog = () => {
+    if (!isConfirmationDisplayed) {
+      return null;
+    } else {
+      return (
+        <div>
+          <p>{`Are you sure you want to book flight ${flightIdSelected}?`}</p>
+          <button onClick={() => sendBooking()}>Confirm</button>
+          <button onClick={() => clearLocalDialogStates()}>Cancel</button>
+        </div>
+      );
+    }
+  };
+
   return (
     <>
+      <RenderConfirmationDialog />
       {data ? determineWhatToRender() : null}
       {flight ? <Confirmation data={flight} /> : null}
     </>

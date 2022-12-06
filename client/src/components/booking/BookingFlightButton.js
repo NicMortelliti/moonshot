@@ -1,10 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bookFlight } from "../../features/booking/bookingSlice";
-import { confirmDialog, reset } from "../../features/dialogs/dialogSlice";
 import { formatDate } from "../../helpers/helpers";
 
-const BookingFlightButton = ({ data }) => {
+const BookingFlightButton = ({
+  data,
+  setIsConfirmationDisplayed,
+  setFlightIdSelected,
+}) => {
   // Destructure props
   const {
     id: flightId,
@@ -33,29 +36,15 @@ const BookingFlightButton = ({ data }) => {
     }
   };
 
-  const RenderConfirmationDialog = () => {
-    const messages = [
-      { message: "Are you sure you want to book this flight?" },
-    ];
-    const buttons = [
-      {
-        button: "Confirm",
-      },
-      { button: "Cancel" },
-    ];
-
-    // Send messages and buttons to the dialog reducer
-    dispatch(confirmDialog({ messages, buttons }));
-
-    // TODO Here we will act on whatever button in the dialog was clicked
-
-    // TODO Here we will reset the dialog box
-    // dispatch(reset());
+  const confirmSelection = () => {
+    console.log(flightId);
+    setFlightIdSelected(flightId);
+    setIsConfirmationDisplayed(true);
   };
 
   return (
     <div>
-      <button onClick={() => RenderConfirmationDialog()}>
+      <button onClick={() => confirmSelection()}>
         <p>Flight {flightId}</p>
         <p>
           {originName}, {originMacroName}

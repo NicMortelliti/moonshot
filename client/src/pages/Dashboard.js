@@ -8,7 +8,6 @@ import { reLogin } from "../features/auth/authSlice";
 import ReservationList from "../components/reservations/ReservationList";
 import Booking from "../components/booking/Booking";
 import Profile from "../components/profile/Profile";
-import ConfirmDialog from "../components/dialogs/ConfirmDialog";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -31,9 +30,6 @@ const Dashboard = () => {
 
   return (
     <>
-      <section>
-        <ConfirmDialog />
-      </section>
       <section>
         <Routes>
           <Route path="my-trips" element={<ReservationList />} />
