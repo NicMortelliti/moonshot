@@ -23,7 +23,7 @@ const ConfirmDialog = (message, confirmText, ConfirmDialog) => {
     return buttons.map((each) => {
       if (each.button !== null) {
         return (
-          <button onClick={(e) => each.button.actionOnClick}>
+          <button onClick={(e) => console.log(each.button.actionOnClick)}>
             {each.button}
           </button>
         );

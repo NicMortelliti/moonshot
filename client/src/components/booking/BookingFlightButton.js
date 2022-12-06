@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bookFlight } from "../../features/booking/bookingSlice";
-import { confirmDialog } from "../../features/dialogs/dialogSlice";
+import { confirmDialog, reset } from "../../features/dialogs/dialogSlice";
 import { formatDate } from "../../helpers/helpers";
 
 const BookingFlightButton = ({ data }) => {
@@ -26,21 +26,38 @@ const BookingFlightButton = ({ data }) => {
 
   // If flights remaining seats are below 'n' display seats remaining
   const seats = (seatsRemaining) => {
-    switch (true) {
-      case seatsRemaining <= 6:
-        return <p>{`Only ${seatsRemaining} seats remaining!`}</p>;
-
-      default:
-        return null;
+    if (seatsRemaining <= 6) {
+      return <p>{`Only ${seatsRemaining} seats remaining!`}</p>;
+    } else {
+      return null;
     }
   };
 
-  const messages = [{ message: "Are you sure you want to book this flight?" }];
-  const buttons = [{ button: "Confirm" }, { button: "Cancel" }];
+  const RenderConfirmationDialog = () => {
+    const messages = [
+      { message: "Are you sure you want to book this flight?" },
+    ];
+    const buttons = [
+      {
+        button: "Confirm",
+        // actionOnClick: () => dispatch(bookFlight({ userId, flightId })),
+        actionOnClick: () => console.log("it worked"),
+      },
+      { button: "Cancel" },
+    ];
+
+    // Send messages and buttons to the dialog reducer
+    dispatch(confirmDialog({ messages, buttons }));
+
+    // TODO Here we will act on whatever button in the dialog was clicked
+
+    // TODO Here we will reset the dialog box
+    // dispatch(reset());
+  };
 
   return (
     <div>
-      <button onClick={() => dispatch(confirmDialog({ messages, buttons }))}>
+      <button onClick={() => RenderConfirmationDialog()}>
         <p>Flight {flightId}</p>
         <p>
           {originName}, {originMacroName}
