@@ -1,8 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsClicked } from "../../features/dialogs/dialogSlice";
 
 const ConfirmDialog = (message, confirmText, ConfirmDialog) => {
   const { messages, buttons } = useSelector((state) => state.dialog);
+  const dispatch = useDispatch;
 
   // Render a message for each message in the store.
   // We have 2 messages in the store, so at most, this
@@ -10,7 +12,7 @@ const ConfirmDialog = (message, confirmText, ConfirmDialog) => {
   const RenderMessages = () => {
     return messages.map((each) => {
       if (each.message !== null) {
-        return <p>{each.message}</p>;
+        return <p key={each.message}>{each.message}</p>;
       }
     });
   };
@@ -23,13 +25,18 @@ const ConfirmDialog = (message, confirmText, ConfirmDialog) => {
     return buttons.map((each) => {
       if (each.button !== null) {
         return (
-          <button onClick={(e) => console.log(each.button.actionOnClick)}>
+          <button
+            key={each.button}
+            onClick={() => dispatch(setIsClicked(each.button))}
+          >
             {each.button}
           </button>
         );
       }
     });
   };
+
+  const runOnClickAction = (action) => null;
 
   return (
     <div>

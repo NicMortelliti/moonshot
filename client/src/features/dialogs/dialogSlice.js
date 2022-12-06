@@ -7,8 +7,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   messages: [{ message: null }, { message: null }],
   buttons: [
-    { button: null, actionOnClick: null },
-    { button: null, actionOnClick: null },
+    { button: null, isClicked: false },
+    { button: null, isClicked: false },
   ],
 };
 
@@ -27,12 +27,14 @@ export const dialogSlice = createSlice({
       // Populate the buttons store with buttons passed in
       action.payload.buttons.map((each, index) => {
         state.buttons[index].button = each.button;
-        state.buttons[index].actionOnClick = each.actionOnClick;
       });
+    },
+    setIsClicked: (state, action) => {
+      console.log(action.payload);
     },
   },
   extraReducers: () => {},
 });
 
-export const { confirmDialog, reset } = dialogSlice.actions;
+export const { confirmDialog, reset, setIsClicked } = dialogSlice.actions;
 export default dialogSlice.reducer;

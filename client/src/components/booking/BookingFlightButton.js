@@ -40,8 +40,6 @@ const BookingFlightButton = ({ data }) => {
     const buttons = [
       {
         button: "Confirm",
-        // actionOnClick: () => dispatch(bookFlight({ userId, flightId })),
-        actionOnClick: () => console.log("it worked"),
       },
       { button: "Cancel" },
     ];
