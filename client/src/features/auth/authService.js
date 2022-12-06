@@ -34,7 +34,23 @@ const logout = async () => {
   return handleResponse(response);
 };
 
+// Update user data on server
+const updateUserData = async ({ userId, userData }) => {
+  const response = await fetch(`/users/${userId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      password: userData.password,
+      password_confirmation: userData.password2,
+    }),
+  });
+  return handleResponse(response);
+};
+
 const authService = {
+  updateUserData,
   register,
   reLogin,
   login,

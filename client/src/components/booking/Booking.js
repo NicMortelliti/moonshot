@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Components
 import { default as Location } from "./BookingLocationButton";
@@ -8,21 +8,24 @@ import { default as Confirmation } from "./BookingConfirmation";
 import { getOrigins } from "../../features/booking/bookingSlice";
 
 const Booking = () => {
+  const dispatch = useDispatch();
+
+  // Get reservations from API when component loads
+  useEffect(() => {
+    dispatch(getOrigins());
+  }, []);
+
   // Grab properties from booking state
   const { flight, origin, destination, data } = useSelector(
     (state) => state.booking
   );
 
-  const dispatch = useDispatch();
-
-  // When component first loads, get origins from API as long as origin
-  // is not yet set
-  useEffect(() => {
-    if (!origin) {
-      dispatch(getOrigins());
-    }
-  }, []);
-
+  // This function determines where we're at in terms
+  // booking workflow. If 'origin' is yet to be set
+  // the switch method stops at case 'origin' and
+  // retrieves a list of origins from the backend.
+  // The same logic applies to the 'destination' and
+  // 'flight' parts of the booking workflow.
   const determineWhatToRender = () => {
     switch (null) {
       case origin:

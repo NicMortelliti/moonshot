@@ -3,7 +3,7 @@ import { FaRocket, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
-import { getReservations } from "../features/reservations/reservationSlice";
+import { getOrigins } from "../features/booking/bookingSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ const Header = () => {
 
   // Handle navigate to booking page
   const book = () => {
+    dispatch(getOrigins());
     navigate("/flight-search");
   };
 
@@ -40,9 +41,11 @@ const Header = () => {
         {user ? (
           <>
             <li>
-              <FaUser />
-              {user.first_name.charAt(0).toUpperCase() +
-                user.first_name.slice(1)}
+              <button onClick={() => navigate("/my-profile")}>
+                <FaUser />
+                {user.first_name.charAt(0).toUpperCase() +
+                  user.first_name.slice(1)}
+              </button>
             </li>
             <li>
               <button onClick={onLogout}>
@@ -50,10 +53,10 @@ const Header = () => {
               </button>
             </li>
             <li>
-              <button onClick={book}>BOOK</button>
+              <button onClick={() => navigate("/flight-search")}>BOOK</button>
             </li>
             <li>
-              <button onClick={reservations}>MY TRIPS</button>
+              <button onClick={() => navigate("/my-trips")}>MY TRIPS</button>
             </li>
           </>
         ) : (
