@@ -18,7 +18,7 @@ const ProfileForm = () => {
   const RenderSection = () => {
     switch (displaySection) {
       case "password":
-        return <ProfilePassword />;
+        return <ProfilePassword setDisplaySection={setDisplaySection} />;
 
       default:
         return null;

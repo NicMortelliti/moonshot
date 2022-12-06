@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaSignInAlt } from "react-icons/fa";
-import { login, reset } from "../features/auth/authSlice";
+import { login } from "../features/auth/authSlice";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -18,23 +18,21 @@ const Login = () => {
   const dispatch = useDispatch();
 
   // Grab properties from auth state
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
   useEffect(() => {
     // Display errors if there are any
-    if (isError) {
+    if (isError || !user) {
       toast.error(message);
     }
 
     // If successful, navigate to home page
     if (isSuccess || user) {
+      toast.success("Welcome back!");
       navigate("/");
     }
-
-    // Set everything back to default values
-    // dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   // Update formData when user enters

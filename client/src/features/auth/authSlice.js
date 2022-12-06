@@ -66,7 +66,9 @@ export const updateUserData = createAsyncThunk(
   "auth/updateUserData",
   async ({ userId, userData }, { rejectWithValue }) => {
     try {
-      return await authService.updateUserData({ userId, userData });
+      const result = await authService.updateUserData({ userId, userData });
+      toast.success("Successfully updated your profile.");
+      return result;
     } catch (error) {
       return rejectWithValue(error);
     }
