@@ -1,6 +1,4 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { bookFlight } from "../../features/booking/bookingSlice";
 import { formatDate } from "../../helpers/helpers";
 
 const BookingFlightButton = ({
@@ -18,14 +16,6 @@ const BookingFlightButton = ({
     vehicle: { make: vehicleMake, model: vehicleModel, name: vehicleName },
     reservations_remaining,
   } = data;
-
-  const dispatch = useDispatch();
-  const { id: userId } = useSelector((state) => state.auth);
-
-  // Send booking request to API
-  const sendBooking = () => {
-    dispatch(bookFlight({ userId, flightId }));
-  };
 
   // If flights remaining seats are below 'n' display seats remaining
   const seats = (seatsRemaining) => {
