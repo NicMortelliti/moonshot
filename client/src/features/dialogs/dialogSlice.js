@@ -19,15 +19,16 @@ export const dialogSlice = createSlice({
   reducers: {
     reset: (state) => initialState,
     confirmDialog: (state, action) => {
-      for (let i = 0; i < action.payload.messages.length; i++) {
-        state.messages[i].message = action.payload.messages[i].message;
-      }
+      // Populate the messages store with messages passed in
+      action.payload.messages.map((each, index) => {
+        state.messages[index].message = each.message;
+      });
 
-      for (let i = 0; i < action.payload.buttons.length; i++) {
-        state.buttons[i].button = action.payload.buttons[i].button;
-        state.buttons[i].actionOnClick =
-          action.payload.buttons[i].actionOnClick;
-      }
+      // Populate the buttons store with buttons passed in
+      action.payload.buttons.map((each, index) => {
+        state.buttons[index].button = each.button;
+        state.buttons[index].actionOnClick = each.actionOnClick;
+      });
     },
   },
   extraReducers: () => {},
