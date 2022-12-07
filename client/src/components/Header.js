@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { getOrigins } from "../features/booking/bookingSlice";
 
+// Styled components
+import { StyledHeader } from "./styles/Header.styled";
+
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,12 +33,14 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <StyledHeader bg="#ebfbff">
       <div>
-        <Link to="/">
-          <FaRocket />
-          MoonShot
-        </Link>
+        <h1>
+          <Link to="/">
+            <FaRocket />
+            MoonShot
+          </Link>
+        </h1>
       </div>
       <ul>
         {user ? (
@@ -74,7 +79,7 @@ const Header = () => {
           </>
         )}
       </ul>
-    </header>
+    </StyledHeader>
   );
 };
 

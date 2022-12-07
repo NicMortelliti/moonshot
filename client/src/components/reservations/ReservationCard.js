@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { formatDate } from "../../helpers/helpers";
 import { deleteReservation } from "../../features/reservations/reservationSlice";
 
+// Styled components
+import { Container } from "../styles/Container.styled";
+
 const ReservationCard = ({ reservation }) => {
   const [showDetails, setShowDetails] = useState(false);
 
@@ -34,7 +37,7 @@ const ReservationCard = ({ reservation }) => {
   };
 
   return (
-    <div>
+    <Container>
       <div style={{ border: "1px solid red" }}>
         <p>
           {formatDate(departure)} - {formatDate(arrival)}
@@ -74,7 +77,7 @@ const ReservationCard = ({ reservation }) => {
           </section>
         ) : null}
       </div>
-    </div>
+    </Container>
   );
 };
 
