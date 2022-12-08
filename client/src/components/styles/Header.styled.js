@@ -1,50 +1,30 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export const HeaderContainer = styled.nav`
-  width: 100%;
-  height: 70px;
+export const HeaderContainer = styled.ul`
   background-color: ${({ theme }) => theme.bgColors.header};
-  color: ${({ theme }) => theme.colors.header};
-  padding: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 
-export const LeftContainer = styled.div`
-  flex: 60%;
-  display: flex;
-  align-items: center;
-  padding-left: 50px;
-`;
+  /* Fix bar to top of page */
+  position: fixed;
+  top: 0;
 
-export const RightContainer = styled.div`
-  flex: 30%;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 5%;
-`;
-
-export const HeaderInnerContainer = styled.div`
+  /* Set to full width of page */
   width: 100%;
-  height: 80px;
-  display: flex;
 `;
 
-export const HeaderLinkContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export const HeaderLink = styled(NavLink)`
+export const HeaderListItem = styled.li`
+  float: ${(props) => props.alignment || "left"};
   color: ${({ theme }) => theme.colors.header};
   font-size: large;
-  font-weight: 200;
+  font-weight: 300;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
-  margin: auto 10px;
-  padding-bottom: auto;
 
   &:hover,
   &:focus {
@@ -61,10 +41,9 @@ export const HeaderLink = styled(NavLink)`
 
 export const HeaderLogo = styled(NavLink)`
   color: ${({ theme }) => theme.colors.header};
-  font-size: x-large;
+  font-size: large;
   font-weight: 400;
   text-decoration: none;
-  margin: auto 10px;
 
   &:hover,
   &:focus {

@@ -1,18 +1,10 @@
 import React from "react";
-import { FaRocket, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
+import { NavLink } from "react-router-dom";
 
 // Styled components
-import {
-  HeaderContainer,
-  LeftContainer,
-  RightContainer,
-  HeaderInnerContainer,
-  HeaderLinkContainer,
-  HeaderLink,
-  HeaderLogo,
-} from "../styles/Header.styled";
+import { HeaderContainer, HeaderListItem } from "../styles/Header.styled";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -25,28 +17,26 @@ const Header = () => {
   };
 
   // Render user-logged-in navbar
-  const RenderUserLoggedInNavRight = () => {
+  const RenderUserLoggedIn = () => {
     return (
       <>
-        <HeaderLink to="/my-profile">
-          <FaUser />{" "}
-          {user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}
-        </HeaderLink>
-        <HeaderLink to="/" onClick={onLogout}>
-          <FaSignOutAlt /> Log Out
-        </HeaderLink>
-      </>
-    );
-  };
-  const RenderUserLoggedInNavLeft = () => {
-    return (
-      <>
-        <HeaderLink exact to="/flight-search">
-          BOOK
-        </HeaderLink>
-        <HeaderLink exact to="/my-trips">
-          MY TRIPS
-        </HeaderLink>
+        {/* Left side of nav bar */}
+        <NavLink to="/flight-search">
+          <HeaderListItem>BOOK</HeaderListItem>
+        </NavLink>
+        <NavLink to="/my-trips">
+          <HeaderListItem>MY TRIPS</HeaderListItem>
+        </NavLink>
+
+        {/* Right side of nav bar */}
+        <NavLink to="/" onClick={onLogout}>
+          <HeaderListItem alignment="right">Log Out</HeaderListItem>
+        </NavLink>
+        <NavLink to="/my-profile">
+          <HeaderListItem alignment="right">
+            {user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}
+          </HeaderListItem>
+        </NavLink>
       </>
     );
   };
@@ -55,31 +45,22 @@ const Header = () => {
   const RenderNoUserLoggedInNav = () => {
     return (
       <>
-        <HeaderLink exact to="/login">
-          <FaSignInAlt /> Login
-        </HeaderLink>
-        <HeaderLink exact to="/register">
-          <FaUser /> Register
-        </HeaderLink>
+        <NavLink to="/login">
+          <HeaderListItem alignment="right">Login</HeaderListItem>
+        </NavLink>
+        <NavLink to="/register">
+          <HeaderListItem alignment="right">Sign Up</HeaderListItem>
+        </NavLink>
       </>
     );
   };
 
   return (
     <HeaderContainer>
-      <HeaderInnerContainer>
-        <LeftContainer>
-          <HeaderLogo exact to="/">
-            <FaRocket /> <h1>MoonShot</h1>
-          </HeaderLogo>
-          {user ? <RenderUserLoggedInNavLeft /> : null}
-        </LeftContainer>
-        <RightContainer>
-          <HeaderLinkContainer>
-            {user ? <RenderUserLoggedInNavRight /> : RenderNoUserLoggedInNav}
-          </HeaderLinkContainer>
-        </RightContainer>
-      </HeaderInnerContainer>
+      <NavLink to="/">
+        <HeaderListItem>MoonShot</HeaderListItem>
+      </NavLink>
+      {user ? <RenderUserLoggedIn /> : <RenderNoUserLoggedInNav />}
     </HeaderContainer>
   );
 };

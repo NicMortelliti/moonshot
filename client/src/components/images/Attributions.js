@@ -3,7 +3,6 @@ import React from "react";
 const Attributions = () => {
   return (
     <div>
-      <p>Attributions</p>
       <p>
         Photo by{" "}
         <a href="https://unsplash.com/@bradskidley?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">

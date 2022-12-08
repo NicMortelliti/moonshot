@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Components
 import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -29,6 +30,7 @@ const App = () => {
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/register" element={<Register />} />
             </Routes>
+            <Footer />
           </div>
         </Router>
         <ToastContainer />
