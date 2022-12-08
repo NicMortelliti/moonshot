@@ -24,7 +24,9 @@ const Footer = () => {
             Show Attributions
           </FooterLink>
         </FooterFinePrint>
-        <FooterFinePrint>&copy; Moonshot Space Lines, Inc.</FooterFinePrint>
+        <FooterFinePrint>
+          &copy; 2022 - Moonshot Space Lines, Inc.
+        </FooterFinePrint>
         <FooterFinePrint>
           Terms and conditions apply to all offers and LightYear benefits. See
           specific offer for details.
