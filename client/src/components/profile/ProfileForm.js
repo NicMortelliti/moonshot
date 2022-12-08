@@ -3,6 +3,9 @@ import { useSelector } from "react-redux";
 import { FaUser } from "react-icons/fa";
 import ProfilePassword from "./ProfilePassword";
 
+// Styled Components
+import { Button } from "../styles/Button.styled";
+
 const ProfileForm = () => {
   const [displaySection, setDisplaySection] = useState(null);
 
@@ -29,16 +32,15 @@ const ProfileForm = () => {
   // field ('name') and text (button label). Meant to be a
   // shared component so we can add more profile update
   // sections in the future.
-  const Button = ({ field, text }) => {
+  const SectionButton = ({ field, text }) => {
     return (
-      <button
+      <Button
         name={field}
         onClick={() =>
           setDisplaySection(displaySection === field ? null : field)
-        }
-      >
+        }>
         {text}
-      </button>
+      </Button>
     );
   };
 
@@ -56,7 +58,7 @@ const ProfileForm = () => {
         </div>
       </div>
       <div>
-        <Button field="password" text="Change password" />
+        <SectionButton field="password" text="Change password" />
       </div>
       <RenderSection />
     </div>

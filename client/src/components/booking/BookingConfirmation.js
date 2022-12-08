@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { reset } from "../../features/booking/bookingSlice";
 
+// Styled Components
+import { Button } from "../styles/Button.styled";
+
 // Helpers
 import { formatDate } from "../../helpers/helpers";
 
@@ -47,7 +50,7 @@ const BookingConfirmation = ({ data }) => {
       <p>
         on the beautiful {vehicleName}, a {vehicleMake} {vehicleModel}!
       </p>
-      <button onClick={() => closeConfirmation()}>ok!</button>
+      <Button onClick={() => closeConfirmation()}>ok!</Button>
     </div>
   );
 };

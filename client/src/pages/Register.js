@@ -5,6 +5,9 @@ import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
 import { register, reset } from "../features/auth/authSlice";
 
+// Styled Components
+import { Button } from "../components/styles/Button.styled";
+
 const Register = () => {
   const [formData, setFormData] = useState({
     first_name: "",
@@ -110,7 +113,7 @@ const Register = () => {
             placeholder="Confirm password"
             onChange={onChange}
           />
-          <button type="submit">{isLoading ? "Loading..." : "Submit"}</button>
+          <Button type="submit">{isLoading ? "Loading..." : "Submit"}</Button>
         </form>
       </section>
     </>

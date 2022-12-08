@@ -5,6 +5,9 @@ import { toast } from "react-toastify";
 import { FaSignInAlt } from "react-icons/fa";
 import { login } from "../features/auth/authSlice";
 
+// Styled Components
+import { Button } from "../components/styles/Button.styled";
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -79,7 +82,7 @@ const Login = () => {
             placeholder="Enter password"
             onChange={onChange}
           />
-          <button type="submit">Submit</button>
+          <Button type="submit">Submit</Button>
         </form>
       </section>
     </>

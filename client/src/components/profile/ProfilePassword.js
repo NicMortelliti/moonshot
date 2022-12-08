@@ -3,6 +3,9 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserData } from "../../features/auth/authSlice";
 
+// Styled Components
+import { Button } from "../styles/Button.styled";
+
 const ProfilePassword = ({ setDisplaySection }) => {
   const [formData, setFormData] = useState({
     password: "",
@@ -63,7 +66,7 @@ const ProfilePassword = ({ setDisplaySection }) => {
           placeholder="Re-enter new password"
           onChange={onChange}
         />
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );

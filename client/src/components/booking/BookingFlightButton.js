@@ -27,7 +27,6 @@ const BookingFlightButton = ({
   };
 
   const confirmSelection = () => {
-    console.log(flightId);
     setFlightIdSelected(flightId);
     setIsConfirmationDisplayed(true);
   };

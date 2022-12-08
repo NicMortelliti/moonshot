@@ -4,6 +4,7 @@ import { formatDate } from "../../helpers/helpers";
 import { deleteReservation } from "../../features/reservations/reservationSlice";
 
 // Styled components
+import { Button } from "../styles/Button.styled";
 import { Container } from "../styles/Container.styled";
 
 const ReservationCard = ({ reservation }) => {
@@ -25,10 +26,6 @@ const ReservationCard = ({ reservation }) => {
     switch (e.target.name) {
       case "cancel":
         dispatch(deleteReservation(reservationId));
-        break;
-
-      // TODO Implement modify reservation here
-      case "change":
         break;
 
       default:
@@ -55,12 +52,12 @@ const ReservationCard = ({ reservation }) => {
         {/* <button name="change" onClick={(e) => modifyReservation(e)}>
           Change reservation
         </button> */}
-        <button name="cancel" onClick={(e) => modifyReservation(e)}>
+        <Button name="cancel" onClick={(e) => modifyReservation(e)}>
           Cancel reservation
-        </button>
-        <button onClick={() => setShowDetails(!showDetails)}>
+        </Button>
+        <Button onClick={() => setShowDetails(!showDetails)}>
           {showDetails ? "Hide details" : "Show details"}
-        </button>
+        </Button>
         {showDetails ? (
           <section>
             <div>

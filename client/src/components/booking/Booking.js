@@ -8,6 +8,9 @@ import { default as Flight } from "./BookingFlightButton";
 import { default as Confirmation } from "./BookingConfirmation";
 import { getOrigins } from "../../features/booking/bookingSlice";
 
+// Styled Components
+import { Button } from "../styles/Button.styled";
+
 const Booking = () => {
   const [isConfirmationDisplayed, setIsConfirmationDisplayed] = useState(false);
   const [flightIdSelected, setFlightIdSelected] = useState(null);
@@ -74,8 +77,8 @@ const Booking = () => {
       return (
         <div>
           <p>{`Are you sure you want to book flight ${flightIdSelected}?`}</p>
-          <button onClick={() => sendBooking()}>Confirm</button>
-          <button onClick={() => clearLocalDialogStates()}>Cancel</button>
+          <Button onClick={() => sendBooking()}>Confirm</Button>
+          <Button onClick={() => clearLocalDialogStates()}>Cancel</Button>
         </div>
       );
     }

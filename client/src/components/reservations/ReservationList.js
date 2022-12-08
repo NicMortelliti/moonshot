@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 // Components
 import ReservationCard from "./ReservationCard";
 
+// Styled Components
+import { Button } from "../styles/Button.styled";
+
 const ReservationList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,7 +19,9 @@ const ReservationList = () => {
   }, []);
 
   // Grab properties from reservation state
-  const { reservations } = useSelector((state) => state.reservations);
+  const { reservations, isLoading } = useSelector(
+    (state) => state.reservations
+  );
 
   // Redirect user to the booking page
   const redirectToBooking = () => {
@@ -25,18 +30,21 @@ const ReservationList = () => {
 
   // Display each reservation or a message to user
   const RenderReservations = () => {
-    if (reservations && reservations.length !== 0) {
-      // Display reservations if there are any
-      return reservations.map((reservation) => (
-        <ReservationCard key={reservation.id} reservation={reservation} />
-      ));
-    } else {
-      return (
-        <>
-          <p>You have no reservations.</p>
-          <button onClick={redirectToBooking}>Book one!</button>
-        </>
-      );
+    switch (true) {
+      case isLoading:
+        return <p>Loading...</p>;
+      case reservations !== null:
+        // Display reservations if there are any
+        return reservations.map((reservation) => (
+          <ReservationCard key={reservation.id} reservation={reservation} />
+        ));
+      default:
+        return (
+          <>
+            <p>You have no reservations.</p>
+            <Button onClick={redirectToBooking}>Book one!</Button>
+          </>
+        );
     }
   };
 
