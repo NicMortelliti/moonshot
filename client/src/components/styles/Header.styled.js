@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
 export const HeaderContainer = styled.ul`
+  /* Color and style */
   background-color: ${({ theme }) => theme.bgColors.header};
   list-style-type: none;
   margin: 0;
@@ -17,14 +17,19 @@ export const HeaderContainer = styled.ul`
 `;
 
 export const HeaderListItem = styled.li`
-  float: ${(props) => props.alignment || "left"};
+  /* Color and style */
   color: ${({ theme }) => theme.colors.header};
-  font-size: large;
-  font-weight: 300;
-  display: block;
-  text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+
+  /* Size */
+  font-size: ${(props) => props.fontSize || "large"};
+  font-weight: 300;
+
+  /* Alignment */
+  float: ${(props) => props.alignment || "left"};
+  display: block;
+  text-align: center;
 
   &:hover,
   &:focus {
@@ -36,17 +41,5 @@ export const HeaderListItem = styled.li`
     font-weight: 400;
     border-bottom: 5px solid;
     border-color: ${({ theme }) => theme.hoverColor};
-  }
-`;
-
-export const HeaderLogo = styled(NavLink)`
-  color: ${({ theme }) => theme.colors.header};
-  font-size: large;
-  font-weight: 400;
-  text-decoration: none;
-
-  &:hover,
-  &:focus {
-    color: ${({ theme }) => theme.hoverColor};
   }
 `;
