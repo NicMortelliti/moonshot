@@ -1,6 +1,9 @@
 import React from "react";
 
-const Attributions = () => {
+// Styled Components
+import { Button } from "../styles/Button.styled";
+
+const Attributions = ({ setShowAttributions }) => {
   return (
     <div>
       <p>
@@ -13,6 +16,7 @@ const Attributions = () => {
           Unsplash
         </a>
       </p>
+      <Button onClick={() => setShowAttributions(false)}>Hide</Button>
     </div>
   );
 };
