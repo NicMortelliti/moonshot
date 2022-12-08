@@ -1,15 +1,20 @@
 import React from "react";
 import { FaRocket, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
-import { getOrigins } from "../features/booking/bookingSlice";
 
 // Styled components
-import { StyledHeader } from "./styles/Header.styled";
+import {
+  HeaderContainer,
+  LeftContainer,
+  RightContainer,
+  HeaderInnerContainer,
+  HeaderLinkContainer,
+  HeaderLink,
+  HeaderLogo,
+} from "./styles/Header.styled";
 
 const Header = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
@@ -17,69 +22,65 @@ const Header = () => {
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/");
   };
 
-  // Handle reservations fetch
-  const reservations = () => {
-    // dispatch(getReservations());
-    navigate("/my-trips");
+  // Render user-logged-in navbar
+  const RenderUserLoggedInNavRight = () => {
+    return (
+      <>
+        <HeaderLink to="/my-profile">
+          <FaUser />{" "}
+          {user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}
+        </HeaderLink>
+        <HeaderLink to="/" onClick={onLogout}>
+          <FaSignOutAlt /> Log Out
+        </HeaderLink>
+      </>
+    );
+  };
+  const RenderUserLoggedInNavLeft = () => {
+    return (
+      <>
+        <HeaderLink exact to="/flight-search">
+          BOOK
+        </HeaderLink>
+        <HeaderLink exact to="/my-trips">
+          MY TRIPS
+        </HeaderLink>
+      </>
+    );
   };
 
-  // Handle navigate to booking page
-  const book = () => {
-    dispatch(getOrigins());
-    navigate("/flight-search");
+  // Render no-user-logged-in navbar
+  const RenderNoUserLoggedInNav = () => {
+    return (
+      <>
+        <HeaderLink exact to="/login">
+          <FaSignInAlt /> Login
+        </HeaderLink>
+        <HeaderLink exact to="/register">
+          <FaUser /> Register
+        </HeaderLink>
+      </>
+    );
   };
 
   return (
-    <StyledHeader bg="#ebfbff">
-      <div>
-        <h1>
-          <Link to="/">
-            <FaRocket />
-            MoonShot
-          </Link>
-        </h1>
-      </div>
-      <ul>
-        {user ? (
-          <>
-            <li>
-              <button onClick={() => navigate("/my-profile")}>
-                <FaUser />
-                {user.first_name.charAt(0).toUpperCase() +
-                  user.first_name.slice(1)}
-              </button>
-            </li>
-            <li>
-              <button onClick={onLogout}>
-                <FaSignOutAlt /> Logout
-              </button>
-            </li>
-            <li>
-              <button onClick={() => navigate("/flight-search")}>BOOK</button>
-            </li>
-            <li>
-              <button onClick={() => navigate("/my-trips")}>MY TRIPS</button>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link to="/login">
-                <FaSignInAlt /> Login
-              </Link>
-            </li>
-            <li>
-              <Link to="/register">
-                <FaUser /> Register
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </StyledHeader>
+    <HeaderContainer>
+      <HeaderInnerContainer>
+        <LeftContainer>
+          <HeaderLogo exact to="/">
+            <FaRocket /> <h1>MoonShot</h1>
+          </HeaderLogo>
+          {user ? <RenderUserLoggedInNavLeft /> : null}
+        </LeftContainer>
+        <RightContainer>
+          <HeaderLinkContainer>
+            {user ? <RenderUserLoggedInNavRight /> : RenderNoUserLoggedInNav}
+          </HeaderLinkContainer>
+        </RightContainer>
+      </HeaderInnerContainer>
+    </HeaderContainer>
   );
 };
 

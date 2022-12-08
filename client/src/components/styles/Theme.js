@@ -1,7 +1,15 @@
 export const theme = {
-  colors: {
-    header: "#ebfbff",
-    body: "#fff",
-    footer: "#003333",
+  bgColors: {
+    header: "#a84954",
+    body: "#232144",
+    footer: "#d85251",
   },
+
+  colors: {
+    header: "white",
+    body: "white",
+    footer: "white",
+  },
+
+  hoverColor: "#232144",
 };
