@@ -1,7 +1,7 @@
 import React from "react";
 import { FaRocket, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { logout, reset } from "../features/auth/authSlice";
+import { logout, reset } from "../../features/auth/authSlice";
 
 // Styled components
 import {
@@ -12,7 +12,7 @@ import {
   HeaderLinkContainer,
   HeaderLink,
   HeaderLogo,
-} from "./styles/Header.styled";
+} from "../styles/Header.styled";
 
 const Header = () => {
   const dispatch = useDispatch();
