@@ -18,7 +18,7 @@ export const InputContainer = styled.div`
   flex-direction: row;
   width: 100%;
   max-width: 400px;
-  margin: 10px auto;
+  margin: 10px 10px;
   border-radius: 2px;
   padding: 1.4rem 2rem 1.6rem;
   background: ${inputBackground};
