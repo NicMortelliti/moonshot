@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import Landing from "./pages/Landing";
 
 // Styled Components
 import { ThemeProvider } from "styled-components";
@@ -23,7 +24,8 @@ const App = () => {
           <div className="App">
             <Header />
             <Routes>
-              <Route path="/*" element={<Dashboard />} />
+              <Route path="/*" element={<Landing />} />
+              <Route exact path="/home" element={<Dashboard />} />
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/register" element={<Register />} />
             </Routes>
