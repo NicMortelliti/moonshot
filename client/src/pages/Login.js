@@ -7,6 +7,7 @@ import { login } from "../features/auth/authSlice";
 
 // Styled Components
 import { Button } from "../components/styles/Button.styled";
+import { Input, InputContainer } from "../components/styles/FormField.styled";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -66,22 +67,26 @@ const Login = () => {
       </section>
       <section>
         <form onSubmit={onSubmit}>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            placeholder="Enter your email"
-            onChange={onChange}
-          />
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            placeholder="Enter password"
-            onChange={onChange}
-          />
+          <InputContainer>
+            <Input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              placeholder="Enter your email"
+              onChange={onChange}
+            />
+          </InputContainer>
+          <InputContainer>
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              placeholder="Enter password"
+              onChange={onChange}
+            />
+          </InputContainer>
           <Button type="submit">Submit</Button>
         </form>
       </section>
