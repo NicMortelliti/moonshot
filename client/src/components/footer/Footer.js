@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 // Components
 import Attributions from "../images/Attributions";
+import Socials from "./Socials";
 
 // Styled components
 import {
@@ -25,12 +26,13 @@ const Footer = () => {
           </FooterLink>
         </FooterFinePrint>
         <FooterFinePrint>
-          &copy; 2022 - Moonshot Space Lines, Inc.
+          Website developed by Nicolas Mortelliti.
         </FooterFinePrint>
         <FooterFinePrint>
-          Terms and conditions apply to all offers and LightYear benefits. See
-          specific offer for details.
+          Capstone project submission for the Flatiron Software Engineering
+          program.
         </FooterFinePrint>
+        <Socials />
       </FooterContainer>
     </>
   );
