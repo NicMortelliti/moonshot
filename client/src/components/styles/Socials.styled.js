@@ -27,3 +27,23 @@ export const SocialListItem = styled.li`
     cursor: pointer;
   }
 `;
+
+export const StyledSocialIcons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    border: 1px solid ${({theme})=> theme.colors.footer};
+    border-radius: 50%;
+    color: ${({theme})=> theme.colors.footer};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+    text-decoration: none;
+  }
+
+`

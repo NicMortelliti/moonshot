@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FaSignInAlt } from "react-icons/fa";
 import { login } from "../features/auth/authSlice";
 
 // Styled Components
 import { Button } from "../components/styles/Button.styled";
 import { Input, InputContainer } from "../components/styles/FormField.styled";
+import { Flex } from "../components/styles/Flex.styled";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -58,10 +58,10 @@ const Login = () => {
   };
 
   return (
-    <>
+    <Flex>
       <section className="heading">
         <h1>
-          <FaSignInAlt /> Login
+          Login
         </h1>
         <p>Login to your account</p>
       </section>
@@ -90,7 +90,7 @@ const Login = () => {
           <Button type="submit">Submit</Button>
         </form>
       </section>
-    </>
+    </Flex>
   );
 };
 

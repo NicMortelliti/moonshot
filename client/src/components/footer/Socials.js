@@ -3,20 +3,22 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 // Styled Components
 import { Flex } from "../styles/Flex.styled";
-import { SocialContainer, SocialListItem } from "../styles/Socials.styled";
+import { StyledSocialIcons, SocialContainer, SocialListItem } from "../styles/Socials.styled";
 
 const Socials = () => {
   return (
-    <Flex>
-      <SocialContainer>
-        <SocialListItem fontSize="large">
+    <StyledSocialIcons>
+      <li>
+        <a href="https://linkedin.com/in/nicolas-mortelliti">
           <FaLinkedin />
-        </SocialListItem>
-        <SocialListItem fontSize="large">
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/NicMortelliti">
           <FaGithub />
-        </SocialListItem>
-      </SocialContainer>
-    </Flex>
+        </a>
+      </li>
+    </StyledSocialIcons>
   );
 };
 
