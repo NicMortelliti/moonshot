@@ -1,6 +1,11 @@
 import React from "react";
 import { formatDate } from "../../helpers/helpers";
 
+// Styled Components
+import { Flex } from "../styles/Flex.styled";
+import { FlightContainer } from "../styles/Search.styled";
+import { Button } from "../styles/Button.styled";
+
 const BookingFlightButton = ({
   data,
   setIsConfirmationDisplayed,
@@ -32,27 +37,38 @@ const BookingFlightButton = ({
   };
 
   return (
-    <div>
-      <button onClick={() => confirmSelection()}>
-        <p>Flight {flightId}</p>
-        <p>
-          {originName}, {originMacroName}
-        </p>
-        <p>to</p>
-        <p>
-          {destinationName}, {destinationMacroName}
-        </p>
-        <p>{formatDate(departure)}</p>
-        <p>{formatDate(arrival)}</p>
-        <section>
-          <p>"{vehicleName}"</p>
-          <p>
-            {vehicleMake} {vehicleModel}
-          </p>
-        </section>
-        {seats(reservations_remaining)}
-      </button>
-    </div>
+    <Flex>
+      <FlightContainer>
+        <div>
+          <div>
+            <div>
+              <h2>{formatDate(departure)}</h2>
+              <h4>{formatDate(arrival)}</h4>
+              <p>Flight {flightId}</p>
+              <p>
+                {vehicleMake} {vehicleModel}
+              </p>
+            </div>
+
+            <div>
+              <p>
+                {originName}, {originMacroName}
+              </p>
+              <p>to</p>
+              <p>
+                {destinationName}, {destinationMacroName}
+              </p>
+
+              <section>
+                <p>"{vehicleName}"</p>
+              </section>
+              {seats(reservations_remaining)}
+            </div>
+          </div>
+          <Button onClick={() => confirmSelection()}>Book</Button>
+        </div>
+      </FlightContainer>
+    </Flex>
   );
 };
 

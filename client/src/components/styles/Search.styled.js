@@ -5,24 +5,52 @@ export const SearchContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+`;
 
-  & > button {
-    cursor: pointer;
+export const FlightContainer = styled.div`
+  background-color: ${({ theme }) => theme.bgColors.light};
+  color: ${({ theme }) => theme.colors.dark};
 
-    background-color: ${({ theme }) => theme.bgColors.searchButton};
-    color: ${({ theme }) => theme.colors.searchButton};
-    border: none;
+  display: flex;
 
-    overflow-wrap: normal;
-    width: 100px;
-    height: 100px;
-    margin: 5px;
+  width: 90vw;
+  margin: 5px;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 
-    &:hover,
-    &:focus {
-      background-color: ${({ theme }) => theme.hoverColor};
-      opacity: 0.9;
-      transform: scale(0.98);
+    & > div {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+
+      & > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
     }
+  }
+`;
+
+export const SearchLocationButton = styled.button`
+  cursor: pointer;
+
+  background-color: ${({ theme }) => theme.bgColors.button};
+  color: ${({ theme }) => theme.colors.button};
+  border: none;
+
+  overflow-wrap: normal;
+  margin: 5px;
+
+  width: 100px;
+  height: 100px;
+
+  &:hover,
+  &:focus {
+    opacity: 0.9;
+    transform: scale(0.98);
   }
 `;

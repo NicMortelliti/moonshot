@@ -7,7 +7,10 @@ import {
   getFlights,
 } from "../../features/booking/bookingSlice";
 
-const BookingLocationButton = ({ data }) => {
+// Styled Components
+import { SearchLocationButton } from "../styles/Search.styled";
+
+const BookingLocationSearch = ({ data }) => {
   // Destructure props
   const { id, name, macro_place } = data;
 
@@ -26,11 +29,11 @@ const BookingLocationButton = ({ data }) => {
   };
 
   return (
-    <button onClick={() => setLocation()}>
+    <SearchLocationButton onClick={() => setLocation()}>
       <p>{name}</p>
       <h5>{macro_place}</h5>
-    </button>
+    </SearchLocationButton>
   );
 };
 
-export default BookingLocationButton;
+export default BookingLocationSearch;
