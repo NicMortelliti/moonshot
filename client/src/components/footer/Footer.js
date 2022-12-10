@@ -29,8 +29,8 @@ const Footer = () => {
           Website developed by Nicolas Mortelliti.
         </FooterFinePrint>
         <FooterFinePrint>
-          Capstone project submission for the Flatiron Software Engineering
-          program.
+          Capstone project submission for the Flatiron School Software
+          Engineering program.
         </FooterFinePrint>
         <Socials />
       </FooterContainer>

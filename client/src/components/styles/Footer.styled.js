@@ -5,7 +5,7 @@ export const FooterContainer = styled.ul`
   background-color: ${({ theme }) => theme.bgColors.footer};
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 16px;
   overflow: hidden;
 
   /* Fix bar to bottom of page */

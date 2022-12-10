@@ -7,10 +7,7 @@ import { login } from "../features/auth/authSlice";
 // Styled Components
 import { Button } from "../components/styles/Button.styled";
 import { Flex } from "../components/styles/Flex.styled";
-import {
-  Form,
-  InputContainer,
-} from "../components/styles/FormStyled.styled";
+import { Form, InputContainer } from "../components/styles/FormStyled.styled";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -70,7 +67,7 @@ const Login = () => {
             id="email"
             name="email"
             value={email}
-            placeholder="Enter your email"
+            placeholder="Email address"
             onChange={onChange}
           />
         </InputContainer>
@@ -80,7 +77,7 @@ const Login = () => {
             id="password"
             name="password"
             value={password}
-            placeholder="Enter password"
+            placeholder="Password"
             onChange={onChange}
           />
         </InputContainer>

@@ -23,6 +23,7 @@ export const InputContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
+  flex: 1;
   width: 100%;
   max-width: 400px;
   margin: 10px 10px;
@@ -59,8 +60,8 @@ export const InputContainer = styled.div`
     outline: none;
     flex-grow: 1;
     color: ${inputTextActive};
-    font-size: 1.8rem;
-    line-height: 2.4rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
     vertical-align: middle;
     &::-webkit-input-placeholder {
       color: ${inputTextInactive};
