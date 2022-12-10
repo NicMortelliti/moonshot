@@ -86,7 +86,6 @@ const Booking = () => {
 
   return (
     <>
-      <h1>BOOKING COMPONENT</h1>
       <RenderConfirmationDialog />
       {data ? determineWhatToRender() : null}
       {flight ? <Confirmation data={flight} /> : null}

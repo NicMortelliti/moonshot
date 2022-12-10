@@ -20,15 +20,11 @@ const Dashboard = () => {
   }, [user, navigate]);
 
   return (
-    <>
-      <section>
-        <Routes>
-          <Route path="my-trips" element={<ReservationList />} />
-          <Route path="flight-search" element={<Booking />} />
-          <Route path="my-profile" element={<Profile />} />
-        </Routes>
-      </section>
-    </>
+    <Routes>
+      <Route path="my-trips" element={<ReservationList />} />
+      <Route path="flight-search" element={<Booking />} />
+      <Route path="my-profile" element={<Profile />} />
+    </Routes>
   );
 };
 

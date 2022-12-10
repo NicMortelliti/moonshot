@@ -37,8 +37,7 @@ const App = () => {
           <div className="App">
             <Header />
             <Routes>
-              <Route path="/*" element={<Landing />} />
-              <Route exact path="/home" element={<Dashboard />} />
+              <Route path="/*" element={!user ? <Landing /> : <Dashboard />} />
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/register" element={<Register />} />
             </Routes>

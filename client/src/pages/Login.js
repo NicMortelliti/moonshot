@@ -35,7 +35,7 @@ const Login = () => {
     // If successful, navigate to home page
     if (isSuccess || user) {
       toast.success("Welcome back!");
-      navigate("/home");
+      navigate("/");
     }
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
