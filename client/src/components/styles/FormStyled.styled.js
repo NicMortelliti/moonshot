@@ -10,8 +10,8 @@ export const Form = styled.form`
 
 // colors
 const inputBackground = "rgba(57, 63, 84, 0.8)";
-const inputTextActive = "#7881A1";
-const inputTextInactive = "#BFD2FF";
+const inputTextInactive = "#7881A1";
+const inputTextActive = "#BFD2FF";
 
 // gradient animation
 const animate = keyframes`  
