@@ -2,6 +2,7 @@ import { handleResponse } from "../../helpers/helpers";
 
 // Get list of possible origins
 const getOrigins = async () => {
+  console.log("fetching origins");
   const response = await fetch("/origins");
   return handleResponse(response);
 };
