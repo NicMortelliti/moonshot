@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 // colors
 const inputBackground = "rgba(57, 63, 84, 0.8)";
 const inputTextActive = "#7881A1";
@@ -45,18 +52,18 @@ export const InputContainer = styled.div`
     background-size: 500% auto;
     animation: ${animate} 3s linear infinite;
   }
-`;
 
-export const Input = styled.input`
-  background-color: transparent;
-  border-style: none;
-  outline: none;
-  flex-grow: 1;
-  color: ${inputTextActive};
-  font-size: 1.8rem;
-  line-height: 2.4rem;
-  vertical-align: middle;
-  &::-webkit-input-placeholder {
-    color: ${inputTextInactive};
+  & > input {
+    background-color: transparent;
+    border-style: none;
+    outline: none;
+    flex-grow: 1;
+    color: ${inputTextActive};
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    vertical-align: middle;
+    &::-webkit-input-placeholder {
+      color: ${inputTextInactive};
+    }
   }
 `;

@@ -6,8 +6,11 @@ import { login } from "../features/auth/authSlice";
 
 // Styled Components
 import { Button } from "../components/styles/Button.styled";
-import { Input, InputContainer } from "../components/styles/FormField.styled";
 import { Flex } from "../components/styles/Flex.styled";
+import {
+  Form,
+  InputContainer,
+} from "../components/styles/FormStyled.styled";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -59,37 +62,30 @@ const Login = () => {
 
   return (
     <Flex>
-      <section className="heading">
-        <h1>
-          Login
-        </h1>
-        <p>Login to your account</p>
-      </section>
-      <section>
-        <form onSubmit={onSubmit}>
-          <InputContainer>
-            <Input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="Enter your email"
-              onChange={onChange}
-            />
-          </InputContainer>
-          <InputContainer>
-            <Input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter password"
-              onChange={onChange}
-            />
-          </InputContainer>
-          <Button type="submit">Submit</Button>
-        </form>
-      </section>
+      <Form onSubmit={onSubmit}>
+        <h2>Log in</h2>
+        <InputContainer>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            placeholder="Enter your email"
+            onChange={onChange}
+          />
+        </InputContainer>
+        <InputContainer>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            placeholder="Enter password"
+            onChange={onChange}
+          />
+        </InputContainer>
+        <Button type="submit">Submit</Button>
+      </Form>
     </Flex>
   );
 };

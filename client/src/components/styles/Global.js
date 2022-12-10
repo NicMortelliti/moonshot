@@ -11,10 +11,14 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 1.15em;
   margin: 0;
+  padding-top: 55px;
 }
 
+h1,
+h2,
+h3,
+h4,
 p {
-  opacity: 0.6;
   line-height: 1;
 }
 

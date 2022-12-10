@@ -8,7 +8,7 @@ import { register } from "../features/auth/authSlice";
 // Styled Components
 import { Button } from "../components/styles/Button.styled";
 import { Flex } from "../components/styles/Flex.styled";
-import { Input, InputContainer } from "../components/styles/FormField.styled";
+import { Form, InputContainer } from "../components/styles/FormStyled.styled";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -65,82 +65,72 @@ const Register = () => {
   };
 
   return (
-    <>
-      <section className="heading">
-        <toast />
-        <h1>
-          <FaUser /> Register
-        </h1>
-        <p>Please create an account</p>
-      </section>
-      <section>
-        <form onSubmit={onSubmit}>
-          <Flex>
-            <InputContainer>
-              <Input
-                type="text"
-                id="first_name"
-                name="first_name"
-                value={first_name}
-                placeholder="Enter your first name"
-                onChange={onChange}
-              />
-            </InputContainer>
-            <InputContainer>
-              <Input
-                type="text"
-                id="last_name"
-                name="last_name"
-                value={last_name}
-                placeholder="Enter your last name"
-                onChange={onChange}
-              />
-            </InputContainer>
-          </Flex>
-          <Flex>
-            <InputContainer>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                placeholder="Enter your email"
-                onChange={onChange}
-              />
-            </InputContainer>
-          </Flex>
-          <Flex>
-            <InputContainer>
-              <Input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                placeholder="Enter password"
-                onChange={onChange}
-              />
-            </InputContainer>
-            <InputContainer>
-              <Input
-                type="password"
-                id="password2"
-                name="password2"
-                value={password2}
-                placeholder="Confirm password"
-                onChange={onChange}
-              />
-            </InputContainer>
-          </Flex>
-          <Flex>
-            <div>
-              <Button type="submit">
-                {isLoading ? "Loading..." : "Submit"}
-              </Button>
-            </div>
-          </Flex>
-        </form>
-      </section>
-    </>
+    <Flex>
+      <Form onsSubmit={onSubmit}>
+        <h2>Sign up</h2>
+        <Flex>
+          <InputContainer>
+            <input
+              type="text"
+              id="first_name"
+              name="first_name"
+              value={first_name}
+              placeholder="First name"
+              onChange={onChange}
+            />
+          </InputContainer>
+          <InputContainer>
+            <input
+              type="text"
+              id="last_name"
+              name="last_name"
+              value={last_name}
+              placeholder="Last name"
+              onChange={onChange}
+            />
+          </InputContainer>
+        </Flex>
+        <Flex>
+          <InputContainer>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              placeholder="Email address"
+              onChange={onChange}
+            />
+          </InputContainer>
+        </Flex>
+        <Flex>
+          <InputContainer>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={onChange}
+            />
+          </InputContainer>
+          <InputContainer>
+            <input
+              type="password"
+              id="password2"
+              name="password2"
+              value={password2}
+              placeholder="Confirm"
+              onChange={onChange}
+            />
+          </InputContainer>
+        </Flex>
+        <Flex>
+          <div>
+            <Button type="submit">{isLoading ? "Loading..." : "Submit"}</Button>
+          </div>
+        </Flex>
+      </Form>
+    </Flex>
   );
 };
 
