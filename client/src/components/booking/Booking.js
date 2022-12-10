@@ -10,6 +10,8 @@ import { getOrigins } from "../../features/booking/bookingSlice";
 
 // Styled Components
 import { Button } from "../styles/Button.styled";
+import { Flex } from "../styles/Flex.styled";
+import { SearchContainer } from "../styles/Search.styled";
 
 const Booking = () => {
   const [isConfirmationDisplayed, setIsConfirmationDisplayed] = useState(false);
@@ -87,7 +89,11 @@ const Booking = () => {
   return (
     <>
       <RenderConfirmationDialog />
-      {data ? determineWhatToRender() : null}
+      {data ? (
+        <Flex>
+          <SearchContainer>{determineWhatToRender()}</SearchContainer>
+        </Flex>
+      ) : null}
       {flight ? <Confirmation data={flight} /> : null}
     </>
   );

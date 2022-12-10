@@ -27,8 +27,8 @@ const BookingLocationButton = ({ data }) => {
 
   return (
     <button onClick={() => setLocation()}>
-      <h5>{macro_place}</h5>
       <p>{name}</p>
+      <h5>{macro_place}</h5>
     </button>
   );
 };
