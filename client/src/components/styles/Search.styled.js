@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Flex } from "./Flex.styled";
 
 export const SearchContainer = styled.div`
   margin: 20px;
@@ -7,31 +8,18 @@ export const SearchContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-export const FlightContainer = styled.div`
+export const FlightContainer = styled(Flex)`
   background-color: ${({ theme }) => theme.bgColors.light};
   color: ${({ theme }) => theme.colors.dark};
 
   display: flex;
-
   width: 90vw;
   margin: 5px;
   & > div {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-
-    & > div {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: center;
-
-      & > div {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-      }
-    }
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* align-items: flex-start; */
+    /* justify-content: space-between; */
   }
 `;
 
@@ -52,5 +40,32 @@ export const SearchLocationButton = styled.button`
   &:focus {
     opacity: 0.9;
     transform: scale(0.98);
+  }
+`;
+
+export const SeatsContainer = styled(Flex)`
+  background-color: lightcoral;
+`;
+
+export const HR = styled(Flex)`
+  border-bottom: 2px solid black;
+  width: 90%;
+  margin: 0 auto 20px;
+
+  & > span {
+    height: 10px;
+    width: 10px;
+    background-color: black;
+    display: inline-block;
+    position: relative;
+    top: 11px;
+  }
+
+  & > svg {
+    font-size: x-large;
+    left: -46%;
+    top: 13px;
+    position: relative;
+    color: ${({ theme }) => theme.bgColors.dark};
   }
 `;

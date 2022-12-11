@@ -11,5 +11,5 @@ export const handleResponse = (res) => {
 
 // Format date
 export const formatDate = (date) => (
-  <Moment format="ddd MMM DD, YYYY">{new Date(date)}</Moment>
+  <Moment format="ddd, MMM DD, YYYY">{new Date(date)}</Moment>
 );

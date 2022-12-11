@@ -16,3 +16,15 @@ export const Button = styled.button`
     transform: scale(0.98);
   }
 `;
+
+export const MinimalButton = styled.button`
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.button};
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+
+  &:hover {
+    transform: scale(0.98);
+  }
+`;

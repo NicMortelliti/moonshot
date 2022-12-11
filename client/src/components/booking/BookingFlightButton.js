@@ -1,9 +1,10 @@
 import React from "react";
 import { formatDate } from "../../helpers/helpers";
+import { FaSpaceShuttle } from "react-icons/fa";
 
 // Styled Components
 import { Flex } from "../styles/Flex.styled";
-import { FlightContainer } from "../styles/Search.styled";
+import { FlightContainer, SeatsContainer, HR } from "../styles/Search.styled";
 import { Button } from "../styles/Button.styled";
 
 const BookingFlightButton = ({
@@ -25,7 +26,11 @@ const BookingFlightButton = ({
   // If flights remaining seats are below 'n' display seats remaining
   const seats = (seatsRemaining) => {
     if (seatsRemaining <= 6) {
-      return <p>{`Only ${seatsRemaining} seats remaining!`}</p>;
+      return (
+        <SeatsContainer>
+          <p>{`Only ${seatsRemaining} seats remaining!`}</p>
+        </SeatsContainer>
+      );
     } else {
       return null;
     }
@@ -38,35 +43,50 @@ const BookingFlightButton = ({
 
   return (
     <Flex>
-      <FlightContainer>
-        <div>
-          <div>
-            <div>
-              <h2>{formatDate(departure)}</h2>
-              <h4>{formatDate(arrival)}</h4>
-              <p>Flight {flightId}</p>
-              <p>
-                {vehicleMake} {vehicleModel}
-              </p>
-            </div>
+      <FlightContainer direction="column" align="flex-end" padding="20px">
+        {/* Seats Remaining */}
+        {seats(reservations_remaining)}
 
-            <div>
-              <p>
-                {originName}, {originMacroName}
-              </p>
-              <p>to</p>
-              <p>
-                {destinationName}, {destinationMacroName}
-              </p>
+        {/* Flight # and Vehicle */}
+        <Flex>
+          <h3>Flight {flightId}</h3>
+        </Flex>
+        <Flex>
+          <Flex direction="column">
+            <p>
+              {vehicleMake} {vehicleModel} - "{vehicleName}"
+            </p>
+          </Flex>
+        </Flex>
 
-              <section>
-                <p>"{vehicleName}"</p>
-              </section>
-              {seats(reservations_remaining)}
-            </div>
-          </div>
+        <HR>
+          <span />
+          <hr />
+          <FaSpaceShuttle />
+          <span />
+        </HR>
+
+        {/* Details */}
+        <Flex>
+          {/* Origin */}
+          <Flex justify="flex-start" align="flex-start" direction="column">
+            <h4>{formatDate(departure)}</h4>
+            <p>
+              {originName}, {originMacroName}
+            </p>
+          </Flex>
+
+          {/* Destination */}
+          <Flex justify="flex-start" align="flex-end" direction="column">
+            <h4>{formatDate(arrival)}</h4>
+            <p>
+              {destinationName}, {destinationMacroName}
+            </p>
+          </Flex>
+        </Flex>
+        <Flex>
           <Button onClick={() => confirmSelection()}>Book</Button>
-        </div>
+        </Flex>
       </FlightContainer>
     </Flex>
   );
