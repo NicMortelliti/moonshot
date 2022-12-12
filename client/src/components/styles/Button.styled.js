@@ -7,6 +7,7 @@ export const Button = styled.button`
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
+  margin: ${({ margin }) => margin || 0};
   padding: 15px 60px;
   background-color: ${({ theme }) => theme.bgColors.button};
   color: ${({ theme }) => theme.colors.button};
@@ -19,10 +20,11 @@ export const Button = styled.button`
 
 export const MinimalButton = styled.button`
   background-color: transparent;
-  color: ${({ theme }) => theme.colors.button};
+  color: ${({ theme, alert }) => (alert && theme.alert) || theme.colors.button};
   border: none;
   cursor: pointer;
   font-weight: 700;
+  margin: ${({ margin }) => margin || 0};
 
   &:hover {
     transform: scale(0.98);

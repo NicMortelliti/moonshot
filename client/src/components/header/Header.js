@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
 import { NavLink } from "react-router-dom";
+import { capitalize } from "../../helpers/helpers";
 
 // Styled components
 import { HeaderContainer, HeaderListItem } from "../styles/Header.styled";
@@ -34,7 +35,7 @@ const Header = () => {
         </NavLink>
         <NavLink to="/my-profile">
           <HeaderListItem alignment="right">
-            {user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}
+            {capitalize(user.first_name)}
           </HeaderListItem>
         </NavLink>
       </>

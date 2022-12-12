@@ -41,10 +41,6 @@ export const SearchLocationButton = styled.button`
   }
 `;
 
-export const SeatsContainer = styled(Flex)`
-  background-color: ${({ theme }) => theme.alert};
-`;
-
 export const SearchFlex = styled(Flex)`
   & > h5,
   & > h3,
@@ -55,4 +51,8 @@ export const SearchFlex = styled(Flex)`
   & > h5 {
     margin-top: 5px;
   }
+`;
+
+export const SeatsContainer = styled(SearchFlex)`
+  background-color: ${({ theme }) => theme.alert};
 `;

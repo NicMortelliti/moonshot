@@ -18,3 +18,7 @@ export const formatDate = (date) => (
 export const shortFormatDate = (date) => (
   <Moment format="MMM DD, YYYY">{new Date(date)}</Moment>
 );
+
+// Capitalize the first letter of the string
+export const capitalize = (string) =>
+  string.charAt(0).toUpperCase() + string.slice(1);

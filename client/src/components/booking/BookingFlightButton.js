@@ -24,6 +24,9 @@ const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
     vehicle: { make: vehicleMake, model: vehicleModel, name: vehicleName },
     reservations_remaining,
   } = data;
+  // TODO ^^^ "reservations_remaining" doesn't seem to
+  // actually display seats remaining...rather, it
+  // displays the max number of seats on the vehicle
 
   // If flights remaining seats are below 'n' display seats remaining
   const seats = (seatsRemaining) => {
@@ -65,6 +68,10 @@ const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
         break;
     }
   };
+
+  // TODO  Fix card width resizing
+  // Seems to be dependent on whether
+  // "n" seats remaining is displayed
 
   return (
     <SearchFlex>
