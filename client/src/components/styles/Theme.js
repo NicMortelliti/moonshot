@@ -24,7 +24,7 @@ export const theme = {
     light: lightBlue,
   },
 
-  hoverColor: "#232144",
+  hoverColor: accent,
   alert: "lightcoral",
   accent: accent,
 };
