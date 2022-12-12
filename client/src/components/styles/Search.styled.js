@@ -44,7 +44,7 @@ export const SearchLocationButton = styled.button`
 `;
 
 export const SeatsContainer = styled(Flex)`
-  background-color: lightcoral;
+  background-color: ${({ theme }) => theme.alert};
 `;
 
 export const HR = styled(Flex)`
@@ -67,5 +67,17 @@ export const HR = styled(Flex)`
     top: 13px;
     position: relative;
     color: ${({ theme }) => theme.bgColors.dark};
+  }
+`;
+
+export const SearchFlex = styled(Flex)`
+  & > h5,
+  & > h3,
+  & > p {
+    margin-bottom: 5px;
+  }
+
+  & > h5 {
+    margin-top: 5px;
   }
 `;

@@ -3,8 +3,12 @@ import { formatDate } from "../../helpers/helpers";
 import { FaSpaceShuttle } from "react-icons/fa";
 
 // Styled Components
-import { Flex } from "../styles/Flex.styled";
-import { FlightContainer, SeatsContainer, HR } from "../styles/Search.styled";
+import {
+  FlightContainer,
+  SeatsContainer,
+  HR,
+  SearchFlex,
+} from "../styles/Search.styled";
 import { Button } from "../styles/Button.styled";
 
 const BookingFlightButton = ({
@@ -42,32 +46,28 @@ const BookingFlightButton = ({
   };
 
   return (
-    <Flex>
+    <SearchFlex>
       <FlightContainer direction="column" align="flex-end" padding="20px">
         {/* Seats Remaining */}
         {seats(reservations_remaining)}
 
         {/* Flight # and Vehicle */}
-        <Flex>
+        <SearchFlex direction="column">
           <h3>Flight {flightId}</h3>
-        </Flex>
-        <Flex>
-          <Flex direction="column">
-            <p>
-              {vehicleMake} {vehicleModel} - "{vehicleName}"
-            </p>
-          </Flex>
-        </Flex>
+          <p>
+            {vehicleMake} {vehicleModel} - "{vehicleName}"
+          </p>
+        </SearchFlex>
 
         {/* Locations */}
-        <Flex justify="space-between">
+        <SearchFlex justify="space-between">
           <h5>
             {originName}, {originMacroName}
           </h5>
           <h5>
             {destinationName}, {destinationMacroName}
           </h5>
-        </Flex>
+        </SearchFlex>
 
         {/* Horizontal rule */}
         <HR>
@@ -78,17 +78,17 @@ const BookingFlightButton = ({
         </HR>
 
         {/* Dates */}
-        <Flex justify="space-between">
+        <SearchFlex justify="space-between">
           <h5>{formatDate(departure)}</h5>
           <h5>{formatDate(arrival)}</h5>
-        </Flex>
+        </SearchFlex>
 
         {/* Button */}
-        <Flex>
+        <SearchFlex>
           <Button onClick={() => confirmSelection()}>Book</Button>
-        </Flex>
+        </SearchFlex>
       </FlightContainer>
-    </Flex>
+    </SearchFlex>
   );
 };
 
