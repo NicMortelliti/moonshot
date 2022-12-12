@@ -21,6 +21,7 @@ export const theme = {
     dark: darkBlue,
     searchButton: white,
     button: darkBlue,
+    light: lightBlue,
   },
 
   hoverColor: "#232144",

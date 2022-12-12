@@ -11,16 +11,14 @@ export const SearchContainer = styled.div`
 export const FlightContainer = styled(Flex)`
   background-color: ${({ theme }) => theme.bgColors.light};
   color: ${({ theme }) => theme.colors.dark};
+  direction: column;
+  align-items: flex-end;
+  padding: 20px;
 
   display: flex;
-  width: 90vw;
+  width: 80%;
+  max-width: 800px;
   margin: 5px;
-  & > div {
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* align-items: flex-start; */
-    /* justify-content: space-between; */
-  }
 `;
 
 export const SearchLocationButton = styled.button`

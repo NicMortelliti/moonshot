@@ -7,7 +7,9 @@ import { useNavigate } from "react-router-dom";
 import ReservationCard from "./ReservationCard";
 
 // Styled Components
+import { Flex } from "../styles/Flex.styled";
 import { Button } from "../styles/Button.styled";
+import { ReservationContainer } from "../styles/Card.styled";
 
 const ReservationList = () => {
   const dispatch = useDispatch();
@@ -40,17 +42,19 @@ const ReservationList = () => {
         ));
       default:
         return (
-          <>
+          <Flex direction="column">
             <p>You have no reservations.</p>
             <Button onClick={redirectToBooking}>Book one!</Button>
-          </>
+          </Flex>
         );
     }
   };
 
   return (
     <>
-      <RenderReservations />
+      <ReservationContainer>
+        <RenderReservations />
+      </ReservationContainer>
     </>
   );
 };

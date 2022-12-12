@@ -5,7 +5,7 @@ import { deleteReservation } from "../../features/reservations/reservationSlice"
 
 // Styled components
 import { Flex } from "../styles/Flex.styled";
-import { Button } from "../styles/Button.styled";
+import { MinimalButton } from "../styles/Button.styled";
 import { StyledReservationCard } from "../styles/Card.styled";
 
 const ReservationCard = ({ reservation }) => {
@@ -34,45 +34,67 @@ const ReservationCard = ({ reservation }) => {
     }
   };
 
+  // Basic information about the reservation
+  const PrimaryData = () => {
+    return (
+      <>
+        <div>
+          <h5>Date</h5>
+          <p>
+            {formatDate(departure)} - {formatDate(arrival)}
+          </p>
+        </div>
+        <div>
+          <h5>From</h5>
+          <p>
+            {origin.name}, {origin.macro_place} ({origin.icao})
+          </p>
+        </div>
+        <div>
+          <h5>To</h5>
+          <p>
+            {destination.name}, {destination.macro_place} ({destination.icao})
+          </p>
+        </div>
+      </>
+    );
+  };
+
+  // Details section of the reservation card
+  const DetailData = () => {
+    switch (showDetails) {
+      case true:
+        return (
+          <>
+            <div>
+              <h5>Flight #</h5>
+              <p>{flightId}</p>
+            </div>
+            <div>
+              <h5>Spacecraft</h5>
+              <p>
+                {vehicle.make} {vehicle.model} "{vehicle.name}"
+              </p>
+              <p>Total passenger seats: {vehicle.pax_capacity}</p>
+            </div>
+          </>
+        );
+
+      default:
+        return null;
+    }
+  };
+
   return (
     <StyledReservationCard>
-      <p>
-        {formatDate(departure)} - {formatDate(arrival)}
-      </p>
-      <div>
-        <p>
-          {origin.name}, {origin.macro_place} ({origin.icao})
-        </p>
-      </div>
-      <div>
-        <p>
-          {destination.name}, {destination.macro_place} ({destination.icao})
-        </p>
-      </div>
-      {/* <button name="change" onClick={(e) => modifyReservation(e)}>
-          Change reservation
-        </button> */}
-      <Button name="cancel" onClick={(e) => modifyReservation(e)}>
+      <PrimaryData />
+      <MinimalButton name="cancel" onClick={(e) => modifyReservation(e)}>
         Cancel reservation
-      </Button>
-      <Button onClick={() => setShowDetails(!showDetails)}>
+      </MinimalButton>
+      <MinimalButton onClick={() => setShowDetails(!showDetails)}>
         {showDetails ? "Hide details" : "Show details"}
-      </Button>
-      {showDetails ? (
-        <section>
-          <div>
-            <h3>Flight #</h3>
-            <p>{flightId}</p>
-          </div>
-          <div>
-            <h3>Spacecraft</h3>
-            <p>
-              {vehicle.make} {vehicle.model} "{vehicle.name}"
-            </p>
-            <p>Total passenger seats: {vehicle.pax_capacity}</p>
-          </div>
-        </section>
-      ) : null}
+      </MinimalButton>
+      <DetailData />
     </StyledReservationCard>
   );
 };

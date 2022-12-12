@@ -21,6 +21,8 @@ export const SocialListItem = styled.li`
   display: inline-block;
   text-align: center;
 
+  /* TODO Fix highlighting. Hovering over 
+  social icons does not transition to hover color */
   &:hover,
   &:focus {
     color: ${({ theme }) => theme.hoverColor};
