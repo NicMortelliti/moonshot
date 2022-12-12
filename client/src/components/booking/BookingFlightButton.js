@@ -59,6 +59,17 @@ const BookingFlightButton = ({
           </Flex>
         </Flex>
 
+        {/* Locations */}
+        <Flex justify="space-between">
+          <h5>
+            {originName}, {originMacroName}
+          </h5>
+          <h5>
+            {destinationName}, {destinationMacroName}
+          </h5>
+        </Flex>
+
+        {/* Horizontal rule */}
         <HR>
           <span />
           <hr />
@@ -66,24 +77,13 @@ const BookingFlightButton = ({
           <span />
         </HR>
 
-        {/* Details */}
-        <Flex>
-          {/* Origin */}
-          <Flex justify="flex-start" align="flex-start" direction="column">
-            <h4>{formatDate(departure)}</h4>
-            <p>
-              {originName}, {originMacroName}
-            </p>
-          </Flex>
-
-          {/* Destination */}
-          <Flex justify="flex-start" align="flex-end" direction="column">
-            <h4>{formatDate(arrival)}</h4>
-            <p>
-              {destinationName}, {destinationMacroName}
-            </p>
-          </Flex>
+        {/* Dates */}
+        <Flex justify="space-between">
+          <h5>{formatDate(departure)}</h5>
+          <h5>{formatDate(arrival)}</h5>
         </Flex>
+
+        {/* Button */}
         <Flex>
           <Button onClick={() => confirmSelection()}>Book</Button>
         </Flex>
