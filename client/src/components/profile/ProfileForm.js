@@ -44,6 +44,8 @@ const ProfileForm = () => {
     );
   };
 
+  // TODO Add a way to delete user account
+
   return (
     <div>
       <div className="heading">

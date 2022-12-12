@@ -13,3 +13,8 @@ export const handleResponse = (res) => {
 export const formatDate = (date) => (
   <Moment format="ddd, MMM DD, YYYY">{new Date(date)}</Moment>
 );
+
+// Short format date
+export const shortFormatDate = (date) => (
+  <Moment format="MMM DD, YYYY">{new Date(date)}</Moment>
+);

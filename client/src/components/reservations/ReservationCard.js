@@ -1,16 +1,15 @@
-import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { formatDate } from "../../helpers/helpers";
+import { shortFormatDate } from "../../helpers/helpers";
 import { deleteReservation } from "../../features/reservations/reservationSlice";
+import { FaSpaceShuttle } from "react-icons/fa";
 
 // Styled components
 import { Flex } from "../styles/Flex.styled";
 import { MinimalButton } from "../styles/Button.styled";
 import { StyledReservationCard } from "../styles/Card.styled";
+import { HR } from "../styles/Widgets.styled";
 
 const ReservationCard = ({ reservation }) => {
-  const [showDetails, setShowDetails] = useState(false);
-
   const dispatch = useDispatch();
 
   // Destructure props
@@ -38,63 +37,49 @@ const ReservationCard = ({ reservation }) => {
   const PrimaryData = () => {
     return (
       <>
-        <div>
-          <h5>Date</h5>
-          <p>
-            {formatDate(departure)} - {formatDate(arrival)}
-          </p>
-        </div>
-        <div>
-          <h5>From</h5>
-          <p>
-            {origin.name}, {origin.macro_place} ({origin.icao})
-          </p>
-        </div>
-        <div>
-          <h5>To</h5>
-          <p>
-            {destination.name}, {destination.macro_place} ({destination.icao})
-          </p>
-        </div>
+        <Flex align="flex-start">
+          <Flex direction="column" justify="flex-start" align="flex-start">
+            <h5>From</h5>
+            <h1>{origin.name}</h1>
+            <h2>{origin.macro_place}</h2>
+            <h5>{shortFormatDate(departure)}</h5>
+          </Flex>
+          <Flex direction="column" justify="flex-start">
+            <h5>Flight</h5>
+            <h2>{flightId}</h2>
+            <FaSpaceShuttle />
+          </Flex>
+          <Flex direction="column" justify="flex-end" align="flex-end">
+            <h5>To</h5>
+            <h1>{destination.name}</h1>
+            <h2>{destination.macro_place}</h2>
+            <h5>{shortFormatDate(arrival)}</h5>
+          </Flex>
+        </Flex>
+        <Flex>
+          <HR margin="30px 0" />
+        </Flex>
+        <Flex>
+          <Flex align="flex-start" direction="column">
+            <h5>Spacecraft</h5>
+            <h4>
+              {vehicle.make} {vehicle.model} "{vehicle.name}"
+            </h4>
+            <p>Seats a total of {vehicle.pax_capacity} passengers.</p>
+          </Flex>
+        </Flex>
       </>
     );
-  };
-
-  // Details section of the reservation card
-  const DetailData = () => {
-    switch (showDetails) {
-      case true:
-        return (
-          <>
-            <div>
-              <h5>Flight #</h5>
-              <p>{flightId}</p>
-            </div>
-            <div>
-              <h5>Spacecraft</h5>
-              <p>
-                {vehicle.make} {vehicle.model} "{vehicle.name}"
-              </p>
-              <p>Total passenger seats: {vehicle.pax_capacity}</p>
-            </div>
-          </>
-        );
-
-      default:
-        return null;
-    }
   };
 
   return (
     <StyledReservationCard>
       <PrimaryData />
-      <MinimalButton name="cancel" onClick={(e) => modifyReservation(e)}>
-        Cancel reservation
-      </MinimalButton>
-      <MinimalButton onClick={() => setShowDetails(!showDetails)}>
-        {showDetails ? "Hide details" : "Show details"}
-      </MinimalButton>
-      <DetailData />
+      <Flex justify="flex-end">
+        <MinimalButton name="cancel" onClick={(e) => modifyReservation(e)}>
+          Cancel reservation
+        </MinimalButton>
+      </Flex>
     </StyledReservationCard>
   );
 };

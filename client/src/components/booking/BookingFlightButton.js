@@ -6,10 +6,10 @@ import { FaSpaceShuttle } from "react-icons/fa";
 import {
   FlightContainer,
   SeatsContainer,
-  HR,
   SearchFlex,
 } from "../styles/Search.styled";
 import { Button } from "../styles/Button.styled";
+import { HR } from "../styles/Widgets.styled";
 
 const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
   const [isConfirmationDisplayed, setIsConfirmationDisplayed] = useState(false);
