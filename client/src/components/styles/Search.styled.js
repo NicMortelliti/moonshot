@@ -49,7 +49,7 @@ export const SeatsContainer = styled(Flex)`
 
 export const HR = styled(Flex)`
   border-bottom: 2px solid black;
-  width: 90%;
+  width: 80%;
   margin: 0 auto 20px;
 
   & > span {
@@ -58,7 +58,7 @@ export const HR = styled(Flex)`
     background-color: black;
     display: inline-block;
     position: relative;
-    top: 11px;
+    top: 13px;
   }
 
   & > svg {
