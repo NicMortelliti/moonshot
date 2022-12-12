@@ -7,7 +7,7 @@ export const Flex = styled.div`
   align-items: ${({ align }) => align || "center"};
   width: 100%;
   height: ${({ height }) => height || "auto"};
-  margin: 0;
+  margin: ${({ margin }) => margin || 0};
   padding: ${({ padding }) => padding || 0};
   position: ${({ position }) => position || "inherit"};
   bottom: ${({ bottom }) => bottom || "inherit"};
