@@ -5,15 +5,10 @@ export const FooterContainer = styled.ul`
   background-color: ${({ theme }) => theme.bgColors.footer};
   list-style-type: none;
   margin: 0;
-  padding: 16px;
+  padding: 10px;
   overflow: hidden;
-
-  /* Fix bar to bottom of page */
-  position: fixed;
-  bottom: 0;
-
-  /* Set to full width of page */
   width: 100%;
+  min-height: 88px;
 `;
 
 export const FooterFinePrint = styled.li`
@@ -28,10 +23,9 @@ export const FooterFinePrint = styled.li`
 
   /* Alignment */
   display: block;
-  text-align: center;
 `;
 
-export const FooterLink = styled.li`
+export const FooterLink = styled(FooterFinePrint)`
   text-decoration: underline;
 
   &:hover,

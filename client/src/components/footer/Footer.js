@@ -10,31 +10,52 @@ import {
   FooterFinePrint,
   FooterLink,
 } from "../styles/Footer.styled";
+import { Flex } from "../styles/Flex.styled";
 
 const Footer = () => {
   const [showAttributions, setShowAttributions] = useState(false);
 
+  const FinePrint = () => {
+    return (
+      <>
+        <Flex direction="column" justify="center" align="flex-start">
+          <FooterFinePrint>Developed by Nicolas Mortelliti.</FooterFinePrint>
+          <FooterFinePrint>
+            Capstone project submission for the Flatiron School Software
+            Engineering program.
+          </FooterFinePrint>
+        </Flex>
+      </>
+    );
+  };
+
+  const DetermineFooter = () => {
+    switch (showAttributions) {
+      case true:
+        return <Attributions setShowAttributions={setShowAttributions} />;
+
+      default:
+        return <FinePrint />;
+    }
+  };
+
   return (
-    <>
-      {showAttributions ? (
-        <Attributions setShowAttributions={setShowAttributions} />
-      ) : null}
+    <Flex bottom="0" position="fixed">
       <FooterContainer>
-        <FooterFinePrint>
-          <FooterLink onClick={() => setShowAttributions(!showAttributions)}>
-            Show Attributions
-          </FooterLink>
-        </FooterFinePrint>
-        <FooterFinePrint>
-          Website developed by Nicolas Mortelliti.
-        </FooterFinePrint>
-        <FooterFinePrint>
-          Capstone project submission for the Flatiron School Software
-          Engineering program.
-        </FooterFinePrint>
-        <Socials />
+        <Flex direction="column">
+          <Flex>
+            <DetermineFooter />
+            <Flex justify="flex-end" align="flex-end" direction="column">
+              <Socials />
+              <FooterLink
+                onClick={() => setShowAttributions(!showAttributions)}>
+                {showAttributions ? "Hide Attributions" : "Show Attributions"}
+              </FooterLink>
+            </Flex>
+          </Flex>
+        </Flex>
       </FooterContainer>
-    </>
+    </Flex>
   );
 };
 

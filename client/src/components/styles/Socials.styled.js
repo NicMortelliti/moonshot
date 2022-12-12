@@ -34,16 +34,15 @@ export const StyledSocialIcons = styled.div`
   justify-content: center;
 
   a {
-    border: 1px solid ${({theme})=> theme.colors.footer};
+    border: 1px solid ${({ theme }) => theme.colors.footer};
     border-radius: 50%;
-    color: ${({theme})=> theme.colors.footer};
+    color: ${({ theme }) => theme.colors.footer};
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
+    margin-left: 10px;
     height: 40px;
     width: 40px;
     text-decoration: none;
   }
-
-`
+`;
