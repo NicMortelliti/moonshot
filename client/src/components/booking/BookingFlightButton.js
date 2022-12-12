@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { formatDate } from "../../helpers/helpers";
 import { FaSpaceShuttle } from "react-icons/fa";
 
@@ -11,11 +11,9 @@ import {
 } from "../styles/Search.styled";
 import { Button } from "../styles/Button.styled";
 
-const BookingFlightButton = ({
-  data,
-  setIsConfirmationDisplayed,
-  setFlightIdSelected,
-}) => {
+const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
+  const [isConfirmationDisplayed, setIsConfirmationDisplayed] = useState(false);
+
   // Destructure props
   const {
     id: flightId,
@@ -43,6 +41,29 @@ const BookingFlightButton = ({
   const confirmSelection = () => {
     setFlightIdSelected(flightId);
     setIsConfirmationDisplayed(true);
+  };
+
+  const ConfirmationSection = () => {
+    switch (isConfirmationDisplayed) {
+      case true:
+        return (
+          <SearchFlex direction="column">
+            <p>{`Are you sure you want to book flight ${flightId}?`}</p>
+            <SearchFlex align="space-between" justify="space-between">
+              <Button onClick={() => sendBooking()}>Confirm</Button>
+              <Button onClick={() => setIsConfirmationDisplayed(false)}>
+                Cancel
+              </Button>
+            </SearchFlex>
+          </SearchFlex>
+        );
+
+      case false:
+        return <Button onClick={() => confirmSelection()}>Book</Button>;
+
+      default:
+        break;
+    }
   };
 
   return (
@@ -85,7 +106,7 @@ const BookingFlightButton = ({
 
         {/* Button */}
         <SearchFlex>
-          <Button onClick={() => confirmSelection()}>Book</Button>
+          <ConfirmationSection />
         </SearchFlex>
       </FlightContainer>
     </SearchFlex>

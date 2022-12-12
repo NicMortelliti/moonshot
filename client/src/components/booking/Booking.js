@@ -14,7 +14,6 @@ import { Flex } from "../styles/Flex.styled";
 import { SearchContainer } from "../styles/Search.styled";
 
 const Booking = () => {
-  const [isConfirmationDisplayed, setIsConfirmationDisplayed] = useState(false);
   const [flightIdSelected, setFlightIdSelected] = useState(null);
 
   const dispatch = useDispatch();
@@ -51,8 +50,8 @@ const Booking = () => {
           <Flight
             key={eachData.id}
             data={eachData}
-            setIsConfirmationDisplayed={setIsConfirmationDisplayed}
             setFlightIdSelected={setFlightIdSelected}
+            sendBooking={sendBooking}
           />
         ));
       default:
@@ -62,7 +61,6 @@ const Booking = () => {
 
   // Clear local states for confirmation dialog
   const clearLocalDialogStates = () => {
-    setIsConfirmationDisplayed(false);
     setFlightIdSelected(null);
   };
 
@@ -72,23 +70,8 @@ const Booking = () => {
     clearLocalDialogStates();
   };
 
-  const RenderConfirmationDialog = () => {
-    if (!isConfirmationDisplayed) {
-      return null;
-    } else {
-      return (
-        <div>
-          <p>{`Are you sure you want to book flight ${flightIdSelected}?`}</p>
-          <Button onClick={() => sendBooking()}>Confirm</Button>
-          <Button onClick={() => clearLocalDialogStates()}>Cancel</Button>
-        </div>
-      );
-    }
-  };
-
   return (
     <>
-      <RenderConfirmationDialog />
       {data ? (
         <Flex>
           <SearchContainer>{determineWhatToRender()}</SearchContainer>
