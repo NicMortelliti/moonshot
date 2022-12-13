@@ -12,7 +12,7 @@ body {
   font-size: 1.15em;
   margin: 0;
   padding-top: 55px;
-  padding-bottom: 88px;
+  padding-bottom: 106px;
 }
 
 h1,

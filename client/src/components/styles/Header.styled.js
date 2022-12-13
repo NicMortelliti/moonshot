@@ -36,6 +36,7 @@ export const HeaderListItem = styled.li`
     color: ${({ theme }) => theme.hoverColor};
   }
 
+  /* TODO Figure out how to capture if a link is actively selected */
   &.active {
     color: ${({ theme }) => theme.hoverColor};
     font-weight: 400;

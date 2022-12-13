@@ -7,29 +7,6 @@ export const SocialContainer = styled.ul`
   overflow: hidden;
 `;
 
-export const SocialListItem = styled.li`
-  /* Color and style */
-  color: ${({ theme }) => theme.colors.footer};
-  padding: 14px 16px;
-  text-decoration: none;
-
-  /* Size */
-  font-size: ${(props) => props.fontSize || "x-small"};
-  font-weight: 300;
-
-  /* Alignment */
-  display: inline-block;
-  text-align: center;
-
-  /* TODO Fix highlighting. Hovering over 
-  social icons does not transition to hover color */
-  &:hover,
-  &:focus {
-    color: ${({ theme }) => theme.hoverColor};
-    cursor: pointer;
-  }
-`;
-
 export const StyledSocialIcons = styled.div`
   display: flex;
   align-items: center;
@@ -46,5 +23,34 @@ export const StyledSocialIcons = styled.div`
     height: 40px;
     width: 40px;
     text-decoration: none;
+  }
+
+  li {
+    /* Color and style */
+    color: ${({ theme }) => theme.colors.footer};
+    padding: 14px 0 6px;
+    text-decoration: none;
+
+    /* Size */
+    font-size: ${(props) => props.fontSize || "large"};
+    font-weight: 300;
+
+    /* Alignment */
+    display: inline-block;
+    text-align: center;
+
+    cursor: pointer;
+  }
+
+  &:hover,
+  &:focus {
+    li {
+      border-color: ${({ theme }) => theme.hoverColor};
+    }
+    a {
+      border-color: ${({ theme }) => theme.hoverColor};
+      color: ${({ theme }) => theme.colors.dark};
+      background-color: ${({ theme }) => theme.hoverColor};
+    }
   }
 `;

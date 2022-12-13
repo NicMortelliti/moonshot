@@ -27,10 +27,10 @@ export const FooterFinePrint = styled.li`
 
 export const FooterLink = styled(FooterFinePrint)`
   text-decoration: underline;
+  cursor: pointer;
 
   &:hover,
   &:focus {
     color: ${({ theme }) => theme.hoverColor};
-    cursor: pointer;
   }
 `;
