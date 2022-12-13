@@ -14,6 +14,11 @@ export const HeaderContainer = styled.ul`
 
   /* Set to full width of page */
   width: 100%;
+
+  /* This places the header on top of any elements
+  in body of the site. Items with opacity were
+  visible in the header when scrolling */
+  z-index: 999;
 `;
 
 export const HeaderListItem = styled.li`
