@@ -8,7 +8,7 @@ import { FaSpaceShuttle } from "react-icons/fa";
 import { Flex } from "../styles/Flex.styled";
 import { Button, MinimalButton } from "../styles/Button.styled";
 import { StyledReservationCard } from "../styles/Card.styled";
-import { HR } from "../styles/Widgets.styled";
+import { HR, Legend } from "../styles/Widgets.styled";
 
 const ReservationCard = ({ reservation }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -66,44 +66,56 @@ const ReservationCard = ({ reservation }) => {
       <>
         <Flex align="flex-start">
           <Flex direction="column" align="flex-start">
-            <h5>From</h5>
+            <Legend>From</Legend>
             <h1>{origin.name}</h1>
             <h2>{origin.macro_place}</h2>
-            <h5>{shortFormatDate(departure)}</h5>
+            <Legend>{shortFormatDate(departure)}</Legend>
           </Flex>
           <Flex direction="column" justify="flex-start">
-            <h5>Flight</h5>
+            <Legend>Flight</Legend>
             <h2>{flightId}</h2>
             <FaSpaceShuttle />
           </Flex>
           <Flex direction="column" align="flex-end">
-            <h5>To</h5>
+            <Legend>To</Legend>
             <h1>{destination.name}</h1>
             <h2>{destination.macro_place}</h2>
-            <h5>{shortFormatDate(arrival)}</h5>
+            <Legend>{shortFormatDate(arrival)}</Legend>
           </Flex>
         </Flex>
         <Flex>
           <HR margin="20px 0" />
         </Flex>
-        <Flex>
-          <Flex align="flex-start" direction="column">
-            <h5>Passenger:</h5>
-            <h4>
-              {capitalize(firstName)} {capitalize(lastName)}
-            </h4>
+
+        {/* Bottom half of card is rendered here */}
+        <Flex align="flex-end" justify="flex-end">
+          {/* The flex=4 argument makes the content in this
+          flex container take up more width than the content
+          on the right side of this card. */}
+          <Flex direction="column" flex="4">
+            <Flex>
+              <Flex align="flex-start" direction="column">
+                <Legend>Passenger:</Legend>
+                <h4>
+                  {capitalize(firstName)} {capitalize(lastName)}
+                </h4>
+              </Flex>
+            </Flex>
+            <Flex align="flex-start" direction="column">
+              <Legend margin="1rem 0 0">Spacecraft:</Legend>
+              <h4>
+                {vehicle.make} {vehicle.model} "{vehicle.name}"
+              </h4>
+            </Flex>
           </Flex>
-        </Flex>
-        <Flex align="flex-end">
-          <Flex align="flex-start" direction="column">
-            <h5>Spacecraft:</h5>
-            <h4>
-              {vehicle.make} {vehicle.model} "{vehicle.name}"
-            </h4>
-          </Flex>
-          <Flex justify="flex-end">
+
+          {/* The flex=1 argument makes the cancel reservation
+          button smaller in width than the content on the left
+          side of the card. */}
+          <Flex flex="1">
             <MinimalButton
               name="cancel"
+              textAlign="end"
               onClick={() => setShowConfirmation(true)}>
               Cancel reservation
             </MinimalButton>

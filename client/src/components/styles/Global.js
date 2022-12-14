@@ -15,8 +15,12 @@ body {
   padding-bottom: 106px;
   height: 100%;
   display: flex;
-  align-content: stretch;
-;
+  flex-flow: row wrap;
+  text-align: center;
+
+  & > *{
+    flex: 1 100%
+  }
 }
 
 h1,
@@ -24,7 +28,9 @@ h2,
 h3,
 h4,
 p {
-  line-height: 1;
+  color: ${({ theme }) => theme.colors.dark};
+  line-height: ${({ lineHeight }) => lineHeight || 1};
+  margin: ${({ margin }) => margin || "5px 0"};
 }
 
 img {

@@ -25,8 +25,10 @@ export const MinimalButton = styled.button`
   cursor: pointer;
   font-weight: 700;
   margin: ${({ margin }) => margin || 0};
+  text-align: ${({ textAlign }) => textAlign || "center"};
 
   &:hover {
+    opacity: 0.9;
     transform: scale(0.98);
   }
 `;

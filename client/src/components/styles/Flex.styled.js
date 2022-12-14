@@ -4,7 +4,8 @@ export const Flex = styled.div`
   display: flex;
   flex-direction: ${({ direction }) => direction || "row"};
   flex: ${({ flex }) => flex || "0 1 auto"};
-  justify-content: ${({ justify }) => justify || "center"};
+  justify-content: ${({ justify }) => justify || "flex-end"};
+  text-align: center;
   align-items: ${({ align }) => align || "center"};
   width: ${({ width }) => width || "100%"};
   margin: ${({ margin }) => margin || 0};
@@ -18,4 +19,8 @@ export const Flex = styled.div`
 
   align-content: stretch;
   justify-content: stretch;
+
+  & > * {
+    flex: 1 100%;
+  }
 `;

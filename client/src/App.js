@@ -14,7 +14,6 @@ import Landing from "./pages/Landing";
 import { reLogin } from "./features/auth/authSlice";
 
 // Styled Components
-import { Flex } from "./components/styles/Flex.styled";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./components/styles/Theme";
 import GlobalStyles from "./components/styles/Global";
@@ -34,19 +33,15 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        <Flex className="App" direction="column">
-          <Flex border>
-            <Header />
-          </Flex>
-          <Flex width="100vw" border>
-            <Routes>
-              <Route path="/*" element={!user ? <Landing /> : <Dashboard />} />
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/register" element={<Register />} />
-            </Routes>
-          </Flex>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/*" element={!user ? <Landing /> : <Dashboard />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
+          </Routes>
           <Footer />
-        </Flex>
+        </div>
       </Router>
       <ToastContainer />
     </ThemeProvider>

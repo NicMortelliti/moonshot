@@ -58,7 +58,15 @@ const Login = () => {
   };
 
   return (
-    <Flex direction="column" justify="center" border>
+    <div
+      style={{
+        border: "2px dashed yellow",
+        display: "inline-flex",
+        flexDirection: "column",
+        alignItems: "stretch",
+        alignContent: "stretch",
+        justifyContent: "stretch",
+      }}>
       <Flex>
         <h2>Log in</h2>
       </Flex>
@@ -92,7 +100,7 @@ const Login = () => {
           </Flex>
         </Form>
       </Flex>
-    </Flex>
+    </div>
   );
 };
 

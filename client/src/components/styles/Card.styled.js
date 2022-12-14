@@ -21,23 +21,6 @@ export const StyledReservationCard = styled(Flex)`
 
   & > div {
     & > div {
-      & > h5 {
-        color: ${({ theme }) => theme.colors.light};
-        opacity: 0.5;
-        font-size: small;
-        line-height: 1;
-        margin: 0;
-        padding: 0;
-      }
-      & > h1,
-      & > h2,
-      & > h3,
-      & > h4,
-      & > p {
-        color: ${({ theme }) => theme.colors.dark};
-        line-height: 1;
-        margin: ${({ margin }) => margin || "5px 0"};
-      }
       & > p {
         color: ${({ theme }) => theme.colors.dark};
         opacity: 0.9;
