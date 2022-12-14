@@ -87,7 +87,7 @@ const ReservationCard = ({ reservation }) => {
           <HR margin="20px 0" />
         </Flex>
         <Flex>
-          <Flex justify="flex-start" gap="0 10px">
+          <Flex align="flex-start" direction="column">
             <h5>Passenger:</h5>
             <h4>
               {capitalize(firstName)} {capitalize(lastName)}
@@ -95,7 +95,7 @@ const ReservationCard = ({ reservation }) => {
           </Flex>
         </Flex>
         <Flex align="flex-end">
-          <Flex justify="flex-start" gap="0 10px">
+          <Flex align="flex-start" direction="column">
             <h5>Spacecraft:</h5>
             <h4>
               {vehicle.make} {vehicle.model} "{vehicle.name}"

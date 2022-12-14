@@ -30,7 +30,7 @@ const Header = () => {
         </NavLink>
 
         {/* Right side of nav bar */}
-        <NavLink to="/" onClick={onLogout}>
+        <NavLink to="/login" onClick={onLogout}>
           <HeaderListItem alignment="right">Log Out</HeaderListItem>
         </NavLink>
         <NavLink to="/my-profile">

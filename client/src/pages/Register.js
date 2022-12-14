@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FaUser } from "react-icons/fa";
 import { register } from "../features/auth/authSlice";
 
 // Styled Components
@@ -65,71 +64,73 @@ const Register = () => {
   };
 
   return (
-    <Flex>
-      <Form onsSubmit={onSubmit}>
+    <Flex direction="column" justify="center">
+      <Flex>
         <h2>Sign up</h2>
-        <Flex>
-          <InputContainer>
-            <input
-              type="text"
-              id="first_name"
-              name="first_name"
-              value={first_name}
-              placeholder="First name"
-              onChange={onChange}
-            />
-          </InputContainer>
-          <InputContainer>
-            <input
-              type="text"
-              id="last_name"
-              name="last_name"
-              value={last_name}
-              placeholder="Last name"
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Flex>
-        <Flex>
-          <InputContainer>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="Email address"
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Flex>
-        <Flex>
-          <InputContainer>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Password"
-              onChange={onChange}
-            />
-          </InputContainer>
-          <InputContainer>
-            <input
-              type="password"
-              id="password2"
-              name="password2"
-              value={password2}
-              placeholder="Confirm"
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Flex>
-        <Flex>
-          <div>
+      </Flex>
+      <Flex>
+        <Form onsSubmit={onSubmit}>
+          <Flex>
+            <InputContainer>
+              <input
+                type="text"
+                id="first_name"
+                name="first_name"
+                value={first_name}
+                placeholder="First name"
+                onChange={onChange}
+              />
+            </InputContainer>
+            <InputContainer>
+              <input
+                type="text"
+                id="last_name"
+                name="last_name"
+                value={last_name}
+                placeholder="Last name"
+                onChange={onChange}
+              />
+            </InputContainer>
+          </Flex>
+          <Flex>
+            <InputContainer>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                placeholder="Email address"
+                onChange={onChange}
+              />
+            </InputContainer>
+          </Flex>
+          <Flex>
+            <InputContainer>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Password"
+                onChange={onChange}
+              />
+            </InputContainer>
+            <InputContainer>
+              <input
+                type="password"
+                id="password2"
+                name="password2"
+                value={password2}
+                placeholder="Confirm"
+                onChange={onChange}
+              />
+            </InputContainer>
+          </Flex>
+          <Flex>
             <Button type="submit">{isLoading ? "Loading..." : "Submit"}</Button>
-          </div>
-        </Flex>
-      </Form>
+          </Flex>
+        </Form>
+      </Flex>
     </Flex>
   );
 };

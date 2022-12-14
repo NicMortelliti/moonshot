@@ -58,31 +58,40 @@ const Login = () => {
   };
 
   return (
-    <Flex>
-      <Form onSubmit={onSubmit}>
+    <Flex direction="column" justify="center" border>
+      <Flex>
         <h2>Log in</h2>
-        <InputContainer>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            placeholder="Email address"
-            onChange={onChange}
-          />
-        </InputContainer>
-        <InputContainer>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            placeholder="Password"
-            onChange={onChange}
-          />
-        </InputContainer>
-        <Button type="submit">Submit</Button>
-      </Form>
+      </Flex>
+
+      <Flex style={{ alignSelf: "stretch" }} border>
+        <Form onSubmit={onSubmit}>
+          <Flex direction="column" justify="center" border>
+            <InputContainer>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                placeholder="Email address"
+                onChange={onChange}
+              />
+            </InputContainer>
+            <InputContainer>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Password"
+                onChange={onChange}
+              />
+            </InputContainer>
+          </Flex>
+          <Flex>
+            <Button type="submit">Submit</Button>
+          </Flex>
+        </Form>
+      </Flex>
     </Flex>
   );
 };

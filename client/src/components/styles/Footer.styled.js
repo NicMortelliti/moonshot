@@ -9,6 +9,11 @@ export const FooterContainer = styled.ul`
   overflow: hidden;
   width: 100%;
   min-height: 88px;
+
+  /* This places the footer on top of any elements
+  in body of the site. Items with opacity were
+  visible in the footer when scrolling */
+  z-index: 999;
 `;
 
 export const FooterFinePrint = styled.li`

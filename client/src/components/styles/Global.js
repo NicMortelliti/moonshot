@@ -13,6 +13,10 @@ body {
   margin: 0;
   padding-top: 55px;
   padding-bottom: 106px;
+  height: 100%;
+  display: flex;
+  align-content: stretch;
+;
 }
 
 h1,
