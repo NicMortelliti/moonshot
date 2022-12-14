@@ -37,9 +37,13 @@ const ReservationList = () => {
         return <p>Loading...</p>;
       case reservations !== null:
         // Display reservations if there are any
-        return reservations.map((reservation) => (
-          <ReservationCard key={reservation.id} reservation={reservation} />
-        ));
+        return (
+          <Flex flex="1" direction="column" justify="center" align="center">
+            {reservations.map((reservation) => (
+              <ReservationCard key={reservation.id} reservation={reservation} />
+            ))}
+          </Flex>
+        );
       default:
         return (
           <Flex direction="column">
