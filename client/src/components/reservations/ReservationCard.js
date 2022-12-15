@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { capitalize, shortFormatDate } from "../../helpers/helpers";
 import { deleteReservation } from "../../features/reservations/reservationSlice";
-import { FaSpaceShuttle } from "react-icons/fa";
 
 // Styled components
 import { Flex } from "../styles/Flex.styled";
@@ -77,7 +76,7 @@ const ReservationCard = ({ reservation }) => {
           </Flex>
           <Flex direction="column" align="flex-end">
             <Legend>To</Legend>
-            <h1>{destination.name}</h1>
+            <h1 align="end">{destination.name}</h1>
             <h2>{destination.macro_place}</h2>
             <Legend>{shortFormatDate(arrival)}</Legend>
           </Flex>

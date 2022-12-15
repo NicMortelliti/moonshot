@@ -28,9 +28,11 @@ h2,
 h3,
 h4,
 p {
+  display: flex;
   color: ${({ theme }) => theme.colors.dark};
   line-height: ${({ lineHeight }) => lineHeight || 1};
   margin: ${({ margin }) => margin || "5px 0"};
+  text-align: ${({ align }) => align || "auto"};
 }
 
 img {
