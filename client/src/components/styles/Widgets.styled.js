@@ -1,30 +1,57 @@
 import styled from "styled-components";
-import { Flex } from "./Flex.styled";
+import { FaSpaceShuttle } from "react-icons/fa";
 
-export const HR = styled(Flex)`
-  border-bottom: 2px solid black;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin: ${({ margin }) => margin || "0 auto 20px"};
+const HrStyled = styled.div`
+  flex: 0 0 90%;
+  flex-direction: row;
+  margin: 2em auto;
 
-  & > span {
-    height: 10px;
-    width: 10px;
-    background-color: black;
-    display: inline-block;
+  div {
+    height: 0px;
+    padding: 0;
+    border-bottom: 0.15em solid ${({ theme }) => theme.black || "black"};
+    padding: 0;
+    margin: 0 auto;
     position: relative;
-    top: 13px;
-  }
+    display: flex;
 
-  & > svg {
-    font-size: x-large;
-    left: -46%;
-    top: 13px;
-    position: relative;
-    color: ${({ theme }) => theme.bgColors.dark};
+    div {
+      width: 0.5em;
+      height: 0.5em;
+      background-color: ${({ theme }) => theme.black || "black"};
+      border: none;
+      position: absolute;
+      top: -0.15em;
+    }
+
+    .right {
+      right: 0;
+    }
+
+    svg {
+      font-size: xx-large;
+      box-sizing: border-box;
+      margin: auto;
+      position: absolute;
+      top: -0.38em;
+      background-color: ${({ theme }) => theme.bgColors.light || "none"};
+      color: ${({ theme }) => theme.accent || "black"};
+      border: 1px dashed red;
+    }
   }
 `;
+
+export const HorizontalRule = () => {
+  return (
+    <HrStyled>
+      <div>
+        <div />
+        <FaSpaceShuttle />
+        <div className="right" />
+      </div>
+    </HrStyled>
+  );
+};
 
 export const Legend = styled.h5`
   color: ${({ theme }) => theme.colors.light};

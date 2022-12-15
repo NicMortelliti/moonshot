@@ -22,5 +22,6 @@ export const Flex = styled.div`
 
   & > * {
     flex: 1 100%;
+    text-align: ${({ textAlign }) => textAlign || "center"};
   }
 `;

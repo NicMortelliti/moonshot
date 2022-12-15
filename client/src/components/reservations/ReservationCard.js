@@ -8,7 +8,7 @@ import { FaSpaceShuttle } from "react-icons/fa";
 import { Flex } from "../styles/Flex.styled";
 import { Button, MinimalButton } from "../styles/Button.styled";
 import { StyledReservationCard } from "../styles/Card.styled";
-import { HR, Legend } from "../styles/Widgets.styled";
+import { HorizontalRule, Legend } from "../styles/Widgets.styled";
 
 const ReservationCard = ({ reservation }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -74,7 +74,6 @@ const ReservationCard = ({ reservation }) => {
           <Flex direction="column" justify="flex-start">
             <Legend>Flight</Legend>
             <h2>{flightId}</h2>
-            <FaSpaceShuttle />
           </Flex>
           <Flex direction="column" align="flex-end">
             <Legend>To</Legend>
@@ -84,7 +83,7 @@ const ReservationCard = ({ reservation }) => {
           </Flex>
         </Flex>
         <Flex>
-          <HR margin="20px 0" />
+          <HorizontalRule />
         </Flex>
 
         {/* Bottom half of card is rendered here */}

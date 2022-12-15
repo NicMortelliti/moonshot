@@ -6,15 +6,14 @@ import { reset } from "../../features/booking/bookingSlice";
 // Styled Components
 import { Button } from "../styles/Button.styled";
 import { Flex } from "../styles/Flex.styled";
-import { SearchFlex, FlightContainer } from "../styles/Search.styled";
 import {
   StyledReservationCard,
   ReservationContainer,
 } from "../styles/Card.styled";
+import { HorizontalRule } from "../styles/Widgets.styled";
 
 // Helpers
 import { capitalize, shortFormatDate } from "../../helpers/helpers";
-import { HR } from "../styles/Widgets.styled";
 
 const BookingConfirmation = ({ data }) => {
   // Destructure props
@@ -51,7 +50,7 @@ const BookingConfirmation = ({ data }) => {
               <h5>The following booking has been confirmed</h5>
             </Flex>
             <Flex>
-              <HR margin="20px" />
+              <HorizontalRule margin="20px" />
             </Flex>
             <Flex gap="0 10px">
               <h5>Confirmation number:</h5>

@@ -1,4 +1,5 @@
 const white = "#ffffff";
+const black = "#000000";
 const lightBlue = "#676f9d";
 const medBlue = "#424769";
 const darkBlue = "#2d3250";
@@ -24,6 +25,8 @@ export const theme = {
     light: lightBlue,
   },
 
+  white: white,
+  black: black,
   hoverColor: accent,
   alert: "lightcoral",
   accent: accent,

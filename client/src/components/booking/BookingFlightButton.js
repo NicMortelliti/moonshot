@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { formatDate } from "../../helpers/helpers";
-import { FaSpaceShuttle } from "react-icons/fa";
 
 // Styled Components
 import {
@@ -9,7 +8,7 @@ import {
   SearchFlex,
 } from "../styles/Search.styled";
 import { Button } from "../styles/Button.styled";
-import { HR } from "../styles/Widgets.styled";
+import { HorizontalRule } from "../styles/Widgets.styled";
 
 const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
   const [isConfirmationDisplayed, setIsConfirmationDisplayed] = useState(false);
@@ -88,22 +87,21 @@ const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
         </SearchFlex>
 
         {/* Locations */}
-        <SearchFlex justify="space-between">
-          <h5>
-            {originName}, {originMacroName}
-          </h5>
-          <h5>
-            {destinationName}, {destinationMacroName}
-          </h5>
+        <SearchFlex justify="space-evenly" border>
+          <SearchFlex>
+            <h5>
+              {originName}, {originMacroName}
+            </h5>
+          </SearchFlex>
+          <SearchFlex align="flex-start">
+            <h5>
+              {destinationName}, {destinationMacroName}
+            </h5>
+          </SearchFlex>
         </SearchFlex>
 
-        {/* Horizontal rule */}
-        <HR>
-          <span />
-          <hr />
-          <FaSpaceShuttle />
-          <span />
-        </HR>
+        {/* Horizontal Rule widget */}
+        <HorizontalRule />
 
         {/* Dates */}
         <SearchFlex justify="space-between">
