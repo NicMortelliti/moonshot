@@ -12,10 +12,11 @@ export const FlightContainer = styled(Flex)`
   background-color: ${({ theme }) => theme.bgColors.light};
   color: ${({ theme }) => theme.colors.dark};
   direction: column;
+  display: flex;
   align-items: flex-end;
+  justify-content: center;
   padding: 20px;
 
-  display: flex;
   width: 80%;
   max-width: 800px;
   margin: 5px;
@@ -33,6 +34,10 @@ export const SearchLocationButton = styled.button`
 
   width: 100px;
   height: 100px;
+
+  p {
+    justify-content: center;
+  }
 
   &:hover,
   &:focus {
