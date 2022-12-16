@@ -46,7 +46,6 @@ export const HorizontalRule = () => {
     <HrStyled>
       <div>
         <div />
-        <FaSpaceShuttle />
         <div className="right" />
       </div>
     </HrStyled>
