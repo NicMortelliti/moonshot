@@ -10,7 +10,7 @@ import {
   StyledReservationCard,
   ReservationContainer,
 } from "../styles/Card.styled";
-import { HorizontalRule } from "../styles/Widgets.styled";
+import { HorizontalRule, Legend } from "../styles/Widgets.styled";
 
 // Helpers
 import { capitalize, shortFormatDate } from "../../helpers/helpers";
@@ -38,65 +38,126 @@ const BookingConfirmation = ({ data }) => {
   };
 
   return (
-    <ReservationContainer>
-      <StyledReservationCard align="flex-start">
-        <>
-          <Flex direction="column" align="flex-start">
-            <Flex gap="0 20px">
-              <h1>Far out!</h1>
-              <h3>You're going to space!</h3>
-            </Flex>
-            <Flex>
-              <h5>The following booking has been confirmed</h5>
-            </Flex>
-            <Flex>
-              <HorizontalRule margin="20px" />
-            </Flex>
-            <Flex gap="0 10px">
-              <h5>Confirmation number:</h5>
-              <h3> {confirmationNumber}</h3>
-            </Flex>
-            <Flex gap="0 10px">
+    <div
+      style={{
+        display: "flex",
+        flex: "1 100%",
+        flexDirection: "column",
+        margin: "30px 30px",
+        color: "black",
+        border: "1px dashed red",
+      }}>
+      <div
+        style={{
+          background: "white",
+          padding: "20px",
+          border: "1px dashed magenta",
+        }}>
+        {/* Top Half */}
+        <div
+          style={{
+            border: "1px dashed green",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}>
+          <h1>Far out!</h1>
+          <h3>You're going to space!</h3>
+          <Legend>The following booking has been confirmed.</Legend>
+        </div>
+        <div>
+          <HorizontalRule margin="20px" />
+        </div>
+        <div
+          style={{
+            border: "1px dashed orange",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+          }}>
+          <div style={{}}>
+            <div>
               <h5>Passenger:</h5>
               <p>
                 {capitalize(firstName)} {capitalize(lastName)}
               </p>
-            </Flex>
-            {/* <Flex>
-              <HR margin="20px" />
-            </Flex> */}
-          </Flex>
-          <Flex align="flex-start" margin="20px 0 10px">
-            <Flex direction="column" align="flex-start">
-              <h5>From</h5>
-              <h1>{originName}</h1>
-              <h2>{originMacroName}</h2>
-              <h5>{shortFormatDate(departure)}</h5>
-            </Flex>
-            <Flex direction="column" justify="flex-start">
-              <h5>Flight</h5>
-              <h2>{flightId}</h2>
-            </Flex>
-            <Flex direction="column" align="flex-end">
-              <h5>To</h5>
-              <h1>{destinationName}</h1>
-              <h2>{destinationMacroName}</h2>
-              <h5>{shortFormatDate(arrival)}</h5>
-            </Flex>
-          </Flex>
-          <Flex direction="column">
-            <Flex>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+              }}>
+              <h3>Flight {flightId}</h3>
               <p>
-                On the beautiful {vehicleName}, a {vehicleMake} {vehicleModel}!
+                {vehicleMake} {vehicleModel} - "{vehicleName}"
               </p>
-            </Flex>
-            <Flex margin="20px 0 0">
-              <Button onClick={() => closeConfirmation()}>ok!</Button>
-            </Flex>
-          </Flex>
-        </>
-      </StyledReservationCard>
-    </ReservationContainer>
+            </div>
+          </div>
+          <h5>Confirmation number:</h5>
+          <h3> {confirmationNumber}</h3>
+        </div>
+
+        {/* Bottom half */}
+        <div
+          style={{
+            display: "flex",
+            // justifyContent: "stretch",
+            flex: "1 1 100%",
+            alignItems: "center",
+            border: "1px dashed red",
+            // height: "2em",
+          }}>
+          <div
+            style={{
+              border: "1px solid magenta",
+              display: "flex",
+              flex: "1 1 100%",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "start",
+            }}>
+            <Legend>From</Legend>
+            <h5>
+              {originName}, {originMacroName}
+            </h5>
+            <h5>{shortFormatDate(departure)}</h5>
+          </div>
+          {/* Flight # and Vehicle */}
+          <div
+            style={{
+              border: "1px solid magenta",
+              display: "flex",
+              flex: "1 1 100%",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "end",
+            }}>
+            <Legend>To</Legend>
+            <h5>
+              {destinationName}, {destinationMacroName}
+            </h5>
+            <h5>{shortFormatDate(arrival)}</h5>
+          </div>
+        </div>
+        <div
+          style={{
+            border: "2px solid purple",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}>
+          <div>
+            <Button onClick={() => closeConfirmation()}>ok!</Button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
