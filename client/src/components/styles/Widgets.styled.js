@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { FaSpaceShuttle } from "react-icons/fa";
 
 const HrStyled = styled.div`
   flex: 0 0 90%;
   flex-direction: row;
-  margin: 2em auto;
+  margin: 1em auto;
 
   div {
     height: 0px;

@@ -31,9 +31,17 @@ const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
   const seats = (seatsRemaining) => {
     if (seatsRemaining <= 6) {
       return (
-        <SeatsContainer>
+        <div
+          style={{
+            background: "lightcoral",
+            height: "2.0em",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "0.5em",
+          }}>
           <p>{`Only ${seatsRemaining} seats remaining!`}</p>
-        </SeatsContainer>
+        </div>
       );
     } else {
       return null;
@@ -49,15 +57,30 @@ const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
     switch (isConfirmationDisplayed) {
       case true:
         return (
-          <SearchFlex direction="column">
-            <p>{`Are you sure you want to book flight ${flightId}?`}</p>
-            <SearchFlex align="space-between" justify="space-between">
+          <div
+            style={{
+              flexDirection: "column",
+              display: "flex",
+              alignItems: "center",
+            }}>
+            <p
+              style={{
+                margin: "1em 0",
+              }}>{`Are you sure you want to book flight ${flightId}?`}</p>
+            <div
+              style={{
+                display: "flex",
+                flex: "1",
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "space-evenly",
+              }}>
               <Button onClick={() => sendBooking()}>Confirm</Button>
               <Button onClick={() => setIsConfirmationDisplayed(false)}>
                 Cancel
               </Button>
-            </SearchFlex>
-          </SearchFlex>
+            </div>
+          </div>
         );
 
       case false:
@@ -73,48 +96,72 @@ const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
   // "n" seats remaining is displayed
 
   return (
-    <SearchFlex>
-      <FlightContainer direction="column" align="flex-end" padding="20px">
+    <div
+      style={{
+        display: "flex",
+        flex: "1 100%",
+        flexDirection: "column",
+        margin: "10px 0",
+        color: "black",
+      }}>
+      <div style={{ background: "white", padding: "20px" }}>
         {/* Seats Remaining */}
         {seats(reservations_remaining)}
 
         {/* Flight # and Vehicle */}
-        <SearchFlex direction="column">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+          }}>
           <h3>Flight {flightId}</h3>
           <p>
             {vehicleMake} {vehicleModel} - "{vehicleName}"
           </p>
-        </SearchFlex>
+        </div>
 
         {/* Locations */}
-        <SearchFlex justify="space-evenly" border>
-          <SearchFlex>
-            <h5>
-              {originName}, {originMacroName}
-            </h5>
-          </SearchFlex>
-          <SearchFlex align="flex-start">
-            <h5>
-              {destinationName}, {destinationMacroName}
-            </h5>
-          </SearchFlex>
-        </SearchFlex>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "2em",
+          }}>
+          <h5>
+            {originName}, {originMacroName}
+          </h5>
+          <h5>
+            {destinationName}, {destinationMacroName}
+          </h5>
+        </div>
 
         {/* Horizontal Rule widget */}
-        <HorizontalRule />
+        <SearchFlex>
+          <HorizontalRule />
+        </SearchFlex>
 
         {/* Dates */}
-        <SearchFlex justify="space-between">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "2em",
+          }}>
           <h5>{formatDate(departure)}</h5>
           <h5>{formatDate(arrival)}</h5>
-        </SearchFlex>
+        </div>
 
         {/* Button */}
-        <SearchFlex>
+        <div>
           <ConfirmationSection />
-        </SearchFlex>
-      </FlightContainer>
-    </SearchFlex>
+        </div>
+      </div>
+    </div>
   );
 };
 
