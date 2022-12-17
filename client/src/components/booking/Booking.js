@@ -45,14 +45,22 @@ const Booking = () => {
         return (
           <div
             style={{
-              border: "4px dotted aqua",
               display: "flex",
-              placeContent: "stretch center",
+              justifyContent: "center",
               alignItems: "center",
             }}>
-            {data.map((eachData) => (
-              <Location key={eachData.id} data={eachData} />
-            ))}
+            <div
+              style={{
+                border: "4px dotted aqua",
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                alignItems: "center",
+              }}>
+              {data.map((eachData) => (
+                <Location key={eachData.id} data={eachData} />
+              ))}
+            </div>
           </div>
         );
 

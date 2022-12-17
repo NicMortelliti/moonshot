@@ -41,8 +41,11 @@ const App = () => {
             display: "flex",
             flexGrow: 1,
             margin: 0,
+            flexWrap: "wrap",
+            flexBasis: "80%",
             paddingTop: "55px",
             paddingBottom: "106px",
+            justifyContent: "space-evenly",
           }}>
           <Routes>
             <Route path="/*" element={!user ? <Landing /> : <Dashboard />} />

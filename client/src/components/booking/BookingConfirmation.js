@@ -69,20 +69,21 @@ const BookingConfirmation = ({ data, newReservation = false }) => {
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
+          margin: "20px 0",
+          placeContent: "stretch center",
           alignItems: "center",
-          justifyContent: "center",
+          flexBasis: "100%",
         }}>
         <div
           style={{
+            border: "4px dotted aqua",
             display: "flex",
-            flex: "1 100%",
             flexDirection: "column",
-            maxWidth: "80%",
-            minWidth: "30%",
-            padding: "30px",
-            color: "black",
-            background: "white",
+            justifyContent: "center",
+            alignItems: "stretch",
+            flexBasis: "90%",
+            maxWidth: "800px",
+            // gap: "30px",
           }}>
           {/* Top */}
           {newReservation ? (
