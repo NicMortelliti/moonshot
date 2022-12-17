@@ -20,8 +20,8 @@ const Socials = () => {
     },
   ];
 
-  // For each social within the socialsData, we
-  // will create a separate styled social icon
+  // For each social within socialsData, we
+  // will create a separate styled social icon.
   const RenderSocials = () =>
     socialsData.map((each) => {
       return (

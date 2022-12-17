@@ -9,7 +9,9 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
+import ReservationList from "./components/reservations/ReservationList";
+import Booking from "./components/booking/Booking";
+import Profile from "./components/profile/Profile";
 import Landing from "./pages/Landing";
 import { reLogin } from "./features/auth/authSlice";
 
@@ -43,14 +45,19 @@ const App = () => {
             padding: "auto auto",
             flexWrap: "wrap",
             flexBasis: "80%",
-            paddingTop: "55px",
-            paddingBottom: "106px",
+            paddingTop: "65px",
+            paddingBottom: "160px",
             justifyContent: "space-evenly",
           }}>
           <Routes>
-            <Route path="/*" element={!user ? <Landing /> : <Dashboard />} />
+            <Route path="/*" element={!user ? <Landing /> : <Landing />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
+
+            {/* User logged-in routes */}
+            <Route path="my-trips" element={<ReservationList />} />
+            <Route path="flight-search" element={<Booking />} />
+            <Route path="my-profile" element={<Profile />} />
           </Routes>
         </div>
 
