@@ -5,11 +5,7 @@ import Attributions from "../images/Attributions";
 import Socials from "./Socials";
 
 // Styled components
-import {
-  FooterContainer,
-  FooterFinePrint,
-  FooterLink,
-} from "../styles/Footer.styled";
+import { FooterFinePrint, FooterLink } from "../styles/Footer.styled";
 import { Flex } from "../styles/Flex.styled";
 
 const Footer = () => {
@@ -17,15 +13,20 @@ const Footer = () => {
 
   const FinePrint = () => {
     return (
-      <>
-        <Flex direction="column" justify="center" align="flex-start">
-          <FooterFinePrint>Developed by Nicolas Mortelliti.</FooterFinePrint>
-          <FooterFinePrint>
-            Capstone project submission for the Flatiron School Software
-            Engineering program.
-          </FooterFinePrint>
-        </Flex>
-      </>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          // justifyContent: "center",
+          // alignItems: "flex-start",
+          border: "2px dotted blue",
+        }}>
+        <FooterFinePrint>Developed by Nicolas Mortelliti.</FooterFinePrint>
+        <FooterFinePrint>
+          Capstone project submission for the Flatiron School Software
+          Engineering program.
+        </FooterFinePrint>
+      </div>
     );
   };
 
@@ -42,16 +43,29 @@ const Footer = () => {
   return (
     <div
       style={{
+        display: "flex",
         backgroundColor: "black",
-        opacity: 0.7,
         position: "fixed",
         bottom: 0,
         left: 0,
         width: "100%",
         zIndex: 999,
+        border: "2px dotted red",
       }}>
-      <DetermineFooter />
-      <div>
+      <div
+        style={{
+          border: "2px dotted yellow",
+          display: "flex",
+          flexDirection: "column",
+        }}>
+        <DetermineFooter />
+      </div>
+      <div
+        style={{
+          border: "2px dotted green",
+          display: "flex",
+          flexDirection: "column",
+        }}>
         <Socials />
         <FooterLink onClick={() => setShowAttributions(!showAttributions)}>
           {showAttributions ? "Hide Attributions" : "Show Attributions"}

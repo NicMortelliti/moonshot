@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { capitalize } from "../../helpers/helpers";
 
 // Styled components
-import { HeaderContainer, HeaderListItem } from "../styles/Header.styled";
+import { HeaderListItem } from "../styles/Header.styled";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -60,7 +60,6 @@ const Header = () => {
     <div
       style={{
         backgroundColor: "black",
-        opacity: 0.7,
         position: "fixed",
         top: 0,
         left: 0,
