@@ -42,18 +42,20 @@ const Booking = () => {
           </div>
         ));
       case destination:
-        return data.map((eachData) => (
+        return (
           <div
             style={{
               border: "4px dotted aqua",
               display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
+              placeContent: "stretch center",
               alignItems: "center",
             }}>
-            <Location key={eachData.id} data={eachData} />
+            {data.map((eachData) => (
+              <Location key={eachData.id} data={eachData} />
+            ))}
           </div>
-        ));
+        );
+
       case flight:
         return <BookingFlightList data={data} />;
 

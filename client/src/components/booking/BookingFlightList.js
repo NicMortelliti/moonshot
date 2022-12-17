@@ -27,26 +27,46 @@ const BookingFlightList = ({ data }) => {
   // Here we're mapping through all of the flights
   // contained within the data object.
   const RenderFlights = () => (
+    // <div
+    //   style={{
+    //     display: "flex",
+    //     flexDirection: "column",
+    //     justifyContent: "center",
+    //     alignItems: "stretch",
+    //     flexBasis: "90%",
+    //     maxWidth: "800px",
+    //     gap: "30px",
+    //     border: "4px dotted aqua",
+    //     placeContent: "stretch center",
+    //   }}>
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "stretch",
-        flexBasis: "90%",
-        maxWidth: "800px",
-        gap: "30px",
-        border: "4px dotted aqua",
+        margin: "20px",
         placeContent: "stretch center",
+        alignItems: "center",
+        flexBasis: "100%",
       }}>
-      {data.map((eachData) => (
-        <Flight
-          key={eachData.id}
-          data={eachData}
-          setFlightIdSelected={setFlightIdSelected}
-          sendBooking={sendBooking}
-        />
-      ))}
+      <div
+        style={{
+          border: "4px dotted aqua",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "stretch",
+          flexBasis: "90%",
+          maxWidth: "800px",
+          gap: "30px",
+        }}>
+        {data.map((eachData) => (
+          <Flight
+            key={eachData.id}
+            data={eachData}
+            setFlightIdSelected={setFlightIdSelected}
+            sendBooking={sendBooking}
+          />
+        ))}
+      </div>
     </div>
   );
 
