@@ -42,7 +42,7 @@ const BookingFlightList = ({ data }) => {
     <div
       style={{
         display: "flex",
-        margin: "20px",
+        margin: "20px 0",
         placeContent: "stretch center",
         alignItems: "center",
         flexBasis: "100%",

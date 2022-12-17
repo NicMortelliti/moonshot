@@ -98,7 +98,7 @@ const BookingFlightCard = ({ data, setFlightIdSelected, sendBooking }) => {
         flex: "1 100%",
         flexDirection: "column",
         maxWidth: "1100px",
-        margin: "10px 0",
+        // margin: "10px 0",
         color: "black",
       }}>
       <div style={{ background: "white", padding: "30px" }}>
@@ -154,7 +154,12 @@ const BookingFlightCard = ({ data, setFlightIdSelected, sendBooking }) => {
         </div>
 
         {/* Button */}
-        <div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
           <ConfirmationSection />
         </div>
       </div>
