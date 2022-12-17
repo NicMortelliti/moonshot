@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login } from "../features/auth/authSlice";
+import planet from "../components/images/planet.jpg";
 
 // Styled Components
 import { Button } from "../components/styles/Button.styled";
 import { Flex } from "../components/styles/Flex.styled";
 import { Form, InputContainer } from "../components/styles/FormStyled.styled";
+import { FrostedContainer } from "../components/styles/Frost.styled";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -60,46 +62,62 @@ const Login = () => {
   return (
     <div
       style={{
-        border: "2px dashed yellow",
-        display: "inline-flex",
-        flexDirection: "column",
-        alignItems: "stretch",
-        alignContent: "stretch",
-        justifyContent: "stretch",
+        display: "flex",
+        backgroundImage: `url(${planet})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        top: "-70px",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        position: "absolute",
+        justifyContent: "center",
+        alignItems: "center",
       }}>
-      <Flex>
-        <h2>Log in</h2>
-      </Flex>
+      <FrostedContainer
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          maxWidth: "500px",
+        }}>
+        <Flex>
+          <h2>Log in</h2>
+        </Flex>
 
-      <Flex style={{ alignSelf: "stretch" }} border>
-        <Form onSubmit={onSubmit}>
-          <Flex direction="column" justify="center" border>
-            <InputContainer>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                placeholder="Email address"
-                onChange={onChange}
-              />
-            </InputContainer>
-            <InputContainer>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                placeholder="Password"
-                onChange={onChange}
-              />
-            </InputContainer>
-          </Flex>
-          <Flex>
-            <Button type="submit">Submit</Button>
-          </Flex>
-        </Form>
-      </Flex>
+        <Flex style={{ alignSelf: "stretch" }} border>
+          <Form onSubmit={onSubmit}>
+            <Flex direction="column" justify="center" border>
+              <InputContainer>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  placeholder="Email address"
+                  onChange={onChange}
+                />
+              </InputContainer>
+              <InputContainer>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  placeholder="Password"
+                  onChange={onChange}
+                />
+              </InputContainer>
+            </Flex>
+            <Flex>
+              <Button type="submit">Submit</Button>
+            </Flex>
+          </Form>
+        </Flex>
+      </FrostedContainer>
     </div>
   );
 };
