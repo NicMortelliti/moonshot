@@ -57,12 +57,21 @@ const Header = () => {
   };
 
   return (
-    <HeaderContainer>
+    <div
+      style={{
+        backgroundColor: "black",
+        opacity: 0.7,
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        zIndex: 999,
+      }}>
       <NavLink to="/">
         <HeaderListItem>MoonShot</HeaderListItem>
       </NavLink>
       {user ? <RenderUserLoggedIn /> : <RenderNoUserLoggedInNav />}
-    </HeaderContainer>
+    </div>
   );
 };
 

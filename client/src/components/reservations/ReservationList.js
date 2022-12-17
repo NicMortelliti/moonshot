@@ -4,12 +4,11 @@ import { getReservations } from "../../features/reservations/reservationSlice";
 import { useNavigate } from "react-router-dom";
 
 // Components
-import ReservationCard from "./ReservationCard";
+import BookingConfirmation from "../booking/BookingConfirmation";
 
 // Styled Components
 import { Flex } from "../styles/Flex.styled";
 import { Button } from "../styles/Button.styled";
-import { ReservationContainer } from "../styles/Card.styled";
 
 const ReservationList = () => {
   const dispatch = useDispatch();
@@ -38,11 +37,21 @@ const ReservationList = () => {
       case reservations !== null:
         // Display reservations if there are any
         return (
-          <Flex flex="1" direction="column" justify="center" align="center">
+          <div
+            style={{
+              border: "4px dotted aqua",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "stretch",
+              flexBasis: "90%",
+              maxWidth: "800px",
+              gap: "30px",
+            }}>
             {reservations.map((reservation) => (
-              <ReservationCard key={reservation.id} reservation={reservation} />
+              <BookingConfirmation key={reservation.id} data={reservation} />
             ))}
-          </Flex>
+          </div>
         );
       default:
         return (
@@ -56,9 +65,16 @@ const ReservationList = () => {
 
   return (
     <>
-      <ReservationContainer>
+      <div
+        style={{
+          display: "flex",
+          margin: "20px",
+          placeContent: "stretch center",
+          alignItems: "center",
+          flexBasis: "100%",
+        }}>
         <RenderReservations />
-      </ReservationContainer>
+      </div>
     </>
   );
 };

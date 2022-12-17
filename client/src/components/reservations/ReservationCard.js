@@ -6,8 +6,11 @@ import { deleteReservation } from "../../features/reservations/reservationSlice"
 // Styled components
 import { Flex } from "../styles/Flex.styled";
 import { Button, MinimalButton } from "../styles/Button.styled";
-import { StyledReservationCard } from "../styles/Card.styled";
-import { HorizontalRule, Legend } from "../styles/Widgets.styled";
+import {
+  HorizontalRule,
+  Legend,
+  LocationBlock,
+} from "../styles/Widgets.styled";
 
 const ReservationCard = ({ reservation }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -62,8 +65,44 @@ const ReservationCard = ({ reservation }) => {
   // Basic information about the reservation
   const PrimaryData = () => {
     return (
-      <>
-        <Flex align="flex-start">
+      <div
+        style={{
+          border: "4px dotted pink",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "stretch",
+          flex: "1 1 100%",
+        }}>
+        <div
+          style={{
+            border: "4px dotted orange",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "stretch",
+            alignItems: "stretch",
+            flex: "1 1 100%",
+          }}>
+          <div
+            style={{
+              border: "2px dotted red",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flex: "1 1 100%",
+            }}>
+            <LocationBlock
+              align="start"
+              name={origin.name}
+              macroName={origin.macro_place}
+            />
+            <LocationBlock
+              align="end"
+              name={destination.name}
+              macroName={destination.macro_place}
+            />
+          </div>
+        </div>
+        <div>
           <Flex direction="column" align="flex-start">
             <Legend>From</Legend>
             <h1>{origin.name}</h1>
@@ -80,7 +119,7 @@ const ReservationCard = ({ reservation }) => {
             <h2>{destination.macro_place}</h2>
             <Legend>{shortFormatDate(arrival)}</Legend>
           </Flex>
-        </Flex>
+        </div>
         <Flex>
           <HorizontalRule />
         </Flex>
@@ -119,7 +158,7 @@ const ReservationCard = ({ reservation }) => {
             </MinimalButton>
           </Flex>
         </Flex>
-      </>
+      </div>
     );
   };
 
@@ -139,9 +178,15 @@ const ReservationCard = ({ reservation }) => {
   };
 
   return (
-    <StyledReservationCard>
+    <div
+      style={{
+        border: "6px dotted purple",
+        backgroundColor: "white",
+        display: "flex",
+        flexDirection: "column",
+      }}>
       <RenderCard />
-    </StyledReservationCard>
+    </div>
   );
 };
 

@@ -33,15 +33,25 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        <div className="App">
-          <Header />
+        <Header />
+
+        <div
+          style={{
+            border: "4px dotted pink",
+            display: "flex",
+            flexGrow: 1,
+            margin: 0,
+            paddingTop: "55px",
+            paddingBottom: "106px",
+          }}>
           <Routes>
             <Route path="/*" element={!user ? <Landing /> : <Dashboard />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register" element={<Register />} />
           </Routes>
-          <Footer />
         </div>
+
+        <Footer />
       </Router>
       <ToastContainer />
     </ThemeProvider>

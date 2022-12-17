@@ -2,15 +2,11 @@ import React, { useState } from "react";
 import { formatDate } from "../../helpers/helpers";
 
 // Styled Components
-import {
-  FlightContainer,
-  SeatsContainer,
-  SearchFlex,
-} from "../styles/Search.styled";
+import { SearchFlex } from "../styles/Search.styled";
 import { Button } from "../styles/Button.styled";
 import { HorizontalRule } from "../styles/Widgets.styled";
 
-const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
+const BookingFlightCard = ({ data, setFlightIdSelected, sendBooking }) => {
   const [isConfirmationDisplayed, setIsConfirmationDisplayed] = useState(false);
 
   // Destructure props
@@ -101,10 +97,11 @@ const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
         display: "flex",
         flex: "1 100%",
         flexDirection: "column",
+        maxWidth: "1100px",
         margin: "10px 0",
         color: "black",
       }}>
-      <div style={{ background: "white", padding: "20px" }}>
+      <div style={{ background: "white", padding: "30px" }}>
         {/* Seats Remaining */}
         {seats(reservations_remaining)}
 
@@ -165,4 +162,4 @@ const BookingFlightButton = ({ data, setFlightIdSelected, sendBooking }) => {
   );
 };
 
-export default BookingFlightButton;
+export default BookingFlightCard;

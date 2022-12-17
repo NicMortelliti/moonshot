@@ -3,7 +3,7 @@ import styled from "styled-components";
 const HrStyled = styled.div`
   flex: 0 0 90%;
   flex-direction: row;
-  margin: 1em auto;
+  margin: 1em 2em;
 
   div {
     height: 0px;
@@ -55,7 +55,29 @@ export const Legend = styled.h5`
   color: ${({ theme }) => theme.colors.light};
   opacity: 0.5;
   font-size: small;
-  line-height: ${({ lineHeight }) => lineHeight || 1};
-  margin: ${({ margin }) => margin || "0"};
+  line-height: ${({ lineHeight }) => lineHeight || "30px"};
+  margin: ${({ margin }) => margin || 0};
   padding: 0;
 `;
+
+export const LocationBlock = ({ align, name, macroName }) => {
+  const verb = align === "start" ? "From" : "To";
+
+  return (
+    <div
+      style={{
+        border: "2px dotted blue",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: align,
+        justifyContent: "center",
+        color: "black",
+        // height: "2em",
+      }}>
+      <Legend>{verb}</Legend>
+      <h5>
+        {name}, {macroName}
+      </h5>
+    </div>
+  );
+};

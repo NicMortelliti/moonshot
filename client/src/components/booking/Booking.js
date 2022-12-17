@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { bookFlight } from "../../features/booking/bookingSlice";
 
 // Components
 import { default as Location } from "./BookingLocationButton";
-import { default as Flight } from "./BookingFlightButton";
 import { default as Confirmation } from "./BookingConfirmation";
 import { getOrigins } from "../../features/booking/bookingSlice";
-
-// Styled Components
-import { Button } from "../styles/Button.styled";
-import { Flex } from "../styles/Flex.styled";
-import { SearchContainer } from "../styles/Search.styled";
+import BookingFlightList from "./BookingFlightList";
 
 const Booking = () => {
-  const [flightIdSelected, setFlightIdSelected] = useState(null);
-
   const dispatch = useDispatch();
 
   // Get reservations from API when component loads
@@ -24,7 +16,6 @@ const Booking = () => {
   }, []);
 
   // Destructure props
-  const { id: userId } = useSelector((state) => state.auth);
   const { flight, origin, destination, data } = useSelector(
     (state) => state.booking
   );
@@ -39,45 +30,42 @@ const Booking = () => {
     switch (null) {
       case origin:
         return data.map((eachData) => (
-          <Location key={eachData.id} data={eachData} />
+          <div
+            style={{
+              border: "4px dotted aqua",
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <Location key={eachData.id} data={eachData} />
+          </div>
         ));
       case destination:
         return data.map((eachData) => (
-          <Location key={eachData.id} data={eachData} />
+          <div
+            style={{
+              border: "4px dotted aqua",
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <Location key={eachData.id} data={eachData} />
+          </div>
         ));
       case flight:
-        return data.map((eachData) => (
-          <Flight
-            key={eachData.id}
-            data={eachData}
-            setFlightIdSelected={setFlightIdSelected}
-            sendBooking={sendBooking}
-          />
-        ));
+        return <BookingFlightList data={data} />;
+
       default:
         break;
     }
   };
 
-  // Clear local states for confirmation dialog
-  const clearLocalDialogStates = () => {
-    setFlightIdSelected(null);
-  };
-
-  // Send booking request to API
-  const sendBooking = () => {
-    dispatch(bookFlight({ userId, flightId: flightIdSelected }));
-    clearLocalDialogStates();
-  };
-
   return (
     <>
-      {data ? (
-        <Flex>
-          <SearchContainer>{determineWhatToRender()}</SearchContainer>
-        </Flex>
-      ) : null}
-      {flight ? <Confirmation data={flight} /> : null}
+      {data ? determineWhatToRender() : null}
+      {flight ? <Confirmation data={flight} newReservation /> : null}
     </>
   );
 };

@@ -4,7 +4,6 @@ export const Flex = styled.div`
   display: flex;
   flex-direction: ${({ direction }) => direction || "row"};
   flex: ${({ flex }) => flex || "0 1 auto"};
-  justify-content: ${({ justify }) => justify || "flex-end"};
   text-align: center;
   align-items: ${({ align }) => align || "center"};
   width: ${({ width }) => width || "100%"};

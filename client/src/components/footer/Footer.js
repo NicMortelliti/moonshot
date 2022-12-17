@@ -40,22 +40,24 @@ const Footer = () => {
   };
 
   return (
-    <Flex bottom="0" position="fixed">
-      <FooterContainer>
-        <Flex direction="column">
-          <Flex>
-            <DetermineFooter />
-            <Flex justify="flex-end" align="flex-end" direction="column">
-              <Socials />
-              <FooterLink
-                onClick={() => setShowAttributions(!showAttributions)}>
-                {showAttributions ? "Hide Attributions" : "Show Attributions"}
-              </FooterLink>
-            </Flex>
-          </Flex>
-        </Flex>
-      </FooterContainer>
-    </Flex>
+    <div
+      style={{
+        backgroundColor: "black",
+        opacity: 0.7,
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        zIndex: 999,
+      }}>
+      <DetermineFooter />
+      <div>
+        <Socials />
+        <FooterLink onClick={() => setShowAttributions(!showAttributions)}>
+          {showAttributions ? "Hide Attributions" : "Show Attributions"}
+        </FooterLink>
+      </div>
+    </div>
   );
 };
 
