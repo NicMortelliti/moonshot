@@ -14,7 +14,7 @@ export const Flex = styled.div`
   gap: ${({ gap }) => gap || "normal"};
 
   /* Border for development use */
-  border: ${({ border }) => (border && `1px dashed red`) || "none"};
+  /* border: ${({ border }) => (border && `1px dashed red`) || "none"}; */
 
   align-content: stretch;
   justify-content: stretch;
