@@ -81,3 +81,38 @@ export const LocationBlock = ({ align, name, macroName }) => {
     </div>
   );
 };
+
+export const CenteredTextRow = ({ lgd, readout }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        border: "2px dotted green",
+        flex: "1 1 100%",
+      }}>
+      <Legend
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifySelf: "center",
+          flex: "1 1 50%",
+          textAlign: "end",
+        }}>
+        {lgd}
+      </Legend>
+      <p
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "start",
+          padding: "0 10px",
+          flex: "1 1 50%",
+          textAlign: "start",
+          border: "1px dotted orange",
+        }}>
+        {readout}
+      </p>
+    </div>
+  );
+};

@@ -7,7 +7,11 @@ import { deleteReservation } from "../../features/reservations/reservationSlice"
 
 // Styled Components
 import { Button, MinimalButton } from "../styles/Button.styled";
-import { HorizontalRule, Legend } from "../styles/Widgets.styled";
+import {
+  CenteredTextRow,
+  HorizontalRule,
+  Legend,
+} from "../styles/Widgets.styled";
 import { Flex } from "../styles/Flex.styled";
 
 // Helpers
@@ -83,7 +87,6 @@ const BookingConfirmation = ({ data, newReservation = false }) => {
             alignItems: "stretch",
             flexBasis: "90%",
             maxWidth: "800px",
-            // gap: "30px",
           }}>
           {/* Top */}
           {newReservation ? (
@@ -114,43 +117,23 @@ const BookingConfirmation = ({ data, newReservation = false }) => {
             <div
               style={{
                 display: "flex",
+                flexDirection: "column",
                 justifyContent: "center",
-                alignItems: "center",
+                alignItems: "stretch",
               }}>
-              {/* Legends */}
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "end",
-                  flex: "1 1 50%",
-                }}>
-                <Legend>Confirmation number</Legend>
-                <Legend>Passenger</Legend>
-                <Legend>Flight</Legend>
-                <Legend>Spacecraft</Legend>
-              </div>
-
-              {/* Readouts */}
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "start",
-                  padding: "0 10px",
-                  flex: "1 1 50%",
-                }}>
-                <p>{confirmationNumber}</p>
-                <p>
-                  {capitalize(firstName)} {capitalize(lastName)}
-                </p>
-                <p>{flightId}</p>
-                <p>
-                  {vehicleMake} {vehicleModel} - "{vehicleName}"
-                </p>
-              </div>
+              <CenteredTextRow
+                lgd="Confirmation number"
+                readout={confirmationNumber}
+              />
+              <CenteredTextRow
+                lgd="Passenger"
+                readout={`${capitalize(firstName)} ${capitalize(lastName)}`}
+              />
+              <CenteredTextRow lgd="Flight" readout={flightId} />
+              <CenteredTextRow
+                lgd="Spacecraft"
+                readout={`${vehicleMake} ${vehicleModel} - "${vehicleName}"`}
+              />
             </div>
           </div>
 
@@ -235,6 +218,7 @@ const BookingConfirmation = ({ data, newReservation = false }) => {
         backgroundColor: "white",
         display: "flex",
         flexDirection: "column",
+        // margin: "40px",
       }}>
       <RenderCard />
     </div>
