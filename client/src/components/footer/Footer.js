@@ -6,7 +6,6 @@ import Socials from "./Socials";
 
 // Styled components
 import { FooterFinePrint, FooterLink } from "../styles/Footer.styled";
-import { Flex } from "../styles/Flex.styled";
 
 const Footer = () => {
   const [showAttributions, setShowAttributions] = useState(false);
@@ -17,9 +16,8 @@ const Footer = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          // justifyContent: "center",
-          // alignItems: "flex-start",
-          border: "2px dotted blue",
+          justifyContent: "stretch",
+          alignItems: "stretch",
         }}>
         <FooterFinePrint>Developed by Nicolas Mortelliti.</FooterFinePrint>
         <FooterFinePrint>
@@ -44,32 +42,32 @@ const Footer = () => {
     <div
       style={{
         display: "flex",
+        flexDirection: "column",
         backgroundColor: "black",
         position: "fixed",
         bottom: 0,
         left: 0,
         width: "100%",
         zIndex: 999,
-        border: "2px dotted red",
       }}>
       <div
         style={{
-          border: "2px dotted yellow",
           display: "flex",
+          flex: 1,
           flexDirection: "column",
         }}>
         <DetermineFooter />
-      </div>
-      <div
-        style={{
-          border: "2px dotted green",
-          display: "flex",
-          flexDirection: "column",
-        }}>
-        <Socials />
         <FooterLink onClick={() => setShowAttributions(!showAttributions)}>
           {showAttributions ? "Hide Attributions" : "Show Attributions"}
         </FooterLink>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        <Socials />
       </div>
     </div>
   );

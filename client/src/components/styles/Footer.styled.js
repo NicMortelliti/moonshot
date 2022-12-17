@@ -23,11 +23,12 @@ export const FooterFinePrint = styled.li`
   text-decoration: ${(props) => props.decorations || "none"};
 
   /* Size */
-  font-size: ${(props) => props.fontSize || "x-small"};
+  font-size: ${(props) => props.fontSize || "small"};
   font-weight: 300;
 
   /* Alignment */
   display: block;
+  text-align: center;
 `;
 
 export const FooterLink = styled(FooterFinePrint)`
