@@ -4,7 +4,6 @@ import { bookFlight } from "../../features/booking/bookingSlice";
 
 // Components
 import { default as Flight } from "./BookingFlightCard";
-import BookingConfirmation from "./BookingConfirmation";
 
 const BookingFlightList = ({ data }) => {
   const [flightIdSelected, setFlightIdSelected] = useState(null);
@@ -27,18 +26,6 @@ const BookingFlightList = ({ data }) => {
   // Here we're mapping through all of the flights
   // contained within the data object.
   const RenderFlights = () => (
-    // <div
-    //   style={{
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     justifyContent: "center",
-    //     alignItems: "stretch",
-    //     flexBasis: "90%",
-    //     maxWidth: "800px",
-    //     gap: "30px",
-    //     border: "4px dotted aqua",
-    //     placeContent: "stretch center",
-    //   }}>
     <div
       style={{
         display: "flex",
@@ -49,7 +36,6 @@ const BookingFlightList = ({ data }) => {
       }}>
       <div
         style={{
-          border: "4px dotted aqua",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",

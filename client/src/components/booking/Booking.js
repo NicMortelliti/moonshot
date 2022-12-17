@@ -32,7 +32,6 @@ const Booking = () => {
         return data.map((eachData) => (
           <div
             style={{
-              border: "4px dotted aqua",
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "center",
@@ -51,7 +50,6 @@ const Booking = () => {
             }}>
             <div
               style={{
-                border: "4px dotted aqua",
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "center",

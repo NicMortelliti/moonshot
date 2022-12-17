@@ -22,8 +22,10 @@ h1,
 h2,
 h3,
 h4,
+h5,
 p {
   display: flex;
+  flex-direction: column;
   color: ${({ theme }) => theme.colors.dark};
   line-height: ${({ lineHeight }) => lineHeight || "30px"};
   margin: ${({ margin }) => margin || 0};

@@ -67,7 +67,6 @@ const ReservationCard = ({ reservation }) => {
     return (
       <div
         style={{
-          border: "4px dotted pink",
           display: "flex",
           flexDirection: "column",
           alignItems: "stretch",
@@ -75,7 +74,6 @@ const ReservationCard = ({ reservation }) => {
         }}>
         <div
           style={{
-            border: "4px dotted orange",
             display: "flex",
             flexDirection: "column",
             justifyContent: "stretch",
@@ -84,7 +82,6 @@ const ReservationCard = ({ reservation }) => {
           }}>
           <div
             style={{
-              border: "2px dotted red",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
@@ -180,7 +177,6 @@ const ReservationCard = ({ reservation }) => {
   return (
     <div
       style={{
-        border: "6px dotted purple",
         backgroundColor: "white",
         display: "flex",
         flexDirection: "column",

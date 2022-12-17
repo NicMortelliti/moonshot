@@ -39,7 +39,6 @@ const ReservationList = () => {
         return (
           <div
             style={{
-              border: "4px dotted aqua",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",

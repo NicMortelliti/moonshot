@@ -37,7 +37,6 @@ const App = () => {
 
         <div
           style={{
-            border: "4px dotted pink",
             display: "flex",
             flexGrow: 1,
             margin: 0,

@@ -87,7 +87,6 @@ export const CenteredTextRow = ({ lgd, readout }) => {
     <div
       style={{
         display: "flex",
-        border: "2px dotted green",
         flex: "1 1 100%",
       }}>
       <Legend
@@ -109,7 +108,6 @@ export const CenteredTextRow = ({ lgd, readout }) => {
           padding: "0 10px",
           flex: "1 1 50%",
           textAlign: "start",
-          border: "1px dotted orange",
         }}>
         {readout}
       </p>

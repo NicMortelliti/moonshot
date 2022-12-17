@@ -80,7 +80,6 @@ const BookingConfirmation = ({ data, newReservation = false }) => {
         }}>
         <div
           style={{
-            border: "4px dotted aqua",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -107,11 +106,11 @@ const BookingConfirmation = ({ data, newReservation = false }) => {
             style={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "start",
+              justifyContent: "center",
               alignItems: "stretch",
               textAlign: "center",
             }}>
-            <h5>The following booking has been confirmed.</h5>
+            <Legend>The following booking has been confirmed.</Legend>
 
             {/* Details */}
             <div
@@ -214,7 +213,6 @@ const BookingConfirmation = ({ data, newReservation = false }) => {
   return (
     <div
       style={{
-        border: "4px dotted purple",
         backgroundColor: "white",
         display: "flex",
         flexDirection: "column",
