@@ -38,10 +38,10 @@ export const HeaderListItem = styled(NavLink)`
   display: block;
   text-align: center;
 
-  /* &:hover,
+  &:hover,
   &:focus {
     color: ${({ theme }) => theme.hoverColor};
-  } */
+  }
 
   /* TODO Figure out how to capture if a link is actively selected */
   &.active {
