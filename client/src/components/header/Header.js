@@ -26,16 +26,16 @@ const Header = () => {
       authAgnostic: true,
     },
     {
-      name: "Log In",
-      link: "/login",
+      name: "Sign Up",
+      link: "/register",
       alignment: "end",
       handleClick: null,
       userLoggedIn: false,
       authAgnostic: false,
     },
     {
-      name: "Sign Up",
-      link: "/register",
+      name: "Log In",
+      link: "/login",
       alignment: "end",
       handleClick: null,
       userLoggedIn: false,
@@ -85,38 +85,37 @@ const Header = () => {
     );
   };
 
-  const determineAlignment = (buttons) => {
-    const leftAligned = [];
-    const rightAligned = [];
+  // Filter the buttons by their alignment value
+  const leftAlignedButtons = links.filter((link) => link.alignment === "start");
+  const rightAlignedButtons = links.filter((link) => link.alignment === "end");
 
-    buttons.map((button) => {
-      if (button.alignment === "start") {
-        leftAligned.push(button);
-      } else {
-        rightAligned.push(button);
-      }
-    });
-
-    return (
-      <div>
-        <div>
-          {leftAligned.map((button) => (
-            <Button Button data={button} key={button.name} />
-          ))}
-        </div>
-        <div>
-          {rightAligned.map((button) => (
-            <Button Button data={button} key={button.name} />
-          ))}
-        </div>
-      </div>
-    );
-  };
+  // Render button section
+  const RenderButtonSection = ({ buttons }) => (
+    <div style={{ display: "flex" }}>
+      {buttons.map((eachButton) => {
+        if (
+          // Button will be displayed ONLY when:
+          //    - authAgnostic is set to true
+          //    - user logged in AND button is tagged to be displayed when logged in
+          //    - NO user logged in AND button is tagged to be displayed when NOT logged in
+          eachButton.authAgnostic ||
+          (user !== null && eachButton.userLoggedIn) ||
+          (user === null && !eachButton.userLoggedIn)
+        ) {
+          return <Button data={eachButton} />;
+        }
+        // To appease the arrow function, we'll
+        // return null, just to return "something"
+        return null;
+      })}
+    </div>
+  );
 
   return (
     <div
       style={{
         display: "flex",
+        justifyContent: "space-between",
         backgroundColor: "black",
         position: "fixed",
         top: 0,
@@ -124,38 +123,8 @@ const Header = () => {
         width: "100%",
         zIndex: 999,
       }}>
-      {/* Map through each item in the links object.
-      If a user is logged in  AND the items userLoggedIn
-      value is 'true', render the button, else don't
-      render it. If both user and userLoggedIn are
-      'false', render the button, else don't render it. */}
-      {links.map((button) => {
-        // Determine if the button should be rendered.
-        // First if an item in the links object is tagged
-        // as 'authAgnostic' it breaks out of this statement,
-        // sets buttonMeetsRequirement to true, then goes
-        // on to be rendered.
-        // If it's not tagged as 'authAgnostic' it checks
-        // the next if statement ('if (user !== null)'), if it
-        // passes, it checks if the 'userLoggedIn' tag
-        // is set to 'true'. If it is, the button gets rendered.
-        // The final if statement ('if (user === null)' and
-        // 'if (!userLoggedIn)') will render the button
-        // if there is no user logged in.
-        const buttonsToRender = [];
-
-        if (button.authAgnostic) {
-          buttonsToRender.push(button);
-        } else if (user !== null) {
-          if (button.userLoggedIn) {
-            buttonsToRender.push(button);
-          }
-        } else if (!button.userLoggedIn) {
-          buttonsToRender.push(button);
-        }
-
-        determineAlignment(buttonsToRender);
-      })}
+      <RenderButtonSection buttons={leftAlignedButtons} />
+      <RenderButtonSection buttons={rightAlignedButtons} />
     </div>
   );
 };
