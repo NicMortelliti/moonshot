@@ -75,12 +75,41 @@ const Header = () => {
     },
   ];
 
+  // Render each individual button
   const Button = ({ data }) => {
-    const { name, link, alignment, handleClick } = data;
+    const { name, link, handleClick } = data;
     return (
       <HeaderListItem to={link} onClick={handleClick ? handleClick : null}>
         {name}
       </HeaderListItem>
+    );
+  };
+
+  const determineAlignment = (buttons) => {
+    const leftAligned = [];
+    const rightAligned = [];
+
+    buttons.map((button) => {
+      if (button.alignment === "start") {
+        leftAligned.push(button);
+      } else {
+        rightAligned.push(button);
+      }
+    });
+
+    return (
+      <div>
+        <div>
+          {leftAligned.map((button) => (
+            <Button Button data={button} key={button.name} />
+          ))}
+        </div>
+        <div>
+          {rightAligned.map((button) => (
+            <Button Button data={button} key={button.name} />
+          ))}
+        </div>
+      </div>
     );
   };
 
@@ -96,11 +125,11 @@ const Header = () => {
         zIndex: 999,
       }}>
       {/* Map through each item in the links object.
-If a user is logged in  AND the items userLoggedIn
-value is 'true', render the button, else don't
-render it. If both user and userLoggedIn are
-'false', render the button, else don't render it. */}
-      {links.map((each) => {
+      If a user is logged in  AND the items userLoggedIn
+      value is 'true', render the button, else don't
+      render it. If both user and userLoggedIn are
+      'false', render the button, else don't render it. */}
+      {links.map((button) => {
         // Determine if the button should be rendered.
         // First if an item in the links object is tagged
         // as 'authAgnostic' it breaks out of this statement,
@@ -113,15 +142,19 @@ render it. If both user and userLoggedIn are
         // The final if statement ('if (user === null)' and
         // 'if (!userLoggedIn)') will render the button
         // if there is no user logged in.
-        if (each.authAgnostic) {
-          return <Button data={each} key={each.name} />;
+        const buttonsToRender = [];
+
+        if (button.authAgnostic) {
+          buttonsToRender.push(button);
         } else if (user !== null) {
-          if (each.userLoggedIn) {
-            return <Button data={each} key={each.name} />;
+          if (button.userLoggedIn) {
+            buttonsToRender.push(button);
           }
-        } else if (!each.userLoggedIn) {
-          return <Button data={each} key={each.name} />;
+        } else if (!button.userLoggedIn) {
+          buttonsToRender.push(button);
         }
+
+        determineAlignment(buttonsToRender);
       })}
     </div>
   );
