@@ -10,7 +10,7 @@ import Footer from "./components/footer/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Reservations from "./components/reservations/Reservations";
-import Booking from "./components/search/Booking";
+import Booking from "./components/search/Search";
 import Profile from "./components/profile/Profile";
 import Landing from "./pages/Landing";
 import { reLogin } from "./features/auth/authSlice";
