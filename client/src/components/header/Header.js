@@ -119,10 +119,8 @@ render it. If both user and userLoggedIn are
           if (each.userLoggedIn) {
             return <Button data={each} key={each.name} />;
           }
-        } else if (user === null) {
-          if (!each.userLoggedIn) {
-            return <Button data={each} key={each.name} />;
-          }
+        } else if (!each.userLoggedIn) {
+          return <Button data={each} key={each.name} />;
         }
       })}
     </div>
