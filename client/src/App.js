@@ -9,7 +9,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import ReservationList from "./components/reservations/ReservationList";
+import Reservations from "./components/reservations/Reservations";
 import Booking from "./components/booking/Booking";
 import Profile from "./components/profile/Profile";
 import Landing from "./pages/Landing";
@@ -55,7 +55,7 @@ const App = () => {
             <Route exact path="/register" element={<Register />} />
 
             {/* User logged-in routes */}
-            <Route path="my-trips" element={<ReservationList />} />
+            <Route path="my-trips" element={<Reservations />} />
             <Route path="flight-search" element={<Booking />} />
             <Route path="my-profile" element={<Profile />} />
           </Routes>
