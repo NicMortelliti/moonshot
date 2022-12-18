@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const HeaderContainer = styled.ul`
   /* Color and style */
@@ -21,9 +22,10 @@ export const HeaderContainer = styled.ul`
   z-index: 999;
 `;
 
-export const HeaderListItem = styled.li`
+export const HeaderListItem = styled(NavLink)`
   /* Color and style */
   color: ${({ theme }) => theme.colors.header};
+
   padding: 14px 16px;
   text-decoration: none;
 
@@ -36,16 +38,16 @@ export const HeaderListItem = styled.li`
   display: block;
   text-align: center;
 
-  &:hover,
+  /* &:hover,
   &:focus {
     color: ${({ theme }) => theme.hoverColor};
-  }
+  } */
 
   /* TODO Figure out how to capture if a link is actively selected */
   &.active {
     color: ${({ theme }) => theme.hoverColor};
     font-weight: 400;
-    border-bottom: 5px solid;
+    border-top: 5px solid;
     border-color: ${({ theme }) => theme.hoverColor};
   }
 `;

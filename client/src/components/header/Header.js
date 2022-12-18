@@ -17,59 +17,87 @@ const Header = () => {
     dispatch(reset());
   };
 
-  // Render user-logged-in navbar
-  const RenderUserLoggedIn = () => {
-    return (
-      <>
-        {/* Left side of nav bar */}
-        <NavLink to="/flight-search">
-          <HeaderListItem>BOOK</HeaderListItem>
-        </NavLink>
-        <NavLink to="/my-trips">
-          <HeaderListItem>MY TRIPS</HeaderListItem>
-        </NavLink>
-
-        {/* Right side of nav bar */}
-        <NavLink to="/login" onClick={onLogout}>
-          <HeaderListItem alignment="right">Log Out</HeaderListItem>
-        </NavLink>
-        <NavLink to="/my-profile">
-          <HeaderListItem alignment="right">
-            {capitalize(user.first_name)}
-          </HeaderListItem>
-        </NavLink>
-      </>
-    );
-  };
-
-  // Render no-user-logged-in navbar
-  const RenderNoUserLoggedInNav = () => {
-    return (
-      <>
-        <NavLink to="/login">
-          <HeaderListItem alignment="right">Login</HeaderListItem>
-        </NavLink>
-        <NavLink to="/register">
-          <HeaderListItem alignment="right">Sign Up</HeaderListItem>
-        </NavLink>
-      </>
-    );
-  };
+  const links = [
+    {
+      name: "MoonShot",
+      link: "/",
+      alignment: "start",
+      handleClick: null,
+      userLoggedIn: false,
+      authAgnostic: true,
+    },
+    {
+      name: "Log In",
+      link: "/login",
+      alignment: "end",
+      handleClick: null,
+      userLoggedIn: false,
+      authAgnostic: false,
+    },
+    {
+      name: "Sign Up",
+      link: "/register",
+      alignment: "end",
+      handleClick: null,
+      userLoggedIn: false,
+      authAgnostic: false,
+    },
+    {
+      name: "BOOK",
+      link: "/flight-search",
+      alignment: "start",
+      handleClick: null,
+      userLoggedIn: true,
+      authAgnostic: false,
+    },
+    {
+      name: "MY TRIPS",
+      link: "/my-trips",
+      alignment: "start",
+      handleClick: null,
+      userLoggedIn: true,
+      authAgnostic: false,
+    },
+    {
+      name: "Log Out",
+      link: "login",
+      alignment: "end",
+      handleClick: onLogout,
+      userLoggedIn: true,
+      authAgnostic: false,
+    },
+    {
+      name: capitalize(user.first_name),
+      link: "/my-profile",
+      alignment: "end",
+      handleClick: null,
+      userLoggedIn: true,
+      authAgnostic: false,
+    },
+  ];
 
   return (
     <div
       style={{
+        display: "flex",
         backgroundColor: "black",
         position: "fixed",
         top: 0,
         left: 0,
         width: "100%",
         zIndex: 999,
+        border: "2px dotted red",
       }}>
-      <NavLink to="/">
-        <HeaderListItem>MoonShot</HeaderListItem>
-      </NavLink>
-      {user ? <RenderUserLoggedIn /> : <RenderNoUserLoggedInNav />}
+      {links.map(({ name, link, alignment, userLoggedIn }) =>
+        user ? (
+          userLoggedIn ? (
+            <HeaderListItem to={link}>{name}</HeaderListItem>
+          ) : null
+        ) : (
+          <HeaderListItem to={link}>{name}</HeaderListItem>
+        )
+      )}
+      ;
     </div>
   );
 };
