@@ -23,9 +23,9 @@ const Socials = () => {
   // For each social within socialsData, we
   // will create a separate styled social icon.
   const RenderSocials = () =>
-    socialsData.map((each) => {
+    socialsData.map((each, i) => {
       return (
-        <StyledSocialIcons>
+        <StyledSocialIcons key={i}>
           <li
             style={{
               display: "flex",
