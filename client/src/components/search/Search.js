@@ -7,7 +7,7 @@ import { default as Confirmation } from "./BookingConfirmation";
 import { getOrigins } from "../../features/booking/bookingSlice";
 import BookingFlightList from "./BookingFlightList";
 
-const Booking = () => {
+const Search = () => {
   const dispatch = useDispatch();
 
   // Get reservations from API when component loads
@@ -77,4 +77,4 @@ const Booking = () => {
     </>
   );
 };
-export default Booking;
+export default Search;
