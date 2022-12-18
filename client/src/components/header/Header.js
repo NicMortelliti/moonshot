@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
-import { NavLink } from "react-router-dom";
 import { capitalize } from "../../helpers/helpers";
 
 // Styled components
@@ -67,7 +66,7 @@ const Header = () => {
       authAgnostic: false,
     },
     {
-      name: capitalize(user.first_name),
+      name: user ? capitalize(user.first_name) : null,
       link: "/my-profile",
       alignment: "end",
       handleClick: null,
@@ -75,6 +74,15 @@ const Header = () => {
       authAgnostic: false,
     },
   ];
+
+  const Button = ({ data }) => {
+    const { name, link, alignment, handleClick } = data;
+    return (
+      <HeaderListItem to={link} onClick={handleClick ? handleClick : null}>
+        {name}
+      </HeaderListItem>
+    );
+  };
 
   return (
     <div
@@ -86,18 +94,37 @@ const Header = () => {
         left: 0,
         width: "100%",
         zIndex: 999,
-        border: "2px dotted red",
       }}>
-      {links.map(({ name, link, alignment, userLoggedIn }) =>
-        user ? (
-          userLoggedIn ? (
-            <HeaderListItem to={link}>{name}</HeaderListItem>
-          ) : null
-        ) : (
-          <HeaderListItem to={link}>{name}</HeaderListItem>
-        )
-      )}
-      ;
+      {/* Map through each item in the links object.
+If a user is logged in  AND the items userLoggedIn
+value is 'true', render the button, else don't
+render it. If both user and userLoggedIn are
+'false', render the button, else don't render it. */}
+      {links.map((each) => {
+        // Determine if the button should be rendered.
+        // First if an item in the links object is tagged
+        // as 'authAgnostic' it breaks out of this statement,
+        // sets buttonMeetsRequirement to true, then goes
+        // on to be rendered.
+        // If it's not tagged as 'authAgnostic' it checks
+        // the next if statement ('if (user !== null)'), if it
+        // passes, it checks if the 'userLoggedIn' tag
+        // is set to 'true'. If it is, the button gets rendered.
+        // The final if statement ('if (user === null)' and
+        // 'if (!userLoggedIn)') will render the button
+        // if there is no user logged in.
+        if (each.authAgnostic) {
+          return <Button data={each} key={each.name} />;
+        } else if (user !== null) {
+          if (each.userLoggedIn) {
+            return <Button data={each} key={each.name} />;
+          }
+        } else if (user === null) {
+          if (!each.userLoggedIn) {
+            return <Button data={each} key={each.name} />;
+          }
+        }
+      })}
     </div>
   );
 };
