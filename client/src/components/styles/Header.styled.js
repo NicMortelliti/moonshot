@@ -34,9 +34,9 @@ export const HeaderListItem = styled(NavLink)`
   font-weight: 300;
 
   /* Alignment */
-  float: ${(props) => props.alignment || "left"};
-  display: block;
+  display: flex;
   text-align: center;
+  align-self: end;
 
   &:hover,
   &:focus {
