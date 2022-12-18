@@ -9,6 +9,7 @@ import BookingConfirmation from "../booking/BookingConfirmation";
 // Styled Components
 import { Flex } from "../styles/Flex.styled";
 import { Button } from "../styles/Button.styled";
+import Card from "../card/Card";
 
 const ReservationList = () => {
   const dispatch = useDispatch();
@@ -74,6 +75,20 @@ const ReservationList = () => {
         }}>
         <RenderReservations />
       </div>
+      {reservations ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "stretch",
+            flexBasis: "90%",
+            maxWidth: "800px",
+            gap: "30px",
+          }}>
+          <Card key={reservations[0].id} data={reservations[0]} />
+        </div>
+      ) : null}
     </>
   );
 };

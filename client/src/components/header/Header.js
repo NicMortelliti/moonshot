@@ -92,7 +92,7 @@ const Header = () => {
   // Render button section
   const RenderButtonSection = ({ buttons }) => (
     <div style={{ display: "flex" }}>
-      {buttons.map((eachButton) => {
+      {buttons.map((eachButton, i) => {
         if (
           // Button will be displayed ONLY when:
           //    - authAgnostic is set to true
@@ -102,7 +102,7 @@ const Header = () => {
           (user !== null && eachButton.userLoggedIn) ||
           (user === null && !eachButton.userLoggedIn)
         ) {
-          return <Button data={eachButton} />;
+          return <Button key={i} data={eachButton} />;
         }
         // To appease the arrow function, we'll
         // return null, just to return "something"

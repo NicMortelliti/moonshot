@@ -39,26 +39,21 @@ const ReservationCard = ({ reservation }) => {
   // Confirmation
   const Confirmation = () => {
     return (
-      <>
-        <Flex direction="column">
-          <Flex direction="column">
-            <h4>
-              Are you sure you want to cancel your reservation on flight{" "}
-              {flightId}?
-            </h4>
-            <p>This cannot be undone!</p>
-          </Flex>
-          <Button margin="20px 0 0" onClick={() => setShowConfirmation(false)}>
-            Back
-          </Button>
-          <MinimalButton
-            alert
-            margin="20px 0 10px"
-            onClick={() => modifyReservation()}>
-            Confirm cancellation
-          </MinimalButton>
-        </Flex>
-      </>
+      <div>
+        <h4>
+          Are you sure you want to cancel your reservation on flight {flightId}?
+        </h4>
+        <p>This cannot be undone!</p>
+        <Button margin="20px 0 0" onClick={() => setShowConfirmation(false)}>
+          Back
+        </Button>
+        <MinimalButton
+          alert
+          margin="20px 0 10px"
+          onClick={() => modifyReservation()}>
+          Confirm cancellation
+        </MinimalButton>
+      </div>
     );
   };
 

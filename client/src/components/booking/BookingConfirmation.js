@@ -70,126 +70,109 @@ const BookingConfirmation = ({ data, newReservation = false }) => {
 
   const PrimaryData = () => {
     return (
-      <div
-        style={{
-          display: "flex",
-          margin: "20px 0",
-          placeContent: "stretch center",
-          alignItems: "center",
-          flexBasis: "100%",
-        }}>
+      <div>
+        {/* Top */}
+        {newReservation ? (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <h1>Far out!</h1>
+            <h3>You're going to space!</h3>
+          </div>
+        ) : null}
+
+        {/* Middle */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "stretch",
-            flexBasis: "90%",
-            maxWidth: "800px",
+            textAlign: "center",
           }}>
-          {/* Top */}
-          {newReservation ? (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-              }}>
-              <h1>Far out!</h1>
-              <h3>You're going to space!</h3>
-            </div>
-          ) : null}
+          <Legend>The following booking has been confirmed.</Legend>
 
-          {/* Middle */}
+          {/* Details */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "stretch",
-              textAlign: "center",
             }}>
-            <Legend>The following booking has been confirmed.</Legend>
+            <CenteredTextRow
+              lgd="Confirmation number"
+              readout={confirmationNumber}
+            />
+            <CenteredTextRow
+              lgd="Passenger"
+              readout={`${capitalize(firstName)} ${capitalize(lastName)}`}
+            />
+            <CenteredTextRow lgd="Flight" readout={flightId} />
+            <CenteredTextRow
+              lgd="Spacecraft"
+              readout={`${vehicleMake} ${vehicleModel} - "${vehicleName}"`}
+            />
+          </div>
+        </div>
 
-            {/* Details */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "stretch",
-              }}>
-              <CenteredTextRow
-                lgd="Confirmation number"
-                readout={confirmationNumber}
-              />
-              <CenteredTextRow
-                lgd="Passenger"
-                readout={`${capitalize(firstName)} ${capitalize(lastName)}`}
-              />
-              <CenteredTextRow lgd="Flight" readout={flightId} />
-              <CenteredTextRow
-                lgd="Spacecraft"
-                readout={`${vehicleMake} ${vehicleModel} - "${vehicleName}"`}
-              />
+        {/* Locations */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "2em",
+          }}>
+          <h5>
+            {originName}, {originMacroName}
+          </h5>
+          <h5>
+            {destinationName}, {destinationMacroName}
+          </h5>
+        </div>
+
+        {/* Horizontal Rule widget */}
+        <div>
+          <HorizontalRule />
+        </div>
+
+        {/* Dates */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "2em",
+          }}>
+          <h5>{formatDate(departure)}</h5>
+          <h5>{formatDate(arrival)}</h5>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}>
+          {newReservation ? (
+            <div>
+              <Button onClick={() => closeConfirmation()}>ok!</Button>
             </div>
-          </div>
-
-          {/* Locations */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              height: "2em",
-            }}>
-            <h5>
-              {originName}, {originMacroName}
-            </h5>
-            <h5>
-              {destinationName}, {destinationMacroName}
-            </h5>
-          </div>
-
-          {/* Horizontal Rule widget */}
-          <div>
-            <HorizontalRule />
-          </div>
-
-          {/* Dates */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              height: "2em",
-            }}>
-            <h5>{formatDate(departure)}</h5>
-            <h5>{formatDate(arrival)}</h5>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}>
-            {newReservation ? (
-              <div>
-                <Button onClick={() => closeConfirmation()}>ok!</Button>
-              </div>
-            ) : (
-              <Flex flex="1">
-                <MinimalButton
-                  name="cancel"
-                  textAlign="end"
-                  onClick={() => setShowConfirmation(true)}>
-                  Cancel reservation
-                </MinimalButton>
-              </Flex>
-            )}
-          </div>
+          ) : (
+            <Flex flex="1">
+              <MinimalButton
+                name="cancel"
+                textAlign="end"
+                onClick={() => setShowConfirmation(true)}>
+                Cancel reservation
+              </MinimalButton>
+            </Flex>
+          )}
         </div>
       </div>
     );
@@ -216,7 +199,7 @@ const BookingConfirmation = ({ data, newReservation = false }) => {
         backgroundColor: "white",
         display: "flex",
         flexDirection: "column",
-        // margin: "40px",
+        padding: "20px",
       }}>
       <RenderCard />
     </div>
