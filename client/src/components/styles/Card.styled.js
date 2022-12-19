@@ -1,8 +1,24 @@
 import styled from "styled-components";
 
+// If a list of cards is to be displayed, this
+// is the component that styles that list.
+// CardContainer components will reside within
+// this component.
+export const CardList = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  flex-basis: 90%;
+  max-width: 800px;
+  gap: 30px;
+`;
+
 // This is the main container. It is where all data
 // will reside. The cards background color, dimensions
-// and layout are set here.
+// and layout are set here. If a list of cards is needed,
+// use the CardList styled component as a direct parent
+// to this component.
 export const CardContainer = styled.div`
   background-color: white;
   display: flex;

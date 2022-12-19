@@ -1,16 +1,8 @@
 import React from "react";
 import Card from "./Card";
-import styled from "styled-components";
 
-const CardsListDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  flex-basis: 90%;
-  max-width: 800px;
-  gap: 30px;
-`;
+// Styled components
+import { CardList as List } from "../styles/Card.styled";
 
 const CardList = ({
   cards,
@@ -22,11 +14,11 @@ const CardList = ({
   // to be rendered.
   const RenderCards = () => {
     return (
-      <CardsListDiv>
+      <List>
         {cards.map((card) => (
           <Card data={card} typeOfList={typeOfList} />
         ))}
-      </CardsListDiv>
+      </List>
     );
   };
 
