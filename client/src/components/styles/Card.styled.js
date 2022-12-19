@@ -26,6 +26,16 @@ export const CardContainer = styled.div`
   padding: 20px;
 `;
 
+// This is a styled div for the feedback section of the card.
+// The feedback section of the card is used for messages like:
+// "Success!" or "You're going to space!", etc.
+export const CardFeedback = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 // This is a container that is used for secondary card data.
 // For example, you may use this as a confirmation if a user
 // clicks a "cancel" button.

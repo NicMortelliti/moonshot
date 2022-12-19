@@ -1,21 +1,16 @@
 import React from "react";
-import styled from "styled-components";
-import { Legend } from "../../styles/Widgets.styled";
 
-const FeedbackDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
+// Styled components
+import { CardFeedback as Feedback } from "../../styles/Card.styled";
+import { Legend } from "../../styles/Widgets.styled";
 
 const FeedbackMessage = ({ first, second, third }) => {
   return (
-    <FeedbackDiv>
+    <Feedback>
       <h1>{first}</h1>
       <h3>{second}</h3>
       <Legend>{third}</Legend>
-    </FeedbackDiv>
+    </Feedback>
   );
 };
 
