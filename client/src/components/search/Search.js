@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
 
 // Components
 import { default as Location } from "./BookingLocationButton";
@@ -9,13 +8,6 @@ import { getOrigins } from "../../features/booking/bookingSlice";
 
 // Styled components
 import CardList from "../card/CardList";
-
-const LocationButtonDiv = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -39,20 +31,15 @@ const Search = () => {
   const determineWhatToRender = () => {
     switch (null) {
       case origin:
-        return data.map((eachData) => (
-          <LocationButtonDiv>
-            <Location key={eachData.id} data={eachData} />
-          </LocationButtonDiv>
-        ));
       case destination:
         return data.map((eachData) => (
-          <LocationButtonDiv>
-            <Location key={eachData.id} data={eachData} />
-          </LocationButtonDiv>
+          <Location key={eachData.id} data={eachData} />
         ));
 
       case flight:
-        return <CardList cards={data} isLoading={isLoading} typeOfList="search" />;
+        return (
+          <CardList cards={data} isLoading={isLoading} typeOfList="search" />
+        );
 
       default:
         break;
