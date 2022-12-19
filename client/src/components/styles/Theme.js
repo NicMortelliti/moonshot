@@ -37,6 +37,7 @@ export const theme = {
 
 export const WallPaperContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   background-image: url(${planet});
   background-repeat: no-repeat;
   background-size: cover;
