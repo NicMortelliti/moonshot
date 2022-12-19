@@ -36,6 +36,16 @@ export const CardFeedback = styled.div`
   align-items: center;
 `;
 
+// This is a styled div for the primary data on the card,
+// such as flight ID, confirmation number, etc.
+export const CardPrimaryData = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
+`;
+
 // This is a container that is used for secondary card data.
 // For example, you may use this as a confirmation if a user
 // clicks a "cancel" button.

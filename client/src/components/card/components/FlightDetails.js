@@ -4,15 +4,8 @@ import { capitalize } from "../../../helpers/helpers";
 import { useSelector } from "react-redux";
 
 // Styled components
+import { CardPrimaryData as PrimaryData } from "../../styles/Card.styled";
 import { CenteredTextRow } from "../../styles/Widgets.styled";
-
-const FlightDetailsDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  text-align: center;
-`;
 
 const FlightDetails = ({ data, flightId, confirmationNumber = null }) => {
   // Destructure props
@@ -32,7 +25,7 @@ const FlightDetails = ({ data, flightId, confirmationNumber = null }) => {
   // ------------------------------------
   // ------------------------------------
   return (
-    <FlightDetailsDiv>
+    <PrimaryData>
       {/* Only show confirmation number and passenger name if we
       are showing a confirmation page or a list of users reservations */}
       {confirmationNumber ? (
@@ -54,7 +47,7 @@ const FlightDetails = ({ data, flightId, confirmationNumber = null }) => {
         lgd="Spacecraft"
         readout={`${vehicleMake} ${vehicleModel} - "${vehicleName}"`}
       />
-    </FlightDetailsDiv>
+    </PrimaryData>
   );
 };
 
