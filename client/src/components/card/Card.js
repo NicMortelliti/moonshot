@@ -8,13 +8,15 @@ import { deleteReservation } from "../../features/reservations/reservationSlice"
 import { bookFlight } from "../../features/booking/bookingSlice";
 
 // Styled components
-import { MinimalButton } from "../styles/Button.styled";
+import { Button } from "../styles/Button.styled";
 import { CardContainer } from "../styles/Card.styled";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ data, typeOfList = null }) => {
   const [expandPanel, setExpandPanel] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { user: userId } = user;
 
@@ -73,8 +75,12 @@ const Card = ({ data, typeOfList = null }) => {
             buttonText: null,
           },
           confirmation: {
-            main: "Ok!",
             alt: null,
+            altBtn: null,
+            altBtnAction: null,
+            main: "Ok!",
+            mainBtn: "secondary",
+            mainBtnAction: null,
           },
         }
       : null,
@@ -88,10 +94,13 @@ const Card = ({ data, typeOfList = null }) => {
         first: `Are you sure you want to reserve a seat on flight ${flightId}?`,
         second: null,
         buttonText: "Yes, book it!",
+        secondaryButtonType: false,
       },
       confirmation: {
-        main: "Nevermind",
-        alt: "Book Flight",
+        alt: "Nevermind",
+        main: "Book Flight",
+        mainBtn: null,
+        altBtn: true,
       },
     },
     reservation: {
@@ -106,8 +115,8 @@ const Card = ({ data, typeOfList = null }) => {
         buttonText: "Yes, cancel reservation.",
       },
       confirmation: {
-        main: "Don't Cancel Reservation",
-        alt: "Cancel Reservation",
+        alt: "Don't Cancel Reservation",
+        main: "Cancel Reservation",
       },
     },
   };
@@ -123,6 +132,10 @@ const Card = ({ data, typeOfList = null }) => {
 
       case "search":
         dispatch(bookFlight({ userId, flightId }));
+        break;
+
+      case "confirmation":
+        navigate("/my-trips");
         break;
 
       default:
@@ -160,15 +173,27 @@ const Card = ({ data, typeOfList = null }) => {
         first={messages[typeOfList].action.first}
         second={messages[typeOfList].action.second}
         buttonText={messages[typeOfList].action.buttonText}
+        secondaryButtonType={messages[typeOfList].action.secondaryButtonType}
         handleClick={handleClick}
       />
-      <MinimalButton
+      <Button
+        secondary={
+          expandPanel
+            ? messages[typeOfList].confirmation.altBtn
+            : messages[typeOfList].confirmation.mainBtn
+        }
         alert={expandPanel ? false : true}
-        onClick={() => setExpandPanel(!expandPanel)}>
-        {expandPanel
-          ? messages[typeOfList].confirmation.main
-          : messages[typeOfList].confirmation.alt}
-      </MinimalButton>
+        handleClick={
+          typeOfList !== "confirmation"
+            ? () => setExpandPanel(!expandPanel)
+            : handleClick
+        }
+        text={
+          expandPanel
+            ? messages[typeOfList].confirmation.alt
+            : messages[typeOfList].confirmation.main
+        }
+      />
     </CardContainer>
   );
 };

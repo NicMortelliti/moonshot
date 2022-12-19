@@ -1,7 +1,7 @@
 import React from "react";
 
 // Styled components
-import { MinimalButton } from "../../styles/Button.styled";
+import { Button } from "../../styles/Button.styled";
 import { CardSecondaryData as SecondaryData } from "../../styles/Card.styled";
 
 // This is the secondary data. It resides within the
@@ -14,6 +14,7 @@ const ActionConfirmation = ({
   first,
   second,
   buttonText,
+  secondaryButtonType,
   handleClick,
 }) => {
   return (
@@ -29,12 +30,12 @@ const ActionConfirmation = ({
               alignItems: "space-between",
               justifyContent: "space-between",
             }}>
-            <MinimalButton
+            <Button
               alert
-              margin="20px 0 0"
-              onClick={(e) => handleClick(e, true)}>
-              {buttonText}
-            </MinimalButton>
+              secondary={secondaryButtonType}
+              text={buttonText}
+              handleClick={handleClick}
+            />
           </div>
         </SecondaryData>
       ) : null}

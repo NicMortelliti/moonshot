@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+const ButtonPrimary = styled.button`
   border-radius: 50px;
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -11,6 +11,21 @@ export const Button = styled.button`
   padding: 15px 60px;
   background-color: ${({ theme }) => theme.bgColors.button};
   color: ${({ theme }) => theme.colors.button};
+
+  &:hover {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+`;
+
+const ButtonSecondary = styled.button`
+  background-color: transparent;
+  color: ${({ theme, alert }) => (alert && theme.alert) || theme.colors.button};
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  margin: ${({ margin }) => margin || 0};
+  text-align: ${({ textAlign }) => textAlign || "center"};
 
   &:hover {
     opacity: 0.9;
@@ -32,3 +47,19 @@ export const MinimalButton = styled.button`
     transform: scale(0.98);
   }
 `;
+
+export const Button = ({ secondary = false, text, handleClick }) => {
+  switch (true) {
+    case secondary:
+      return (
+        <ButtonSecondary onClick={(e) => handleClick(e)}>
+          {text}
+        </ButtonSecondary>
+      );
+
+    default:
+      return (
+        <ButtonPrimary onClick={(e) => handleClick(e)}>{text}</ButtonPrimary>
+      );
+  }
+};
