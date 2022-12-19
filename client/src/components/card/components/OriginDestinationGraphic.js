@@ -13,7 +13,6 @@ const SpaceBetweenDiv = styled.div`
 `;
 
 const OriginDestinationGraphic = ({
-  data,
   origin,
   destination,
   departure,

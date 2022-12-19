@@ -20,7 +20,6 @@ const MainContainer = styled.div`
 
 const Card = ({ data, typeOfList = null }) => {
   const [expandPanel, setExpandPanel] = useState(false);
-  console.log(data);
 
   const dispatch = useDispatch();
 
@@ -40,23 +39,20 @@ const Card = ({ data, typeOfList = null }) => {
   const confirmationIsDisplayed = data.reservations_remaining === null;
   let confirmationNumber, flightId, origin, destination, departure, arrival;
   if (data) {
+    origin = data.origin ? data.origin : data.flight.origin;
+    destination = data.destination ? data.destination : data.flight.destination;
+    departure = data.departure ? data.departure : data.flight.departure;
+    arrival = data.arrival ? data.arrival : data.flight.arrival;
+
     switch (confirmationIsDisplayed) {
       case true:
         confirmationNumber = data.id;
         flightId = data.flight.id;
-        origin = data.flight.origin;
-        destination = data.flight.destination;
-        departure = data.flight.departure;
-        arrival = data.flight.arrival;
         break;
 
       case false:
         confirmationNumber = null;
         flightId = data.id;
-        origin = data.origin;
-        destination = data.destination;
-        departure = data.departure;
-        arrival = data.arrival;
         break;
 
       default:
@@ -134,7 +130,6 @@ const Card = ({ data, typeOfList = null }) => {
         confirmationNumber={confirmationNumber}
       />
       <OriginDestinationGraphic
-        data={data}
         origin={origin}
         destination={destination}
         departure={departure}
