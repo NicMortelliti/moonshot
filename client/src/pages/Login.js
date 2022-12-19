@@ -24,7 +24,7 @@ const Login = () => {
   const dispatch = useDispatch();
 
   // Grab properties from auth state
-  const { user, isError, isSuccess, message } = useSelector(
+  const { user, isError, isLoading, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
@@ -113,7 +113,11 @@ const Login = () => {
               </InputContainer>
             </Flex>
             <Flex>
-              <Button type="submit">Submit</Button>
+              <Button
+                type="submit"
+                text={isLoading ? "Loading..." : "Submit"}
+                handleClick={onSubmit}
+              />
             </Flex>
           </Form>
         </Flex>

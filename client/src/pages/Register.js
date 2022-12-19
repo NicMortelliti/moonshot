@@ -152,9 +152,11 @@ const Register = () => {
               </InputContainer>
             </Flex>
             <Flex>
-              <Button type="submit">
-                {isLoading ? "Loading..." : "Submit"}
-              </Button>
+              <Button
+                type="submit"
+                text={isLoading ? "Loading..." : "Submit"}
+                handleClick={onSubmit}
+              />
             </Flex>
           </Form>
         </Flex>
