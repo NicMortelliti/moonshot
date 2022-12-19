@@ -1,5 +1,4 @@
 import React from "react";
-import planet from "../components/images/planet.jpg";
 import About from "../components/landing/About";
 
 // Styled Components
