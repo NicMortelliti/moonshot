@@ -1,11 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
 
 // Components
 import { default as Location } from "./BookingLocationButton";
 import { default as Confirmation } from "./BookingConfirmation";
 import { getOrigins } from "../../features/booking/bookingSlice";
-import BookingFlightList from "./BookingFlightList";
+
+// Styled components
+import CardList from "../card/CardList";
+
+const LocationButtonDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -16,7 +26,7 @@ const Search = () => {
   }, []);
 
   // Destructure props
-  const { flight, origin, destination, data } = useSelector(
+  const { flight, origin, destination, data, isLoading } = useSelector(
     (state) => state.booking
   );
 
@@ -30,40 +40,19 @@ const Search = () => {
     switch (null) {
       case origin:
         return data.map((eachData) => (
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              alignItems: "center",
-            }}>
+          <LocationButtonDiv>
             <Location key={eachData.id} data={eachData} />
-          </div>
+          </LocationButtonDiv>
         ));
       case destination:
-        return (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                alignItems: "center",
-              }}>
-              {data.map((eachData) => (
-                <Location key={eachData.id} data={eachData} />
-              ))}
-            </div>
-          </div>
-        );
+        return data.map((eachData) => (
+          <LocationButtonDiv>
+            <Location key={eachData.id} data={eachData} />
+          </LocationButtonDiv>
+        ));
 
       case flight:
-        return <BookingFlightList data={data} />;
+        return <CardList cards={data} isLoading={isLoading} typeOfList="search" />;
 
       default:
         break;

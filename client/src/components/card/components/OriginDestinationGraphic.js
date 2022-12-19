@@ -12,13 +12,17 @@ const SpaceBetweenDiv = styled.div`
   height: 2em;
 `;
 
-const OriginDestinationGraphic = ({ data }) => {
+const OriginDestinationGraphic = ({
+  data,
+  origin,
+  destination,
+  departure,
+  arrival,
+}) => {
   // Destructure props
-  const {
-    flight: { departure, arrival },
-    origin: { name: originName, macro_place: originMacroName },
-    destination: { name: destinationName, macro_place: destinationMacroName },
-  } = data;
+  const { name: originName, macro_place: originMacroName } = origin;
+  const { name: destinationName, macro_place: destinationMacroName } =
+    destination;
 
   // ------------------------------------
   // ------------------------------------

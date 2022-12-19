@@ -14,11 +14,10 @@ const FlightDetailsDiv = styled.div`
   text-align: center;
 `;
 
-const FlightDetails = ({ data }) => {
+const FlightDetails = ({ data, flightId, confirmationNumber }) => {
+
   // Destructure props
   const {
-    id: confirmationNumber,
-    flight: { id: flightId },
     vehicle: { make: vehicleMake, model: vehicleModel, name: vehicleName },
   } = data;
 

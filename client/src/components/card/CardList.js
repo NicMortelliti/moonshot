@@ -12,14 +12,19 @@ const CardsListDiv = styled.div`
   gap: 30px;
 `;
 
-const CardList = ({ cards, isLoading = false, backup }) => {
+const CardList = ({
+  cards,
+  isLoading = false,
+  backup = null,
+  typeOfList = null,
+}) => {
   // Send cards to the Card component
   // to be rendered.
   const RenderCards = () => {
     return (
       <CardsListDiv>
         {cards.map((card) => (
-          <Card data={card} />
+          <Card data={card} typeOfList={typeOfList} />
         ))}
       </CardsListDiv>
     );
@@ -38,11 +43,15 @@ const CardList = ({ cards, isLoading = false, backup }) => {
     switch (true) {
       case isLoading:
         return <p>Loading...</p>;
+
       case cards !== null:
         return <RenderCards />;
 
-      default:
+      case backup !== null:
         return backup();
+
+      default:
+        return null;
     }
   };
 

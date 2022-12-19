@@ -18,8 +18,9 @@ const MainContainer = styled.div`
   padding: 20px;
 `;
 
-const Card = ({ data }) => {
+const Card = ({ data, typeOfList = null }) => {
   const [expandPanel, setExpandPanel] = useState(false);
+  console.log(data);
 
   const dispatch = useDispatch();
 
@@ -30,11 +31,88 @@ const Card = ({ data }) => {
     dispatch(deleteReservation(confirmationNumber));
   };
 
-  // Destructure props
-  const {
-    id: confirmationNumber,
-    flight: { id: flightId },
-  } = data;
+  // Here we check to see if the data set contains
+  // a value for "reservations_remaining". If there
+  // IS NO value (null), we set the
+  // "confirmationIsDisplayed" variable to true
+  // because we should be displaying a booking
+  // confirmation page to the user.
+  const confirmationIsDisplayed = data.reservations_remaining === null;
+  let confirmationNumber, flightId, origin, destination, departure, arrival;
+  if (data) {
+    switch (confirmationIsDisplayed) {
+      case true:
+        confirmationNumber = data.id;
+        flightId = data.flight.id;
+        origin = data.flight.origin;
+        destination = data.flight.destination;
+        departure = data.flight.departure;
+        arrival = data.flight.arrival;
+        break;
+
+      case false:
+        confirmationNumber = null;
+        flightId = data.id;
+        origin = data.origin;
+        destination = data.destination;
+        departure = data.departure;
+        arrival = data.arrival;
+        break;
+
+      default:
+        return null;
+    }
+  }
+
+  const messages = {
+    confirmation: flightId
+      ? {
+          feedback: {
+            first: "Far out!",
+            second: "You're going to space!",
+            third: "The following booking has been confirmed.",
+          },
+          action: {
+            first: null,
+            second: null,
+          },
+          confirmation: {
+            main: "Ok!",
+            alt: null,
+          },
+        }
+      : null,
+    search: {
+      feedback: {
+        first: null,
+        second: null,
+        third: null,
+      },
+      action: {
+        first: null,
+        second: null,
+      },
+      confirmation: {
+        main: null,
+        alt: null,
+      },
+    },
+    reservation: {
+      feedback: {
+        first: "",
+        second: null,
+        third: "The following booking has been confirmed.",
+      },
+      action: {
+        first: `Are you sure you want to cancel your flight ${flightId}?`,
+        second: "This cannot be undone!",
+      },
+      confirmation: {
+        main: "Don't Cancel Reservation",
+        alt: "Cancel Reservation",
+      },
+    },
+  };
 
   // ------------------------------------
   // ------------------------------------
@@ -46,22 +124,34 @@ const Card = ({ data }) => {
   return (
     <MainContainer>
       <FeedbackMessage
-        first="Far out!"
-        second="You're going to space!"
-        third="The following booking has been confirmed."
+        first={messages[typeOfList].feedback.first}
+        second={messages[typeOfList].feedback.second}
+        third={messages[typeOfList].feedback.third}
       />
-      <FlightDetails data={data} />
-      <OriginDestinationGraphic data={data} />
+      <FlightDetails
+        data={data}
+        flightId={flightId}
+        confirmationNumber={confirmationNumber}
+      />
+      <OriginDestinationGraphic
+        data={data}
+        origin={origin}
+        destination={destination}
+        departure={departure}
+        arrival={arrival}
+      />
       <ActionConfirmation
         expand={expandPanel}
-        first={`Are you sure you want to cancel your flight ${flightId}?`}
-        second="This cannot be undone!"
+        first={messages[typeOfList].action.first}
+        second={messages[typeOfList].action.second}
         handleClick={handleDelete}
       />
       <MinimalButton
         alert={expandPanel ? false : true}
         onClick={() => setExpandPanel(!expandPanel)}>
-        {expandPanel ? "Don't Cancel Reservation" : "Cancel Reservation"}
+        {expandPanel
+          ? messages[typeOfList].confirmation.main
+          : messages[typeOfList].confirmation.alt}
       </MinimalButton>
     </MainContainer>
   );
