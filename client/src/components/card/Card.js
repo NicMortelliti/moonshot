@@ -56,7 +56,18 @@ const Card = ({ data, typeOfList = null }) => {
         break;
 
       default:
-        return null;
+        break;
+    }
+
+    // If we're showing a reservation list, set
+    // the below variables accordingly.
+    switch (typeOfList) {
+      case "reservation":
+        confirmationNumber = data.id;
+        flightId = data.flight.id;
+        break;
+      default:
+        break;
     }
   }
 

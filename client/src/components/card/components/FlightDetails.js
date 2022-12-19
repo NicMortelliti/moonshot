@@ -14,8 +14,7 @@ const FlightDetailsDiv = styled.div`
   text-align: center;
 `;
 
-const FlightDetails = ({ data, flightId, confirmationNumber }) => {
-
+const FlightDetails = ({ data, flightId, confirmationNumber = null }) => {
   // Destructure props
   const {
     vehicle: { make: vehicleMake, model: vehicleModel, name: vehicleName },
@@ -34,11 +33,22 @@ const FlightDetails = ({ data, flightId, confirmationNumber }) => {
   // ------------------------------------
   return (
     <FlightDetailsDiv>
-      <CenteredTextRow lgd="Confirmation number" readout={confirmationNumber} />
-      <CenteredTextRow
-        lgd="Passenger"
-        readout={`${capitalize(firstName)} ${capitalize(lastName)}`}
-      />
+      {/* Only show confirmation number and passenger name if we
+      are showing a confirmation page or a list of users reservations */}
+      {confirmationNumber ? (
+        <>
+          <CenteredTextRow
+            lgd="Confirmation number"
+            readout={confirmationNumber}
+          />
+          <CenteredTextRow
+            lgd="Passenger"
+            readout={`${capitalize(firstName)} ${capitalize(lastName)}`}
+          />
+        </>
+      ) : null}
+
+      {/* Always show the information below */}
       <CenteredTextRow lgd="Flight" readout={flightId} />
       <CenteredTextRow
         lgd="Spacecraft"
