@@ -3,14 +3,8 @@ import styled from "styled-components";
 import { formatDate } from "../../../helpers/helpers";
 
 // Styled components
+import { CardFromTo as FromTo } from "../../styles/Card.styled";
 import { HorizontalRule } from "../../styles/Widgets.styled";
-
-const SpaceBetweenDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 2em;
-`;
 
 const OriginDestinationGraphic = ({
   origin,
@@ -23,28 +17,21 @@ const OriginDestinationGraphic = ({
   const { name: destinationName, macro_place: destinationMacroName } =
     destination;
 
-  // ------------------------------------
-  // ------------------------------------
-  //
-  // Main
-  //
-  // ------------------------------------
-  // ------------------------------------
   return (
     <div>
-      <SpaceBetweenDiv>
+      <FromTo>
         <h5>
           {originName}, {originMacroName}
         </h5>
         <h5>
           {destinationName}, {destinationMacroName}
         </h5>
-      </SpaceBetweenDiv>
+      </FromTo>
       <HorizontalRule />
-      <SpaceBetweenDiv>
+      <FromTo>
         <h5>{formatDate(departure)}</h5>
         <h5>{formatDate(arrival)}</h5>
-      </SpaceBetweenDiv>
+      </FromTo>
     </div>
   );
 };

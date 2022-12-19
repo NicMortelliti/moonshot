@@ -60,3 +60,13 @@ export const CardSecondaryData = styled.div`
   align-items: center;
   flex-basis: 100%;
 `;
+
+// This is a styled div for the origin/destination, horizontal
+// rule and departure/arrival section of the card. It ensures
+// The appropriate spacing and sizing are configured.
+export const CardFromTo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2em;
+`;
