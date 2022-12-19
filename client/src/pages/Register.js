@@ -66,85 +66,73 @@ const Register = () => {
   };
 
   return (
-    <FrostedContainer
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        maxWidth: "500px",
-      }}>
-      <Flex>
-        <h2>Sign up</h2>
-      </Flex>
-      <Flex>
-        <Form onsSubmit={onSubmit}>
-          <Flex>
-            <InputContainer>
-              <input
-                type="text"
-                id="first_name"
-                name="first_name"
-                value={first_name}
-                placeholder="First name"
-                onChange={onChange}
-              />
-            </InputContainer>
-            <InputContainer>
-              <input
-                type="text"
-                id="last_name"
-                name="last_name"
-                value={last_name}
-                placeholder="Last name"
-                onChange={onChange}
-              />
-            </InputContainer>
-          </Flex>
-          <Flex>
-            <InputContainer>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                placeholder="Email address"
-                onChange={onChange}
-              />
-            </InputContainer>
-          </Flex>
-          <Flex>
-            <InputContainer>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                placeholder="Password"
-                onChange={onChange}
-              />
-            </InputContainer>
-            <InputContainer>
-              <input
-                type="password"
-                id="password2"
-                name="password2"
-                value={password2}
-                placeholder="Confirm"
-                onChange={onChange}
-              />
-            </InputContainer>
-          </Flex>
-          <Flex>
-            <Button
-              type="submit"
-              text={isLoading ? "Loading..." : "Submit"}
-              handleClick={onSubmit}
+    <FrostedContainer maxWidth="500px">
+      <h2>Sign up</h2>
+      <Form onsSubmit={onSubmit}>
+        <Flex>
+          <InputContainer>
+            <input
+              type="text"
+              id="first_name"
+              name="first_name"
+              value={first_name}
+              placeholder="First name"
+              onChange={onChange}
             />
-          </Flex>
-        </Form>
-      </Flex>
+          </InputContainer>
+          <InputContainer>
+            <input
+              type="text"
+              id="last_name"
+              name="last_name"
+              value={last_name}
+              placeholder="Last name"
+              onChange={onChange}
+            />
+          </InputContainer>
+        </Flex>
+        <Flex>
+          <InputContainer>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              placeholder="Email address"
+              onChange={onChange}
+            />
+          </InputContainer>
+        </Flex>
+        <Flex>
+          <InputContainer>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={onChange}
+            />
+          </InputContainer>
+          <InputContainer>
+            <input
+              type="password"
+              id="password2"
+              name="password2"
+              value={password2}
+              placeholder="Confirm"
+              onChange={onChange}
+            />
+          </InputContainer>
+        </Flex>
+        <Flex>
+          <Button
+            type="submit"
+            text={isLoading ? "Loading..." : "Submit"}
+            handleClick={onSubmit}
+          />
+        </Flex>
+      </Form>
     </FrostedContainer>
   );
 };
