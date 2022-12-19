@@ -6,9 +6,9 @@ import OriginDestinationGraphic from "./components/OriginDestinationGraphic";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteReservation } from "../../features/reservations/reservationSlice";
 import { bookFlight } from "../../features/booking/bookingSlice";
-import { MinimalButton } from "../styles/Button.styled";
 
 // Styled components
+import { MinimalButton } from "../styles/Button.styled";
 import { CardContainer } from "../styles/Card.styled";
 
 const Card = ({ data, typeOfList = null }) => {
