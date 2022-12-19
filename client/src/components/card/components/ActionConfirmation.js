@@ -2,7 +2,7 @@ import React from "react";
 
 // Styled components
 import { MinimalButton } from "../../styles/Button.styled";
-import { SecondaryDataDiv } from "../../styles/Card.styled";
+import { CardSecondaryData as SecondaryData } from "../../styles/Card.styled";
 
 // This is the secondary data. It resides within the
 // MainContainer. It is only displayed when 'expandPanel'
@@ -19,7 +19,7 @@ const ActionConfirmation = ({
   return (
     <>
       {expand ? (
-        <SecondaryDataDiv>
+        <SecondaryData>
           <h4>{first}</h4>
           <p>{second}</p>
           <div
@@ -36,7 +36,7 @@ const ActionConfirmation = ({
               {buttonText}
             </MinimalButton>
           </div>
-        </SecondaryDataDiv>
+        </SecondaryData>
       ) : null}
     </>
   );

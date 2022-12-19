@@ -49,7 +49,7 @@ export const CardPrimaryData = styled.div`
 // This is a container that is used for secondary card data.
 // For example, you may use this as a confirmation if a user
 // clicks a "cancel" button.
-export const SecondaryDataDiv = styled.div`
+export const CardSecondaryData = styled.div`
   background-color: ${({ theme }) => theme.accent || "null"};
   display: flex;
   flex: 1 1 100%;
