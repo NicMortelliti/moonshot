@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import ActionConfirmation from "./components/ActionConfirmation";
 import FeedbackMessage from "./components/FeedbackMessage";
 import FlightDetails from "./components/FlightDetails";
@@ -9,15 +8,8 @@ import { deleteReservation } from "../../features/reservations/reservationSlice"
 import { bookFlight } from "../../features/booking/bookingSlice";
 import { MinimalButton } from "../styles/Button.styled";
 
-// This is the main container. It is where all data
-// will reside. The cards background color, dimensions
-// and layout are set here.
-const MainContainer = styled.div`
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-`;
+// Styled components
+import { CardContainer } from "../styles/Card.styled";
 
 const Card = ({ data, typeOfList = null }) => {
   const [expandPanel, setExpandPanel] = useState(false);
@@ -146,7 +138,7 @@ const Card = ({ data, typeOfList = null }) => {
   // ------------------------------------
   // ------------------------------------
   return (
-    <MainContainer>
+    <CardContainer>
       <FeedbackMessage
         first={messages[typeOfList].feedback.first}
         second={messages[typeOfList].feedback.second}
@@ -177,7 +169,7 @@ const Card = ({ data, typeOfList = null }) => {
           ? messages[typeOfList].confirmation.main
           : messages[typeOfList].confirmation.alt}
       </MinimalButton>
-    </MainContainer>
+    </CardContainer>
   );
 };
 
