@@ -4,8 +4,9 @@ import ActionConfirmation from "./components/ActionConfirmation";
 import FeedbackMessage from "./components/FeedbackMessage";
 import FlightDetails from "./components/FlightDetails";
 import OriginDestinationGraphic from "./components/OriginDestinationGraphic";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteReservation } from "../../features/reservations/reservationSlice";
+import { bookFlight } from "../../features/booking/bookingSlice";
 import { MinimalButton } from "../styles/Button.styled";
 
 // This is the main container. It is where all data
@@ -22,13 +23,8 @@ const Card = ({ data, typeOfList = null }) => {
   const [expandPanel, setExpandPanel] = useState(false);
 
   const dispatch = useDispatch();
-
-  // Handle clicks go here
-  // Handle reservation delete
-  const handleDelete = (e) => {
-    e.preventDefault();
-    dispatch(deleteReservation(confirmationNumber));
-  };
+  const { user } = useSelector((state) => state.auth);
+  const { user: userId } = user;
 
   // Here we check to see if the data set contains
   // a value for "reservations_remaining". If there
@@ -82,6 +78,7 @@ const Card = ({ data, typeOfList = null }) => {
           action: {
             first: null,
             second: null,
+            buttonText: null,
           },
           confirmation: {
             main: "Ok!",
@@ -96,12 +93,13 @@ const Card = ({ data, typeOfList = null }) => {
         third: null,
       },
       action: {
-        first: null,
+        first: `Are you sure you want to reserve a seat on flight ${flightId}?`,
         second: null,
+        buttonText: "Yes, book it!",
       },
       confirmation: {
-        main: null,
-        alt: null,
+        main: "Nevermind",
+        alt: "Book Flight",
       },
     },
     reservation: {
@@ -113,12 +111,31 @@ const Card = ({ data, typeOfList = null }) => {
       action: {
         first: `Are you sure you want to cancel your flight ${flightId}?`,
         second: "This cannot be undone!",
+        buttonText: "Yes, cancel reservation.",
       },
       confirmation: {
         main: "Don't Cancel Reservation",
         alt: "Cancel Reservation",
       },
     },
+  };
+
+  // Click handlers
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    switch (typeOfList) {
+      case "reservation":
+        dispatch(deleteReservation(confirmationNumber));
+        break;
+
+      case "search":
+        dispatch(bookFlight({ userId, flightId }));
+        break;
+
+      default:
+        break;
+    }
   };
 
   // ------------------------------------
@@ -150,7 +167,8 @@ const Card = ({ data, typeOfList = null }) => {
         expand={expandPanel}
         first={messages[typeOfList].action.first}
         second={messages[typeOfList].action.second}
-        handleClick={handleDelete}
+        buttonText={messages[typeOfList].action.buttonText}
+        handleClick={handleClick}
       />
       <MinimalButton
         alert={expandPanel ? false : true}

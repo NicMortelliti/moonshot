@@ -21,7 +21,13 @@ const Wrapper = styled.div`
 // is set to true. Examples of secondary data are
 // confirmation buttons, warning messages (e.g. when
 // cancelling a reservation), etc.
-const ActionConfirmation = ({ expand, first, second, handleClick }) => {
+const ActionConfirmation = ({
+  expand,
+  first,
+  second,
+  buttonText,
+  handleClick,
+}) => {
   return (
     <>
       {expand ? (
@@ -39,7 +45,7 @@ const ActionConfirmation = ({ expand, first, second, handleClick }) => {
               alert
               margin="20px 0 0"
               onClick={(e) => handleClick(e, true)}>
-              Confirm cancellation
+              {buttonText}
             </MinimalButton>
           </div>
         </Wrapper>
