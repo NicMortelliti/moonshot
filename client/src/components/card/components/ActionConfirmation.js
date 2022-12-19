@@ -1,20 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 
 // Styled components
 import { MinimalButton } from "../../styles/Button.styled";
-
-const Wrapper = styled.div`
-  background-color: ${({ bgColor }) => bgColor || "null"};
-  display: flex;
-  flex: 1 1 100%;
-  flex-direction: column;
-  margin: 20px 0;
-  padding: 20px;
-  place-content: stretch center;
-  align-items: center;
-  flex-basis: 100%;
-`;
+import { SecondaryDataDiv } from "../../styles/Card.styled";
 
 // This is the secondary data. It resides within the
 // MainContainer. It is only displayed when 'expandPanel'
@@ -31,7 +19,7 @@ const ActionConfirmation = ({
   return (
     <>
       {expand ? (
-        <Wrapper bgColor="lightgray">
+        <SecondaryDataDiv>
           <h4>{first}</h4>
           <p>{second}</p>
           <div
@@ -48,7 +36,7 @@ const ActionConfirmation = ({
               {buttonText}
             </MinimalButton>
           </div>
-        </Wrapper>
+        </SecondaryDataDiv>
       ) : null}
     </>
   );

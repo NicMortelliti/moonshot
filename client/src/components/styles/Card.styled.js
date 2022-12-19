@@ -1,36 +1,13 @@
 import styled from "styled-components";
-import { Flex } from "./Flex.styled";
 
-export const ReservationContainer = styled(Flex)`
-  margin: 20px;
+export const SecondaryDataDiv = styled.div`
+  background-color: ${({ theme }) => theme.accent || "null"};
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-`;
-
-export const StyledReservationCard = styled(Flex)`
+  flex: 1 1 100%;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  background-color: white;
-  color: ${({ theme }) => theme.colors.dark};
-  width: 80%;
-  max-width: 800px;
-  margin: 10px;
+  margin: 20px 0;
   padding: 20px;
-
-  & > div {
-    & > div {
-      & > p {
-        color: ${({ theme }) => theme.colors.dark};
-        opacity: 0.9;
-        font-size: medium;
-      }
-      & > svg {
-        font-size: xx-large;
-        margin: 10px 0 0;
-        color: ${({ theme }) => theme.accent};
-      }
-    }
-  }
+  place-content: stretch center;
+  align-items: center;
+  flex-basis: 100%;
 `;
