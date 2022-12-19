@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { capitalize } from "../../../helpers/helpers";
 import { useSelector } from "react-redux";
 
@@ -17,13 +16,6 @@ const FlightDetails = ({ data, flightId, confirmationNumber = null }) => {
     user: { first_name: firstName, last_name: lastName },
   } = useSelector((state) => state.auth);
 
-  // ------------------------------------
-  // ------------------------------------
-  //
-  // Main
-  //
-  // ------------------------------------
-  // ------------------------------------
   return (
     <PrimaryData>
       {/* Only show confirmation number and passenger name if we
