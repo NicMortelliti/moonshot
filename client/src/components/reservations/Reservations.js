@@ -29,14 +29,14 @@ const Reservations = () => {
   };
 
   return (
-    <div>
+    <>
       <CardList
         cards={reservations}
         isLoading={isLoading}
         backup={backup}
         typeOfList="reservation"
       />
-    </div>
+    </>
   );
 };
 

@@ -8,9 +8,6 @@ export const CardList = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
-  flex-basis: 90%;
-  max-width: 800px;
   gap: 30px;
 `;
 
@@ -24,6 +21,10 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  align-items: stretch;
+  flex-basis: 60%;
+  min-width: 500px;
+  max-width: 800px;
 `;
 
 // This is a styled div for the feedback section of the card.
@@ -52,13 +53,10 @@ export const CardPrimaryData = styled.div`
 export const CardSecondaryData = styled.div`
   background-color: ${({ theme }) => theme.accent || "null"};
   display: flex;
-  flex: 1 1 100%;
   flex-direction: column;
   margin: 20px 0;
-  padding: 20px;
-  place-content: stretch center;
+  padding: 20px 0;
   align-items: center;
-  flex-basis: 100%;
 `;
 
 // This is a styled div for the origin/destination, horizontal

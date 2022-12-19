@@ -91,7 +91,7 @@ const Card = ({ data, typeOfList = null }) => {
         third: null,
       },
       action: {
-        first: `Are you sure you want to reserve a seat on flight ${flightId}?`,
+        first: `Reserve a seat on flight ${flightId}?`,
         second: null,
         buttonText: "Yes, book it!",
         secondaryButtonType: false,
@@ -110,7 +110,7 @@ const Card = ({ data, typeOfList = null }) => {
         third: "The following booking has been confirmed.",
       },
       action: {
-        first: `Are you sure you want to cancel your flight ${flightId}?`,
+        first: `Cancel your reservation on flight ${flightId}?`,
         second: "This cannot be undone!",
         buttonText: "Yes, cancel reservation.",
       },
