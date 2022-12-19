@@ -106,8 +106,8 @@ const Card = ({ data, typeOfList = null }) => {
     reservation: {
       feedback: {
         first: "",
-        second: null,
-        third: "The following booking has been confirmed.",
+        second: "You are booked on the following flight:",
+        third: null,
       },
       action: {
         first: `Cancel your reservation on flight ${flightId}?`,
