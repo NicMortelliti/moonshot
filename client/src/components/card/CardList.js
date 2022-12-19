@@ -4,12 +4,7 @@ import Card from "./Card";
 // Styled components
 import { CardList as List } from "../styles/Card.styled";
 
-const CardList = ({
-  cards,
-  isLoading = false,
-  backup = null,
-  typeOfList = null,
-}) => {
+const CardList = ({ cards, isLoading = false, typeOfList = null }) => {
   // Send cards to the Card component
   // to be rendered.
   const RenderCards = () => {
@@ -28,9 +23,6 @@ const CardList = ({
   // we'll display a loading indicator.
   // If we have the data, render a
   // list of cards for each data object.
-  // If we get nothing back, fallback
-  // to whatever backup action was
-  // passed in here.
   const RenderList = () => {
     switch (true) {
       case isLoading:
@@ -38,9 +30,6 @@ const CardList = ({
 
       case cards !== null:
         return <RenderCards />;
-
-      case backup !== null:
-        return backup();
 
       default:
         return null;

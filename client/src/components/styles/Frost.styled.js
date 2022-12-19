@@ -4,7 +4,6 @@ export const FrostedContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 0 1 80%;
-  padding: 20px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
@@ -13,4 +12,7 @@ export const FrostedContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 30px;
+
+  gap: 30px;
 `;

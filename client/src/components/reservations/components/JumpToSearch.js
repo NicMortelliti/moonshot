@@ -1,23 +1,18 @@
 import React from "react";
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 // Styled components
 import { Button } from "../../styles/Button.styled";
+import { FrostedContainer } from "../../styles/Frost.styled";
 
 const JumpToSearch = ({ handleClick }) => {
-  const JumpToBookFlights = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 50px 0;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  `;
+  const navigate = useNavigate();
+
   return (
-    <JumpToBookFlights>
+    <FrostedContainer>
       <p>You have no reservations.</p>
-      <Button onClick={handleClick}>Book one!</Button>
-    </JumpToBookFlights>
+      <Button handleClick={() => navigate("/flight-search")} text="Book one!" />
+    </FrostedContainer>
   );
 };
 
