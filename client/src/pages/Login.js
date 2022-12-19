@@ -60,69 +60,43 @@ const Login = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        backgroundImage: `url(${planet})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        top: "-70px",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        position: "absolute",
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
-      <FrostedContainer
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          maxWidth: "500px",
-        }}>
-        <Flex>
-          <h2>Log in</h2>
-        </Flex>
+    <>
+      <FrostedContainer maxWidth="500px">
+        <h2>Log in</h2>
 
-        <Flex style={{ alignSelf: "stretch" }} border>
-          <Form onSubmit={onSubmit}>
-            <Flex direction="column" justify="center" border>
-              <InputContainer>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={email}
-                  placeholder="Email address"
-                  onChange={onChange}
-                />
-              </InputContainer>
-              <InputContainer>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={password}
-                  placeholder="Password"
-                  onChange={onChange}
-                />
-              </InputContainer>
-            </Flex>
-            <Flex>
-              <Button
-                type="submit"
-                text={isLoading ? "Loading..." : "Submit"}
-                handleClick={onSubmit}
+        <Form onSubmit={onSubmit}>
+          <Flex direction="column" justify="center" border>
+            <InputContainer>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                placeholder="Email address"
+                onChange={onChange}
               />
-            </Flex>
-          </Form>
-        </Flex>
+            </InputContainer>
+            <InputContainer>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Password"
+                onChange={onChange}
+              />
+            </InputContainer>
+          </Flex>
+          <Flex>
+            <Button
+              type="submit"
+              text={isLoading ? "Loading..." : "Submit"}
+              handleClick={onSubmit}
+            />
+          </Flex>
+        </Form>
       </FrostedContainer>
-    </div>
+    </>
   );
 };
 

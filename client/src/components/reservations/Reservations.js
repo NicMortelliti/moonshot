@@ -20,15 +20,14 @@ const Reservations = () => {
   );
 
   // Redirect user to the booking page
-  const redirectToBooking = () => {
-  };
+  const redirectToBooking = () => {};
 
   const Render = () => {
-    switch (reservations) {
-      case null:
-        return <JumpToSearch handleClick={redirectToBooking} />;
+    switch (true) {
+      case isLoading:
+        return <p>Loading...</p>;
 
-      default:
+      case reservations:
         return (
           <CardList
             cards={reservations}
@@ -36,6 +35,9 @@ const Reservations = () => {
             typeOfList="reservation"
           />
         );
+
+      default:
+        return <JumpToSearch handleClick={redirectToBooking} />;
     }
   };
 

@@ -1,3 +1,6 @@
+import styled from "styled-components";
+import planet from "../../components/images/planet.jpg";
+
 const white = "#ffffff";
 const black = "#000000";
 const lightBlue = "#676f9d";
@@ -31,3 +34,18 @@ export const theme = {
   alert: "lightcoral",
   accent: accent,
 };
+
+export const WallPaperContainer = styled.div`
+  display: flex;
+  background-image: url(${planet});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  top: -70px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+`;

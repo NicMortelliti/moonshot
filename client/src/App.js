@@ -17,7 +17,7 @@ import { reLogin } from "./features/auth/authSlice";
 
 // Styled Components
 import { ThemeProvider } from "styled-components";
-import { theme } from "./components/styles/Theme";
+import { theme, WallPaperContainer } from "./components/styles/Theme";
 import GlobalStyles from "./components/styles/Global";
 
 const App = () => {
@@ -49,16 +49,18 @@ const App = () => {
             paddingBottom: "160px",
             justifyContent: "space-evenly",
           }}>
-          <Routes>
-            <Route path="/*" element={!user ? <Landing /> : <Landing />} />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/register" element={<Register />} />
+          <WallPaperContainer source="planet">
+            <Routes>
+              <Route path="/*" element={!user ? <Landing /> : <Landing />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/register" element={<Register />} />
 
-            {/* User logged-in routes */}
-            <Route path="my-trips" element={<Reservations />} />
-            <Route path="flight-search" element={<Booking />} />
-            <Route path="my-profile" element={<Profile />} />
-          </Routes>
+              {/* User logged-in routes */}
+              <Route path="my-trips" element={<Reservations />} />
+              <Route path="flight-search" element={<Booking />} />
+              <Route path="my-profile" element={<Profile />} />
+            </Routes>
+          </WallPaperContainer>
         </div>
 
         <Footer />

@@ -9,6 +9,8 @@ export const FrostedContainer = styled.div`
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
+  max-width: ${({ maxWidth }) => maxWidth || "auto"};
+
   justify-content: center;
   align-items: center;
   text-align: center;
