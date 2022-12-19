@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register } from "../features/auth/authSlice";
-import planet from "../components/images/planet.jpg";
 
 // Styled Components
 import { Button } from "../components/styles/Button.styled";
@@ -41,9 +40,6 @@ const Register = () => {
     if (isSuccess || user) {
       navigate("/");
     }
-
-    // Set everything back to default values
-    // dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {

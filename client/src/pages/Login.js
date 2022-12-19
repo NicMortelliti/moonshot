@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login } from "../features/auth/authSlice";
-import planet from "../components/images/planet.jpg";
 
 // Styled Components
 import { Button } from "../components/styles/Button.styled";
