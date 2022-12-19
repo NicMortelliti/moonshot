@@ -37,31 +37,18 @@ const App = () => {
       <Router>
         <Header />
 
-        <div
-          style={{
-            display: "flex",
-            flexGrow: 1,
-            margin: 0,
-            padding: "auto auto",
-            flexWrap: "wrap",
-            flexBasis: "80%",
-            paddingTop: "65px",
-            paddingBottom: "160px",
-            justifyContent: "space-evenly",
-          }}>
-          <WallPaperContainer source="planet">
-            <Routes>
-              <Route path="/*" element={!user ? <Landing /> : <Landing />} />
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/register" element={<Register />} />
+        <WallPaperContainer source="planet">
+          <Routes>
+            <Route path="/*" element={!user ? <Landing /> : <Landing />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
 
-              {/* User logged-in routes */}
-              <Route path="my-trips" element={<Reservations />} />
-              <Route path="flight-search" element={<Booking />} />
-              <Route path="my-profile" element={<Profile />} />
-            </Routes>
-          </WallPaperContainer>
-        </div>
+            {/* User logged-in routes */}
+            <Route path="my-trips" element={<Reservations />} />
+            <Route path="flight-search" element={<Booking />} />
+            <Route path="my-profile" element={<Profile />} />
+          </Routes>
+        </WallPaperContainer>
 
         <Footer />
       </Router>
