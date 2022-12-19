@@ -2,14 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-      }}>
+    <div>
       <h2>The final frontier is just the beginning...</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, libero.
