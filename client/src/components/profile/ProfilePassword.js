@@ -90,7 +90,7 @@ const ProfilePassword = () => {
   return (
     <div>
       <ShowSectionControl />
-      <Form />
+      {showSection ? <Form /> : null}
     </div>
   );
 };

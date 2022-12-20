@@ -49,6 +49,7 @@ export const MinimalButton = styled.button`
 `;
 
 export const Button = ({
+  alert,
   name,
   secondary = false,
   text,
@@ -59,6 +60,7 @@ export const Button = ({
     case secondary:
       return (
         <ButtonSecondary
+          alert={alert}
           name={name}
           type={type}
           onClick={(e) => handleClick(e)}>
@@ -68,7 +70,11 @@ export const Button = ({
 
     default:
       return (
-        <ButtonPrimary name={name} type={type} onClick={(e) => handleClick(e)}>
+        <ButtonPrimary
+          alert={alert}
+          name={name}
+          type={type}
+          onClick={(e) => handleClick(e)}>
           {text}
         </ButtonPrimary>
       );

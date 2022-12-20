@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import ProfilePassword from "./ProfilePassword";
+import ProfileDelete from "./ProfileDelete";
 
 // Styled components
 import { FrostedContainer } from "../styles/Frost.styled";
@@ -28,6 +29,7 @@ const Profile = () => {
     <FrostedContainer>
       <Header />
       <ProfilePassword />
+      <ProfileDelete />
     </FrostedContainer>
   );
 };

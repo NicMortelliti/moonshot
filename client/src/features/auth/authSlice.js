@@ -75,6 +75,20 @@ export const updateUserData = createAsyncThunk(
   }
 );
 
+// Delete user from database
+export const deleteUser = createAsyncThunk(
+  "auth/deleteUser",
+  async ({ userId }, { rejectWithValue }) => {
+    try {
+      const result = await authService.deleteUser({ userId });
+      toast.success("Successfully deleted your account.");
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
