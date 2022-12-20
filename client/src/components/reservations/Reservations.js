@@ -19,9 +19,6 @@ const Reservations = () => {
     (state) => state.reservations
   );
 
-  // Redirect user to the booking page
-  const redirectToBooking = () => {};
-
   const Render = () => {
     switch (true) {
       case isLoading:
@@ -37,7 +34,7 @@ const Reservations = () => {
         );
 
       default:
-        return <JumpToSearch handleClick={redirectToBooking} />;
+        return <JumpToSearch />;
     }
   };
 
