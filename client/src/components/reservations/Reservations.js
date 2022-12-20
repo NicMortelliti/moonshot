@@ -20,25 +20,20 @@ const Reservations = () => {
   );
 
   const Render = () => {
-    switch (true) {
-      case isLoading:
-        return <p>Loading...</p>;
-
-      case reservations:
-        return (
-          <CardList
-            cards={reservations}
-            isLoading={isLoading}
-            typeOfList="reservation"
-          />
-        );
-
-      default:
-        return <JumpToSearch />;
+    if (isLoading) {
+      return <p>Loading...</p>;
+    } else {
+      return (
+        <CardList
+          cards={reservations}
+          isLoading={isLoading}
+          typeOfList="reservation"
+        />
+      );
     }
   };
 
-  return <Render />;
+  return <>{reservations ? <Render /> : <JumpToSearch />}</>;
 };
 
 export default Reservations;
