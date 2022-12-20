@@ -8,7 +8,8 @@ import { Button } from "../styles/Button.styled";
 import { InputContainer } from "../styles/FormStyled.styled";
 import { Flex } from "../styles/Flex.styled";
 
-const ProfilePassword = ({ setDisplaySection }) => {
+const ProfilePassword = () => {
+  const [showSection, setShowSection] = useState(false);
   const [formData, setFormData] = useState({
     password: "",
     password2: "",
@@ -38,7 +39,6 @@ const ProfilePassword = ({ setDisplaySection }) => {
       return null;
     } else {
       dispatch(updateUserData({ userId, userData: { password, password2 } }));
-      setDisplaySection(null);
     }
   };
 
@@ -49,8 +49,17 @@ const ProfilePassword = ({ setDisplaySection }) => {
     }));
   };
 
-  return (
-    <div>
+  const ShowSectionControl = () => (
+    <Button
+      secondary
+      name="password"
+      text={showSection ? "Cancel password change" : "Change password"}
+      handleClick={() => setShowSection(!showSection)}
+    />
+  );
+
+  const Form = () => (
+    <>
       <form onSubmit={onSubmit}>
         <Flex>
           <InputContainer>
@@ -77,6 +86,13 @@ const ProfilePassword = ({ setDisplaySection }) => {
 
         <Button type="submit" text="Submit" />
       </form>
+    </>
+  );
+
+  return (
+    <div>
+      <ShowSectionControl />
+      <Form />
     </div>
   );
 };
