@@ -59,34 +59,32 @@ const ProfilePassword = () => {
   );
 
   const Form = () => (
-    <>
-      <form onSubmit={onSubmit}>
-        <Flex>
-          <InputContainer>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter new password"
-              onChange={onChange}
-            />
-          </InputContainer>
-          <InputContainer>
-            <input
-              type="password"
-              id="password2"
-              name="password2"
-              value={password2}
-              placeholder="Re-enter new password"
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Flex>
+    <form onSubmit={onSubmit}>
+      <Flex>
+        <InputContainer>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            placeholder="Enter new password"
+            onChange={onChange}
+          />
+        </InputContainer>
+        <InputContainer>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            value={password2}
+            placeholder="Re-enter new password"
+            onChange={onChange}
+          />
+        </InputContainer>
+      </Flex>
 
-        <Button type="submit" text="Submit" />
-      </form>
-    </>
+      <Button type="submit" text="Submit" />
+    </form>
   );
 
   return (
