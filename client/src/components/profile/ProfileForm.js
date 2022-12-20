@@ -4,6 +4,7 @@ import ProfilePassword from "./ProfilePassword";
 
 // Styled Components
 import { Button } from "../styles/Button.styled";
+import { Legend } from "../styles/Widgets.styled";
 
 const ProfileForm = () => {
   const [displaySection, setDisplaySection] = useState(null);
@@ -48,7 +49,7 @@ const ProfileForm = () => {
   return (
     <>
       <h1>Your profile</h1>
-      <label htmlFor="first-last-name">Name</label>
+      <Legend>Name</Legend>
       <p name="first-last-name">
         {firstName} {lastName}
       </p>
