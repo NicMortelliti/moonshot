@@ -10,8 +10,8 @@ const CardList = ({ cards, isLoading = false, typeOfList = null }) => {
   const RenderCards = () => {
     return (
       <List>
-        {cards.map((card) => (
-          <Card data={card} typeOfList={typeOfList} />
+        {cards.map((card, i) => (
+          <Card key={i} data={card} typeOfList={typeOfList} />
         ))}
       </List>
     );
