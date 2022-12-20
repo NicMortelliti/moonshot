@@ -37,6 +37,10 @@ const App = () => {
       <Router>
         <Header />
 
+        {/* TODO Fix landing page auto navigation
+        When a user is deleted, the app should
+        automatically reroute the user to either
+        the landing page or the sign up page. */}
         <WallPaperContainer source="planet">
           <Routes>
             <Route path="/" element={<Landing />} />
