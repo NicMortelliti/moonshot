@@ -49,12 +49,21 @@ const updateUserData = async ({ userId, userData }) => {
   return handleResponse(response);
 };
 
+// Delete user account
+const deleteUser = async () => {
+  const response = await fetch(`/users`, {
+    method: "DELETE",
+  });
+  return handleResponse(response);
+};
+
 const authService = {
   updateUserData,
   register,
   reLogin,
   login,
   logout,
+  deleteUser,
 };
 
 export default authService;

@@ -51,7 +51,7 @@ const ProfilePassword = () => {
 
   const ShowSectionControl = () => (
     <Button
-      secondary
+      secondary={showSection ? false : true}
       name="password"
       text={showSection ? "Cancel password change" : "Change password"}
       handleClick={() => setShowSection(!showSection)}
@@ -83,7 +83,7 @@ const ProfilePassword = () => {
         </InputContainer>
       </Flex>
 
-      <Button type="submit" text="Submit" />
+      <Button type="submit" text="Submit" secondary />
     </form>
   );
 

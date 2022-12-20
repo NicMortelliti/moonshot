@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteUser } from "../../features/auth/authSlice";
 
 // Styled components
@@ -8,26 +7,43 @@ import { Button } from "../styles/Button.styled";
 
 const ProfileDelete = () => {
   const [showSection, setShowSection] = useState(false);
-  const {
-    user: { id: userId },
-  } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(deleteUser());
+  };
+
   const ShowSectionControl = () => (
     <Button
-      alert={showSection ? false : true}
-      secondary
+      alert={showSection ? true : false}
+      secondary={showSection ? false : true}
       name="deleteAccount"
-      text={showSection ? "Delete account" : "Nevermind! Don't delete account."}
+      text={showSection ? "Nevermind! Don't delete account." : "Delete account"}
       handleClick={() => setShowSection(!showSection)}
     />
   );
 
+  const ConfirmActionSection = () =>
+    showSection ? (
+      <>
+        <h3>Are you sure you want to delete your account?</h3>
+        <h4>You're account will be gone forever...</h4>
+        <Button
+          secondary
+          name="confirmDelete"
+          text="Yes, delete my account."
+          handleClick={(e) => onSubmit(e)}
+        />
+      </>
+    ) : null;
+
   return (
-    <div>
+    <>
       <ShowSectionControl />
-    </div>
+      <ConfirmActionSection />
+    </>
   );
 };
 

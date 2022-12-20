@@ -39,15 +39,22 @@ const App = () => {
 
         <WallPaperContainer source="planet">
           <Routes>
-            <Route path="/*" element={!user ? <Landing /> : <Landing />} />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/register" element={<Register />} />
-
-            {/* User logged-in routes */}
-            <Route path="my-trips" element={<Reservations />} />
-            <Route path="flight-search" element={<Booking />} />
-            <Route path="my-profile" element={<Profile />} />
+            <Route path="/" element={<Landing />} />
           </Routes>
+
+          {user ? (
+            <Routes>
+              <Route path="my-trips" element={<Reservations />} />
+              <Route path="flight-search" element={<Booking />} />
+              <Route path="my-profile" element={<Profile />} />
+            </Routes>
+          ) : (
+            <Routes>
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/register" element={<Register />} />
+            </Routes>
+          )}
+          <Routes>{/* User logged-in routes */}</Routes>
         </WallPaperContainer>
 
         <Footer />

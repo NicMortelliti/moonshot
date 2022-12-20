@@ -78,9 +78,9 @@ export const updateUserData = createAsyncThunk(
 // Delete user from database
 export const deleteUser = createAsyncThunk(
   "auth/deleteUser",
-  async ({ userId }, { rejectWithValue }) => {
+  async (_args, { rejectWithValue }) => {
     try {
-      const result = await authService.deleteUser({ userId });
+      const result = await authService.deleteUser();
       toast.success("Successfully deleted your account.");
       return result;
     } catch (error) {
@@ -201,6 +201,27 @@ export const authSlice = createSlice({
         state.message = null;
       })
       .addCase(updateUserData.rejected, (state, action) => {
+        // state.user = null;
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.payload;
+      })
+      .addCase(deleteUser.pending, (state) => {
+        // state.user = null;
+        state.isError = false;
+        state.isSuccess = false;
+        state.isLoading = true;
+        state.message = null;
+      })
+      .addCase(deleteUser.fulfilled, (state) => {
+        state.user = null;
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.message = null;
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
         // state.user = null;
         state.isError = true;
         state.isSuccess = false;
