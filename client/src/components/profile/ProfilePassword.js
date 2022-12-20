@@ -5,6 +5,8 @@ import { updateUserData } from "../../features/auth/authSlice";
 
 // Styled Components
 import { Button } from "../styles/Button.styled";
+import { InputContainer } from "../styles/FormStyled.styled";
+import { Flex } from "../styles/Flex.styled";
 
 const ProfilePassword = ({ setDisplaySection }) => {
   const [formData, setFormData] = useState({
@@ -50,23 +52,30 @@ const ProfilePassword = ({ setDisplaySection }) => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          placeholder="Enter new password"
-          onChange={onChange}
-        />
-        <input
-          type="password"
-          id="password2"
-          name="password2"
-          value={password2}
-          placeholder="Re-enter new password"
-          onChange={onChange}
-        />
-        <Button type="submit">Submit</Button>
+        <Flex>
+          <InputContainer>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              placeholder="Enter new password"
+              onChange={onChange}
+            />
+          </InputContainer>
+          <InputContainer>
+            <input
+              type="password"
+              id="password2"
+              name="password2"
+              value={password2}
+              placeholder="Re-enter new password"
+              onChange={onChange}
+            />
+          </InputContainer>
+        </Flex>
+
+        <Button type="submit" text="Submit" />
       </form>
     </div>
   );

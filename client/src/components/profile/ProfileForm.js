@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { FaUser } from "react-icons/fa";
 import ProfilePassword from "./ProfilePassword";
 
 // Styled Components
@@ -32,38 +31,35 @@ const ProfileForm = () => {
   // field ('name') and text (button label). Meant to be a
   // shared component so we can add more profile update
   // sections in the future.
-  const SectionButton = ({ field, text }) => {
-    return (
-      <Button
-        name={field}
-        onClick={() =>
-          setDisplaySection(displaySection === field ? null : field)
-        }>
-        {text}
-      </Button>
-    );
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    if (e.target.name === "password") {
+      if (displaySection === "password") {
+        setDisplaySection(null);
+      } else {
+        setDisplaySection("password");
+      }
+    }
   };
 
   // TODO Add a way to delete user account
 
   return (
-    <div>
-      <div className="heading">
-        <h1>
-          <FaUser /> Your profile
-        </h1>
-        <div name="first-last-name-container">
-          <label htmlFor="first-last-name">Name</label>
-          <p name="first-last-name">
-            {firstName} {lastName}
-          </p>
-        </div>
-      </div>
-      <div>
-        <SectionButton field="password" text="Change password" />
-      </div>
+    <>
+      <h1>Your profile</h1>
+      <label htmlFor="first-last-name">Name</label>
+      <p name="first-last-name">
+        {firstName} {lastName}
+      </p>
+      <Button
+        secondary
+        name="password"
+        text="Change password"
+        handleClick={handleClick}
+      />
       <RenderSection />
-    </div>
+    </>
   );
 };
 
