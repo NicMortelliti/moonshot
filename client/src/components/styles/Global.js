@@ -17,6 +17,8 @@ body {
   font-size: 1.15em;
   flex-direction: column;
 
+  border: 2px dotted red
+
 }
 
 h1,

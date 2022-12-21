@@ -4,7 +4,7 @@ import { logout, reset } from "../../features/auth/authSlice";
 import { capitalize } from "../../helpers/helpers";
 
 // Styled components
-import { HeaderListItem } from "../styles/Header.styled";
+import { HeaderContainer, HeaderListItem } from "../styles/Header.styled";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -112,20 +112,10 @@ const Header = () => {
   );
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        backgroundColor: "black",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        zIndex: 999,
-      }}>
+    <HeaderContainer>
       <RenderButtonSection buttons={leftAlignedButtons} />
       <RenderButtonSection buttons={rightAlignedButtons} />
-    </div>
+    </HeaderContainer>
   );
 };
 
