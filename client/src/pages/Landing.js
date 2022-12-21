@@ -8,18 +8,17 @@ const Landing = () => {
   return (
     <div
       style={{
-        boxSizing: "border-box",
         position: "absolute",
-        // top: 0,
-        left: 0,
-        // bottom: 0,
-        alignContent: "start",
+        minWidth: "400px",
+        maxWidth: "40vw",
+        left: "2em",
+        top: "30vh",
+        alignContent: "center",
         justifyContent: "start",
       }}>
       <FrostedContainer>
         <About />
       </FrostedContainer>
-      <div></div>
     </div>
   );
 };

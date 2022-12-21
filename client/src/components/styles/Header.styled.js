@@ -4,11 +4,10 @@ import { NavLink } from "react-router-dom";
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  // backgroundColor: "black",
   position: fixed;
   top: 0;
-  left: 15%;
-  width: 70%;
+  left: 2em;
+  right: 2em;
   z-index: 999;
 `;
 

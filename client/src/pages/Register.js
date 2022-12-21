@@ -62,6 +62,15 @@ const Register = () => {
   };
 
   return (
+    <div style={{
+              position: "absolute",
+        minWidth: "400px",
+        maxWidth: "40vw",
+        left: "2em",
+        top: "30vh",
+        alignContent: "center",
+        justifyContent: "start",
+    }}>
     <FrostedContainer maxWidth="500px">
       <h2>Sign up</h2>
       <Form onsSubmit={onSubmit}>
@@ -129,7 +138,8 @@ const Register = () => {
           />
         </Flex>
       </Form>
-    </FrostedContainer>
+      </FrostedContainer>
+      </div>
   );
 };
 
