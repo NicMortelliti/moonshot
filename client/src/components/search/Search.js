@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { default as Location } from "./BookingLocationButton";
 import { default as Confirmation } from "./BookingConfirmation";
 import { getOrigins } from "../../features/booking/bookingSlice";
+import CardList from "../card/CardList";
 
 // Styled components
-import CardList from "../card/CardList";
+import { FrostedWallpaper } from "../styles/Frost.styled";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -59,6 +60,10 @@ const Search = () => {
     } else return null;
   };
 
-  return <Render />;
+  return (
+    <FrostedWallpaper>
+      <Render />
+    </FrostedWallpaper>
+  )
 };
 export default Search;

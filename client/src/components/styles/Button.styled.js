@@ -5,7 +5,7 @@ const ButtonPrimary = styled.button`
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.5vw;
   font-weight: 700;
   margin: ${({ margin }) => margin || 0};
   padding: 15px 60px;

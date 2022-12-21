@@ -1,25 +1,18 @@
 import React from "react";
 import About from "../components/landing/About";
+import { Outlet } from "react-router-dom";
 
 // Styled Components
-import { FrostedContainer } from "../components/styles/Frost.styled";
+import { Side } from "../components/styles/Layout.styled";
 
 const Landing = () => {
   return (
-    <div
-      style={{
-        position: "absolute",
-        minWidth: "400px",
-        maxWidth: "40vw",
-        left: "2em",
-        top: "30vh",
-        alignContent: "center",
-        justifyContent: "start",
-      }}>
-      <FrostedContainer>
+    <>
+      <Side>
         <About />
-      </FrostedContainer>
-    </div>
+      </Side>
+      <Outlet />
+    </>
   );
 };
 

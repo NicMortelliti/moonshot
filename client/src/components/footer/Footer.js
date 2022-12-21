@@ -6,6 +6,7 @@ import Socials from "./Socials";
 
 // Styled components
 import { FooterFinePrint, FooterLink } from "../styles/Footer.styled";
+import { Footer as FooterContainer } from "../styles/Layout.styled";
 
 const Footer = () => {
   const [showAttributions, setShowAttributions] = useState(false);
@@ -39,17 +40,18 @@ const Footer = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "black",
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        width: "100%",
-        zIndex: 999,
-      }}>
+    <FooterContainer>
+      {/* <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "black",
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          zIndex: 999,
+        }}> */}
       <div
         style={{
           display: "flex",
@@ -69,7 +71,8 @@ const Footer = () => {
         }}>
         <Socials />
       </div>
-    </div>
+      {/* </div> */}
+    </FooterContainer>
   );
 };
 

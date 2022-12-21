@@ -4,7 +4,8 @@ import { logout, reset } from "../../features/auth/authSlice";
 import { capitalize } from "../../helpers/helpers";
 
 // Styled components
-import { HeaderContainer, HeaderListItem } from "../styles/Header.styled";
+import { Header as HeaderContainer } from "../styles/Layout.styled";
+import { HeaderListItem } from "../styles/Header.styled";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -112,7 +113,7 @@ const Header = () => {
   );
 
   return (
-    <HeaderContainer>
+    <HeaderContainer className="header">
       <RenderButtonSection buttons={leftAlignedButtons} />
       <RenderButtonSection buttons={rightAlignedButtons} />
     </HeaderContainer>

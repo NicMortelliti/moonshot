@@ -5,6 +5,7 @@ import { getReservations } from "../../features/reservations/reservationSlice";
 // Styled Components
 import CardList from "../card/CardList";
 import JumpToSearch from "./components/JumpToSearch";
+import { FrostedWallpaper } from "../styles/Frost.styled";
 
 const Reservations = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,31 @@ const Reservations = () => {
     }
   };
 
-  return <>{reservations ? <Render /> : <JumpToSearch />}</>;
+  return (
+    <FrostedWallpaper>
+      <div
+        style={{
+          border: "5px dotted blue",
+          position: "absolute",
+          left: 0,
+          bottom: "80px",
+          height: "76vh",
+          width: "100vw",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+        <div
+          style={{
+            border: "2px dotted red",
+            overflow: "auto",
+            display: "flex",
+            justifyContent: "center",
+          }}>
+          {reservations ? <Render /> : <JumpToSearch />}
+        </div>
+      </div>
+    </FrostedWallpaper>
+  );
 };
 
 export default Reservations;

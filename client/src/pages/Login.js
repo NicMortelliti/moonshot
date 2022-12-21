@@ -59,15 +59,7 @@ const Login = () => {
   };
 
   return (
-    <div style={{
-        position: "absolute",
-        minWidth: "400px",
-        maxWidth: "40vw",
-        left: "2em",
-        top: "30vh",
-        alignContent: "center",
-        justifyContent: "start",
-    }}>
+    <>
       <FrostedContainer maxWidth="500px">
         <h2>Log in</h2>
 
@@ -103,7 +95,7 @@ const Login = () => {
           </Flex>
         </Form>
       </FrostedContainer>
-    </div>
+    </>
   );
 };
 

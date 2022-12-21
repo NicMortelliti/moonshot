@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   position: fixed;
   top: 0;
-  left: 2em;
-  right: 2em;
+  left: 0;
+  padding: 0 2em;
+  /* right: 2em; */
   z-index: 999;
 `;
 
@@ -19,7 +20,7 @@ export const HeaderListItem = styled(NavLink)`
   text-decoration: none;
 
   /* Size */
-  font-size: ${(props) => props.fontSize || "large"};
+  font-size: 2vw;
   font-weight: 300;
 
   /* Alignment */

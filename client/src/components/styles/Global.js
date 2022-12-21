@@ -8,16 +8,15 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 
   background: ${({ theme }) => theme.bgColors.body};
   color: ${({ theme }) => theme.colors.body};
   font-family: 'Poppins', sans-serif;
-  font-size: 1.15em;
-  flex-direction: column;
+  font-size: 1.5vw;
+  /* flex-direction: column;
 
-  border: 2px dotted red
 
 }
 
@@ -27,13 +26,13 @@ h3,
 h4,
 h5,
 p {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   color: ${({ theme }) => theme.colors.dark};
   line-height: ${({ lineHeight }) => lineHeight || "30px"};
   margin: ${({ margin }) => margin || 0};
   padding: ${({ padding }) => padding || 0};
-  text-align: ${({ align }) => align || "auto"};
+  text-align: ${({ align }) => align || "auto"}; */
 }
 
 img {

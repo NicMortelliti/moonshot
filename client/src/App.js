@@ -3,7 +3,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import spacestation from "../src/components/images/spacestation.png";
 
 // Components
 import Header from "./components/header/Header";
@@ -17,9 +16,10 @@ import Landing from "./pages/Landing";
 import { reLogin } from "./features/auth/authSlice";
 
 // Styled Components
-import { ThemeProvider } from "styled-components";
-import { theme, WallPaperContainer } from "./components/styles/Theme";
 import GlobalStyles from "./components/styles/Global";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./components/styles/Theme";
+import { Content, Wrapper } from "./components/styles/Layout.styled";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -36,22 +36,31 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        <Header />
+        {/* <WallPaperContainer image={spacestation}> */}
+        <Wrapper>
+          <Header />
+          {/* <FrostedWallpaper> */}
+          <Content>
+            <Routes>
+              <Route path="/" element={!user ? <Landing /> : <Landing />}>
+                {!user ? (
+                  <>
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/register" element={<Register />} />
+                  </>
+                ) : null}
+              </Route>
 
-        <WallPaperContainer image={spacestation}>
-          <Routes>
-            <Route path="/*" element={!user ? <Landing /> : <Landing />} />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/register" element={<Register />} />
-
-            {/* User logged-in routes */}
-            <Route path="my-trips" element={<Reservations />} />
-            <Route path="flight-search" element={<Booking />} />
-            <Route path="my-profile" element={<Profile />} />
-          </Routes>
-        </WallPaperContainer>
-
-        <Footer />
+              {/* User logged-in routes */}
+              <Route path="my-trips" element={<Reservations />} />
+              <Route path="flight-search" element={<Booking />} />
+              <Route path="my-profile" element={<Profile />} />
+            </Routes>
+          </Content>
+          {/* </FrostedWallpaper> */}
+          <Footer />
+        </Wrapper>
+        {/* </WallPaperContainer> */}
       </Router>
       <ToastContainer
         position="top-center"
