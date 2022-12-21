@@ -6,9 +6,21 @@ import { FrostedContainer } from "../components/styles/Frost.styled";
 
 const Landing = () => {
   return (
-    <FrostedContainer>
-      <About />
-    </FrostedContainer>
+    <div
+      style={{
+        boxSizing: "border-box",
+        position: "absolute",
+        // top: 0,
+        left: 0,
+        // bottom: 0,
+        alignContent: "start",
+        justifyContent: "start",
+      }}>
+      <FrostedContainer>
+        <About />
+      </FrostedContainer>
+      <div></div>
+    </div>
   );
 };
 
