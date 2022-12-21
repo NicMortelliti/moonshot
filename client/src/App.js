@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import spacestation from "../src/components/images/spacestation.png";
 
 // Components
 import Header from "./components/header/Header";
@@ -37,7 +38,7 @@ const App = () => {
       <Router>
         <Header />
 
-        <WallPaperContainer source="planet">
+        <WallPaperContainer image={spacestation}>
           <Routes>
             <Route path="/*" element={!user ? <Landing /> : <Landing />} />
             <Route exact path="/login" element={<Login />} />

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import planet from "../../components/images/planet.jpg";
 
 const white = "#ffffff";
 const black = "#000000";
@@ -11,7 +10,7 @@ const accent = "#f9b17a";
 export const theme = {
   bgColors: {
     header: darkBlue,
-    body: medBlue,
+    body: black,
     footer: darkBlue,
     light: white,
     searchButton: darkBlue,
@@ -38,10 +37,11 @@ export const theme = {
 export const WallPaperContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background-image: url(${planet});
+  background-image: ${({ image }) => "url(" + image + ")" || null};
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   top: -70px;
   bottom: 0;
   left: 0;

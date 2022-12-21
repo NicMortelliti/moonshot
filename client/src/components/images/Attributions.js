@@ -22,12 +22,11 @@ const Attributions = () => {
     {
       basicName: "Spacestation image",
       mediaName: "spacestation.jpg",
-      userName: "Bradley Jasper Ybanez",
-      userLink:
-        "https://unsplash.com/@bradskidley?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-      siteName: "Unsplash",
+      userName: "MidJourney @nm",
+      userLink: null,
+      siteName: "MidJourney",
       siteLink:
-        "https://unsplash.com/collections/1284166/spaceship?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
+        "https://cdn.midjourney.com/643db32a-0b97-4f53-8cf5-b42ce8b52261/grid_0.png",
     },
   ];
 
