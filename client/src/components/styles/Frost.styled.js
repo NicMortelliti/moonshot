@@ -4,9 +4,9 @@ export const FrostedContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 0 1 80%;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
+  border-radius: 4px;
+  background: ${({ theme }) => `${theme.accent}50` || "rgba(255, 255, 255, 0.4)"};
+  backdrop-filter: blur(30px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
   max-width: ${({ maxWidth }) => maxWidth || "auto"};
