@@ -13,13 +13,14 @@ import Reservations from "./components/reservations/Reservations";
 import Booking from "./components/search/Search";
 import Profile from "./components/profile/Profile";
 import Landing from "./pages/Landing";
+import Dashboard from "./pages/Dashboard";
 import { reLogin } from "./features/auth/authSlice";
 
 // Styled Components
 import GlobalStyles from "./components/styles/Global";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./components/styles/Theme";
-import { Content, Wrapper } from "./components/styles/Layout.styled";
+import { Wrapper } from "./components/styles/Layout.styled";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -40,23 +41,22 @@ const App = () => {
         <Wrapper>
           <Header />
           {/* <FrostedWallpaper> */}
-          <Content>
             <Routes>
-              <Route path="/" element={!user ? <Landing /> : <Landing />}>
+              <Route path="/" element={!user ? <Landing /> : <Dashboard />}>
                 {!user ? (
                   <>
                     <Route exact path="/login" element={<Login />} />
                     <Route exact path="/register" element={<Register />} />
                   </>
-                ) : null}
+              ) :
+                <>
+                  {/* User logged-in routes */}
+                  <Route path="my-trips" element={<Reservations />} />
+                  <Route path="flight-search" element={<Booking />} />
+                  <Route path="my-profile" element={<Profile />} />
+                </>}
               </Route>
-
-              {/* User logged-in routes */}
-              <Route path="my-trips" element={<Reservations />} />
-              <Route path="flight-search" element={<Booking />} />
-              <Route path="my-profile" element={<Profile />} />
             </Routes>
-          </Content>
           {/* </FrostedWallpaper> */}
           <Footer />
         </Wrapper>

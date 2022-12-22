@@ -33,10 +33,10 @@ const Login = () => {
       toast.error(message);
     }
 
-    // If successful, navigate to home page
+    // If successful, navigate to booking
     if (isSuccess || user) {
       toast.success("Welcome back!");
-      navigate("/");
+      navigate("/my-trips");
     }
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 

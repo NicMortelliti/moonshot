@@ -18,14 +18,14 @@ const Header = () => {
   };
 
   const links = [
-    {
-      name: "MoonShot",
-      link: "/",
-      alignment: "start",
-      handleClick: null,
-      userLoggedIn: false,
-      authAgnostic: true,
-    },
+    // {
+    //   name: "MoonShot",
+    //   link: "/",
+    //   alignment: "start",
+    //   handleClick: null,
+    //   userLoggedIn: false,
+    //   authAgnostic: true,
+    // },
     {
       name: "Sign Up",
       link: "/register",

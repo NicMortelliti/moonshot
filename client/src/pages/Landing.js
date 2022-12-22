@@ -3,7 +3,7 @@ import About from "../components/landing/About";
 import { Outlet } from "react-router-dom";
 
 // Styled Components
-import { Side } from "../components/styles/Layout.styled";
+import { Content, Side } from "../components/styles/Layout.styled";
 
 const Landing = () => {
   return (
@@ -11,7 +11,9 @@ const Landing = () => {
       <Side>
         <About />
       </Side>
-      <Outlet />
+      <Content>
+        <Outlet />
+      </Content>
     </>
   );
 };
