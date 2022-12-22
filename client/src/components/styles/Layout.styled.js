@@ -6,7 +6,8 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: grid;
   gap: 5px;
-  height: 100vh;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
 
   /* For displays less than 500px wide */
   grid-template-areas:
