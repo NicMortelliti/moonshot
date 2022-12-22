@@ -54,7 +54,7 @@ export const Main = styled.div`
 
   /* For displays 500px and larger */
   @media (min-width: 500px) {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr;
     grid-template-areas: "sidebar   content";
     .header div {
       display: flex;
