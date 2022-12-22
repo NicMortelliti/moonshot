@@ -1,16 +1,18 @@
-import React from 'react'
+import React from "react";
 import { Outlet } from "react-router-dom";
 
 // Styled Components
-import { Content } from "../components/styles/Layout.styled";
-
+import { Content, Main, Side } from "../components/styles/Layout.styled";
 
 const Dashboard = () => {
   return (
-    <Content>
-      <Outlet />
-    </Content>
+    <Main>
+      <Side>Side</Side>
+      <Content>
+        <Outlet />
+      </Content>
+    </Main>
   );
 };
 
-export default Dashboard
+export default Dashboard;

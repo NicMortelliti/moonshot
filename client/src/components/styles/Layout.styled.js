@@ -6,36 +6,13 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: grid;
   gap: 5px;
+  height: 100vh;
 
   /* For displays less than 500px wide */
   grid-template-areas:
     "header"
-    "sidebar"
-    "content"
+    "main"
     "footer";
-
-  /* For displays 500px and larger */
-  @media (min-width: 500px) {
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "header     header"
-      "sidebar   content"
-      "footer     footer";
-
-    .header div {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-`;
-
-export const Content = styled.div`
-  border: 2px dotted red;
-  grid-area: content;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
 `;
 
 export const Header = styled.div`
@@ -48,11 +25,41 @@ export const Header = styled.div`
 export const Side = styled.div`
   border: 2px dotted red;
   grid-area: sidebar;
+  overflow: auto;
+`;
+
+export const Content = styled.div`
+  border: 2px dotted red;
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  overflow: auto;
 `;
 
 export const Footer = styled.div`
   border: 2px dotted red;
   grid-area: footer;
+`;
+
+export const Main = styled.div`
+  grid-area: main;
+  display: grid;
+  grid-template-areas:
+    "sidebar"
+    "content";
+  overflow: auto;
+
+  /* For displays 500px and larger */
+  @media (min-width: 500px) {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "sidebar   content";
+    .header div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 `;
 
 // -------------------------------------------

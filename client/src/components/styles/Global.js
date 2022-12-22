@@ -15,6 +15,7 @@ body {
   color: ${({ theme }) => theme.colors.body};
   font-family: 'Poppins', sans-serif;
   font-size: 1.5vw;
+  margin: 0;
   /* flex-direction: column;
 
 
