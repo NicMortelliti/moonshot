@@ -8,7 +8,6 @@ export const HeaderContainer = styled.nav`
   top: 0;
   left: 0;
   padding: 0 2em;
-  /* right: 2em; */
   z-index: 999;
 `;
 
@@ -40,10 +39,7 @@ export const HeaderListItem = styled(NavLink)`
     border-top: 5px solid;
     border-color: ${({ theme }) => theme.hoverColor};
 
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* flex: 0 1 80%; */
-    border-radius: 0 0 4px 4px;
+    border-radius: 0;
     background: ${({ theme }) => `${theme.accent}20` || "black"};
     backdrop-filter: blur(30px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);

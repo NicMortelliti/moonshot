@@ -17,6 +17,7 @@ export const CardList = styled.div`
 // use the CardList styled component as a direct parent
 // to this component.
 export const CardContainer = styled.div`
+  border: 2px solid red;
   background-color: white;
   display: flex;
   flex-direction: column;

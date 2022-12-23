@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import spacestation from "../images/spacestation.png";
 
 const GlobalStyles = createGlobalStyle`
 * {
@@ -30,6 +31,16 @@ p {
 
 img {
   max-width: 100%;
+}
+
+image{
+  background-image: url(${spacestation});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  min-height: 100%;
+  filter: blur(8px);
 }
 `;
 

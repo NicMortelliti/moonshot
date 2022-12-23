@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import image from "../images/spacestation.png";
 
 const white = "#ffffff";
 const black = "#000000";
@@ -33,20 +34,3 @@ export const theme = {
   alert: "lightcoral",
   accent: accent,
 };
-
-export const WallPaperContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  background-image: ${({ image }) => "url(" + image + ")" || null};
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  top: -70px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-`;

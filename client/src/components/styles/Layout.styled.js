@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import spacestation from "../images/spacestation.png";
 
 // -------------------------------------------
 // GRID --------------------------------------
@@ -25,7 +26,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Header = styled.div`
-  background: black;
+  background: ${({ theme }) => theme.bgColors.header + "ED" || "black"};
   grid-area: header;
   display: flex;
   justify-content: space-between;
@@ -54,3 +55,13 @@ export const Footer = styled.div`
 
 // -------------------------------------------
 // -------------------------------------------
+
+export const Wallpaper = styled.div`
+  background-image: url(${spacestation});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  min-height: 100%;
+  filter: blur(8px);
+`;

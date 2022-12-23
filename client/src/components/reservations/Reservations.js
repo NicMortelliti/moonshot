@@ -35,17 +35,16 @@ const Reservations = () => {
   };
 
   return (
-      <Content>
-        <div
-          style={{
-            border: "2px dotted red",
-            overflow: "auto",
-            display: "flex",
-            justifyContent: "center",
-          }}>
-          {reservations ? <Render /> : <JumpToSearch />}
-        </div>
-      </Content>
+    <Content>
+      <div
+        style={{
+          overflow: "auto",
+          display: "flex",
+          justifyContent: "center",
+        }}>
+        {reservations ? <Render /> : <JumpToSearch />}
+      </div>
+    </Content>
   );
 };
 
