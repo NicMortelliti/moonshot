@@ -8,17 +8,10 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  /* display: flex;
-  flex-direction: column; */
-
   background: ${({ theme }) => theme.bgColors.body};
   color: ${({ theme }) => theme.colors.body};
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5vw;
   margin: 0;
-  /* flex-direction: column;
-
-
 }
 
 h1,
@@ -27,13 +20,12 @@ h3,
 h4,
 h5,
 p {
-  /* display: flex;
-  flex-direction: column;
+  display: flex;
   color: ${({ theme }) => theme.colors.dark};
-  line-height: ${({ lineHeight }) => lineHeight || "30px"};
+  line-height: ${({ lineHeight }) => lineHeight || "2"};
   margin: ${({ margin }) => margin || 0};
   padding: ${({ padding }) => padding || 0};
-  text-align: ${({ align }) => align || "auto"}; */
+  text-align: ${({ align }) => align || "left"};
 }
 
 img {

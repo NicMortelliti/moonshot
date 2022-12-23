@@ -7,7 +7,6 @@ import { Content, Side } from "../components/styles/Layout.styled";
 const Dashboard = () => {
   return (
     <>
-      <Side>Side</Side>
       <Content>
         <Outlet />
       </Content>

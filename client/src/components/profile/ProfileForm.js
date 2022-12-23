@@ -5,6 +5,7 @@ import ProfilePassword from "./ProfilePassword";
 // Styled Components
 import { Button } from "../styles/Button.styled";
 import { Legend } from "../styles/Widgets.styled";
+import { ProfileSection } from "../styles/Profile.styled";
 
 const ProfileForm = () => {
   const [displaySection, setDisplaySection] = useState(null);
@@ -48,17 +49,23 @@ const ProfileForm = () => {
 
   return (
     <>
-      <h1>Your profile</h1>
-      <Legend>Name</Legend>
-      <p name="first-last-name">
-        {firstName} {lastName}
-      </p>
-      <Button
-        secondary
-        name="password"
-        text="Change password"
-        handleClick={handleClick}
-      />
+      <ProfileSection>
+        <Legend margin="0 10px 0 0">Name</Legend>
+
+        <p name="first-last-name">
+          {firstName} {lastName}
+        </p>
+      </ProfileSection>
+      <ProfileSection>
+        <Legend margin="0 10px 0 0">Password</Legend>
+        <Button
+          secondary
+          name="password"
+          text="Change"
+          handleClick={handleClick}
+        />
+      </ProfileSection>
+
       <RenderSection />
     </>
   );

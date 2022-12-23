@@ -8,7 +8,7 @@ import { getOrigins } from "../../features/booking/bookingSlice";
 import CardList from "../card/CardList";
 
 // Styled components
-import { FrostedWallpaper } from "../styles/Frost.styled";
+import { SearchLocationContainer } from "../styles/Search.styled";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,6 @@ const Search = () => {
 
   // Determine what to render via switch/case
   const Render = () => {
-    console.log(data);
     if (data) {
       switch (true) {
         // If isLoading is true, display the loading page.
@@ -40,9 +39,15 @@ const Search = () => {
         // the destination is checked if it's null.
         case !origin:
         case !destination:
-          return data.map((eachData) => (
-            <Location key={eachData.id} data={eachData} />
-          ));
+          return (
+            <SearchLocationContainer>
+              <div>
+                {data.map((eachData) => (
+                  <Location key={eachData.id} data={eachData} />
+                ))}
+              </div>
+            </SearchLocationContainer>
+          );
 
         // If we've made it this far and the flight has
         // yet to be set, we'll display the flight picker.
@@ -60,10 +65,6 @@ const Search = () => {
     } else return null;
   };
 
-  return (
-    <FrostedWallpaper>
-      <Render />
-    </FrostedWallpaper>
-  )
+  return <Render />;
 };
 export default Search;

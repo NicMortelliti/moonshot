@@ -25,7 +25,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Header = styled.div`
-  border: 2px dotted red;
   background: black;
   grid-area: header;
   display: flex;
@@ -36,12 +35,10 @@ export const Header = styled.div`
 `;
 
 export const Side = styled.div`
-  border: 2px dotted red;
   grid-area: sidebar;
 `;
 
 export const Content = styled.div`
-  border: 2px dotted red;
   grid-area: content;
   display: flex;
   flex-direction: column;
@@ -50,11 +47,8 @@ export const Content = styled.div`
 `;
 
 export const Footer = styled.div`
-  border: 2px dotted red;
   background: black;
   grid-area: footer;
-  /* position: sticky; */
-  /* bottom: 0; */
   z-index: 999;
 `;
 

@@ -54,7 +54,7 @@ export const HorizontalRule = () => {
 export const Legend = styled.h5`
   color: ${({ theme }) => theme.colors.light};
   opacity: 0.5;
-  font-size: small;
+  font-size: x-small;
   line-height: ${({ lineHeight }) => lineHeight || "30px"};
   margin: ${({ margin }) => margin || 0};
   padding: 0;
@@ -72,7 +72,6 @@ export const LocationBlock = ({ align, name, macroName }) => {
         alignItems: align,
         justifyContent: "center",
         color: "black",
-        // height: "2em",
       }}>
       <Legend>{verb}</Legend>
       <h5>

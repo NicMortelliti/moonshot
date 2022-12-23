@@ -24,20 +24,20 @@ export const FlightContainer = styled(Flex)`
 
 export const SearchLocationButton = styled.button`
   cursor: pointer;
-
+  display: flex;
+  flex-direction: column;
   background-color: ${({ theme }) => theme.bgColors.button};
   color: ${({ theme }) => theme.colors.button};
-  border: none;
+  border: 1px solid black;
+  margin: 10px 0;
+
+  justify-content: center;
+  align-items: center;
 
   overflow-wrap: normal;
-  margin: 5px;
 
   width: 100px;
   height: 100px;
-
-  p {
-    justify-content: center;
-  }
 
   &:hover,
   &:focus {
@@ -60,4 +60,20 @@ export const SearchFlex = styled(Flex)`
 
 export const SeatsContainer = styled(SearchFlex)`
   background-color: ${({ theme }) => theme.alert};
+`;
+
+export const SearchLocationContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: auto;
+  margin: auto;
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
