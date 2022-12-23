@@ -5,7 +5,14 @@ import Attributions from "../images/Attributions";
 import Socials from "./Socials";
 
 // Styled components
-import { FooterFinePrint, FooterLink } from "../styles/Footer.styled";
+import {
+  FooterFinePrint,
+  FooterLink,
+  FooterGrid,
+  Data,
+  Buttons,
+  Socials as SocialsContainer,
+} from "../styles/Footer.styled";
 import { Footer as FooterContainer } from "../styles/Layout.styled";
 
 const Footer = () => {
@@ -13,65 +20,48 @@ const Footer = () => {
 
   const FinePrint = () => {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "stretch",
-          alignItems: "stretch",
-        }}>
+      <>
         <FooterFinePrint>Developed by Nicolas Mortelliti.</FooterFinePrint>
         <FooterFinePrint>
           Capstone project submission for the Flatiron School Software
           Engineering program.
         </FooterFinePrint>
-      </div>
+      </>
     );
   };
 
-  const DetermineFooter = () => {
+  const FooterData = () => {
     switch (showAttributions) {
       case true:
-        return <Attributions setShowAttributions={setShowAttributions} />;
-
+        return (
+          <Data>
+            <Attributions setShowAttributions={setShowAttributions} />
+          </Data>
+        );
       default:
-        return <FinePrint />;
+        return (
+          <Data>
+            <FinePrint />
+          </Data>
+        );
     }
   };
 
+  const AttributionsButton = () => (
+    <Buttons>
+      <FooterLink onClick={() => setShowAttributions(!showAttributions)}>
+        {showAttributions ? "Hide Attributions" : "Show Attributions"}
+      </FooterLink>
+    </Buttons>
+  );
+
   return (
     <FooterContainer>
-      {/* <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "black",
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          zIndex: 999,
-        }}> */}
-      <div
-        style={{
-          display: "flex",
-          flex: 1,
-          flexDirection: "column",
-        }}>
-        <DetermineFooter />
-        <FooterLink onClick={() => setShowAttributions(!showAttributions)}>
-          {showAttributions ? "Hide Attributions" : "Show Attributions"}
-        </FooterLink>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}>
+      <FooterGrid>
+        <FooterData />
         <Socials />
-      </div>
-      {/* </div> */}
+        <AttributionsButton />
+      </FooterGrid>
     </FooterContainer>
   );
 };

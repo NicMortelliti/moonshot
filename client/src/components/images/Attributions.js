@@ -1,6 +1,6 @@
 import React from "react";
 
-// Styled Components
+// Styled components
 import { FooterFinePrint } from "../styles/Footer.styled";
 
 const Attributions = () => {

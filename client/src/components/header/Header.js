@@ -18,21 +18,12 @@ const Header = () => {
   };
 
   const links = [
-    // {
-    //   name: "MoonShot",
-    //   link: "/",
-    //   alignment: "start",
-    //   handleClick: null,
-    //   userLoggedIn: false,
-    //   authAgnostic: true,
-    // },
     {
       name: "Sign Up",
       link: "/register",
       alignment: "end",
       handleClick: null,
       userLoggedIn: false,
-      authAgnostic: false,
     },
     {
       name: "Log In",
@@ -40,7 +31,6 @@ const Header = () => {
       alignment: "end",
       handleClick: null,
       userLoggedIn: false,
-      authAgnostic: false,
     },
     {
       name: "BOOK",
@@ -56,7 +46,6 @@ const Header = () => {
       alignment: "start",
       handleClick: null,
       userLoggedIn: true,
-      authAgnostic: false,
     },
     {
       name: "Log Out",
@@ -64,7 +53,6 @@ const Header = () => {
       alignment: "end",
       handleClick: onLogout,
       userLoggedIn: true,
-      authAgnostic: false,
     },
     {
       name: user ? capitalize(user.first_name) : null,
@@ -72,7 +60,6 @@ const Header = () => {
       alignment: "end",
       handleClick: null,
       userLoggedIn: true,
-      authAgnostic: false,
     },
   ];
 
@@ -99,7 +86,6 @@ const Header = () => {
           //    - authAgnostic is set to true
           //    - user logged in AND button is tagged to be displayed when logged in
           //    - NO user logged in AND button is tagged to be displayed when NOT logged in
-          eachButton.authAgnostic ||
           (user !== null && eachButton.userLoggedIn) ||
           (user === null && !eachButton.userLoggedIn)
         ) {
@@ -113,7 +99,7 @@ const Header = () => {
   );
 
   return (
-    <HeaderContainer className="header">
+    <HeaderContainer>
       <RenderButtonSection buttons={leftAlignedButtons} />
       <RenderButtonSection buttons={rightAlignedButtons} />
     </HeaderContainer>

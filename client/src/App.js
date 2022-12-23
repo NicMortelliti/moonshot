@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Components
 import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Footer from "./components/footer/Footer";
 import Reservations from "./components/reservations/Reservations";
 import Booking from "./components/search/Search";
 import Profile from "./components/profile/Profile";
@@ -37,30 +37,27 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        {/* <WallPaperContainer image={spacestation}> */}
         <Wrapper>
           <Header />
-          {/* <FrostedWallpaper> */}
-            <Routes>
-              <Route path="/" element={!user ? <Landing /> : <Dashboard />}>
-                {!user ? (
-                  <>
-                    <Route exact path="/login" element={<Login />} />
-                    <Route exact path="/register" element={<Register />} />
-                  </>
-              ) :
+          <Routes>
+            <Route path="/" element={!user ? <Landing /> : <Dashboard />}>
+              {!user ? (
+                <>
+                  <Route exact path="/login" element={<Login />} />
+                  <Route exact path="/register" element={<Register />} />
+                </>
+              ) : (
                 <>
                   {/* User logged-in routes */}
                   <Route path="my-trips" element={<Reservations />} />
                   <Route path="flight-search" element={<Booking />} />
                   <Route path="my-profile" element={<Profile />} />
-                </>}
-              </Route>
-            </Routes>
-          {/* </FrostedWallpaper> */}
+                </>
+              )}
+            </Route>
+          </Routes>
           <Footer />
         </Wrapper>
-        {/* </WallPaperContainer> */}
       </Router>
       <ToastContainer
         position="top-center"

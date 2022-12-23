@@ -6,27 +6,38 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: grid;
   gap: 5px;
-  min-height: 100vh;
   grid-template-rows: auto 1fr auto;
-
-  /* For displays less than 500px wide */
+  min-height: 100vh;
   grid-template-areas:
     "header"
-    "main"
+    "sidebar"
+    "content"
     "footer";
+
+  /* For displays 500px and larger */
+  @media (min-width: 500px) {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "header    header"
+      "sidebar  content"
+      "footer    footer";
+  }
 `;
 
 export const Header = styled.div`
   border: 2px dotted red;
+  background: black;
   grid-area: header;
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 `;
 
 export const Side = styled.div`
   border: 2px dotted red;
   grid-area: sidebar;
-  overflow: auto;
 `;
 
 export const Content = styled.div`
@@ -36,31 +47,15 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  overflow: auto;
 `;
 
 export const Footer = styled.div`
   border: 2px dotted red;
+  background: black;
   grid-area: footer;
-`;
-
-export const Main = styled.div`
-  grid-area: main;
-  display: grid;
-  grid-template-areas:
-    "sidebar"
-    "content";
-  overflow: auto;
-
-  /* For displays 500px and larger */
-  @media (min-width: 500px) {
-    grid-template-columns: auto 1fr;
-    grid-template-areas: "sidebar   content";
-    .header div {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
+  /* position: sticky; */
+  /* bottom: 0; */
+  z-index: 999;
 `;
 
 // -------------------------------------------
