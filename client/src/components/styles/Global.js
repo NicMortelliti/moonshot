@@ -10,9 +10,13 @@ const GlobalStyles = createGlobalStyle`
 
 body {
   background: ${({ theme }) => theme.bgColors.body};
+  background-image: url(${spacestation});
+  background-size: cover;
+
   color: ${({ theme }) => theme.colors.body};
   font-family: 'Poppins', sans-serif;
   margin: 0;
+
 }
 
 h1,
@@ -27,10 +31,6 @@ p {
   margin: ${({ margin }) => margin || 0};
   padding: ${({ padding }) => padding || 0};
   text-align: ${({ align }) => align || "left"};
-}
-
-img {
-  max-width: 100%;
 }
 
 image{

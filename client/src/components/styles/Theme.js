@@ -1,6 +1,3 @@
-import styled from "styled-components";
-import image from "../images/spacestation.png";
-
 const white = "#ffffff";
 const black = "#000000";
 const lightBlue = "#676f9d";
@@ -16,6 +13,7 @@ export const theme = {
     light: white,
     searchButton: darkBlue,
     button: accent,
+    sidebar: white + "55",
   },
 
   colors: {
