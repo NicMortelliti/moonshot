@@ -7,7 +7,7 @@ import { Content, Side } from "../components/styles/Layout.styled";
 
 const Dashboard = () => {
   return (
-    <Content style={{ background: "pink", alignSelf: "stretch" }}>
+    <Content>
       <Outlet />
     </Content>
   );

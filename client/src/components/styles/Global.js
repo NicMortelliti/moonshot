@@ -9,9 +9,9 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  background: ${({ theme }) => theme.bgColors.body};
-  background-image: url(${spacestation});
-  background-size: cover;
+  /* background: ${({ theme }) => theme.bgColors.body}; */
+  /* background-image: url(${spacestation}); */
+  /* background-size: cover; */
 
   color: ${({ theme }) => theme.colors.body};
   font-family: 'Poppins', sans-serif;
@@ -31,16 +31,6 @@ p {
   margin: ${({ margin }) => margin || 0};
   padding: ${({ padding }) => padding || 0};
   text-align: ${({ align }) => align || "left"};
-}
-
-image{
-  background-image: url(${spacestation});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-attachment: fixed;
-  min-height: 100%;
-  filter: blur(8px);
 }
 `;
 
