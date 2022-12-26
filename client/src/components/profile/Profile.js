@@ -6,10 +6,10 @@ import ProfileForm from "./ProfileForm";
 
 const Profile = () => {
   return (
-    <>
+    <div style={{ alignItems: "start", justifyContent: "start", textAlign: "start" }}>
       <h1>Your profile</h1>
       <ProfileForm />
-    </>
+    </div>
   );
 };
 

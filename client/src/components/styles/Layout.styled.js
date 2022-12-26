@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Header = styled.div`
-  background: ${({ theme }) => theme.bgColors.header + "ED" || "black"};
+  background: ${({ theme }) => theme.bgColors.header || "black"};
   grid-area: header;
   display: flex;
   justify-content: space-between;
@@ -43,8 +43,9 @@ export const Side = styled.div`
 
 export const Content = styled.div`
   grid-area: content;
-  display: flex;
-  flex-direction: column;
+  justify-items: stretch;
+  align-items: stretch;
+  align-content: stretch;
   justify-content: start;
   align-items: center;
 `;
