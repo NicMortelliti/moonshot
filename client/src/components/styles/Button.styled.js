@@ -62,7 +62,6 @@ export const Button = ({
   text,
   handleClick,
   type = null,
-  alert,
 }) => {
   switch (true) {
     case secondary:
@@ -71,7 +70,6 @@ export const Button = ({
           alert={alert}
           name={name}
           type={type}
-          alert={alert}
           onClick={(e) => handleClick(e)}>
           {text}
         </ButtonSecondary>

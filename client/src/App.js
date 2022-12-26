@@ -37,7 +37,6 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-<<<<<<< HEAD
         <Wrapper>
           <Header />
           <Routes>
@@ -59,35 +58,6 @@ const App = () => {
           </Routes>
           <Footer />
         </Wrapper>
-=======
-        <Header />
-
-        {/* TODO Fix landing page auto navigation
-        When a user is deleted, the app should
-        automatically reroute the user to either
-        the landing page or the sign up page. */}
-        <WallPaperContainer source="planet">
-          <Routes>
-            <Route path="/" element={<Landing />} />
-          </Routes>
-
-          {user ? (
-            <Routes>
-              <Route path="my-trips" element={<Reservations />} />
-              <Route path="flight-search" element={<Booking />} />
-              <Route path="my-profile" element={<Profile />} />
-            </Routes>
-          ) : (
-            <Routes>
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/register" element={<Register />} />
-            </Routes>
-          )}
-          <Routes>{/* User logged-in routes */}</Routes>
-        </WallPaperContainer>
-
-        <Footer />
->>>>>>> 2cade5f93055f131aa9c411992499f25c9d1a3e3
       </Router>
       <ToastContainer
         position="top-center"

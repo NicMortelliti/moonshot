@@ -1,14 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import ProfilePassword from "./ProfilePassword";
+// Components
 import ProfileDelete from "./ProfileDelete";
+import ProfilePassword from "./ProfilePassword";
 
-// Styled components
-import { FrostedContainer } from "../styles/Frost.styled";
+// Stylec components
 import { Legend } from "../styles/Widgets.styled";
-
-// TODO Add delete user
 
 const Profile = () => {
   const {
@@ -17,20 +15,22 @@ const Profile = () => {
 
   const Header = () => (
     <>
-      <h1>Your profile</h1>
-      <Legend>Name</Legend>
-      <p name="first-last-name">
-        {firstName} {lastName}
-      </p>
+      <h1>Account Settings</h1>
+      <p>Here, you can update your password or delete your account..</p>
     </>
   );
 
   return (
-    <FrostedContainer>
+    <div
+      style={{
+        alignItems: "start",
+        justifyContent: "start",
+        textAlign: "start",
+      }}>
       <Header />
       <ProfilePassword />
       <ProfileDelete />
-    </FrostedContainer>
+    </div>
   );
 };
 
