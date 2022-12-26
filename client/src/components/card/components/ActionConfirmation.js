@@ -10,35 +10,33 @@ import { CardSecondaryData as SecondaryData } from "../../styles/Card.styled";
 // confirmation buttons, warning messages (e.g. when
 // cancelling a reservation), etc.
 const ActionConfirmation = ({
-  expand,
   first,
   second,
   buttonText,
+  alert,
   secondaryButtonType,
   handleClick,
 }) => {
   return (
     <>
-      {expand ? (
-        <SecondaryData>
-          <h4>{first}</h4>
-          <p>{second}</p>
-          <div
-            style={{
-              display: "flex",
-              flex: "1 1 100%",
-              alignItems: "space-between",
-              justifyContent: "space-between",
-            }}>
-            <Button
-              alert
-              secondary={secondaryButtonType}
-              text={buttonText}
-              handleClick={handleClick}
-            />
-          </div>
-        </SecondaryData>
-      ) : null}
+      <SecondaryData>
+        <h4>{first}</h4>
+        <p>{second}</p>
+        <div
+          style={{
+            display: "flex",
+            flex: "1 1 100%",
+            alignItems: "space-between",
+            justifyContent: "space-between",
+          }}>
+          <Button
+            alert={alert}
+            secondary={secondaryButtonType}
+            text={buttonText}
+            handleClick={handleClick}
+          />
+        </div>
+      </SecondaryData>
     </>
   );
 };

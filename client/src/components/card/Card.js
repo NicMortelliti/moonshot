@@ -113,6 +113,8 @@ const Card = ({ data, typeOfList = null }) => {
         first: `Cancel your reservation on flight ${flightId}?`,
         second: "This cannot be undone!",
         buttonText: "Yes, cancel reservation.",
+        secondaryButtonType: true,
+        alert: true,
       },
       confirmation: {
         alt: "Don't Cancel Reservation",
@@ -168,32 +170,53 @@ const Card = ({ data, typeOfList = null }) => {
         departure={departure}
         arrival={arrival}
       />
-      <ActionConfirmation
-        expand={expandPanel}
-        first={messages[typeOfList].action.first}
-        second={messages[typeOfList].action.second}
-        buttonText={messages[typeOfList].action.buttonText}
-        secondaryButtonType={messages[typeOfList].action.secondaryButtonType}
-        handleClick={handleClick}
-      />
-      <Button
-        secondary={
-          expandPanel
-            ? messages[typeOfList].confirmation.altBtn
-            : messages[typeOfList].confirmation.mainBtn
-        }
-        alert={expandPanel ? false : true}
-        handleClick={
-          typeOfList !== "confirmation"
-            ? () => setExpandPanel(!expandPanel)
-            : handleClick
-        }
-        text={
-          expandPanel
-            ? messages[typeOfList].confirmation.alt
-            : messages[typeOfList].confirmation.main
-        }
-      />
+      {expandPanel ? (
+        <ActionConfirmation
+          first={messages[typeOfList].action.first}
+          second={messages[typeOfList].action.second}
+          buttonText={messages[typeOfList].action.buttonText}
+          alert={messages[typeOfList].action.alert}
+          secondaryButtonType={messages[typeOfList].action.secondaryButtonType}
+          handleClick={handleClick}
+        />
+      ) : null}
+
+      {typeOfList === "confirmation" ? (
+        <Button
+          secondary={
+            expandPanel
+              ? messages[typeOfList].confirmation.altBtn
+              : messages[typeOfList].confirmation.mainBtn
+          }
+          alert={expandPanel ? false : true}
+          handleClick={
+            typeOfList !== "confirmation"
+              ? () => setExpandPanel(!expandPanel)
+              : handleClick
+          }
+          text={
+            expandPanel
+              ? messages[typeOfList].confirmation.alt
+              : messages[typeOfList].confirmation.main
+          }
+        />
+      ) : null}
+
+      {typeOfList === "search" ? (
+        <Button
+          secondary={expandPanel}
+          text={!expandPanel ? "Book flight" : "Nevermind"}
+          handleClick={() => setExpandPanel(!expandPanel)}
+        />
+      ) : null}
+
+      {typeOfList === "reservation" ? (
+        <Button
+          secondary={!expandPanel}
+          text={!expandPanel ? "Cancel Reservation" : "Nevermind"}
+          handleClick={() => setExpandPanel(!expandPanel)}
+        />
+      ) : null}
     </CardContainer>
   );
 };

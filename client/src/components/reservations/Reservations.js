@@ -34,18 +34,7 @@ const Reservations = () => {
     }
   };
 
-  return (
-    <Content>
-      <div
-        style={{
-          overflow: "auto",
-          display: "flex",
-          justifyContent: "center",
-        }}>
-        {reservations ? <Render /> : <JumpToSearch />}
-      </div>
-    </Content>
-  );
+  return <Content>{reservations ? <Render /> : <JumpToSearch />}</Content>;
 };
 
 export default Reservations;
