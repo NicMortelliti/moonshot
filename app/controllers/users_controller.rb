@@ -38,15 +38,8 @@ class UsersController < ApplicationController
 
   # DELETE '/users/[:id]'
   def destroy
-    user = find_user
-
-    # Only allow users or admins to delete profile
-    if user == @current_user || @current_user.admin == true
-      user.delete
-      head :no_content
-    else
-      render :user_not_found_response
-    end
+    @current_user.delete
+    render json: {}, status: :ok
   end
 
   private

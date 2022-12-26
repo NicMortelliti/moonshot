@@ -8,7 +8,8 @@ import { Button } from "../styles/Button.styled";
 import { InputContainer } from "../styles/FormStyled.styled";
 import { Flex } from "../styles/Flex.styled";
 
-const ProfilePassword = ({ setDisplaySection }) => {
+const ProfilePassword = () => {
+  const [showSection, setShowSection] = useState(false);
   const [formData, setFormData] = useState({
     password: "",
     password2: "",
@@ -38,7 +39,6 @@ const ProfilePassword = ({ setDisplaySection }) => {
       return null;
     } else {
       dispatch(updateUserData({ userId, userData: { password, password2 } }));
-      setDisplaySection(null);
     }
   };
 
@@ -49,34 +49,48 @@ const ProfilePassword = ({ setDisplaySection }) => {
     }));
   };
 
+  const ShowSectionControl = () => (
+    <Button
+      secondary={showSection ? false : true}
+      name="password"
+      text={showSection ? "Cancel password change" : "Change password"}
+      handleClick={() => setShowSection(!showSection)}
+    />
+  );
+
+  const Form = () => (
+    <form onSubmit={onSubmit}>
+      <Flex>
+        <InputContainer>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            placeholder="Enter new password"
+            onChange={onChange}
+          />
+        </InputContainer>
+        <InputContainer>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            value={password2}
+            placeholder="Re-enter new password"
+            onChange={onChange}
+          />
+        </InputContainer>
+      </Flex>
+
+      <Button type="submit" text="Submit" secondary />
+    </form>
+  );
+
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <Flex>
-          <InputContainer>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter new password"
-              onChange={onChange}
-            />
-          </InputContainer>
-          <InputContainer>
-            <input
-              type="password"
-              id="password2"
-              name="password2"
-              value={password2}
-              placeholder="Re-enter new password"
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Flex>
-
-        <Button type="submit" text="Submit" />
-      </form>
+      <ShowSectionControl />
+      {showSection ? <Form /> : null}
     </div>
   );
 };

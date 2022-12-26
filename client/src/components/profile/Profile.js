@@ -1,15 +1,36 @@
 import React from "react";
-import ProfileForm from "./ProfileForm";
+import { useSelector } from "react-redux";
+
+import ProfilePassword from "./ProfilePassword";
+import ProfileDelete from "./ProfileDelete";
+
+// Styled components
+import { FrostedContainer } from "../styles/Frost.styled";
+import { Legend } from "../styles/Widgets.styled";
 
 // TODO Add delete user
-// TODO Style page
 
 const Profile = () => {
-  return (
-    <div style={{ alignItems: "start", justifyContent: "start", textAlign: "start" }}>
+  const {
+    user: { first_name: firstName, last_name: lastName },
+  } = useSelector((state) => state.auth);
+
+  const Header = () => (
+    <>
       <h1>Your profile</h1>
-      <ProfileForm />
-    </div>
+      <Legend>Name</Legend>
+      <p name="first-last-name">
+        {firstName} {lastName}
+      </p>
+    </>
+  );
+
+  return (
+    <FrostedContainer>
+      <Header />
+      <ProfilePassword />
+      <ProfileDelete />
+    </FrostedContainer>
   );
 };
 

@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :reservations, only: %i[create index update destroy]
   resources :users, only: %i[create index update destroy]
   resources :vehicles, only: %i[create index update destroy]
-  resource :sessions # Singular resource allows destroy action without session ID
+  
+  # Singular resource allows destroy action without session ID
+  resource :users
+  resource :sessions
 
   get '/me', to: 'users#show'
   get '/origins', to: 'flights#origins'
