@@ -1,29 +1,32 @@
-const white = "#ffffff";
-const black = "#000000";
+const light = "#ffffff";
+const dark = "#000000";
 const lightBlue = "#676f9d";
-const medBlue = "#424769";
 const darkBlue = "#2d3250";
 const accent = "#f9b17a";
 
+const white = "FFFFFF";
+const black = "000000";
+
 export const theme = {
   bgColors: {
+    dark: dark,
+    light: light,
     header: darkBlue,
     body: black,
     footer: darkBlue,
-    light: white,
     searchButton: darkBlue,
     button: accent,
     sidebar: white + "55",
   },
 
   colors: {
+    dark: dark,
+    light: light,
     header: white,
     body: white,
     footer: lightBlue,
-    dark: darkBlue,
     searchButton: white,
     button: darkBlue,
-    light: lightBlue,
   },
 
   white: white,

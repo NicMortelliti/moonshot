@@ -26,7 +26,7 @@ h4,
 h5,
 p {
   display: flex;
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.light};
   line-height: ${({ lineHeight }) => lineHeight || "2"};
   margin: ${({ margin }) => margin || 0};
   padding: ${({ padding }) => padding || 0};
