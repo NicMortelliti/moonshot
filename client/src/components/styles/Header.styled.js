@@ -9,7 +9,7 @@ export const HeaderListItem = styled(NavLink)`
   text-decoration: none;
 
   /* Size */
-  font-size: 2vw;
+  font-size: 1em;
   font-weight: 300;
 
   /* Alignment */
