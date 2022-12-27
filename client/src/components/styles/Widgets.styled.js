@@ -8,7 +8,7 @@ const HrStyled = styled.div`
   div {
     height: 0px;
     padding: 0;
-    border-bottom: 0.15em solid ${({ theme }) => theme.black || "black"};
+    border-bottom: 0.15em solid ${({ theme }) => theme.dark || "black"};
     padding: 0;
     margin: 0 auto;
     position: relative;
@@ -17,7 +17,7 @@ const HrStyled = styled.div`
     div {
       width: 0.5em;
       height: 0.5em;
-      background-color: ${({ theme }) => theme.black || "black"};
+      background-color: ${({ theme }) => theme.dark || "black"};
       border: none;
       position: absolute;
       top: -0.15em;
@@ -52,7 +52,7 @@ export const HorizontalRule = () => {
 };
 
 export const Legend = styled.h5`
-  color: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.dark};
   opacity: 0.5;
   font-size: x-small;
   line-height: ${({ lineHeight }) => lineHeight || "30px"};

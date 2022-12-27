@@ -3,6 +3,7 @@ const dark = "#000000";
 const lightBlue = "#676f9d";
 const darkBlue = "#2d3250";
 const accent = "#f9b17a";
+const alert = "lightcoral";
 
 const white = "FFFFFF";
 const black = "000000";
@@ -22,16 +23,16 @@ export const theme = {
   colors: {
     dark: dark,
     light: light,
-    header: white,
-    body: white,
+    header: light,
+    body: light,
     footer: lightBlue,
-    searchButton: white,
+    searchButton: light,
     button: darkBlue,
   },
 
-  white: white,
-  black: black,
+  white: "FFFFFF",
+  black: "000000",
   hoverColor: accent,
-  alert: "lightcoral",
+  alert: alert,
   accent: accent,
 };
