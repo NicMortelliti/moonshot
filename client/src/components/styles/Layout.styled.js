@@ -38,15 +38,16 @@ export const Side = styled.div`
   grid-area: sidebar;
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.bgColors.sidebar || "black"};
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Content = styled.div`
   grid-area: content;
-  justify-items: stretch;
-  align-items: stretch;
-  align-content: stretch;
-  justify-content: start;
+  /* justify-items: stretch; */
+  /* align-content: stretch; */
+  display: flex;
+  justify-content: center;
   align-items: center;
 `;
 

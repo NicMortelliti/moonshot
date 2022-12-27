@@ -9,9 +9,9 @@ const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  /* background: ${({ theme }) => theme.bgColors.body}; */
-  /* background-image: url(${spacestation}); */
-  /* background-size: cover; */
+  background: ${({ theme }) => theme.bgColors.body};
+  background-image: url(${spacestation});
+  background-size: cover;
 
   color: ${({ theme }) => theme.colors.body};
   font-family: 'Poppins', sans-serif;
