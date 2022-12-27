@@ -8,7 +8,7 @@ import { login } from "../features/auth/authSlice";
 import { Button } from "../components/styles/Button.styled";
 import { Flex } from "../components/styles/Flex.styled";
 import { Form, InputContainer } from "../components/styles/FormStyled.styled";
-import { FrostedContainer } from "../components/styles/Frost.styled";
+import { H2 } from "../components/styles/Text.styled";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -64,7 +64,7 @@ const Login = () => {
         display: "flex",
         flexDirection: "column",
       }}>
-      <h2>Log in</h2>
+      <H2 light>Log in</H2>
 
       <Form onSubmit={onSubmit}>
         <Flex direction="column" justify="center" border>

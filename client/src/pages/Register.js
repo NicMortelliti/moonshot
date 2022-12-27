@@ -8,7 +8,7 @@ import { register } from "../features/auth/authSlice";
 import { Button } from "../components/styles/Button.styled";
 import { Flex } from "../components/styles/Flex.styled";
 import { Form, InputContainer } from "../components/styles/FormStyled.styled";
-import { FrostedContainer } from "../components/styles/Frost.styled";
+import { H2 } from "../components/styles/Text.styled";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -67,7 +67,7 @@ const Register = () => {
         display: "flex",
         flexDirection: "column",
       }}>
-      <h2>Sign up</h2>
+      <H2 light>Sign up</H2>
       <Form onsSubmit={onSubmit}>
         <Flex>
           <InputContainer>
