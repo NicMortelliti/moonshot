@@ -32,6 +32,7 @@ const ProfileDelete = () => {
         <h4>You're account will be gone forever...</h4>
         <Button
           secondary
+          alert
           name="confirmDelete"
           text="Yes, delete my account."
           handleClick={(e) => onSubmit(e)}
