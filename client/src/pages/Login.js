@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { redirect, useNavigate } from "react-router-dom";
 import { login } from "../features/auth/authSlice";
 
 // Styled Components
@@ -27,18 +26,22 @@ const Login = () => {
     (state) => state.auth
   );
 
-  useEffect(() => {
-    // Display errors if there are any
-    if (isError || !user) {
-      toast.error(message);
-    }
-
-    // If successful, navigate to booking
-    if (isSuccess || user) {
-      toast.success("Welcome back!");
-      navigate("/my-trips");
-    }
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
+  //   useEffect(
+  //     () => {
+  //       console.log(isSuccess);
+  //       // Display errors if there are any
+  //       // if (isError || !user) {
+  //       // }
+  //
+  //       // If successful, navigate to users trips
+  //       // if (isSuccess) {
+  //       toast.success("Welcome back!");
+  //       navigate("/my-trips");
+  //       // }
+  //     },
+  //     isError,
+  //     isSuccess
+  //   );
 
   // Update formData when user enters
   // data in the fields
@@ -50,12 +53,9 @@ const Login = () => {
   };
 
   // Submit formData to API
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const userData = { email, password };
-
-    dispatch(login(userData));
+    dispatch(login({ email, password })).then(() => navigate("/my-trips"));
   };
 
   return (
@@ -66,7 +66,7 @@ const Login = () => {
       }}>
       <H2 light>Log in</H2>
 
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={(e) => handleSubmit(e)}>
         <Flex direction="column" justify="center" border>
           <InputContainer>
             <input
@@ -90,11 +90,7 @@ const Login = () => {
           </InputContainer>
         </Flex>
         <Flex>
-          <Button
-            type="submit"
-            text={isLoading ? "Loading..." : "Submit"}
-            handleClick={onSubmit}
-          />
+          <Button type="submit" text={isLoading ? "Loading..." : "Submit"} />
         </Flex>
       </Form>
     </div>

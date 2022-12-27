@@ -44,7 +44,7 @@ export const Button = ({
   name,
   secondary = false,
   text,
-  handleClick,
+  handleClick = null,
   type = null,
 }) => {
   switch (true) {
@@ -65,7 +65,8 @@ export const Button = ({
           name={name}
           type={type}
           alert={alert}
-          onClick={(e) => handleClick(e)}>
+          // onClick={(e) => handleClick(e)}>
+        >
           {text}
         </ButtonPrimary>
       );
