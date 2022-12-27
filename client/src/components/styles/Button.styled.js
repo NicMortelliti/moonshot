@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 const ButtonPrimary = styled.button`
-  border-radius: 5px;
   border: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 1em;
   margin: ${({ margin }) => margin || 0};
-  padding: 15px 20px;
-  background-color: ${({ theme }) => theme.bgColors.button};
+  padding: 1em 1.5em;
+  background-color: transparent;
+  border: 0.1em solid ${({ theme }) => theme.bgColors.button};
   color: ${({ theme }) => theme.colors.button};
 
   width: fit-content;
@@ -65,8 +64,7 @@ export const Button = ({
           name={name}
           type={type}
           alert={alert}
-          // onClick={(e) => handleClick(e)}>
-        >
+          onClick={(e) => handleClick(e)}>
           {text}
         </ButtonPrimary>
       );

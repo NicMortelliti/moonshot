@@ -1,8 +1,8 @@
 const light = "#ffffff";
 const dark = "#000000";
 const lightBlue = "#676f9d";
-const darkBlue = "#2d3250";
-const accent = "#f9b17a";
+const darkBlue = "#141720";
+const accent = "#da966a";
 const alert = "lightcoral";
 
 const white = "FFFFFF";
@@ -13,8 +13,8 @@ export const theme = {
     dark: dark,
     light: light,
     header: darkBlue,
-    body: black,
     footer: darkBlue,
+    body: black,
     searchButton: darkBlue,
     button: accent,
     sidebar: white + "55",
@@ -27,7 +27,7 @@ export const theme = {
     body: light,
     footer: lightBlue,
     searchButton: light,
-    button: darkBlue,
+    button: accent,
   },
 
   white: "FFFFFF",

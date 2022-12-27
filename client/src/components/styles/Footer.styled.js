@@ -39,7 +39,7 @@ export const Socials = styled.div`
 
 export const FooterFinePrint = styled.li`
   /* Color and style */
-  color: ${({ theme }) => theme.colors.footer || "black"};
+  color: ${({ theme }) => theme.colors.footer || "white"};
   padding: 0px 0;
   text-decoration: none;
 

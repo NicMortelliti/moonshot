@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { theme } from "./Theme";
 
+const color = ({ light }) => (light ? theme.accent : "black");
+
 export const H1 = styled.h1`
-  color: ${({ light }) => (light ? theme.colors.light : theme.colors.dark)};
+  color: ${color};
 `;
 
 export const H2 = styled.h2`
-  color: ${({ light }) => (light ? theme.colors.light : theme.colors.dark)};
+  color: ${color};
 `;
 
 export const P = styled.p`
-  color: ${({ light }) => (light ? theme.colors.light : theme.colors.dark)};
+  color: ${color};
 `;

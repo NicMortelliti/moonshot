@@ -57,7 +57,7 @@ export const Content = styled.div`
 `;
 
 export const Footer = styled.div`
-  background: black;
+  background: ${({theme})=>theme.bgColors.footer || "black"};
   grid-area: footer;
   padding: 5px 1em;
   z-index: 999;
