@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -26,21 +26,9 @@ const Register = () => {
   const dispatch = useDispatch();
 
   // Grab properties from auth state
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const {isLoading} = useSelector(
     (state) => state.auth
   );
-
-  useEffect(() => {
-    // Display errors if there are any
-    if (isError) {
-      toast.error(message);
-    }
-
-    // If successful, navigate to home page
-    if (isSuccess || user) {
-      navigate("/");
-    }
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -49,15 +37,16 @@ const Register = () => {
     }));
   };
 
-  const onSubmit = (e) => {
+  // Submit formData to API
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     if (password !== password2) {
       toast.error("Passwords do not match");
+      return;
     } else {
-      const userData = { first_name, last_name, email, password };
-
-      dispatch(register(userData));
+      dispatch(register({ first_name, last_name, email, password })).then(() =>
+        navigate("/flight-search")
+      );
     }
   };
 
@@ -68,12 +57,11 @@ const Register = () => {
         flexDirection: "column",
       }}>
       <H2 light>Sign up</H2>
-      <Form onsSubmit={onSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Flex>
           <InputContainer>
             <input
               type="text"
-              id="first_name"
               name="first_name"
               value={first_name}
               placeholder="First name"
@@ -83,7 +71,6 @@ const Register = () => {
           <InputContainer>
             <input
               type="text"
-              id="last_name"
               name="last_name"
               value={last_name}
               placeholder="Last name"
@@ -95,7 +82,6 @@ const Register = () => {
           <InputContainer>
             <input
               type="email"
-              id="email"
               name="email"
               value={email}
               placeholder="Email address"
@@ -107,7 +93,6 @@ const Register = () => {
           <InputContainer>
             <input
               type="password"
-              id="password"
               name="password"
               value={password}
               placeholder="Password"
@@ -117,7 +102,6 @@ const Register = () => {
           <InputContainer>
             <input
               type="password"
-              id="password2"
               name="password2"
               value={password2}
               placeholder="Confirm"
@@ -126,11 +110,7 @@ const Register = () => {
           </InputContainer>
         </Flex>
         <Flex>
-          <Button
-            type="submit"
-            text={isLoading ? "Loading..." : "Submit"}
-            handleClick={onSubmit}
-          />
+          <Button type="submit" text={isLoading ? "Loading..." : "Submit"} />
         </Flex>
       </Form>
     </div>
