@@ -26,9 +26,7 @@ const Register = () => {
   const dispatch = useDispatch();
 
   // Grab properties from auth state
-  const {isLoading} = useSelector(
-    (state) => state.auth
-  );
+  const { isLoading } = useSelector((state) => state.auth);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -57,7 +55,8 @@ const Register = () => {
         flexDirection: "column",
       }}>
       <H2 light>Sign up</H2>
-      <Form onSubmit={handleSubmit}>
+
+      <Form onSubmit={(e) => handleSubmit(e)}>
         <Flex>
           <InputContainer>
             <input

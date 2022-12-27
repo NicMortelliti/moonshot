@@ -15,6 +15,7 @@ import Profile from "./components/profile/Profile";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import { reLogin } from "./features/auth/authSlice";
+import { ProtectedRoute, PublicRoute } from "./components/auth/RouteHandling";
 
 // Styled Components
 import GlobalStyles from "./components/styles/Global";
@@ -40,20 +41,17 @@ const App = () => {
         <Wrapper>
           <Header />
           <Routes>
-            <Route path="/" element={!user ? <Landing /> : <Dashboard />}>
-              {!user ? (
-                <>
-                  <Route exact path="/login" element={<Login />} />
-                  <Route exact path="/register" element={<Register />} />
-                </>
-              ) : (
-                <>
-                  {/* User logged-in routes */}
-                  <Route path="my-trips" element={<Reservations />} />
-                  <Route path="flight-search" element={<Booking />} />
-                  <Route path="my-profile" element={<Profile />} />
-                </>
-              )}
+            <Route element={<PublicRoute user={user} />}>
+            <Route path="/" element={<Landing />}>
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/register" element={<Register />} />
+            </Route>
+            </Route>
+            {/* User logged-in routes */}
+            <Route element={<ProtectedRoute user={user} />}>
+              <Route path="my-trips" element={<Reservations />} />
+              <Route path="flight-search" element={<Booking />} />
+              <Route path="my-profile" element={<Profile />} />
             </Route>
           </Routes>
           <Footer />
