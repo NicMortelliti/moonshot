@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import spacestation from "../images/spacestation.png";
+import image from "../images/planet.jpg";
 
 const GlobalStyles = createGlobalStyle`
 * {
@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
 
 body {
   background: ${({ theme }) => theme.bgColors.body};
-  background-image: url(${spacestation});
+  background-image: url(${image});
   background-size: cover;
 
   color: ${({ theme }) => theme.colors.body};

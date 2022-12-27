@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 
   /* For displays 500px and larger */
   @media (min-width: 500px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 1fr;
     grid-template-areas:
       "header    header"
       "sidebar  content"
@@ -50,9 +50,10 @@ export const Content = styled.div`
   padding: 1vw;
   margin: 0;
 
-  background: ${({ frosted }) => "rgba(45, 45, 45, 0.5)" || null};
-  backdrop-filter: ${({ frosted }) => "blur(15px)" || null};
-  box-shadow: ${({ frosted }) => "0 8px 32px 0 rgba(0, 0, 0, 0.37)" || null};
+  background: ${({ frosted }) => (frosted ? "rgba(45, 45, 45, 0.5)" : null)};
+  backdrop-filter: ${({ frosted }) => (frosted ? "blur(15px)" : null)};
+  box-shadow: ${({ frosted }) =>
+    frosted ? "0 8px 32px 0 rgba(0, 0, 0, 0.37)" : null};
 `;
 
 export const Footer = styled.div`

@@ -19,15 +19,6 @@ const Attributions = () => {
       siteLink:
         "https://unsplash.com/s/photos/solar-system?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
     },
-    {
-      basicName: "Spacestation image",
-      mediaName: "spacestation.jpg",
-      userName: "MidJourney @nm",
-      userLink: null,
-      siteName: "MidJourney",
-      siteLink:
-        "https://cdn.midjourney.com/643db32a-0b97-4f53-8cf5-b42ce8b52261/grid_0.png",
-    },
   ];
 
   // For each attribution within attributionData, we
