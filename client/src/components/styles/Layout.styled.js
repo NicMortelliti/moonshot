@@ -46,7 +46,7 @@ export const Content = styled.div`
   grid-area: content;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   padding: 1vw;
   margin: 0;
 

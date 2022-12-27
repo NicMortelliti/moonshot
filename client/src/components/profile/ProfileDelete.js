@@ -41,10 +41,10 @@ const ProfileDelete = () => {
     ) : null;
 
   return (
-    <>
+    <div>
       <ShowSectionControl />
       <ConfirmActionSection />
-    </>
+    </div>
   );
 };
 
