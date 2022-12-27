@@ -53,6 +53,7 @@ const Register = () => {
       style={{
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
       }}>
       <H2 light>Sign up</H2>
 

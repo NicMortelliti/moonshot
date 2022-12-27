@@ -44,6 +44,7 @@ const Login = () => {
       style={{
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
       }}>
       <H2 light>Log in</H2>
 
