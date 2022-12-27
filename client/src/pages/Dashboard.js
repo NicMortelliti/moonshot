@@ -6,7 +6,7 @@ import { Content } from "../components/styles/Layout.styled";
 
 const Dashboard = () => {
   return (
-    <Content>
+    <Content frosted>
       <Outlet />
     </Content>
   );
