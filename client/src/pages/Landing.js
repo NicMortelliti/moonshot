@@ -11,7 +11,7 @@ const Landing = () => {
       <Side>
         <About />
       </Side>
-      <Content>
+      <Content frosted>
         <Outlet />
       </Content>
     </>

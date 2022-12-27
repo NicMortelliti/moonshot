@@ -59,43 +59,45 @@ const Login = () => {
   };
 
   return (
-    <>
-      <FrostedContainer maxWidth="500px">
-        <h2>Log in</h2>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}>
+      <h2>Log in</h2>
 
-        <Form onSubmit={onSubmit}>
-          <Flex direction="column" justify="center" border>
-            <InputContainer>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                placeholder="Email address"
-                onChange={onChange}
-              />
-            </InputContainer>
-            <InputContainer>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                placeholder="Password"
-                onChange={onChange}
-              />
-            </InputContainer>
-          </Flex>
-          <Flex>
-            <Button
-              type="submit"
-              text={isLoading ? "Loading..." : "Submit"}
-              handleClick={onSubmit}
+      <Form onSubmit={onSubmit}>
+        <Flex direction="column" justify="center" border>
+          <InputContainer>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              placeholder="Email address"
+              onChange={onChange}
             />
-          </Flex>
-        </Form>
-      </FrostedContainer>
-    </>
+          </InputContainer>
+          <InputContainer>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={onChange}
+            />
+          </InputContainer>
+        </Flex>
+        <Flex>
+          <Button
+            type="submit"
+            text={isLoading ? "Loading..." : "Submit"}
+            handleClick={onSubmit}
+          />
+        </Flex>
+      </Form>
+    </div>
   );
 };
 

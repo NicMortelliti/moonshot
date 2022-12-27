@@ -3,29 +3,18 @@ import styled from "styled-components";
 export const FrostedContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 0 1 80%;
+  flex: 0 1 auto;
   border-radius: 4px;
   background: ${({ theme }) => null || "rgba(255, 255, 255, 0.4)"};
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(15px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
   max-width: ${({ maxWidth }) => maxWidth || "auto"};
 
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 30px;
+  align-items: start;
+  /* text-align: center; */
+  padding: 20px;
 
-  gap: 30px;
-`;
-
-export const FrostedWallpaper = styled(FrostedContainer)`
-  /* display: fixed; */
-  /* position: absolute; */
-  /* left: 0; */
-  /* top: 0; */
-  /* width: 100vw; */
-  /* height: 100vh; */
-  background: #00000050;
-  backdrop-filter: blur(10px);
+  gap: 20px;
 `;

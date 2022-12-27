@@ -5,7 +5,6 @@ import styled from "styled-components";
 // -------------------------------------------
 export const Wrapper = styled.div`
   display: grid;
-  gap: 5px;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
   grid-template-areas:
@@ -16,7 +15,7 @@ export const Wrapper = styled.div`
 
   /* For displays 500px and larger */
   @media (min-width: 500px) {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "header    header"
       "sidebar  content"
@@ -40,15 +39,20 @@ export const Side = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 1vw;
 `;
 
 export const Content = styled.div`
   grid-area: content;
-  /* justify-items: stretch; */
-  /* align-content: stretch; */
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1vw;
+  margin: 0;
+
+  background: ${({ frosted }) => "rgba(45, 45, 45, 0.5)" || null};
+  backdrop-filter: ${({ frosted }) => "blur(15px)" || null};
+  box-shadow: ${({ frosted }) => "0 8px 32px 0 rgba(0, 0, 0, 0.37)" || null};
 `;
 
 export const Footer = styled.div`
