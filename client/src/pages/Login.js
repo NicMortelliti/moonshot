@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { login } from "../features/auth/authSlice";
 
 // Styled Components
@@ -22,26 +22,7 @@ const Login = () => {
   const dispatch = useDispatch();
 
   // Grab properties from auth state
-  const { user, isError, isLoading, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
-
-  //   useEffect(
-  //     () => {
-  //       console.log(isSuccess);
-  //       // Display errors if there are any
-  //       // if (isError || !user) {
-  //       // }
-  //
-  //       // If successful, navigate to users trips
-  //       // if (isSuccess) {
-  //       toast.success("Welcome back!");
-  //       navigate("/my-trips");
-  //       // }
-  //     },
-  //     isError,
-  //     isSuccess
-  //   );
+  const { isLoading } = useSelector((state) => state.auth);
 
   // Update formData when user enters
   // data in the fields
@@ -71,7 +52,6 @@ const Login = () => {
           <InputContainer>
             <input
               type="email"
-              id="email"
               name="email"
               value={email}
               placeholder="Email address"
@@ -81,7 +61,6 @@ const Login = () => {
           <InputContainer>
             <input
               type="password"
-              id="password"
               name="password"
               value={password}
               placeholder="Password"
