@@ -25,7 +25,6 @@ export const Buttons = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-  padding: 0 1em;
 `;
 
 export const Socials = styled.div`

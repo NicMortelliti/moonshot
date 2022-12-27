@@ -59,6 +59,7 @@ export const Content = styled.div`
 export const Footer = styled.div`
   background: black;
   grid-area: footer;
+  padding: 5px 1em;
   z-index: 999;
 `;
 
