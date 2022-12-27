@@ -5,13 +5,13 @@ import ProfileDelete from "./ProfileDelete";
 import ProfilePassword from "./ProfilePassword";
 
 // Stylec components
-import { Legend } from "../styles/Widgets.styled";
+import { H1, P } from "../styles/Text.styled";
 
 const Profile = () => {
   const Header = () => (
     <>
-      <h1>Account Settings</h1>
-      <p>Here, you can update your password or delete your account..</p>
+      <H1 light>Account Settings</H1>
+      <P light>Here, you can update your password or delete your account.</P>
     </>
   );
 
