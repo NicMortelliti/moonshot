@@ -23,6 +23,7 @@ const Profile = () => {
         display: "flex",
         flexDirection: "column",
         flex: 1,
+        padding: "2em",
       }}>
       <Header />
       <ProfilePassword />
