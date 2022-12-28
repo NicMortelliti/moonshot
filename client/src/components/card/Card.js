@@ -170,6 +170,8 @@ const Card = ({ data, typeOfList = null }) => {
         departure={departure}
         arrival={arrival}
       />
+
+      {/* Expanded confirmation panel */}
       {expandPanel ? (
         <ActionConfirmation
           first={messages[typeOfList].action.first}
