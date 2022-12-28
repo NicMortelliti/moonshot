@@ -22,8 +22,9 @@ export const CardContainer = styled.div`
   background-color: white;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  justify-content: center;
   align-items: stretch;
+  padding: 20px;
   flex-basis: 60%;
   min-width: 500px;
   max-width: 800px;

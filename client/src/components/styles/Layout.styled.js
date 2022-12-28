@@ -46,7 +46,7 @@ export const Content = styled.div`
   grid-area: content;
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
   padding: 1vw;
   margin: 0;
 
@@ -57,7 +57,7 @@ export const Content = styled.div`
 `;
 
 export const Footer = styled.div`
-  background: ${({theme})=>theme.bgColors.footer || "black"};
+  background: ${({ theme }) => theme.bgColors.footer || "black"};
   grid-area: footer;
   padding: 5px 1em;
   z-index: 999;
