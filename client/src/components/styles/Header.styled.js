@@ -22,7 +22,6 @@ export const HeaderListItem = styled(NavLink)`
     color: ${({ theme }) => theme.hoverColor};
   }
 
-  /* TODO Figure out how to capture if a link is actively selected */
   &.active {
     color: ${({ theme }) => theme.accent};
     font-weight: 400;
