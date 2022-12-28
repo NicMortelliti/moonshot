@@ -9,6 +9,7 @@ import CardList from "../card/CardList";
 
 // Styled components
 import { SearchLocationContainer } from "../styles/Search.styled";
+import { Content } from "../styles/Layout.styled";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -65,6 +66,10 @@ const Search = () => {
     } else return null;
   };
 
-  return <Render />;
+  return (
+    <Content>
+      <Render />
+    </Content>
+  );
 };
 export default Search;
