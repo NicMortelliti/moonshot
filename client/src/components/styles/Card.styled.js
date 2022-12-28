@@ -54,7 +54,8 @@ export const CardPrimaryData = styled.div`
 // For example, you may use this as a confirmation if a user
 // clicks a "cancel" button.
 export const CardSecondaryData = styled.div`
-  background-color: ${({ theme }) => theme.accent || "null"};
+  background: transparent;
+  border: 0.2em solid ${({ theme }) => theme.accent};
   display: flex;
   flex-direction: column;
   margin: 20px 0;
