@@ -9,7 +9,7 @@ import { InputContainer } from "../styles/FormStyled.styled";
 import { Flex } from "../styles/Flex.styled";
 import { ActionPanel } from "../styles/Profile.styled";
 
-const ProfilePassword = ({ handleExpand }) => {
+const ProfilePassword = ({handleClick}) => {
   const [formData, setFormData] = useState({
     password: "",
     password2: "",
@@ -50,7 +50,7 @@ const ProfilePassword = ({ handleExpand }) => {
   };
 
   const ShowSectionControl = () => (
-    <Button name="password" onClick={(e) => handleExpand(e, null)}>
+    <Button name={null} onClick={(e) => handleClick(e)}>
       Nevermind
     </Button>
   );

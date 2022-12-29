@@ -6,47 +6,34 @@ import ProfilePassword from "./ProfilePassword";
 
 // Styled Components
 import { Button } from "../styles/Button.styled";
+import { ProfileActionSection } from "../styles/Profile.styled";
 
 const ProfileActions = () => {
   const [action, setAction] = useState(null);
 
-  const handleClick = (e, action) => {
+  const handleClick = (e) => {
     e.preventDefault();
-    setAction(action);
+    setAction(e.target.name);
   };
 
   const RenderAction = () => {
     switch (action) {
       case "password":
-        return <ProfilePassword />;
+        return <ProfilePassword handleClick={handleClick} />;
 
       case "delete":
-        return <ProfileDelete />;
+        return <ProfileDelete handleClick={handleClick} />;
 
       default:
         return (
-          <div
-            style={{
-              border: "1px solid red",
-              display: "flex",
-              flexDirection: "column",
-              flex: 1,
-              justifyContent: "start",
-              alignItems: "center",
-              gap: "1em",
-              padding: "1em",
-            }}>
-            <Button
-              handleExpand={setAction}
-              onClick={(e) => handleClick(e, "password")}>
+          <ProfileActionSection>
+            <Button name="password" onClick={(e) => handleClick(e)}>
               Change password
             </Button>
-            <Button
-              handleExpand={setAction}
-              onClick={(e) => handleClick(e, "delete")}>
+            <Button name="delete" onClick={(e) => handleClick(e)}>
               Delete account
             </Button>
-          </div>
+          </ProfileActionSection>
         );
     }
   };

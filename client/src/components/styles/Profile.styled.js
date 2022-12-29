@@ -16,3 +16,13 @@ export const ActionPanel = styled(FrostBaseline)`
   display: flex;
   flex-direction: column;
 `;
+
+export const ProfileActionSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: start;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+`;
