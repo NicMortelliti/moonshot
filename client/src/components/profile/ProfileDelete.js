@@ -20,9 +20,9 @@ const ProfileDelete = () => {
       alert={showSection ? true : false}
       secondary={showSection ? false : true}
       name="deleteAccount"
-      text={showSection ? "Nevermind! Don't delete account." : "Delete account"}
-      handleClick={() => setShowSection(!showSection)}
-    />
+      onClick={() => setShowSection(!showSection)}>
+      {showSection ? "Nevermind! Don't delete account." : "Delete account"}
+    </Button>
   );
 
   const ConfirmActionSection = () =>
@@ -34,9 +34,9 @@ const ProfileDelete = () => {
           secondary
           alert
           name="confirmDelete"
-          text="Yes, delete my account."
-          handleClick={(e) => onSubmit(e)}
-        />
+          onClick={(e) => onSubmit(e)}>
+          Yes, delete my account.
+        </Button>
       </>
     ) : null;
 

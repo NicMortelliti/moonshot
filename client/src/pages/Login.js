@@ -71,7 +71,9 @@ const Login = () => {
         </Flex>
         <Flex>
           <div>
-            <Button type="submit" text={isLoading ? "Loading..." : "Submit"} />
+            <Button type="submit">
+              {isLoading ? "Loading..." : "Submit"}{" "}
+            </Button>
           </div>
         </Flex>
       </Form>

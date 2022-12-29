@@ -17,7 +17,7 @@ const Search = () => {
   // Get reservations from API when component loads
   useEffect(() => {
     dispatch(getOrigins());
-  }, []);
+  }, [dispatch]);
 
   // Destructure props
   const { flight, origin, destination, data, isLoading } = useSelector(

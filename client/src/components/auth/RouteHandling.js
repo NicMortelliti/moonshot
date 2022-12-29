@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { toast } from "react-toastify";
 
 // Private-facing routes (user logged in)

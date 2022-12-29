@@ -13,7 +13,7 @@ const Reservations = () => {
   // Get reservations from API when component loads
   useEffect(() => {
     dispatch(getReservations());
-  }, []);
+  }, [dispatch]);
 
   // Grab properties from reservation state
   const { reservations, isLoading } = useSelector(

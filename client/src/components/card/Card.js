@@ -191,33 +191,31 @@ const Card = ({ data, typeOfList = null }) => {
               : messages[typeOfList].confirmation.mainBtn
           }
           alert={expandPanel ? false : true}
-          handleClick={
+          onClick={
             typeOfList !== "confirmation"
               ? () => setExpandPanel(!expandPanel)
               : handleClick
-          }
-          text={
-            expandPanel
-              ? messages[typeOfList].confirmation.alt
-              : messages[typeOfList].confirmation.main
-          }
-        />
+          }>
+          {expandPanel
+            ? messages[typeOfList].confirmation.alt
+            : messages[typeOfList].confirmation.main}
+        </Button>
       ) : null}
 
       {typeOfList === "search" ? (
         <Button
           secondary={expandPanel}
-          text={!expandPanel ? "Book flight" : "Nevermind"}
-          handleClick={() => setExpandPanel(!expandPanel)}
-        />
+          onClick={() => setExpandPanel(!expandPanel)}>
+          {!expandPanel ? "Book flight" : "Nevermind"}
+        </Button>
       ) : null}
 
       {typeOfList === "reservation" ? (
         <Button
           secondary={!expandPanel}
-          text={!expandPanel ? "Cancel Reservation" : "Nevermind"}
-          handleClick={() => setExpandPanel(!expandPanel)}
-        />
+          onClick={() => setExpandPanel(!expandPanel)}>
+          {!expandPanel ? "Cancel Reservation" : "Nevermind"}
+        </Button>
       ) : null}
     </CardContainer>
   );

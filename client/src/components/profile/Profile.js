@@ -1,11 +1,11 @@
 import React from "react";
 
 // Components
-import ProfileDelete from "./ProfileDelete";
-import ProfilePassword from "./ProfilePassword";
+import ProfileActions from "./ProfileActions";
 
-// Stylec components
+// Styled components
 import { H1, P } from "../styles/Text.styled";
+import { ProfileSection } from "../styles/Profile.styled";
 
 const Profile = () => {
   const Header = () => (
@@ -16,19 +16,10 @@ const Profile = () => {
   );
 
   return (
-    <div
-      style={{
-        alignItems: "stretch",
-        justifyContent: "stretch",
-        display: "flex",
-        flexDirection: "column",
-        flex: 1,
-        padding: "2em",
-      }}>
+    <ProfileSection>
       <Header />
-      <ProfilePassword />
-      <ProfileDelete />
-    </div>
+      <ProfileActions />
+    </ProfileSection>
   );
 };
 

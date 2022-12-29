@@ -32,9 +32,9 @@ const ActionConfirmation = ({
           <Button
             alert={alert}
             secondary={secondaryButtonType}
-            text={buttonText}
-            handleClick={handleClick}
-          />
+            onClick={handleClick}>
+            {buttonText}
+          </Button>
         </div>
       </SecondaryData>
     </>

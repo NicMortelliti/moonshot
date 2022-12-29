@@ -11,7 +11,7 @@ const JumpToSearch = ({ handleClick }) => {
   return (
     <FrostedContainer>
       <p>You have no reservations.</p>
-      <Button handleClick={() => navigate("/flight-search")} text="Book one!" />
+      <Button onClick={() => navigate("/flight-search")}>"Book one!"</Button>
     </FrostedContainer>
   );
 };
