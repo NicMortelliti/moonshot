@@ -9,6 +9,7 @@ import CardList from "../card/CardList";
 
 // Styled components
 import { SearchLocationContainer } from "../styles/Search.styled";
+import { FrostedContainer } from "../styles/Frost.styled";
 import { Content } from "../styles/Layout.styled";
 
 const Search = () => {
@@ -68,7 +69,9 @@ const Search = () => {
 
   return (
     <Content>
-      <Render />
+      <FrostedContainer maxWidth="none" align="center">
+        <Render />
+      </FrostedContainer>
     </Content>
   );
 };

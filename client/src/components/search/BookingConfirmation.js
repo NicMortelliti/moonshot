@@ -7,9 +7,9 @@ import OriginDestinationGraphic from "../card/components/OriginDestinationGraphi
 
 // Styled Components
 import { Button } from "../styles/Button.styled";
-import { CardContainer } from "../styles/Card.styled";
 import { Content } from "../styles/Layout.styled";
 import { Legend } from "../styles/Widgets.styled";
+import { H1, H3 } from "../styles/Text.styled";
 
 const BookingConfirmation = ({ data }) => {
   const navigate = useNavigate();
@@ -26,7 +26,6 @@ const BookingConfirmation = ({ data }) => {
     <Content>
       <div
         style={{
-          background: "rgba(55, 55, 55, 1",
           flex: 1,
           display: "flex",
           flexDirection: "column",
@@ -36,9 +35,9 @@ const BookingConfirmation = ({ data }) => {
         <div style={{ width: "30em" }}>
           {/* Header section contains feedback messges to the user */}
           <div className="header">
-            <h1>Far out!</h1>
-            <h3>You're going to space!</h3>
-            <Legend>The following booking has been confirmed.</Legend>
+            <H1 light>Far out!</H1>
+            <H3 light>You're going to space!</H3>
+            <Legend light>The following booking has been confirmed.</Legend>
           </div>
 
           {/* Flight details section contains the flight and confirmation numbers */}

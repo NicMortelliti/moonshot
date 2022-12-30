@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { P } from "../styles/Text.styled";
+
 const HrStyled = styled.div`
   flex: 0 0 90%;
   flex-direction: row;
@@ -52,7 +54,7 @@ export const HorizontalRule = () => {
 };
 
 export const Legend = styled.h5`
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme, light }) => (light ? theme.light : theme.colors.dark)};
   opacity: 0.5;
   font-size: x-small;
   line-height: ${({ lineHeight }) => lineHeight || "30px"};
@@ -89,6 +91,7 @@ export const CenteredTextRow = ({ lgd, readout }) => {
         flex: "1 1 100%",
       }}>
       <Legend
+        light
         style={{
           display: "flex",
           flexDirection: "column",
@@ -98,7 +101,8 @@ export const CenteredTextRow = ({ lgd, readout }) => {
         }}>
         {lgd}
       </Legend>
-      <p
+      <P
+        light
         style={{
           display: "flex",
           flexDirection: "column",
@@ -109,7 +113,7 @@ export const CenteredTextRow = ({ lgd, readout }) => {
           textAlign: "start",
         }}>
         {readout}
-      </p>
+      </P>
     </div>
   );
 };

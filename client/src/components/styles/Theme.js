@@ -34,6 +34,7 @@ export const theme = {
   black: "000000",
   hoverColor: accent,
   alert: alert,
+  light: light,
   dark: dark,
   accent: accent,
 };

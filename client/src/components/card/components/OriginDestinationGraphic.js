@@ -4,6 +4,7 @@ import { formatDate } from "../../../helpers/helpers";
 // Styled components
 import { CardFromTo as FromTo } from "../../styles/Card.styled";
 import { HorizontalRule } from "../../styles/Widgets.styled";
+import { H5 } from "../../styles/Text.styled";
 
 const OriginDestinationGraphic = ({
   origin,
@@ -19,17 +20,17 @@ const OriginDestinationGraphic = ({
   return (
     <div>
       <FromTo>
-        <h5>
+        <H5 light>
           {originName}, {originMacroName}
-        </h5>
-        <h5>
+        </H5>
+        <H5 light>
           {destinationName}, {destinationMacroName}
-        </h5>
+        </H5>
       </FromTo>
       <HorizontalRule />
       <FromTo>
-        <h5>{formatDate(departure)}</h5>
-        <h5>{formatDate(arrival)}</h5>
+        <H5 light>{formatDate(departure)}</H5>
+        <H5 light>{formatDate(arrival)}</H5>
       </FromTo>
     </div>
   );

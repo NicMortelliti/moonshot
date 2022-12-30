@@ -10,7 +10,8 @@ export const FrostBaseline = styled.div`
 export const FrostedContainer = styled(FrostBaseline)`
   display: flex;
   flex-direction: column;
-  flex: 0 1 auto;
+  flex: 1;
+  text-align: center;
 
   /* For displays less than 500px wide */
   max-width: 90vw;
@@ -21,7 +22,7 @@ export const FrostedContainer = styled(FrostBaseline)`
   }
 
   justify-content: center;
-  align-items: start;
+  align-items: ${({ align }) => align || "start"};
   padding: 20px;
 
   gap: 20px;

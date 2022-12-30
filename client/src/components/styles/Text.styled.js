@@ -19,6 +19,10 @@ export const H4 = styled.h4`
   color: ${color};
 `;
 
+export const H5 = styled.h5`
+  color: ${color};
+`;
+
 export const P = styled.p`
   color: ${color};
 `;

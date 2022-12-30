@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getReservations } from "../../features/reservations/reservationSlice";
 
-// Styled Components
-import CardList from "../card/CardList";
+// Components
 import JumpToSearch from "./components/JumpToSearch";
+import CardList from "../card/CardList";
+
+// Styled Components
+import { FrostedContainer } from "../styles/Frost.styled";
 import { Content } from "../styles/Layout.styled";
 
 const Reservations = () => {
@@ -34,7 +37,13 @@ const Reservations = () => {
     }
   };
 
-  return <Content>{reservations ? <Render /> : <JumpToSearch />}</Content>;
+  return (
+    <Content>
+      <FrostedContainer maxWidth="none" align="center">
+        {reservations ? <Render /> : <JumpToSearch />}
+      </FrostedContainer>
+    </Content>
+  );
 };
 
 export default Reservations;
