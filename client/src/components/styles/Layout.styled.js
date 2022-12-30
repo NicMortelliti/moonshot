@@ -46,9 +46,10 @@ export const Content = styled.div`
   grid-area: content;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   padding: 1vw;
   margin: 0;
+  flex: 1;
 
   background: ${({ frosted }) => (frosted ? "rgba(45, 45, 45, 0.5)" : null)};
   backdrop-filter: ${({ frosted }) => (frosted ? "blur(15px)" : null)};

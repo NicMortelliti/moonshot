@@ -6,11 +6,16 @@ export const Button = styled.button`
   /* Appearance */
   box-shadow: ${({ secondary }) =>
     secondary ? "none" : `0 0 1em rgba(0, 0, 0, 0.15)`};
-  background-color: transparent;
-  border: ${({ theme, secondary }) =>
-    secondary ? "none" : `0.1em solid ${theme.bgColors.button}`};
+  background-color: ${({ theme, alert }) =>
+    alert ? theme.alert : "transparent"};
+  border: ${({ theme, secondary, alert }) =>
+    alert
+      ? `0.1em solid ${theme.alert}`
+      : secondary
+      ? "none"
+      : `0.1em solid ${theme.bgColors.button}`};
   color: ${({ theme, alert }) =>
-    (alert && theme.alert) || `${theme.colors.button}`};
+    (alert && theme.dark) || `${theme.colors.button}`};
 
   /* Text Settings */
   font-size: 1em;

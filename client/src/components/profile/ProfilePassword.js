@@ -5,23 +5,28 @@ import { updateUserData } from "../../features/auth/authSlice";
 
 // Styled Components
 import { Button } from "../styles/Button.styled";
-import { InputContainer } from "../styles/FormStyled.styled";
+import { Form, InputContainer } from "../styles/FormStyled.styled";
 import { Flex } from "../styles/Flex.styled";
 import { ActionPanel } from "../styles/Profile.styled";
 
-const ProfilePassword = ({handleClick}) => {
+const ProfilePassword = ({ setAction }) => {
   const [formData, setFormData] = useState({
     password: "",
     password2: "",
   });
 
-  // Destructure formData
+  // Destructure to make it easier to work with within the component
   const { password, password2 } = formData;
   const {
     user: { id: userId },
   } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
+
+  const closeExpansionPanel = (e) => {
+    e.preventDefault();
+    setAction(null);
+  };
 
   // When 'Submit' button is clicked we first
   // check if the 2 new password fields match.
@@ -31,18 +36,19 @@ const ProfilePassword = ({handleClick}) => {
   // containing the 2 passwords.
   // Then, dispatch the user data update with
   // the passwords as the props.
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (password !== password2) {
+    if (formData.password !== formData.password2) {
       toast.error("Passwords do not match");
       return null;
     } else {
-      dispatch(updateUserData({ userId, userData: { password, password2 } }));
+      dispatch(updateUserData({ userId, userData: formData })).then(() =>
+        closeExpansionPanel(e)
+      );
     }
   };
 
-  const onChange = (e) => {
+  const handleChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -50,23 +56,22 @@ const ProfilePassword = ({handleClick}) => {
   };
 
   const ShowSectionControl = () => (
-    <Button name={null} onClick={(e) => handleClick(e)}>
+    <Button name={null} onClick={(e) => setAction(e)}>
       Nevermind
     </Button>
   );
 
-  const Form = () => (
+  return (
     <ActionPanel>
-      <form onSubmit={onSubmit}>
+      <Form onSubmit={(e) => handleSubmit(e)}>
         <Flex>
           <InputContainer>
             <input
               type="password"
-              id="password"
               name="password"
               value={password}
-              placeholder="Enter new password"
-              onChange={onChange}
+              placeholder="Password"
+              onChange={handleChange}
             />
           </InputContainer>
           <InputContainer>
@@ -76,20 +81,16 @@ const ProfilePassword = ({handleClick}) => {
               name="password2"
               value={password2}
               placeholder="Re-enter new password"
-              onChange={onChange}
+              onChange={handleChange}
             />
           </InputContainer>
         </Flex>
-        <Button type="submit">Submit</Button>
+        <Button alert type="submit">
+          Submit
+        </Button>
         <ShowSectionControl />
-      </form>
+      </Form>
     </ActionPanel>
-  );
-
-  return (
-    <>
-      <Form />
-    </>
   );
 };
 

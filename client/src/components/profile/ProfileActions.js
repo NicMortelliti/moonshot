@@ -19,7 +19,7 @@ const ProfileActions = () => {
   const RenderAction = () => {
     switch (action) {
       case "password":
-        return <ProfilePassword handleClick={handleClick} />;
+        return <ProfilePassword setAction={setAction} />;
 
       case "delete":
         return <ProfileDelete handleClick={handleClick} />;

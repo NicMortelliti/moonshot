@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { FrostBaseline } from "../styles/Frost.styled";
 
 export const ProfileSection = styled.div`
-  align-items: stretch;
+  align-items: start;
   justify-content: stretch;
   display: flex;
   flex-direction: column;
@@ -15,6 +15,9 @@ export const ProfileSection = styled.div`
 export const ActionPanel = styled(FrostBaseline)`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 2em;
 `;
 
 export const ProfileActionSection = styled.div`
@@ -22,7 +25,7 @@ export const ProfileActionSection = styled.div`
   flex-direction: column;
   flex: 1;
   justify-content: start;
-  align-items: center;
+  align-items: start;
   gap: 1em;
-  padding: 1em;
+  padding: 1em 0;
 `;
