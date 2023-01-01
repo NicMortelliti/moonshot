@@ -22,7 +22,7 @@ const ProfileActions = () => {
         return <ProfilePassword setAction={setAction} />;
 
       case "delete":
-        return <ProfileDelete handleClick={handleClick} />;
+        return <ProfileDelete setAction={handleClick} />;
 
       default:
         return (
