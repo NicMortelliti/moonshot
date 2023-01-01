@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteUser } from "../../features/auth/authSlice";
 
@@ -25,12 +25,7 @@ const ProfileDelete = ({ setAction }) => {
     <ActionPanel>
       <H3 light>Are you sure you want to delete your account?</H3>
       <H4 light>You're account will be gone forever...</H4>
-      <div
-        style={{
-          display: "flex",
-          gap: "1em",
-          padding: "1em 0",
-        }}>
+      <div>
         <Button alert name="confirmDelete" onClick={(e) => handleSubmit(e)}>
           Yes, delete my account.
         </Button>
