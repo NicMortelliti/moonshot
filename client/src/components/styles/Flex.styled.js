@@ -17,7 +17,7 @@ export const Flex = styled.div`
   /* border: ${({ border }) => (border && `1px dashed red`) || "none"}; */
 
   align-content: stretch;
-  justify-content: stretch;
+  justify-content: ${({ justifyContent }) => justifyContent || "stretch"};
 
   & > * {
     flex: 1 100%;

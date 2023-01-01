@@ -70,7 +70,9 @@ export const SearchLocationContainer = styled.div`
   justify-content: center;
 
   padding: auto;
-  margin: auto;
+  margin: 0 3em;
+
+  gap: 1em;
 
   div {
     display: flex;
