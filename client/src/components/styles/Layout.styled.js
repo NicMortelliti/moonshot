@@ -47,7 +47,6 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   align-items: stretch;
-  padding: 1vw;
   margin: 0;
   flex: 1;
 
