@@ -6,6 +6,7 @@ import ProfileActions from "./ProfileActions";
 // Styled components
 import { H1, P } from "../styles/Text.styled";
 import { ProfileSection } from "../styles/Profile.styled";
+import { Content } from "../styles/Layout.styled";
 
 const Profile = () => {
   const Header = () => (
@@ -16,10 +17,12 @@ const Profile = () => {
   );
 
   return (
-    <ProfileSection>
-      <Header />
-      <ProfileActions />
-    </ProfileSection>
+    <Content frosted>
+      <ProfileSection>
+        <Header />
+        <ProfileActions />
+      </ProfileSection>
+    </Content>
   );
 };
 

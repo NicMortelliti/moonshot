@@ -7,7 +7,6 @@ import JumpToSearch from "./components/JumpToSearch";
 import CardList from "../card/CardList";
 
 // Styled Components
-import { FrostedContainer } from "../styles/Frost.styled";
 import { Content } from "../styles/Layout.styled";
 
 const Reservations = () => {
@@ -37,13 +36,7 @@ const Reservations = () => {
     }
   };
 
-  return (
-    <Content>
-      <FrostedContainer maxWidth="none" align="center">
-        {reservations ? <Render /> : <JumpToSearch />}
-      </FrostedContainer>
-    </Content>
-  );
+  return <Content frosted>{reservations ? <Render /> : <JumpToSearch />}</Content>;
 };
 
 export default Reservations;

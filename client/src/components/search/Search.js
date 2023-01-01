@@ -68,10 +68,8 @@ const Search = () => {
   };
 
   return (
-    <Content>
-      <FrostedContainer maxWidth="none" align="center">
-        <Render />
-      </FrostedContainer>
+    <Content frosted>
+      <Render />
     </Content>
   );
 };
