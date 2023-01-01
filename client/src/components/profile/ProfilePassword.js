@@ -85,10 +85,12 @@ const ProfilePassword = ({ setAction }) => {
             />
           </InputContainer>
         </Flex>
-        <Button alert type="submit">
-          Submit
-        </Button>
-        <ShowSectionControl />
+        <div>
+          <Button alert type="submit">
+            Submit
+          </Button>
+          <ShowSectionControl />
+        </div>
       </Form>
     </ActionPanel>
   );
