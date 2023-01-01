@@ -26,6 +26,7 @@ const Search = () => {
 
   // Determine what to render via switch/case
   const Render = () => {
+    // TODO Add "From" and "To" legends to search pages to inform user what they are currently selecting
     if (data) {
       switch (true) {
         // If isLoading is true, display the loading page.

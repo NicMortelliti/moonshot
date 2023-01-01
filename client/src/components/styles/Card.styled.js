@@ -9,7 +9,8 @@ export const CardList = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 1.5em;
+  margin: 1.5em 0;
 `;
 
 // This is the main container. It is where all data

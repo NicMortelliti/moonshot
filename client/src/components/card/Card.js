@@ -13,6 +13,8 @@ import { CardContainer } from "../styles/Card.styled";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({ data, typeOfList = null }) => {
+  // TODO Legends are currently too light of a color and cannot be seen
+
   const [expandPanel, setExpandPanel] = useState(false);
 
   const dispatch = useDispatch();

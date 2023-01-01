@@ -12,6 +12,8 @@ import { Legend } from "../styles/Widgets.styled";
 import { H1, H3 } from "../styles/Text.styled";
 
 const BookingConfirmation = ({ data }) => {
+  // TODO Center the "OK!" button
+
   const navigate = useNavigate();
 
   const cardUI = {
