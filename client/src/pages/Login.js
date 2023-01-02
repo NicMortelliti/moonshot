@@ -45,8 +45,11 @@ const Login = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        margin: "1em",
       }}>
-      <H2 light>Log in</H2>
+      <H2 light fancy>
+        Log in
+      </H2>
 
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Flex direction="column" justify="center" border>

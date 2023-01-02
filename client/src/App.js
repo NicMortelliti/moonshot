@@ -42,16 +42,16 @@ const App = () => {
           <Header />
           <Routes>
             <Route element={<PublicRoute user={user} />}>
-            <Route path="/" element={<Landing />}>
-              <Route exact path="/login" element={<Login />} />
-              <Route exact path="/register" element={<Register />} />
-            </Route>
+              <Route path="/" element={<Landing />}>
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/register" element={<Register />} />
+              </Route>
             </Route>
             {/* User logged-in routes */}
             <Route element={<ProtectedRoute user={user} />}>
-              <Route path="my-trips" element={<Reservations />} />
-              <Route path="flight-search" element={<Booking />} />
-              <Route path="my-profile" element={<Profile />} />
+              <Route path="/my-trips" element={<Reservations />} />
+              <Route path="/flight-search" element={<Booking />} />
+              <Route path="/my-profile" element={<Profile />} />
             </Route>
           </Routes>
           <Footer />

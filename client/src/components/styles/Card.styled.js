@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FrostBaseline } from "./Frost.styled";
 
 // If a list of cards is to be displayed, this
 // is the component that styles that list.
@@ -18,9 +19,8 @@ export const CardList = styled.div`
 // and layout are set here. If a list of cards is needed,
 // use the CardList styled component as a direct parent
 // to this component.
-export const CardContainer = styled.div`
-  border: 1px solid black;
-  background-color: white;
+export const CardContainer = styled(FrostBaseline)`
+  background: rgba(45, 145, 145, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;

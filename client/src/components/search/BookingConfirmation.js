@@ -10,9 +10,13 @@ import { Button } from "../styles/Button.styled";
 import { Content } from "../styles/Layout.styled";
 import { Legend } from "../styles/Widgets.styled";
 import { H1, H3 } from "../styles/Text.styled";
+import { useEffect } from "react";
 
 const BookingConfirmation = ({ data }) => {
   // TODO Center the "OK!" button
+  useEffect(() => {
+    console.table(data);
+  }, []);
 
   const navigate = useNavigate();
 
@@ -57,8 +61,8 @@ const BookingConfirmation = ({ data }) => {
             <OriginDestinationGraphic
               origin={data.origin}
               destination={data.destination}
-              departure={data.departure}
-              arrival={data.arrival}
+              departure={data.flight.departure}
+              arrival={data.flight.arrival}
             />
           </div>
 

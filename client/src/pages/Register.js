@@ -54,8 +54,11 @@ const Register = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        margin: "1em",
       }}>
-      <H2 light>Sign up</H2>
+      <H2 light fancy>
+        Sign up
+      </H2>
 
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Flex>
