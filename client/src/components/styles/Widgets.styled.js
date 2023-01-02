@@ -15,6 +15,7 @@ const HrStyled = styled.div`
     margin: 0 auto;
     position: relative;
     display: flex;
+    flex: 1;
 
     div {
       width: 0.5em;
@@ -27,17 +28,6 @@ const HrStyled = styled.div`
 
     .right {
       right: 0;
-    }
-
-    svg {
-      font-size: xx-large;
-      box-sizing: border-box;
-      margin: auto;
-      position: absolute;
-      top: -0.38em;
-      background-color: ${({ theme }) => theme.bgColors.light || "none"};
-      color: ${({ theme }) => theme.accent || "black"};
-      border: 1px dashed red;
     }
   }
 `;
@@ -91,18 +81,16 @@ export const CenteredTextRow = ({ lgd, readout }) => {
         flex: "1 1 100%",
       }}>
       <Legend
-        light
         style={{
           display: "flex",
           flexDirection: "column",
-          justifySelf: "center",
+          justifyContent: "center",
           flex: "1 1 50%",
           textAlign: "end",
         }}>
         {lgd}
       </Legend>
       <P
-        light
         style={{
           display: "flex",
           flexDirection: "column",

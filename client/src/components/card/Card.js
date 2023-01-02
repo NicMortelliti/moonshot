@@ -11,10 +11,9 @@ import { bookFlight } from "../../features/booking/bookingSlice";
 import { Button } from "../styles/Button.styled";
 import { CardContainer } from "../styles/Card.styled";
 import { useNavigate } from "react-router-dom";
+import { Flex } from "../styles/Flex.styled";
 
 const Card = ({ data, typeOfList = null }) => {
-  // TODO Legends are currently too light of a color and cannot be seen
-
   const [expandPanel, setExpandPanel] = useState(false);
 
   const dispatch = useDispatch();
@@ -108,7 +107,7 @@ const Card = ({ data, typeOfList = null }) => {
     reservation: {
       feedback: {
         first: "",
-        second: "You are booked on the following flight:",
+        second: "",
         third: null,
       },
       action: {
@@ -155,71 +154,75 @@ const Card = ({ data, typeOfList = null }) => {
   // ------------------------------------
   // ------------------------------------
   return (
-    <CardContainer>
-      <FeedbackMessage
-        first={messages[typeOfList].feedback.first}
-        second={messages[typeOfList].feedback.second}
-        third={messages[typeOfList].feedback.third}
-      />
-      <FlightDetails
-        data={data}
-        flightId={flightId}
-        confirmationNumber={confirmationNumber}
-      />
-      <OriginDestinationGraphic
-        origin={origin}
-        destination={destination}
-        departure={departure}
-        arrival={arrival}
-      />
-
-      {/* Expanded confirmation panel */}
-      {expandPanel ? (
-        <ActionConfirmation
-          first={messages[typeOfList].action.first}
-          second={messages[typeOfList].action.second}
-          buttonText={messages[typeOfList].action.buttonText}
-          alert={messages[typeOfList].action.alert}
-          secondaryButtonType={messages[typeOfList].action.secondaryButtonType}
-          handleClick={handleClick}
+    <Flex direction="column">
+      <CardContainer>
+        <FeedbackMessage
+          first={messages[typeOfList].feedback.first}
+          second={messages[typeOfList].feedback.second}
+          third={messages[typeOfList].feedback.third}
         />
-      ) : null}
+        <FlightDetails
+          data={data}
+          flightId={flightId}
+          confirmationNumber={confirmationNumber}
+        />
+        <OriginDestinationGraphic
+          origin={origin}
+          destination={destination}
+          departure={departure}
+          arrival={arrival}
+        />
 
-      {typeOfList === "confirmation" ? (
-        <Button
-          secondary={
-            expandPanel
-              ? messages[typeOfList].confirmation.altBtn
-              : messages[typeOfList].confirmation.mainBtn
-          }
-          alert={expandPanel ? false : true}
-          onClick={
-            typeOfList !== "confirmation"
-              ? () => setExpandPanel(!expandPanel)
-              : handleClick
-          }>
-          {expandPanel
-            ? messages[typeOfList].confirmation.alt
-            : messages[typeOfList].confirmation.main}
-        </Button>
-      ) : null}
+        {/* Expanded confirmation panel */}
+        {expandPanel ? (
+          <ActionConfirmation
+            first={messages[typeOfList].action.first}
+            second={messages[typeOfList].action.second}
+            buttonText={messages[typeOfList].action.buttonText}
+            alert={messages[typeOfList].action.alert}
+            secondaryButtonType={
+              messages[typeOfList].action.secondaryButtonType
+            }
+            handleClick={handleClick}
+          />
+        ) : null}
 
-      {typeOfList === "search" ? (
-        <Button
-          secondary={expandPanel}
-          onClick={() => setExpandPanel(!expandPanel)}>
-          {!expandPanel ? "Book flight" : "Nevermind"}
-        </Button>
-      ) : null}
+        {typeOfList === "confirmation" ? (
+          <Button
+            secondary={
+              expandPanel
+                ? messages[typeOfList].confirmation.altBtn
+                : messages[typeOfList].confirmation.mainBtn
+            }
+            alert={expandPanel ? false : true}
+            onClick={
+              typeOfList !== "confirmation"
+                ? () => setExpandPanel(!expandPanel)
+                : handleClick
+            }>
+            {expandPanel
+              ? messages[typeOfList].confirmation.alt
+              : messages[typeOfList].confirmation.main}
+          </Button>
+        ) : null}
 
-      {typeOfList === "reservation" ? (
-        <Button
-          secondary={!expandPanel}
-          onClick={() => setExpandPanel(!expandPanel)}>
-          {!expandPanel ? "Cancel Reservation" : "Nevermind"}
-        </Button>
-      ) : null}
-    </CardContainer>
+        {typeOfList === "search" ? (
+          <Button
+            secondary={expandPanel}
+            onClick={() => setExpandPanel(!expandPanel)}>
+            {!expandPanel ? "Book flight" : "Nevermind"}
+          </Button>
+        ) : null}
+
+        {typeOfList === "reservation" ? (
+          <Button
+            secondary={!expandPanel}
+            onClick={() => setExpandPanel(!expandPanel)}>
+            {!expandPanel ? "Cancel Reservation" : "Nevermind"}
+          </Button>
+        ) : null}
+      </CardContainer>
+    </Flex>
   );
 };
 

@@ -18,7 +18,7 @@ const OriginDestinationGraphic = ({
     destination;
 
   return (
-    <div>
+    <>
       <FromTo>
         <H5 light>
           {originName}, {originMacroName}
@@ -32,7 +32,7 @@ const OriginDestinationGraphic = ({
         <H5 light>{formatDate(departure)}</H5>
         <H5 light>{formatDate(arrival)}</H5>
       </FromTo>
-    </div>
+    </>
   );
 };
 

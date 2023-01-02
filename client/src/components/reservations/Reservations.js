@@ -8,6 +8,8 @@ import CardList from "../card/CardList";
 
 // Styled Components
 import { Content } from "../styles/Layout.styled";
+import { Flex } from "../styles/Flex.styled";
+import { H1 } from "../styles/Text.styled";
 
 const Reservations = () => {
   const dispatch = useDispatch();
@@ -27,16 +29,21 @@ const Reservations = () => {
       return <p>Loading...</p>;
     } else {
       return (
-        <CardList
-          cards={reservations}
-          isLoading={isLoading}
-          typeOfList="reservation"
-        />
+        <Flex direction="column" margin="auto" justifyContent="center">
+          <H1 light>Your reservations</H1>
+          <CardList
+            cards={reservations}
+            isLoading={isLoading}
+            typeOfList="reservation"
+          />
+        </Flex>
       );
     }
   };
 
-  return <Content frosted>{reservations ? <Render /> : <JumpToSearch />}</Content>;
+  return (
+    <Content frosted>{reservations ? <Render /> : <JumpToSearch />}</Content>
+  );
 };
 
 export default Reservations;

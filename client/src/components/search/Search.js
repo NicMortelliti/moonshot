@@ -26,18 +26,19 @@ const Search = () => {
     (state) => state.booking
   );
 
+  // Simple buttons with location names on them
+  const RenderLocationPicker = () => {
+    return (
+      <div>
+        {data.map((eachData) => (
+          <Location key={eachData.id} data={eachData} />
+        ))}
+      </div>
+    );
+  };
+
   // Determine what to render via switch/case
   const Render = () => {
-    const RenderLocationPicker = () => {
-      return (
-        <div>
-          {data.map((eachData) => (
-            <Location key={eachData.id} data={eachData} />
-          ))}
-        </div>
-      );
-    };
-
     if (data) {
       switch (true) {
         // If isLoading is true, display the loading page.
