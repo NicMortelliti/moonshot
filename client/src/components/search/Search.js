@@ -28,8 +28,6 @@ const Search = () => {
 
   // Determine what to render via switch/case
   const Render = () => {
-    // TODO Add "From" and "To" legends to search pages to inform user what they are currently selecting
-
     const RenderLocationPicker = () => {
       return (
         <div>
@@ -76,7 +74,16 @@ const Search = () => {
         // yet to be set, we'll display the flight picker.
         case !flight:
           return (
-            <CardList cards={data} isLoading={isLoading} typeOfList="search" />
+            <Flex direction="column" margin="auto" justifyContent="center">
+              <SearchLocationContainer>
+                <H1 light>Results</H1>
+                <CardList
+                  cards={data}
+                  isLoading={isLoading}
+                  typeOfList="search"
+                />
+              </SearchLocationContainer>
+            </Flex>
           );
 
         default:
