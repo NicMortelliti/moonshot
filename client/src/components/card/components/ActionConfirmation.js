@@ -30,6 +30,7 @@ const ActionConfirmation = ({
             justifyContent: "space-between",
           }}>
           <Button
+            primary
             alert={alert}
             secondary={secondaryButtonType}
             onClick={handleClick}>
