@@ -32,11 +32,11 @@ const Search = () => {
 
     const RenderLocationPicker = () => {
       return (
-        <SearchLocationContainer>
+        <div>
           {data.map((eachData) => (
             <Location key={eachData.id} data={eachData} />
           ))}
-        </SearchLocationContainer>
+        </div>
       );
     };
 
@@ -54,17 +54,21 @@ const Search = () => {
         // the destination is checked if it's null.
         case !origin:
           return (
-            <Flex direction="column" margin="0 3em" justifyContent="center">
-              <H1 light>From...</H1>
-              <RenderLocationPicker />
+            <Flex direction="column" margin="auto" justifyContent="center">
+              <SearchLocationContainer>
+                <H1 light>From...</H1>
+                <RenderLocationPicker />
+              </SearchLocationContainer>
             </Flex>
           );
 
         case !destination:
           return (
-            <Flex direction="column" margin="0 3em" justifyContent="center">
-              <H1 light>To...</H1>
-              <RenderLocationPicker />
+            <Flex direction="column" margin="auto" justifyContent="center">
+              <SearchLocationContainer>
+                <H1 light>To...</H1>
+                <RenderLocationPicker />
+              </SearchLocationContainer>
             </Flex>
           );
 
