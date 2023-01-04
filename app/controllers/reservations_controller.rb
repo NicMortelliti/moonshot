@@ -21,11 +21,12 @@ class ReservationsController < ApplicationController
   # GET '/reservations'
   # TODO Sort results in ascending order according to departure date
   def index
-    reservations = @current_user.reservations.flight.order('departure')
+    user = @current_user
+    reservations = user.reservations.order('flight_id::integer ASC')
     if reservations.empty?
-      render json: reservations, status: :ok
-    else
       render json: { error: 'No reservations found.' }, status: :not_found
+    else
+      render json: reservations, status: :ok
     end
   end
 
