@@ -3,16 +3,16 @@ class FlightsController < ApplicationController
 
   # Get '/origins/'
   def origins
-    origins = Flight.all.uniq { |flight| flight.origin_id } # Only return flights with unique origins
-    origins = origins.map { |flight| flight.origin } # Only return the associated origin data
+    origins = Flight.all.uniq(&:origin_id) # Only return flights with unique origins
+    origins = origins.map(&:origin) # Only return the associated origin data
     render json: origins, status: :ok
   end
 
   # GET '/destinations/[:id]'
   def destinations_from
     destinations = Flight.all.select { |flight| flight.origin_id == search_params[:origin].to_i }
-    destinations = destinations.uniq { |flight| flight.destination_id } # Only return flights with unique destinations
-    destinations = destinations.map { |flight| flight.destination } # Only return the associated destination data
+    destinations = destinations.uniq(&:destination_id) # Only return flights with unique destinations
+    destinations = destinations.map(&:destination) # Only return the associated destination data
     render json: destinations, status: :ok
   end
 
@@ -29,10 +29,10 @@ class FlightsController < ApplicationController
     user_reservations = @current_user.reservations.pluck(:flight_id)
     flights = flights.reject { |flight| user_reservations.include? flight.id.to_s }
 
-    if flights.length > 0
-      render json: flights, status: :ok
-    else
+    if flights.empty?
       render json: { error: "Sorry, we didn't find any flights with that search criteria." }, status: :not_found
+    else
+      render json: flights, status: :ok
     end
   end
 
