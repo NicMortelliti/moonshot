@@ -19,7 +19,6 @@ class ReservationsController < ApplicationController
   end
 
   # GET '/reservations'
-  # TODO Sort results in ascending order according to departure date
   def index
     user = @current_user
     reservations = user.reservations.order('flight_id::integer ASC')
