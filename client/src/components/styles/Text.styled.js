@@ -9,7 +9,7 @@ export const H1 = styled.h1`
   font-family: ${({ fancy }) => fancy && fancyFont};
   text-shadow: ${({ theme, fancy }) =>
     fancy ? `${theme.accent} 1px 0 10px` : null};
-  font-size: ${({ large }) => large && "5em"};
+  font-size: clamp(1rem, -0.875rem + 8.333333vw, 5rem);
   color: ${color};
 `;
 
