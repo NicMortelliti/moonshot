@@ -17,7 +17,6 @@ import Reservations from "./components/reservations/Reservations";
 import Booking from "./components/search/Search";
 import Profile from "./components/profile/Profile";
 import Landing from "./pages/Landing";
-import Dashboard from "./pages/Dashboard";
 import { reLogin } from "./features/auth/authSlice";
 import { ProtectedRoute, PublicRoute } from "./components/auth/RouteHandling";
 
