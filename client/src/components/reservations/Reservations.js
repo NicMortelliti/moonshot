@@ -24,6 +24,18 @@ const Reservations = () => {
     (state) => state.reservations
   );
 
+  // Spread the reservations array into a new array that we can sort.
+  // Sorting destructively modifies the array, so we don't want to
+  // sort directly on the states version of the reservations array.
+  // We could do this inline when we pass reservations in as a prop
+  // to CardList, but it becomes difficult to read that way.
+  const newReservations = reservations
+    ? [...reservations].sort((a, b) =>
+        new Date(a.flight.departure) > new Date(b.flight.departure) ? 1 : -1
+      )
+    : null;
+
+  // Render the list of reservations
   const Render = () => {
     if (isLoading) {
       return <p>Loading...</p>;
@@ -32,7 +44,7 @@ const Reservations = () => {
         <Flex direction="column" margin="auto" justifyContent="center">
           <H1 light>Your reservations</H1>
           <CardList
-            cards={reservations}
+            cards={newReservations}
             isLoading={isLoading}
             typeOfList="reservation"
           />
