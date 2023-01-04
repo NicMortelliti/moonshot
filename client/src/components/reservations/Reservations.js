@@ -13,48 +13,60 @@ import { H1 } from "../styles/Text.styled";
 
 const Reservations = () => {
   const dispatch = useDispatch();
+  // Grab properties from reservation state
+  const { isLoading, isSuccess, isError, reservations } = useSelector(
+    (state) => state.reservations
+  );
 
   // Get reservations from API when component loads
   useEffect(() => {
     dispatch(getReservations());
   }, [dispatch]);
 
-  // Grab properties from reservation state
-  const { reservations, isLoading } = useSelector(
-    (state) => state.reservations
-  );
+  let content;
 
-  // Spread the reservations array into a new array that we can sort.
-  // Sorting destructively modifies the array, so we don't want to
-  // sort directly on the states version of the reservations array.
-  // We could do this inline when we pass reservations in as a prop
-  // to CardList, but it becomes difficult to read that way.
-  const newReservations = reservations
-    ? [...reservations].sort((a, b) =>
+  // If we're fetching reservations from backend, show loader
+  if (isLoading === true) {
+    content = <p>Loading...</p>;
+  }
+  // If we get a success message back from the backend, show results
+  else if (isSuccess === true) {
+    const orderedReservations = reservations
+      .slice()
+      .sort((a, b) =>
         new Date(a.flight.departure) > new Date(b.flight.departure) ? 1 : -1
-      )
-    : null;
+      );
+
+    content = (
+      <>
+        <H1 light>Your reservations</H1>
+        <CardList
+          cards={orderedReservations}
+          isLoading={isLoading}
+          typeOfList="reservation"
+        />
+      </>
+    );
+  }
+
+  // If we don't find any reservations in the backend
+  else if (isLoading === false && isError === true) {
+    content = <JumpToSearch />;
+  }
 
   // Render the list of reservations
   const Render = () => {
-    if (isLoading) {
-      return <p>Loading...</p>;
-    } else {
-      return (
-        <Flex direction="column" margin="auto" justifyContent="center">
-          <H1 light>Your reservations</H1>
-          <CardList
-            cards={newReservations}
-            isLoading={isLoading}
-            typeOfList="reservation"
-          />
-        </Flex>
-      );
-    }
+    return (
+      <Flex direction="column" margin="auto" justifyContent="center">
+        {content}
+      </Flex>
+    );
   };
 
   return (
-    <Content frosted>{reservations ? <Render /> : <JumpToSearch />}</Content>
+    <Content frosted>
+      <Render />
+    </Content>
   );
 };
 
