@@ -4,7 +4,10 @@ import FeedbackMessage from "./components/FeedbackMessage";
 import FlightDetails from "./components/FlightDetails";
 import OriginDestinationGraphic from "./components/OriginDestinationGraphic";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteReservation } from "../../features/reservations/reservationSlice";
+import {
+  deleteReservation,
+  getReservations,
+} from "../../features/reservations/reservationSlice";
 import { bookFlight } from "../../features/booking/bookingSlice";
 
 // Styled components
@@ -130,7 +133,9 @@ const Card = ({ data, typeOfList = null }) => {
 
     switch (typeOfList) {
       case "reservation":
-        dispatch(deleteReservation(confirmationNumber));
+        dispatch(deleteReservation(confirmationNumber)).then(
+          dispatch(getReservations())
+        );
         break;
 
       case "search":
