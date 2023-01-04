@@ -1,23 +1,6 @@
 class FlightsController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-  # POST '/flights'
-  def create
-    return unless @current_user.admin # Break out of this method if user isn't an admin
-
-    flight = Flight.create!(create_flight_params)
-    render json: flight, status: :created
-  end
-
-  # DESTROY '/flights/[:id]'
-  def destroy
-    return unless @current_user.admin # Break out of this method if user isn't an admin
-
-    flight = find_flight
-    flight.destroy
-    head :no_content
-  end
-
   # Get '/origins/'
   def origins
     origins = Flight.all.uniq { |flight| flight.origin_id } # Only return flights with unique origins
@@ -50,19 +33,6 @@ class FlightsController < ApplicationController
       render json: flights, status: :ok
     else
       render json: { error: "Sorry, we didn't find any flights with that search criteria." }, status: :not_found
-    end
-  end
-
-  # PATCH '/flights/[:id]'
-  def update
-    return unless @current_user.admin # Break out of this method if user isn't an admin
-
-    flight = find_flight
-    if flight
-      flight.update(create_flight_params)
-      render json: flight, status: :created
-    else
-      render json: { error: 'Flight not found' }, status: :not_found
     end
   end
 
