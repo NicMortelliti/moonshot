@@ -56,7 +56,7 @@ const Register = () => {
         justifyContent: "center",
         margin: "1em",
       }}>
-      <H2 light fancy>
+      <H2 center light fancy>
         Sign up
       </H2>
 

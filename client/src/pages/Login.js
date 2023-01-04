@@ -47,7 +47,7 @@ const Login = () => {
         justifyContent: "center",
         margin: "1em",
       }}>
-      <H2 light fancy>
+      <H2 center light fancy>
         Log in
       </H2>
 

@@ -7,12 +7,15 @@ const color = ({ light }) => (light ? theme.light : "black");
 
 export const H1 = styled.h1`
   font-family: ${({ fancy }) => fancy && fancyFont};
-  font-size: ${({ large }) => large && "6em"};
+  text-shadow: ${({ theme, fancy }) =>
+    fancy ? `${theme.accent} 1px 0 10px` : null};
+  font-size: ${({ large }) => large && "5em"};
   color: ${color};
 `;
 
 export const H2 = styled.h2`
   font-family: ${({ fancy }) => fancy && fancyFont};
+  align-self: ${({ center }) => center && "center"};
   color: ${color};
 `;
 
