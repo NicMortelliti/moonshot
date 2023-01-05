@@ -24,7 +24,6 @@ const Reservations = () => {
   }, [dispatch]);
 
   let content;
-
   // If we're fetching reservations from backend, show loader
   if (isLoading === true) {
     content = <p>Loading...</p>;
@@ -54,18 +53,11 @@ const Reservations = () => {
     content = <JumpToSearch />;
   }
 
-  // Render the list of reservations
-  const Render = () => {
-    return (
+  return (
+    <Content frosted>
       <Flex direction="column" margin="auto" justifyContent="center">
         {content}
       </Flex>
-    );
-  };
-
-  return (
-    <Content frosted>
-      <Render />
     </Content>
   );
 };
