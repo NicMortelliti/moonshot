@@ -10,14 +10,12 @@ const Attributions = () => {
   // to render them to the page.
   const attributionData = [
     {
-      basicName: "Planet image",
-      mediaName: "planet.jpg",
-      userName: "Javier Miranda",
-      userLink:
-        "https://unsplash.com/@nuvaproductions?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-      siteName: "Unsplash",
-      siteLink:
-        "https://unsplash.com/s/photos/solar-system?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
+      basicName: "Moon image",
+      mediaName: "moon.jpg",
+      userName: "Tarun",
+      userLink: "https://www.pexels.com/@tarun-74117201/",
+      siteName: "Pexels",
+      siteLink: "https://www.pexels.com/photo/a-half-moon-in-the-sky-8630167/",
     },
   ];
 

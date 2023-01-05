@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import image from "../images/planet.jpg";
+import image from "../images/moon.jpg";
 
 const GlobalStyles = createGlobalStyle`
 * {
