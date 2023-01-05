@@ -5,17 +5,20 @@ export const HeaderListItem = styled(NavLink)`
   /* Color and style */
   color: ${({ theme }) => theme.colors.header};
 
-  padding: 5px 16px;
+  padding: 5px 16px 10px;
   text-decoration: none;
 
   /* Size */
-  font-size: 1em;
-  font-weight: 300;
+  font-size: 1.2em;
+  font-weight: 800;
 
   /* Alignment */
   display: flex;
   text-align: center;
   align-self: end;
+
+  font-family: "Gruppo";
+  text-shadow: black 1px 0 10px;
 
   &:hover,
   &:focus {
