@@ -10,24 +10,11 @@ import { Button } from "../styles/Button.styled";
 import { Content } from "../styles/Layout.styled";
 import { Legend } from "../styles/Widgets.styled";
 import { H1, H3 } from "../styles/Text.styled";
-import { useEffect } from "react";
 
 const BookingConfirmation = ({ data }) => {
   // TODO Center the "OK!" button
-  useEffect(() => {
-    console.table(data);
-  }, []);
-
   const navigate = useNavigate();
 
-  const cardUI = {
-    feedback: {
-      line1: "Far out!",
-      line2: "You're going to space!",
-      line3: "The following booking has been confirmed.",
-    },
-    button1: <Button onClick={() => navigate("/my-trips")}>Ok!</Button>,
-  };
   return (
     <Content>
       <div

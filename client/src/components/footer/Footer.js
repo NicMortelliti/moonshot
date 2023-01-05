@@ -11,7 +11,6 @@ import {
   FooterGrid,
   Data,
   Buttons,
-  Socials as SocialsContainer,
 } from "../styles/Footer.styled";
 import { Footer as FooterContainer } from "../styles/Layout.styled";
 
