@@ -33,7 +33,7 @@ const Header = () => {
       userLoggedIn: false,
     },
     {
-      name: "BOOK",
+      name: "Book",
       link: "/flight-search",
       alignment: "start",
       handleClick: null,
@@ -41,7 +41,7 @@ const Header = () => {
       authAgnostic: false,
     },
     {
-      name: "MY TRIPS",
+      name: "My Trips",
       link: "/my-trips",
       alignment: "start",
       handleClick: null,
