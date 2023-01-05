@@ -7,15 +7,13 @@ export const Button = styled.button`
   box-shadow: ${({ secondary }) =>
     secondary ? "none" : `0 0 1em rgba(0, 0, 0, 0.15)`};
   background-color: ${({ theme, alert, primary }) =>
-    alert ? theme.alert : primary ? theme.primary : `${theme.colors.button}33`};
-  border: ${({ theme, secondary, alert, primary }) =>
+    alert ? theme.alert : primary ? `${theme.colors.button}33` : "transparent"};
+  border: ${({ theme, alert, primary }) =>
     alert
       ? `0.1em solid ${theme.alert}`
       : primary
-      ? `0.1em solid ${theme.primary}`
-      : secondary
-      ? "none"
-      : `0.1em solid ${theme.bgColors.button}`};
+      ? `0.1em solid ${theme.colors.button}`
+      : "none"};
   color: ${({ theme, alert, primary }) =>
     alert ? theme.dark : primary ? `${theme.dark}` : `${theme.colors.button}`};
 

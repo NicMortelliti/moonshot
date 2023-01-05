@@ -45,7 +45,6 @@ export const HorizontalRule = () => {
 
 export const Legend = styled.h5`
   color: ${({ theme, light }) => (light ? theme.light : theme.colors.dark)};
-  opacity: 0.5;
   font-size: x-small;
   line-height: ${({ lineHeight }) => lineHeight || "30px"};
   margin: ${({ margin }) => margin || 0};

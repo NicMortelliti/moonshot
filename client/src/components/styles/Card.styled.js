@@ -20,7 +20,7 @@ export const CardList = styled.div`
 // use the CardList styled component as a direct parent
 // to this component.
 export const CardContainer = styled(FrostBaseline)`
-  background: rgba(45, 145, 145, 0.2);
+  background: rgba(145, 145, 145, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;
