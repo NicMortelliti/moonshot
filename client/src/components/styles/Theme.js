@@ -1,9 +1,9 @@
 const light = "#ffffff";
 const dark = "#333333";
 const lightBlue = "#676f9d";
-const darkBlue = "#141720";
-const accent = "#3498db";
-const alert = "#e74c3c";
+const darkBlue = "#131B23";
+const accent = "#34dbcb";
+const alert = "#F87060";
 const primary = "#2ecc71";
 
 const white = "#FFFFFF";
