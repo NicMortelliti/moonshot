@@ -8,7 +8,6 @@ import {
   deleteReservation,
   getReservations,
 } from "../../features/reservations/reservationSlice";
-import { bookFlight } from "../../features/booking/bookingSlice";
 
 // Styled components
 import { Button } from "../styles/Button.styled";
@@ -16,13 +15,13 @@ import { CardContainer } from "../styles/Card.styled";
 import { useNavigate } from "react-router-dom";
 import { Flex } from "../styles/Flex.styled";
 
+// * Main
 const Card = ({ data, typeOfList = null }) => {
   const [expandPanel, setExpandPanel] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
-  const { user: userId } = user;
 
   // Here we check to see if the data set contains
   // a value for "reservations_remaining". If there
@@ -88,25 +87,6 @@ const Card = ({ data, typeOfList = null }) => {
           },
         }
       : null,
-    search: {
-      feedback: {
-        first: null,
-        second: null,
-        third: null,
-      },
-      action: {
-        first: `Reserve a seat on flight ${flightId}?`,
-        second: null,
-        buttonText: "Yes, book it!",
-        secondaryButtonType: false,
-      },
-      confirmation: {
-        alt: "Nevermind",
-        main: "Book Flight",
-        mainBtn: null,
-        altBtn: true,
-      },
-    },
     reservation: {
       feedback: {
         first: "",
@@ -138,10 +118,6 @@ const Card = ({ data, typeOfList = null }) => {
         );
         break;
 
-      case "search":
-        dispatch(bookFlight({ userId, flightId }));
-        break;
-
       case "confirmation":
         navigate("/my-trips");
         break;
@@ -151,13 +127,6 @@ const Card = ({ data, typeOfList = null }) => {
     }
   };
 
-  // ------------------------------------
-  // ------------------------------------
-  //
-  // Main
-  //
-  // ------------------------------------
-  // ------------------------------------
   return (
     <Flex direction="column">
       <CardContainer>
@@ -208,14 +177,6 @@ const Card = ({ data, typeOfList = null }) => {
             {expandPanel
               ? messages[typeOfList].confirmation.alt
               : messages[typeOfList].confirmation.main}
-          </Button>
-        ) : null}
-
-        {typeOfList === "search" ? (
-          <Button
-            secondary={expandPanel}
-            onClick={() => setExpandPanel(!expandPanel)}>
-            {!expandPanel ? "Book flight" : "Nevermind"}
           </Button>
         ) : null}
 
