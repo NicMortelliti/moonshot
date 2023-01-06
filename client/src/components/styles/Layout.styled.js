@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
   /* For displays 500px and larger */
   @media (min-width: 500px) {
     grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
       "header    header"
       "sidebar  content"

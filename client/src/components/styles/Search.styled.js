@@ -51,6 +51,7 @@ export const FlightGrid = styled.div`
   border-radius: 6px;
   background-color: ${({ theme }) => theme.white || "white"};
   grid-template-rows: auto;
+  grid-template-columns: auto 1fr auto;
   width: 80%;
   max-width: 800px;
   gap: 0 1em;
@@ -58,9 +59,13 @@ export const FlightGrid = styled.div`
   min-height: 110px;
   padding: 1em;
   grid-template-areas:
-    "carrier      flightNo"
-    "origin       departure"
-    "destination  arrival";
+    "carrier       carrier    carrier"
+    "departure     .          arrival"
+    "departureYear slot       arrivalYear"
+    "departureYear .          arrivalYear"
+    "origin        .          destination"
+    "price         price      price"
+    "confirm       confirm    confirm";
 
   /* For displays 500px and larger */
   @media (min-width: 500px) {
@@ -123,25 +128,35 @@ export const Slot = styled.div`
 export const Price = styled.div`
   cursor: pointer;
   grid-area: price;
-  border-left: solid 1px black;
   border-radius: 0 6px 6px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-left: 1em;
+  margin-bottom: 1em;
 
   p {
     color: ${({ theme, alt }) =>
       alt === true ? theme.alert : theme.accent || "black"};
+    border: none;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
   }
 
   &:hover,
   &:focus {
     p {
+      border: none;
+      border-top: 3px solid transparent;
       border-bottom: 3px solid
-        ${({ theme, alt }) =>
-          alt ? theme.alert : theme.accent || "blue"};
+        ${({ theme, alt }) => (alt ? theme.alert : theme.accent || "blue")};
     }
+  }
+
+  @media (min-width: 500px) {
+    border-left: solid 1px black;
+    width: 10ch;
+    margin-bottom: 0;
   }
 `;
 
@@ -176,6 +191,7 @@ export const ResultsHeader = styled.div`
   width: 70%;
   justify-content: space-between;
   align-items: center;
+  margin-top: 1em;
 
   div h3,
   div h1 {
