@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bookFlight } from "../../features/booking/bookingSlice";
-import ActionConfirmation from "../card/components/ActionConfirmation";
 import { formatDate } from "../../helpers/helpers";
 import {
   FlightGrid,
