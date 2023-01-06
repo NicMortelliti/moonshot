@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { TfiArrowRight } from "react-icons/tfi";
 
 // Components
 import { default as Location } from "./BookingLocationButton";
@@ -8,9 +9,12 @@ import { getOrigins } from "../../features/booking/bookingSlice";
 import FlightList from "./FlightList";
 
 // Styled components
-import { SearchLocationContainer } from "../styles/Search.styled";
+import {
+  SearchLocationContainer,
+  ResultsHeader,
+} from "../styles/Search.styled";
 import { Content } from "../styles/Layout.styled";
-import { H1 } from "../styles/Text.styled";
+import { H1, H3 } from "../styles/Text.styled";
 import { Flex } from "../styles/Flex.styled";
 
 const Search = () => {
@@ -55,7 +59,9 @@ const Search = () => {
           return (
             <Flex direction="column" margin="auto" justifyContent="center">
               <SearchLocationContainer>
-                <H1 light>From...</H1>
+                <H1 light fancy>
+                  From...
+                </H1>
                 <RenderLocationPicker />
               </SearchLocationContainer>
             </Flex>
@@ -65,7 +71,9 @@ const Search = () => {
           return (
             <Flex direction="column" margin="auto" justifyContent="center">
               <SearchLocationContainer>
-                <H1 light>To...</H1>
+                <H1 light fancy>
+                  To...
+                </H1>
                 <RenderLocationPicker />
               </SearchLocationContainer>
             </Flex>
@@ -76,10 +84,26 @@ const Search = () => {
         case !flight:
           return (
             <Flex direction="column" margin="auto" justifyContent="center">
-              <SearchLocationContainer>
-                <H1 light>Results</H1>
-                <FlightList cards={data} />
-              </SearchLocationContainer>
+              <ResultsHeader>
+                <div>
+                  <H1 light fancy>
+                    {origin.name}
+                  </H1>
+                  <H3 light fancy>
+                    {origin.macro_place}
+                  </H3>
+                </div>
+                <TfiArrowRight />
+                <div>
+                  <H1 light fancy>
+                    {destination.name}
+                  </H1>
+                  <H3 light fancy>
+                    {destination.macro_place}
+                  </H3>
+                </div>
+              </ResultsHeader>
+              <FlightList cards={data} />
             </Flex>
           );
 

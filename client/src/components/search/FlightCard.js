@@ -2,11 +2,20 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bookFlight } from "../../features/booking/bookingSlice";
 import ActionConfirmation from "../card/components/ActionConfirmation";
-import FlightDetails from "../card/components/FlightDetails";
-import OriginDestinationGraphic from "../card/components/OriginDestinationGraphic";
-import { Button } from "../styles/Button.styled";
-import { CardContainer } from "../styles/Card.styled";
-import { Flex } from "../styles/Flex.styled";
+import { formatDate } from "../../helpers/helpers";
+import {
+  FlightGrid,
+  Carrier,
+  Origin,
+  Departure,
+  Destination,
+  Arrival,
+  Price,
+  DepartureYear,
+  ArrivalYear,
+  Slot,
+  Confirm,
+} from "../styles/Search.styled";
 
 // * Main
 const FlightCard = ({ data }) => {
@@ -16,48 +25,35 @@ const FlightCard = ({ data }) => {
   const { user } = useSelector((state) => state.auth);
   const { user: userId } = user;
 
-  if (data) {
-    const origin = data.origin;
-    const destination = data.destination;
-    const departure = data.departure;
-    const arrival = data.arrival;
-    const flightId = data.id;
+  // Click handlers
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(bookFlight({ userId, data }));
+  };
 
-    // Click handlers
-    const handleClick = (e) => {
-      e.preventDefault();
-      dispatch(bookFlight({ userId, flightId }));
-    };
+  return (
+    <FlightGrid>
+      <Carrier>MoonShot {data.id}</Carrier>
+      <Origin>{data.origin.icao}</Origin>
+      <DepartureYear>{formatDate(data.departure, "year")}</DepartureYear>
+      <Departure>{formatDate(data.departure, "monthDay")}</Departure>
+      <Destination>{data.destination.icao}</Destination>
+      <ArrivalYear>{formatDate(data.arrival, "year")}</ArrivalYear>
+      <Arrival>{formatDate(data.arrival, "monthDay")}</Arrival>
+      <Slot />
+      <Price onClick={() => setExpandPanel(!expandPanel)} alt={expandPanel}>
+        <p>{!expandPanel ? "Book flight" : "Nevermind"}</p>
+      </Price>
 
-    return (
-      <Flex column>
-        <CardContainer>
-          <FlightDetails data={data} flightId={flightId} />
-          <OriginDestinationGraphic
-            origin={origin}
-            destination={destination}
-            departure={departure}
-            arrival={arrival}
-          />
-
-          {/* Expanded confirmation panel */}
-          {expandPanel ? (
-            <ActionConfirmation
-              first={`Reserve a seat on flight ${flightId}?`}
-              buttonText="Yes, book it!"
-              handleClick={handleClick}
-            />
-          ) : null}
-
-          <Button
-            secondary={expandPanel}
-            onClick={() => setExpandPanel(!expandPanel)}>
-            {!expandPanel ? "Book flight" : "Nevermind"}
-          </Button>
-        </CardContainer>
-      </Flex>
-    );
-  }
+      {/* Expanded confirmation panel */}
+      {expandPanel ? (
+        <Confirm>
+          <p>Reserve a seat on flight {data.id}?</p>
+          <button onClick={handleClick}>Yes, book it!</button>
+        </Confirm>
+      ) : null}
+    </FlightGrid>
+  );
 };
 
 export default FlightCard;

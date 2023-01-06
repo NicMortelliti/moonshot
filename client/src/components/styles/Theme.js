@@ -8,6 +8,7 @@ const primary = "#2ecc71";
 
 const white = "#FFFFFF";
 const black = "#000000";
+const gray = "gray";
 
 export const theme = {
   bgColors: {
@@ -31,8 +32,9 @@ export const theme = {
     button: accent,
   },
 
-  white: "FFFFFF",
-  black: "000000",
+  white: white,
+  black: black,
+  gray: gray,
   hoverColor: accent,
   primary: primary,
   alert: alert,

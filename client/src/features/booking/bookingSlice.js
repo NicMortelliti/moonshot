@@ -55,9 +55,9 @@ export const getFlights = createAsyncThunk(
 // Send flight booking to API
 export const bookFlight = createAsyncThunk(
   "booking/book",
-  async ({ userId, flightId }, { rejectWithValue }) => {
+  async ({ userId, data: flight }, { rejectWithValue }) => {
     try {
-      return await bookingService.bookFlight(userId, flightId);
+      return await bookingService.bookFlight(userId, flight.id);
     } catch (error) {
       toast.warn(error.error);
       return rejectWithValue(error);
