@@ -133,7 +133,7 @@ export const Price = styled.div`
   justify-content: center;
   align-items: center;
   padding-left: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 
   p {
     color: ${({ theme, alt }) =>
