@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { default as Location } from "./BookingLocationButton";
 import { default as Confirmation } from "./BookingConfirmation";
 import { getOrigins } from "../../features/booking/bookingSlice";
-import CardList from "../card/CardList";
+import FlightList from "./FlightList";
 
 // Styled components
 import { SearchLocationContainer } from "../styles/Search.styled";
@@ -78,17 +78,17 @@ const Search = () => {
             <Flex direction="column" margin="auto" justifyContent="center">
               <SearchLocationContainer>
                 <H1 light>Results</H1>
-                <CardList
-                  cards={data}
-                  isLoading={isLoading}
-                  typeOfList="search"
-                />
+                <FlightList cards={data} />
               </SearchLocationContainer>
             </Flex>
           );
 
         default:
-          break;
+          return (
+            <div>
+              <p>Oops! Something went wrong.</p>
+            </div>
+          );
       }
     } else if (flight) {
       // Finally, we display the booking confirmation page 💲💲💲
