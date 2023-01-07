@@ -11,9 +11,10 @@ export const ProtectedRoute = ({ user, redirectPath = "/" }) => {
 };
 
 // Public-facing routes (user NOT logged in)
+// TODO Remove debugging string inside toast (below)
 export const PublicRoute = ({ user, redirectPath = "/my-profile" }) => {
   if (user) {
-    toast.error("That page does not exist");
+    toast.error("That page does not exist (Check RouteHandling.js)");
     return <Navigate to={redirectPath} />;
   }
   return <Outlet />;
