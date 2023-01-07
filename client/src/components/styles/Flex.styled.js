@@ -13,9 +13,6 @@ export const Flex = styled.div`
   bottom: ${({ bottom }) => bottom || "inherit"};
   gap: ${({ gap }) => gap || "normal"};
 
-  /* Border for development use */
-  /* border: ${({ border }) => (border && `1px dashed red`) || "none"}; */
-
   align-content: stretch;
   justify-content: ${({ justifyContent }) => justifyContent || "stretch"};
 

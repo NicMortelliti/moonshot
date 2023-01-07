@@ -10,6 +10,7 @@ import CardList from "../card/CardList";
 import { Content } from "../styles/Layout.styled";
 import { Flex } from "../styles/Flex.styled";
 import { H1 } from "../styles/Text.styled";
+import { ResultsHeader } from "../styles/Search.styled";
 
 const Reservations = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const Reservations = () => {
   // If we get a success message back from the backend, show results
   else if (isSuccess === true) {
     const orderedReservations = reservations
+      // Sort the list by next departure first
       .slice()
       .sort((a, b) =>
         new Date(a.flight.departure) > new Date(b.flight.departure) ? 1 : -1
@@ -38,7 +40,11 @@ const Reservations = () => {
 
     content = (
       <>
-        <H1 light>Your reservations</H1>
+        <ResultsHeader center>
+          <H1 light fancy>
+            Your reservations
+          </H1>
+        </ResultsHeader>
         <CardList
           cards={orderedReservations}
           isLoading={isLoading}

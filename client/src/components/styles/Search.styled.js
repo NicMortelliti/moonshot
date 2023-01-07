@@ -189,7 +189,7 @@ export const Confirm = styled.div`
 export const ResultsHeader = styled.div`
   display: flex;
   width: 70%;
-  justify-content: space-between;
+  justify-content: ${({ center }) => (center ? "center" : "space-between")};
   align-items: center;
   margin-top: 1em;
 
