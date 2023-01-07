@@ -57,7 +57,7 @@ const Search = () => {
         // the destination is checked if it's null.
         case !origin:
           return (
-            <Flex direction="column" margin="auto" justifyContent="center">
+            <Flex direction="column" margin="0 auto" justifyContent="center">
               <SearchLocationContainer>
                 <H1 light fancy>
                   From...
@@ -69,7 +69,7 @@ const Search = () => {
 
         case !destination:
           return (
-            <Flex direction="column" margin="auto" justifyContent="center">
+            <Flex direction="column" margin="0 auto" justifyContent="center">
               <SearchLocationContainer>
                 <H1 light fancy>
                   To...
@@ -83,7 +83,7 @@ const Search = () => {
         // yet to be set, we'll display the flight picker.
         case !flight:
           return (
-            <Flex direction="column" margin="auto" justifyContent="center">
+            <Flex direction="column" margin="0 auto" justifyContent="center">
               <ResultsHeader>
                 <div>
                   <H1 light fancy>

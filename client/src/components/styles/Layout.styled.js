@@ -46,8 +46,8 @@ export const Side = styled.div`
 export const Content = styled.div`
   grid-area: content;
   display: flex;
-  justify-content: center;
-  align-items: stretch;
+  justify-content: start;
+  align-items: ${({ align }) => align || "start"};
   margin: 0;
   flex: 1;
 
