@@ -11,7 +11,7 @@ const JumpToSearch = () => {
   return (
     <>
       <P light>You have no reservations.</P>
-      <Button onClick={() => navigate("/flight-search")}>Book one!</Button>
+      <Button primary onClick={() => navigate("/flight-search")}>Book one!</Button>
     </>
   );
 };
