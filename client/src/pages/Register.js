@@ -49,78 +49,70 @@ const Register = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        margin: "1em",
-      }}>
+    <Flex direction="column">
       <H2 center light fancy>
         Sign up
       </H2>
 
       <Form onSubmit={(e) => handleSubmit(e)}>
-        <Flex>
-          <InputContainer>
-            <input
-              type="text"
-              name="first_name"
-              value={first_name}
-              placeholder="First name"
-              onChange={onChange}
-            />
-          </InputContainer>
-          <InputContainer>
-            <input
-              type="text"
-              name="last_name"
-              value={last_name}
-              placeholder="Last name"
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Flex>
-        <Flex>
-          <InputContainer>
-            <input
-              type="email"
-              name="email"
-              value={email}
-              placeholder="Email address"
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Flex>
-        <Flex>
-          <InputContainer>
-            <input
-              type="password"
-              name="password"
-              value={password}
-              placeholder="Password"
-              onChange={onChange}
-            />
-          </InputContainer>
-          <InputContainer>
-            <input
-              type="password"
-              name="password2"
-              value={password2}
-              placeholder="Confirm"
-              onChange={onChange}
-            />
-          </InputContainer>
-        </Flex>
-        <Flex>
-          <div>
-            <Button type="submit">
-              {isLoading ? "Loading..." : "Submit"}{" "}
-            </Button>
-          </div>
+        <Flex direction="column">
+          <Flex>
+            <InputContainer>
+              <input
+                type="text"
+                name="first_name"
+                value={first_name}
+                placeholder="First name"
+                onChange={onChange}
+              />
+            </InputContainer>
+            <InputContainer>
+              <input
+                type="text"
+                name="last_name"
+                value={last_name}
+                placeholder="Last name"
+                onChange={onChange}
+              />
+            </InputContainer>
+          </Flex>
+          <Flex>
+            <InputContainer>
+              <input
+                type="email"
+                name="email"
+                value={email}
+                placeholder="Email address"
+                onChange={onChange}
+              />
+            </InputContainer>
+          </Flex>
+          <Flex>
+            <InputContainer>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                placeholder="Password"
+                onChange={onChange}
+              />
+            </InputContainer>
+            <InputContainer>
+              <input
+                type="password"
+                name="password2"
+                value={password2}
+                placeholder="Confirm"
+                onChange={onChange}
+              />
+            </InputContainer>
+          </Flex>
+          <Button primary type="submit">
+            {isLoading ? "Loading..." : "Submit"}{" "}
+          </Button>
         </Flex>
       </Form>
-    </div>
+    </Flex>
   );
 };
 

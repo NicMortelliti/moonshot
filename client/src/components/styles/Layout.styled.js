@@ -9,8 +9,8 @@ export const Wrapper = styled.div`
   min-height: 100vh;
   grid-template-areas:
     "header"
-    "sidebar"
     "content"
+    "sidebar"
     "footer";
 
   /* For displays 500px and larger */

@@ -7,6 +7,7 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   align-items: stretch;
+  margin: 0 20px;
 `;
 
 // colors
