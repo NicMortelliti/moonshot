@@ -9,7 +9,7 @@ export const Flex = styled.div`
   width: ${({ width }) => width || "100%"};
   margin: ${({ margin }) => margin || 0};
   padding: ${({ padding }) => padding || 0};
-  gap: ${({ gap }) => gap || "normal"};
+  gap: ${({ gap }) => gap || "10px"};
   position: ${({ position }) => position || "inherit"};
   bottom: ${({ bottom }) => bottom || "inherit"};
 

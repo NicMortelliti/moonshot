@@ -40,19 +40,13 @@ const Login = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        margin: "1em",
-      }}>
+    <Flex direction="column">
       <H2 center light fancy>
         Log in
       </H2>
 
       <Form onSubmit={(e) => handleSubmit(e)}>
-        <Flex direction="column" justify="center" border>
+        <Flex direction="column" justify="center">
           <InputContainer>
             <input
               type="email"
@@ -71,16 +65,12 @@ const Login = () => {
               onChange={onChange}
             />
           </InputContainer>
-        </Flex>
-        <Flex>
-          <div>
-            <Button type="submit">
-              {isLoading ? "Loading..." : "Submit"}{" "}
-            </Button>
-          </div>
+          <Button primary type="submit">
+            {isLoading ? "Loading..." : "Submit"}{" "}
+          </Button>
         </Flex>
       </Form>
-    </div>
+    </Flex>
   );
 };
 
