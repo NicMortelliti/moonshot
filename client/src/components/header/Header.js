@@ -14,7 +14,6 @@ const Header = () => {
   // Handle logout
   const onLogout = () => {
     dispatch(logout());
-    dispatch(reset());
   };
 
   const links = [

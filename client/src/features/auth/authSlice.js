@@ -43,7 +43,6 @@ export const reLogin = createAsyncThunk(
     try {
       return await authService.reLogin();
     } catch (error) {
-      toast.error("Please log in or create an account");
       return rejectWithValue(error);
     }
   }
@@ -54,7 +53,9 @@ export const logout = createAsyncThunk(
   "auth/logout",
   async (_args, { rejectWithValue }) => {
     try {
-      return await authService.logout();
+      const result = await authService.logout();
+      result.messages.map((each) => toast.success(each));
+      return result;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -231,5 +232,4 @@ export const authSlice = createSlice({
   },
 });
 
-export const { reset } = authSlice.actions;
 export default authSlice.reducer;
