@@ -23,8 +23,6 @@ const ReservationCard = ({ data }) => {
   const [expandPanel, setExpandPanel] = useState(false);
 
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-  const { user: userId } = user;
 
   // Click handlers
   const handleClick = (e) => {

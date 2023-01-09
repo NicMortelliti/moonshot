@@ -60,6 +60,7 @@ export const FlightGrid = styled.div`
   padding: 1em;
   grid-template-areas:
     "confirmNo     confirmNo  confirmNo"
+    "vehicle       vehicle    vehicle"
     "carrier       carrier    carrier"
     "departure     .          arrival"
     "departureYear slot       arrivalYear"
@@ -72,6 +73,9 @@ export const FlightGrid = styled.div`
   @media (min-width: 500px) {
     grid-template-columns: auto 4fr auto 1fr;
     grid-template-areas:
+      "message1       message1  message1    message1"
+      "message2       message2  message2    message2"
+      "message3       message3  message3    message3"
       "confirmNo      vehicle   vehicle     action"
       "carrier        carrier   .           action"
       "departure      .         arrival     action"
@@ -79,6 +83,48 @@ export const FlightGrid = styled.div`
       "departureYear  .         arrivalYear action"
       "origin         .         destination action"
       "confirm        confirm   confirm     confirm";
+  }
+`;
+
+export const ConfirmationGrid = styled.div`
+  display: grid;
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.white || "white"};
+  grid-template-rows: auto;
+  grid-template-columns: auto 1fr auto;
+  width: 80%;
+  max-width: 800px;
+  gap: 0 1em;
+  margin: 1em;
+  min-height: 110px;
+  padding: 1em;
+  grid-template-areas:
+    "message1      message1   message1"
+    "message2      message2   message2"
+    "message3      message3   message3"
+    "confirmNo     confirmNo  confirmNo"
+    "vehicle       vehicle    vehicle"
+    "carrier       carrier    carrier"
+    "departure     .          arrival"
+    "departureYear slot       arrivalYear"
+    "departureYear .          arrivalYear"
+    "origin        .          destination"
+    "confirm       confirm    confirm";
+
+  /* For displays 500px and larger */
+  @media (min-width: 500px) {
+    grid-template-columns: auto 4fr auto;
+    grid-template-areas:
+      "message1       message1  message1"
+      "message2       message2  message2"
+      "message3       message3  message3"
+      "confirmNo      vehicle   vehicle"
+      "carrier        carrier   .      "
+      "departure      .         arrival"
+      "departureYear  slot      arrivalYear"
+      "departureYear  .         arrivalYear"
+      "origin         .         destination"
+      "confirm        confirm   confirm";
   }
 `;
 
@@ -226,6 +272,31 @@ export const ConfirmationNo = styled.div`
 export const Vehicle = styled.div`
   grid-area: vehicle;
   display: flex;
-  justify-content: end;
+  justify-content: start;
+  color: ${({ theme }) => theme.gray || "gray"};
+
+  @media (min-width: 500px) {
+    justify-content: end;
+  }
+`;
+
+export const Message1 = styled.div`
+  grid-area: message1;
+  display: flex;
+  justify-content: center;
+  color: ${({ theme }) => theme.gray || "gray"};
+`;
+
+export const Message2 = styled.div`
+  grid-area: message2;
+  display: flex;
+  justify-content: center;
+  color: ${({ theme }) => theme.gray || "gray"};
+`;
+
+export const Message3 = styled.div`
+  grid-area: message3;
+  display: flex;
+  justify-content: center;
   color: ${({ theme }) => theme.gray || "gray"};
 `;
