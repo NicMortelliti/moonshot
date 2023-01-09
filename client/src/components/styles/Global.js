@@ -35,22 +35,4 @@ p {
 }
 `;
 
-// .gradient-background {
-//   background: linear-gradient(320deg,#2ae65f,#801fbf,#5c2d16);
-//   background-size: 180% 180%;
-//   animation: gradient-animation 27s ease infinite;
-// }
-//
-// @keyframes gradient-animation {
-//   0% {
-//     background-position: 0% 50%;
-//   }
-//   50% {
-//     background-position: 100% 50%;
-//   }
-//   100% {
-//     background-position: 0% 50%;
-//   }
-// }
-
 export default GlobalStyles;
