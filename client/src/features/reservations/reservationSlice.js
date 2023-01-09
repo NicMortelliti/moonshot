@@ -27,7 +27,9 @@ export const deleteReservation = createAsyncThunk(
   "reservations/delete",
   async (id, { rejectWithValue }) => {
     try {
-      return await reservationService.deleteReservation(id);
+      const result = await reservationService.deleteReservation(id);
+      toast.success("Successfully deleted your reservation.");
+      return result;
     } catch (error) {
       toast.warn(error.error);
       return rejectWithValue(error);

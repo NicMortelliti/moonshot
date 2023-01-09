@@ -4,7 +4,7 @@ import { getReservations } from "../../features/reservations/reservationSlice";
 
 // Components
 import JumpToSearch from "./components/JumpToSearch";
-import CardList from "../card/CardList";
+import ReservationList from "./ReservationList";
 
 // Styled Components
 import { Content } from "../styles/Layout.styled";
@@ -45,11 +45,7 @@ const Reservations = () => {
             Your reservations
           </H1>
         </ResultsHeader>
-        <CardList
-          cards={orderedReservations}
-          isLoading={isLoading}
-          typeOfList="reservation"
-        />
+        <ReservationList cards={orderedReservations} />
       </>
     );
   }

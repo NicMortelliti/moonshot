@@ -59,24 +59,26 @@ export const FlightGrid = styled.div`
   min-height: 110px;
   padding: 1em;
   grid-template-areas:
+    "confirmNo     confirmNo  confirmNo"
     "carrier       carrier    carrier"
     "departure     .          arrival"
     "departureYear slot       arrivalYear"
     "departureYear .          arrivalYear"
     "origin        .          destination"
-    "price         price      price"
+    "action        action     action"
     "confirm       confirm    confirm";
 
   /* For displays 500px and larger */
   @media (min-width: 500px) {
     grid-template-columns: auto 4fr auto 1fr;
     grid-template-areas:
-      "carrier        carrier .           price"
-      "departure      .       arrival     price"
-      "departureYear  slot    arrivalYear price"
-      "departureYear  .       arrivalYear price"
-      "origin         .       destination price"
-      "confirm        confirm confirm     confirm";
+      "confirmNo      vehicle   vehicle     action"
+      "carrier        carrier   .           action"
+      "departure      .         arrival     action"
+      "departureYear  slot      arrivalYear action"
+      "departureYear  .         arrivalYear action"
+      "origin         .         destination action"
+      "confirm        confirm   confirm     confirm";
   }
 `;
 
@@ -125,9 +127,9 @@ export const Slot = styled.div`
   border-bottom: ${({ theme }) => `2px solid ${theme.accent}`};
 `;
 
-export const Price = styled.div`
+export const Action = styled.div`
   cursor: pointer;
-  grid-area: price;
+  grid-area: action;
   border-radius: 0 6px 6px 0;
   display: flex;
   justify-content: center;
@@ -173,14 +175,15 @@ export const Confirm = styled.div`
     border: none;
     border-radius: 6px;
     background: transparent;
-    color: ${({ theme }) => theme.accent || "black"};
+    color: ${({ theme, alt }) => (alt ? theme.alert : theme.accent || "black")};
     font-size: x-large;
     width: 100%;
     padding: 0.5em;
 
     &:hover,
     &:focus {
-      background-color: ${({ theme }) => theme.accent || "blue"};
+      background-color: ${({ theme, alt }) =>
+        alt ? theme.alert : theme.accent || "blue"};
       color: ${({ theme }) => theme.white || "white"};
     }
   }
@@ -212,4 +215,17 @@ export const ResultsHeader = styled.div`
     font-size: clamp(1rem, -0.875rem + 8.333333vw, 5rem);
     color: ${({ theme }) => theme.white || "white"};
   }
+`;
+
+export const ConfirmationNo = styled.div`
+  grid-area: confirmNo;
+  display: flex;
+  color: ${({ theme }) => theme.gray || "gray"};
+`;
+
+export const Vehicle = styled.div`
+  grid-area: vehicle;
+  display: flex;
+  justify-content: end;
+  color: ${({ theme }) => theme.gray || "gray"};
 `;

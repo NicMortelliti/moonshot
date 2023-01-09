@@ -9,7 +9,7 @@ import {
   Departure,
   Destination,
   Arrival,
-  Price,
+  Action,
   DepartureYear,
   ArrivalYear,
   Slot,
@@ -40,9 +40,9 @@ const FlightCard = ({ data }) => {
       <ArrivalYear>{formatDate(data.arrival, "year")}</ArrivalYear>
       <Arrival>{formatDate(data.arrival, "monthDay")}</Arrival>
       <Slot />
-      <Price onClick={() => setExpandPanel(!expandPanel)} alt={expandPanel}>
+      <Action onClick={() => setExpandPanel(!expandPanel)} alt={expandPanel}>
         <p>{!expandPanel ? "Book flight" : "Nevermind"}</p>
-      </Price>
+      </Action>
 
       {/* Expanded confirmation panel */}
       {expandPanel ? (
