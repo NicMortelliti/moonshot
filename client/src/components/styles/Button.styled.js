@@ -15,7 +15,7 @@ export const Button = styled.button`
       ? `0.1em solid ${theme.colors.button}`
       : "none"};
   color: ${({ theme, alert, primary }) =>
-    alert ? theme.dark : primary ? `${theme.dark}` : `${theme.colors.button}`};
+    alert ? theme.dark : primary ? `${theme.light}` : `${theme.colors.button}`};
 
   /* Text Settings */
   font-size: 1em;
@@ -24,9 +24,9 @@ export const Button = styled.button`
 
   /* Size and Positioning */
   width: fit-content;
-  align-self: center;
+  align-self: ${({ align }) => align || "center"};
   margin: ${({ margin }) => margin || 0};
-  padding: 1em 1.5em;
+  padding: ${({ secondary }) => (secondary ? "none" : "1em 1.5em")};
 
   /* On Hover */
   &:hover {

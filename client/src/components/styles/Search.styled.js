@@ -193,6 +193,15 @@ export const ResultsHeader = styled.div`
   align-items: center;
   margin-top: 1em;
 
+  div {
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    &:hover,
+    &:focus {
+      border-bottom: 2px solid ${({ theme }) => theme.accent};
+    }
+  }
+
   div h3,
   div h1 {
     justify-content: center;

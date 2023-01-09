@@ -1,3 +1,5 @@
+// TODO Add ability to jump backwards in search by clicking from/to in header
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TfiArrowRight } from "react-icons/tfi";
@@ -6,6 +8,7 @@ import { TfiArrowRight } from "react-icons/tfi";
 import { default as Location } from "./BookingLocationButton";
 import { default as Confirmation } from "./BookingConfirmation";
 import { getOrigins } from "../../features/booking/bookingSlice";
+import { setOrigin, setDestination } from "../../features/booking/bookingSlice";
 import FlightList from "./FlightList";
 
 // Styled components
@@ -20,15 +23,15 @@ import { Flex } from "../styles/Flex.styled";
 const Search = () => {
   const dispatch = useDispatch();
 
-  // Get reservations from API when component loads
-  useEffect(() => {
-    dispatch(getOrigins());
-  }, [dispatch]);
-
   // Destructure props
   const { flight, origin, destination, data, isLoading } = useSelector(
     (state) => state.booking
   );
+
+  // Get reservations from API when component loads
+  useEffect(() => {
+    dispatch(getOrigins());
+  }, [dispatch]);
 
   // Simple buttons with location names on them
   const RenderLocationPicker = () => {
@@ -85,7 +88,7 @@ const Search = () => {
           return (
             <Flex direction="column" margin="0 auto" justifyContent="center">
               <ResultsHeader>
-                <div>
+                <div onClick={() => dispatch(setOrigin(null))}>
                   <H1 light fancy>
                     {origin.name}
                   </H1>
@@ -94,7 +97,7 @@ const Search = () => {
                   </H3>
                 </div>
                 <TfiArrowRight />
-                <div>
+                <div onClick={() => dispatch(setDestination(null))}>
                   <H1 light fancy>
                     {destination.name}
                   </H1>
@@ -116,7 +119,12 @@ const Search = () => {
       }
     } else if (flight) {
       // Finally, we display the booking confirmation page 💲💲💲
-      return <Confirmation data={flight} newReservation />;
+
+      return (
+        <Flex direction="column" margin="0 auto" justifyContent="center">
+          <Confirmation data={flight} newReservation />
+        </Flex>
+      );
     } else return null;
   };
 

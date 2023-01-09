@@ -4,6 +4,7 @@ import { deleteUser } from "../../features/auth/authSlice";
 
 // Styled components
 import { Button } from "../styles/Button.styled";
+import { Flex } from "../styles/Flex.styled";
 import { ActionPanel } from "../styles/Profile.styled";
 import { H3, H4 } from "../styles/Text.styled";
 
@@ -16,7 +17,7 @@ const ProfileDelete = ({ setAction }) => {
   };
 
   const ShowSectionControl = () => (
-    <Button name={null} onClick={(e) => setAction(e)}>
+    <Button primary name={null} onClick={(e) => setAction(e)}>
       Nevermind
     </Button>
   );
@@ -25,12 +26,12 @@ const ProfileDelete = ({ setAction }) => {
     <ActionPanel>
       <H3 light>Are you sure you want to delete your account?</H3>
       <H4 light>You're account will be gone forever...</H4>
-      <div>
+      <Flex gap="10px" direction="column">
         <Button alert name="confirmDelete" onClick={(e) => handleSubmit(e)}>
           Yes, delete my account.
         </Button>
         <ShowSectionControl />
-      </div>
+      </Flex>
     </ActionPanel>
   );
 

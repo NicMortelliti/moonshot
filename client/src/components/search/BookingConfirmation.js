@@ -14,7 +14,6 @@ import { CardContainer } from "../styles/Card.styled";
 import { Flex } from "../styles/Flex.styled";
 
 const BookingConfirmation = ({ data }) => {
-  // TODO Center the "OK!" button
   const navigate = useNavigate();
 
   return (

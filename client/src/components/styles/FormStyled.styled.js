@@ -10,14 +10,14 @@ export const Form = styled.form`
 `;
 
 // colors
-const inputBackground = "rgba(57, 63, 84, 0.8)";
+const inputBackground = "rgba(57, 63, 84, 0.1)";
 const inputTextInactive = "#7881A1";
 const inputTextActive = "#BFD2FF";
 
 export const InputContainer = styled(Flex)`
-  margin: 10px 10px;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0;
   background: ${inputBackground};
+  border-bottom: 2px solid ${({ theme }) => theme.accent || "white"};
 
   input {
     width: inherit;
@@ -27,9 +27,8 @@ export const InputContainer = styled(Flex)`
     outline: none;
     flex-grow: 1;
     color: ${inputTextActive};
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 2rem;
-    /* box-sizing: border-box; */
     &::-webkit-input-placeholder {
       color: ${inputTextInactive};
     }

@@ -9,9 +9,9 @@ export const Flex = styled.div`
   width: ${({ width }) => width || "100%"};
   margin: ${({ margin }) => margin || 0};
   padding: ${({ padding }) => padding || 0};
+  gap: ${({ gap }) => gap || "normal"};
   position: ${({ position }) => position || "inherit"};
   bottom: ${({ bottom }) => bottom || "inherit"};
-  gap: ${({ gap }) => gap || "normal"};
 
   align-content: stretch;
   justify-content: ${({ justifyContent }) => justifyContent || "stretch"};

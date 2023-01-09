@@ -56,7 +56,7 @@ const ProfilePassword = ({ setAction }) => {
   };
 
   const ShowSectionControl = () => (
-    <Button name={null} onClick={(e) => setAction(e)}>
+    <Button primary name={null} onClick={(e) => setAction(e)}>
       Nevermind
     </Button>
   );
@@ -64,33 +64,35 @@ const ProfilePassword = ({ setAction }) => {
   return (
     <ActionPanel>
       <Form onSubmit={(e) => handleSubmit(e)}>
-        <Flex>
-          <InputContainer>
-            <input
-              type="password"
-              name="password"
-              value={password}
-              placeholder="Password"
-              onChange={handleChange}
-            />
-          </InputContainer>
-          <InputContainer>
-            <input
-              type="password"
-              id="password2"
-              name="password2"
-              value={password2}
-              placeholder="Re-enter new password"
-              onChange={handleChange}
-            />
-          </InputContainer>
+        <Flex gap="10px" direction="column">
+          <Flex gap="10px">
+            <InputContainer>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                placeholder="Password"
+                onChange={handleChange}
+              />
+            </InputContainer>
+            <InputContainer>
+              <input
+                type="password"
+                id="password2"
+                name="password2"
+                value={password2}
+                placeholder="Re-enter new password"
+                onChange={handleChange}
+              />
+            </InputContainer>
+          </Flex>
+          <Flex gap="10px" direction="column">
+            <Button alert type="submit">
+              Submit
+            </Button>
+            <ShowSectionControl />
+          </Flex>
         </Flex>
-        <div>
-          <Button alert type="submit">
-            Submit
-          </Button>
-          <ShowSectionControl />
-        </div>
       </Form>
     </ActionPanel>
   );

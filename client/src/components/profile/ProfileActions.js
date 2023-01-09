@@ -27,10 +27,18 @@ const ProfileActions = () => {
       default:
         return (
           <ProfileActionSection>
-            <Button name="password" onClick={(e) => handleClick(e)}>
+            <Button
+              secondary
+              align="start"
+              name="password"
+              onClick={(e) => handleClick(e)}>
               Change password
             </Button>
-            <Button name="delete" onClick={(e) => handleClick(e)}>
+            <Button
+              secondary
+              align="start"
+              name="delete"
+              onClick={(e) => handleClick(e)}>
               Delete account
             </Button>
           </ProfileActionSection>
