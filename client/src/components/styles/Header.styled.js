@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 export const HeaderListItem = styled(NavLink)`
   /* Color and style */
   color: ${({ theme }) => theme.colors.header};
+  border-top: 5px solid transparent;
 
   padding: 5px 16px 10px;
   text-decoration: none;
