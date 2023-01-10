@@ -15,7 +15,9 @@ export const register = createAsyncThunk(
   "auth/register",
   async (user, { rejectWithValue }) => {
     try {
-      return await authService.register(user);
+      const result = await authService.register(user);
+      toast.success("Welcome!");
+      return result;
     } catch (error) {
       error.errors.map((each) => toast.error(each));
       return rejectWithValue(error);
@@ -28,7 +30,9 @@ export const login = createAsyncThunk(
   "auth/login",
   async (user, { rejectWithValue }) => {
     try {
-      return await authService.login(user);
+      const result = await authService.login(user);
+      toast.success("Welcome back!");
+      return result;
     } catch (error) {
       error.errors.map((each) => toast.error(each));
       return rejectWithValue(error);
