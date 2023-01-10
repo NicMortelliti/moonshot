@@ -274,10 +274,12 @@ export const Vehicle = styled.div`
   grid-area: vehicle;
   display: flex;
   justify-content: start;
+  text-align: start;
   color: ${({ theme }) => theme.gray || "gray"};
 
   @media (min-width: 500px) {
     justify-content: end;
+    text-align: end;
   }
 `;
 
