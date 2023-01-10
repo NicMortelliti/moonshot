@@ -16,7 +16,6 @@ export const Container = styled.div`
 
   justify-content: center;
   align-items: start;
-  /* text-align: center; */
   padding: 20px;
 
   gap: 20px;
