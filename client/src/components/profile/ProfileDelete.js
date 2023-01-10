@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteUser } from "../../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 // Styled components
 import { Button } from "../styles/Button.styled";
@@ -10,10 +11,11 @@ import { H3, H4 } from "../styles/Text.styled";
 
 const ProfileDelete = ({ setAction }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(deleteUser());
+    dispatch(deleteUser()).then(() => navigate(""));
   };
 
   const ShowSectionControl = () => (

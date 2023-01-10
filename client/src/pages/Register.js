@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -26,7 +26,7 @@ const Register = () => {
   const dispatch = useDispatch();
 
   // Grab properties from auth state
-  const { isLoading } = useSelector((state) => state.auth);
+  const { user, isLoading } = useSelector((state) => state.auth);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -47,6 +47,12 @@ const Register = () => {
       );
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/my-trips");
+    }
+  }, [user, navigate]);
 
   return (
     <Flex direction="column">

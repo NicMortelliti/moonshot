@@ -29,7 +29,6 @@ export const HeaderListItem = styled(NavLink)`
   &.active {
     color: ${({ theme }) => theme.accent};
     font-weight: 400;
-    border-top: 5px solid;
     border-color: ${({ theme }) => theme.hoverColor};
 
     border-radius: 0;

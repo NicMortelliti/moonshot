@@ -9,6 +9,7 @@ import Header from "./components/header/Header";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotAuthorized from "./pages/NotAuthorized";
+import NotFound from "./pages/NotFound";
 import Footer from "./components/footer/Footer";
 import Reservations from "./components/reservations/Reservations";
 import Booking from "./components/search/Search";
@@ -41,12 +42,9 @@ const App = () => {
         <Wrapper>
           <Header />
           <Routes>
-            <Route exact path="/nope" element={<NotAuthorized />} />
-            <Route element={<PublicRoute />}>
-              <Route exact path="/" element={<Landing />}>
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-              </Route>
+            <Route exact path="/" element={<Landing />}>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
             </Route>
             {/* User logged-in routes */}
             <Route element={<ProtectedRoute />}>
@@ -54,6 +52,8 @@ const App = () => {
               <Route path="/flight-search" element={<Booking />} />
               <Route path="/my-profile" element={<Profile />} />
             </Route>
+            <Route exact path="/nope" element={<NotAuthorized />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </Wrapper>

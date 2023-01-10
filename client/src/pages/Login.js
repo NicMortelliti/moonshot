@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../features/auth/authSlice";
@@ -22,7 +22,7 @@ const Login = () => {
   const dispatch = useDispatch();
 
   // Grab properties from auth state
-  const { isLoading } = useSelector((state) => state.auth);
+  const { user, isLoading } = useSelector((state) => state.auth);
 
   // Update formData when user enters
   // data in the fields
@@ -38,6 +38,12 @@ const Login = () => {
     e.preventDefault();
     dispatch(login({ email, password })).then(() => navigate("/my-trips"));
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/my-trips");
+    }
+  }, [user, navigate]);
 
   return (
     <Flex direction="column">
