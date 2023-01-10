@@ -16,7 +16,7 @@ import Booking from "./components/search/Search";
 import Profile from "./components/profile/Profile";
 import Landing from "./pages/Landing";
 import { reLogin } from "./features/auth/authSlice";
-import { ProtectedRoute, PublicRoute } from "./components/auth/RouteHandling";
+import { ProtectedRoute } from "./components/auth/RouteHandling";
 
 // Styled Components
 import GlobalStyles from "./components/styles/Global";
