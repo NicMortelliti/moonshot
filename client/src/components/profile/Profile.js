@@ -4,7 +4,7 @@ import React from "react";
 import ProfileActions from "./ProfileActions";
 
 // Styled components
-import { H1, P } from "../styles/Text.styled";
+import { H1 } from "../styles/Text.styled";
 import { ProfileSection } from "../styles/Profile.styled";
 import { Content } from "../styles/Layout.styled";
 import { ResultsHeader } from "../styles/Search.styled";

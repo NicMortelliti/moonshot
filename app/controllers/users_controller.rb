@@ -19,15 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users
-  def index
-    # Break out of this method if user isn't an admin
-    return unless @current_user.admin
-
-    users = User.all
-    render json: users, status: :ok
-  end
-
   # PATCH '/users/[:id]'
   def update
     return unless @current_user
