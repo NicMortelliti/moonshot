@@ -1,5 +1,3 @@
-// TODO Add ability to jump backwards in search by clicking from/to in header
-
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TfiArrowRight } from "react-icons/tfi";
@@ -7,8 +5,12 @@ import { TfiArrowRight } from "react-icons/tfi";
 // Components
 import { default as Location } from "./BookingLocationButton";
 import { default as Confirmation } from "./BookingConfirmation";
-import { getOrigins } from "../../features/booking/bookingSlice";
-import { setOrigin, setDestination } from "../../features/booking/bookingSlice";
+import {
+  getOrigins,
+  getDestinations,
+  setOrigin,
+  setDestination,
+} from "../../features/booking/bookingSlice";
 import FlightList from "./FlightList";
 
 // Styled components
@@ -42,6 +44,23 @@ const Search = () => {
         ))}
       </div>
     );
+  };
+
+  // If the origin headline is clicked on the flight results
+  // page, we'll reset the selected origin and destination to null and pull origin
+  // options from the API to allow the user to select a new origin and destination.
+  const resetOrigin = () => {
+    dispatch(setOrigin(null));
+    dispatch(setDestination(null));
+    dispatch(getOrigins());
+  };
+
+  // If the destination headline is clicked on the flight results
+  // page, we'll reset the selected destination to null and pull destination
+  // options from the API to allow the user to select a new destination.
+  const resetDestination = () => {
+    dispatch(setDestination(null));
+    dispatch(getDestinations(origin.id));
   };
 
   // Determine what to render via switch/case
@@ -88,7 +107,7 @@ const Search = () => {
           return (
             <Flex direction="column" margin="0 auto" justifyContent="center">
               <ResultsHeader>
-                <div onClick={() => dispatch(setOrigin(null))}>
+                <div onClick={() => resetOrigin()}>
                   <H1 light fancy>
                     {origin.name}
                   </H1>
@@ -97,7 +116,7 @@ const Search = () => {
                   </H3>
                 </div>
                 <TfiArrowRight />
-                <div onClick={() => dispatch(setDestination(null))}>
+                <div onClick={() => resetDestination()}>
                   <H1 light fancy>
                     {destination.name}
                   </H1>
