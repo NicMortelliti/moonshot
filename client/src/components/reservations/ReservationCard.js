@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteReservation } from "../../features/reservations/reservationSlice";
+import {
+  deleteReservation,
+  getReservations,
+} from "../../features/reservations/reservationSlice";
 import { formatDate } from "../../helpers/helpers";
 import {
   ConfirmationNo,
@@ -27,7 +30,9 @@ const ReservationCard = ({ data }) => {
   // Click handlers
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(deleteReservation(data.id));
+    dispatch(deleteReservation(data.id)).then(() =>
+      dispatch(getReservations())
+    );
   };
 
   return (
