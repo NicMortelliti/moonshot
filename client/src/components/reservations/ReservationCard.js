@@ -54,13 +54,15 @@ const ReservationCard = ({ data }) => {
       <ArrivalYear>{formatDate(data.flight.arrival, "year")}</ArrivalYear>
       <Arrival>{formatDate(data.flight.arrival, "monthDay")}</Arrival>
       <Slot />
-      <Action onClick={() => setExpandPanel(!expandPanel)} alt={!expandPanel}>
+      <Action
+        onClick={() => setExpandPanel(!expandPanel)}
+        alt={!expandPanel ? "true" : "false"}>
         <p>{!expandPanel ? "Cancel" : "Nevermind"}</p>
       </Action>
 
       {/* Expanded confirmation panel */}
       {expandPanel ? (
-        <Confirm alt>
+        <Confirm alt="true">
           <p>Cancel your reservation on flight {data.id}?</p>
           <button onClick={handleClick}>Yes, cancel it</button>
         </Confirm>

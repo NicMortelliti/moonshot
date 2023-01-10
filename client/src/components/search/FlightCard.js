@@ -44,7 +44,9 @@ const FlightCard = ({ data }) => {
       <ArrivalYear>{formatDate(data.arrival, "year")}</ArrivalYear>
       <Arrival>{formatDate(data.arrival, "monthDay")}</Arrival>
       <Slot />
-      <Action onClick={() => setExpandPanel(!expandPanel)} alt={expandPanel}>
+      <Action
+        onClick={() => setExpandPanel(!expandPanel)}
+        alt={expandPanel ? "true" : "false"}>
         <p>{!expandPanel ? "Book flight" : "Nevermind"}</p>
       </Action>
 

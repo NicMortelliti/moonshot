@@ -137,8 +137,8 @@ const Search = () => {
           );
       }
     } else if (flight) {
+      
       // Finally, we display the booking confirmation page 💲💲💲
-
       return (
         <Flex direction="column" margin="0 auto" justifyContent="center">
           <Confirmation data={flight} newReservation />
