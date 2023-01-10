@@ -14,6 +14,7 @@ import {
   ArrivalYear,
   Slot,
   Confirm,
+  Seats,
 } from "../styles/Search.styled";
 
 // * Main
@@ -32,6 +33,9 @@ const FlightCard = ({ data }) => {
 
   return (
     <FlightGrid>
+      {data.reservations_remaining < 6 ? (
+        <Seats>Only {data.reservations_remaining} seats left!</Seats>
+      ) : null}
       <Carrier>MoonShot {data.id}</Carrier>
       <Origin>{data.origin.icao}</Origin>
       <DepartureYear>{formatDate(data.departure, "year")}</DepartureYear>

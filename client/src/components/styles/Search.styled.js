@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const radius = "10px";
+
 export const SearchLocationButton = styled.button`
   cursor: pointer;
   display: flex;
@@ -49,7 +51,7 @@ export const SearchLocationContainer = styled.div`
 // -------------------------------------------
 export const FlightGrid = styled.div`
   display: grid;
-  border-radius: 6px;
+  border-radius: ${radius};
   background-color: ${({ theme }) => theme.white || "white"};
   grid-template-rows: auto;
   grid-template-columns: auto 1fr auto;
@@ -60,6 +62,7 @@ export const FlightGrid = styled.div`
   min-height: 110px;
   padding: 1em;
   grid-template-areas:
+    "seats         seats      seats"
     "confirmNo     confirmNo  confirmNo"
     "vehicle       vehicle    vehicle"
     "carrier       carrier    carrier"
@@ -74,9 +77,7 @@ export const FlightGrid = styled.div`
   @media (min-width: 500px) {
     grid-template-columns: auto 4fr auto 1fr;
     grid-template-areas:
-      "message1       message1  message1    message1"
-      "message2       message2  message2    message2"
-      "message3       message3  message3    message3"
+      "seats          seats     seats       seats"
       "confirmNo      vehicle   vehicle     action"
       "carrier        carrier   .           action"
       "departure      .         arrival     action"
@@ -89,7 +90,7 @@ export const FlightGrid = styled.div`
 
 export const ConfirmationGrid = styled.div`
   display: grid;
-  border-radius: 6px;
+  border-radius: ${radius};
   background-color: ${({ theme }) => theme.white || "white"};
   grid-template-rows: auto;
   grid-template-columns: auto 1fr auto;
@@ -177,7 +178,7 @@ export const Slot = styled.div`
 export const Action = styled.div`
   cursor: pointer;
   grid-area: action;
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 ${radius} ${radius} 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,7 +221,7 @@ export const Confirm = styled.div`
   button {
     cursor: pointer;
     border: none;
-    border-radius: 6px;
+    border-radius: ${radius};
     background: transparent;
     color: ${({ theme, alt }) => (alt ? theme.alert : theme.accent || "black")};
     font-size: x-large;
@@ -281,6 +282,14 @@ export const Vehicle = styled.div`
     justify-content: end;
     text-align: end;
   }
+`;
+
+export const Seats = styled.div`
+  grid-area: seats;
+  background-color: ${({ theme }) => theme.alert};
+  margin: -1em -1em 10px;
+  padding: 0.5em;
+  border-radius: ${radius} ${radius} 0 0;
 `;
 
 export const Message1 = styled.div`
