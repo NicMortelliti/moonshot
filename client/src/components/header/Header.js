@@ -18,6 +18,13 @@ const Header = () => {
 
   const links = [
     {
+      name: "Moonshot",
+      link: "/",
+      alignment: "start",
+      handleClick: null,
+      userLoggedIn: false,
+    },
+    {
       name: "Sign Up",
       link: "/register",
       alignment: "end",

@@ -1,9 +1,11 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 // Private-facing routes (user logged in)
-export const ProtectedRoute = ({ user, redirectPath = "/" }) => {
+export const ProtectedRoute = ({ redirectPath = "/" }) => {
+  const { user } = useSelector((state) => state.auth);
+
   if (!user) {
     return <Navigate to={redirectPath} replace />;
   }
@@ -11,10 +13,10 @@ export const ProtectedRoute = ({ user, redirectPath = "/" }) => {
 };
 
 // Public-facing routes (user NOT logged in)
-// TODO Remove debugging string inside toast (below)
-export const PublicRoute = ({ user, redirectPath = "/my-profile" }) => {
+export const PublicRoute = ({ redirectPath = "/my-trips" }) => {
+  const { user } = useSelector((state) => state.auth);
+
   if (user) {
-    toast.error("That page does not exist (Check RouteHandling.js)");
     return <Navigate to={redirectPath} />;
   }
   return <Outlet />;
