@@ -34,7 +34,8 @@ const ReservationCard = ({ data }) => {
     <FlightGrid>
       <ConfirmationNo>Confirmation: {data.id}</ConfirmationNo>
       <Vehicle>
-        {data.vehicle.make} {data.vehicle.model} "{data.vehicle.name}"
+        Spacecraft: {data.vehicle.make} {data.vehicle.model} "
+        {data.vehicle.name}"
       </Vehicle>
       <Carrier>MoonShot flight: {data.flight.id}</Carrier>
       <Origin>
