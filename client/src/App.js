@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/header/Header";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import NotAuthorized from "./pages/NotAuthorized";
 import Footer from "./components/footer/Footer";
 import Reservations from "./components/reservations/Reservations";
 import Booking from "./components/search/Search";
@@ -40,6 +41,7 @@ const App = () => {
         <Wrapper>
           <Header />
           <Routes>
+            <Route exact path="/nope" element={<NotAuthorized />} />
             <Route element={<PublicRoute />}>
               <Route exact path="/" element={<Landing />}>
                 <Route path="/login" element={<Login />} />
