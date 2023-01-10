@@ -1,7 +1,3 @@
-// TODO Navigating to "/" results in the about panel and
-// empty frosted panel on the right. Need to determine how
-// to handle navigating to "/".
-
 import React, { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
