@@ -129,7 +129,7 @@ const Search = () => {
   };
 
   return (
-    <Content frosted>
+    <Content frosted center>
       <Render />
     </Content>
   );

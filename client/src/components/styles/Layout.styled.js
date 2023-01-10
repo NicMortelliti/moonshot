@@ -47,7 +47,7 @@ export const Content = styled.div`
   grid-area: content;
   display: flex;
   justify-content: start;
-  align-items: ${({ align }) => align || "start"};
+  align-items: ${({ center }) => (center ? "center" : "start")};
   margin: 0;
   flex: 1;
 
