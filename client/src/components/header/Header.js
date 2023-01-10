@@ -1,6 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { logout, reset } from "../../features/auth/authSlice";
+import { logout } from "../../features/auth/authSlice";
+import {
+  getOrigins,
+  setOrigin,
+  setDestination,
+} from "../../features/booking/bookingSlice";
 import { capitalize } from "../../helpers/helpers";
 
 // Styled components
@@ -14,6 +19,14 @@ const Header = () => {
   // Handle logout
   const onLogout = () => {
     dispatch(logout());
+  };
+
+  // If the "Book" button is clicked reset selected origin/destination
+  // and navigate to booking page.
+  const resetFlightSearch = () => {
+    dispatch(setOrigin(null));
+    dispatch(setDestination(null));
+    dispatch(getOrigins());
   };
 
   const links = [
@@ -42,7 +55,7 @@ const Header = () => {
       name: "Book",
       link: "/flight-search",
       alignment: "start",
-      handleClick: null,
+      handleClick: resetFlightSearch,
       userLoggedIn: true,
       authAgnostic: false,
     },
