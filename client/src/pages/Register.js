@@ -42,8 +42,12 @@ const Register = () => {
       toast.error("Passwords do not match");
       return;
     } else {
-      dispatch(register({ first_name, last_name, email, password })).then(() =>
-        navigate("/flight-search")
+      dispatch(register({ first_name, last_name, email, password })).then(
+        (r) => {
+          if (r.ok) {
+            navigate("/my-trips");
+          }
+        }
       );
     }
   };

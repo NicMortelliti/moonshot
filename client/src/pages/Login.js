@@ -36,7 +36,11 @@ const Login = () => {
   // Submit formData to API
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password })).then(() => navigate("/my-trips"));
+    dispatch(login({ email, password })).then((r) => {
+      if (r.ok) {
+        navigate("/my-trips");
+      }
+    });
   };
 
   useEffect(() => {
