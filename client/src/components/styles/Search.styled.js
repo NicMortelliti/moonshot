@@ -186,7 +186,7 @@ export const Action = styled.div`
   margin-bottom: 0.5em;
 
   p {
-    color: ${({ theme, alt }) => (alt ? theme.alert : theme.accent || "black")};
+    color: ${({ theme, alt }) => (alt === "true" ? theme.alert : theme.accent)};
     border: none;
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
@@ -198,7 +198,7 @@ export const Action = styled.div`
       border: none;
       border-top: 3px solid transparent;
       border-bottom: 3px solid
-        ${({ theme, alt }) => (alt ? theme.alert : theme.accent || "blue")};
+        ${({ theme, alt }) => (alt === "true" ? theme.alert : theme.accent)};
     }
   }
 
