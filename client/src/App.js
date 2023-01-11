@@ -33,7 +33,7 @@ const App = () => {
     if (!user) {
       dispatch(reLogin());
     }
-  }, [dispatch, user]);
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
