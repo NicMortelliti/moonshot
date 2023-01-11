@@ -1,6 +1,10 @@
-# 🌕 [Moonshot Spaceline](https://moonshot.nicweb.dev)
+# 🌕 [Moonshot Spaceline](https://moonshot.nicweb.dev) 🚀
+
+![View from our lounge](/assets/future-space-station.jpg)
 
 ## Description
+
+The final frontier is just the beginning...
 
 Moonshot Spaceline (fictional 😝) is on a mission to make the cosmos available to everyone! Here at Moonshot, we believe space travel should resemble the glory days of aviation. Want chicken parmesan on your way to Venus? Sure! Here's some chicken parmesan! (It's going to be a long trip so it would be quite reckless of us not to feed you. You're responsible for bringing your own drinks, however).
 
@@ -198,3 +202,7 @@ _To cancel a reservations, continue with the next steps..._
 2. Click `Cancel`
 
 3. Confirm you would like to cancel the reservation by clicking `Yes, cancel it` **OR** keep the reservation by clicking `Nevermind`.
+
+---
+
+[Image by vectorpocket / Freepik](https://www.freepik.com/free-vector/future-space-station_3823978.htm#query=spacecraft&from_query=spacecraft%20inside&position=18&from_view=search&track=sph)
