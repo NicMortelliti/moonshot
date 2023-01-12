@@ -44,7 +44,7 @@ export const FooterFinePrint = styled.li`
   text-decoration: none;
 
   /* Size */
-  font-size: xx-small;
+  font-size: x-small;
   line-height: 1.5;
 
   /* Alignment */

@@ -11,15 +11,11 @@ export const HeaderListItem = styled(NavLink)`
 
   /* Size */
   font-size: 1.2em;
-  font-weight: 800;
 
   /* Alignment */
   display: flex;
   text-align: center;
   align-self: end;
-
-  font-family: "Gruppo";
-  text-shadow: black 1px 0 10px;
 
   &:hover,
   &:focus {
@@ -28,7 +24,6 @@ export const HeaderListItem = styled(NavLink)`
 
   &.active {
     color: ${({ theme }) => theme.accent};
-    font-weight: 400;
     border-color: ${({ theme }) => theme.hoverColor};
 
     border-radius: 0;

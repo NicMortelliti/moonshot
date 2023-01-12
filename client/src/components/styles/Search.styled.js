@@ -204,7 +204,7 @@ export const Action = styled.div`
 
   @media (min-width: 500px) {
     border-left: solid 1px black;
-    width: 10ch;
+    width: 11ch;
     margin-bottom: 0;
   }
 `;

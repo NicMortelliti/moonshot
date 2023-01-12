@@ -15,7 +15,7 @@ body {
   background-attachment: fixed;
 
   color: ${({ theme }) => theme.colors.body};
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 
 }
