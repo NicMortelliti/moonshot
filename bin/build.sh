@@ -7,4 +7,5 @@ npm install --prefix client && npm run build --prefix client
 cp -a client/build/. public/
 
 bundle install
-bundle exec rake db:reset db:migrate db:seed DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+bundle exec rake db:migrate
+# bundle exec rake db:seed
