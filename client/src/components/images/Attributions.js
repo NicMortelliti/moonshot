@@ -11,7 +11,7 @@ const Attributions = () => {
   const attributionData = [
     {
       basicName: "Moon image",
-      mediaName: "moon.jpg",
+      mediaName: "moon.webp",
       userName: "Tarun",
       userLink: "https://www.pexels.com/@tarun-74117201/",
       siteName: "Pexels",
