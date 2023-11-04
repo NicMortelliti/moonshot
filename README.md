@@ -77,7 +77,7 @@ rails -v
 If you need to install Rails 6.1.3, use the following command.
 
 ```properties
-gem install rails -v 6.1.7
+gem install rails -v 6.1.3
 ```
 
 ### Install PostgreSQL
