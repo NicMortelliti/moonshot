@@ -127,6 +127,18 @@ The Rails server should now be running on `localhost:3000` and the client server
 
 ---
 
+## Docker
+
+If you'd like to just run this application without the hassle of installing its dependencies, use [Docker](https://www.docker.com/get-started/) and [Docker Compose](https://docs.docker.com/compose/install/).
+
+With Docker running:
+
+1. Open a terminal at the root level of the application.
+2. Enter `docker-compose up --build`
+3. In a browser, navigate to `localhost:3000`
+
+---
+
 ## Usage
 
 ### Setting up a new user account
