@@ -30,3 +30,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .vscode/settings.json
+
+/config/credentials/production.key
+.devcontainer/devcontainer.json
