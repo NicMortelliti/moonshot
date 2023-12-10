@@ -4,14 +4,14 @@ services:
     image: morteb43/moonshot:latest
     environment:
       RAILS_ENV: production
-      DATABASE_URL: "postgres://postgres:postgres@db/react_rails_api_project_template_production"
+      POSTGRES_HOST: db
     ports:
       - "88:3000"
     depends_on:
       - db
     deploy:
       restart_policy:
-        condition: on-failure
+        condition: always
   db:
     image: postgres:12
     environment:
