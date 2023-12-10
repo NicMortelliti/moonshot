@@ -4,7 +4,7 @@ services:
     image: morteb43/moonshot:latest
     environment:
       RAILS_ENV: production
-      DATABASE_URL: "postgres://postgres:password@db/react_rails_api_project_template_production"
+      DATABASE_URL: "postgres://postgres:postgres@db/react_rails_api_project_template_production"
     ports:
       - "88:3000"
     depends_on:
