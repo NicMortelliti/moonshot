@@ -20,7 +20,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: react_rails_api_project_template_production
-		networks:
+    networks:
       - internal_network
     volumes:
       - db_data:/var/lib/postgresql/data
