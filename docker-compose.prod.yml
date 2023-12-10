@@ -12,9 +12,6 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-      update_config:
-        parallelism: 2
-        delay: 10s
       resources:
         limits:
           cpus: "0.5"
