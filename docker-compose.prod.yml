@@ -5,7 +5,7 @@ services:
     environment:
       RAILS_ENV: production
       POSTGRES_HOST: db
-		networks:
+    networks:
       - internal_network
     ports:
       - "88:3000"
