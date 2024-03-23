@@ -1,4 +1,14 @@
-# Use the Ruby Alpine image as the base image
+
+# Stage 1: Build the React application
+FROM node:14-alpine as react-build
+
+WORKDIR /app
+COPY ./client/package.json ./client/package-lock.json ./
+RUN npm ci
+COPY ./client ./
+RUN npm run build
+
+# Stage 2: Use the Ruby Alpine image as the base image
 FROM ruby:2.7-alpine
 
 # Install build dependencies
@@ -19,10 +29,21 @@ COPY Gemfile Gemfile.lock ./
 RUN gem install bundler:2.3.22
 
 # Install gems
-RUN bundle install
+RUN bundle install --without development test
 
 # Copy the application code
 COPY . .
+
+# Copy the built React application
+COPY --from=react-build /app/build ./public
+
+# Set environment variables
+ENV RAILS_ENV=production
+ENV RAILS_LOG_TO_STDOUT=true
+ENV RAILS_SERVE_STATIC_FILES=true
+
+# Precompile Rails assets
+RUN bundle exec rails assets:precompile
 
 # Expose the port
 EXPOSE 3000
