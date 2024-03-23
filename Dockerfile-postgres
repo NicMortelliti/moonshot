@@ -1,0 +1,14 @@
+# Use the PostgreSQL Alpine image as the base image
+FROM postgres:13-alpine
+
+# Set environment variables for the PostgreSQL server
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+ENV POSTGRES_DB=react_rails_api_project_template_development
+ENV POSTGRES_DB=react_rails_api_project_template_production
+
+# Expose the PostgreSQL port
+EXPOSE 5432
+
+# Set the command to run the PostgreSQL server
+CMD ["postgres"]
