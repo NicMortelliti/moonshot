@@ -2,30 +2,32 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   # pull_request:
   #   branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Authenticate with Google Cloud
-      env:
-        GCP_PROJECT_ID: corded-observer-300301
-        GCP_REGION: us-west1
-        GCP_REGISTRY: moonshot
-      run: |
-        gcloud auth activate-service-account --key-file=${{ secrets.GCP_SA_KEY }}
-        gcloud config set project ${GCP_PROJECT_ID}
-        gcloud auth configure-docker ${GCP_REGION}-docker.pkg.dev --quiet
+      - name: Authenticate with Google Cloud
+        env:
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          GCP_REGION: ${{ secrets.GCP_REGION }}
+          GCP_REGISTRY: ${{ secrets.GCP_REGISTRY }}
+        run: |
+          echo "$GCP_SA_KEY" > keyfile.json
+          gcloud auth activate-service-account --key-file=keyfile.json
+          gcloud config set project $GCP_PROJECT_ID
+          gcloud auth configure-docker $GCP_REGION-docker.pkg.dev --quiet
 
-    - name: Build and push Docker image
-      run: |
-        docker build . --file Dockerfile-rails --tag ${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${GCP_REGISTRY}/moonshot-rails:$(date +%s)
-        docker push ${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${GCP_REGISTRY}/moonshot-rails:$(date +%s)
+      - name: Build and push Docker image
+        run: |
+          docker build . --file Dockerfile-rails --tag ${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${GCP_REGISTRY}/moonshot-rails:$(date +%s)
+          docker push ${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${GCP_REGISTRY}/moonshot-rails:$(date +%s)
+
+      - run: rm keyfile.json
+        if: always()
