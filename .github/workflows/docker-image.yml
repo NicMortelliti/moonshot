@@ -17,9 +17,9 @@ jobs:
 
     - name: Authenticate with Google Cloud
       env:
-        GCP_PROJECT_ID: your-project-id
-        GCP_REGION: your-region
-        GCP_REGISTRY: your-registry
+        GCP_PROJECT_ID: corded-observer-300301
+        GCP_REGION: us-west1
+        GCP_REGISTRY: moonshot
       run: |
         gcloud auth activate-service-account --key-file=${{ secrets.GCP_SA_KEY }}
         gcloud config set project ${GCP_PROJECT_ID}
