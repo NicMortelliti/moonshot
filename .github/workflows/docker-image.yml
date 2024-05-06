@@ -35,6 +35,6 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t nicmortelliti/moonshot:latest .
+          docker build -t nicmortelliti/moonshot:latest -f docker/Dockerfile .
           docker login -u nicmortelliti -p ${{ secrets.DOCKER_PASSWORD }}
           docker push nicmortelliti/moonshot:latest
