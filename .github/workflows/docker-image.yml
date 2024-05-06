@@ -1,33 +1,39 @@
-name: Docker Image CI
-
+name: Build Docker image
 on:
   push:
-    branches: ["main"]
-  # pull_request:
-  #   branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Authenticate with Google Cloud
-        env:
-          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-          GCP_REGION: ${{ secrets.GCP_REGION }}
-          GCP_REGISTRY: ${{ secrets.GCP_REGISTRY }}
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7.8'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
         run: |
-          echo "${{ secrets.GCP_SA_KEY }}" | base64 --decode > /tmp/keyfile.json
-          gcloud auth activate-service-account --key-file=/tmp/keyfile.json
-          gcloud config set project $GCP_PROJECT_ID
-          gcloud auth configure-docker $GCP_REGION-docker.pkg.dev --quiet
+          bundle install
+          cd client
+          npm install
 
-      - name: Build and push Docker image
+      - name: Build frontend
         run: |
-          docker build . --file Dockerfile-rails --tag ${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${GCP_REGISTRY}/moonshot-rails:$(date +%s)
-          docker push ${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${GCP_REGISTRY}/moonshot-rails:$(date +%s)
+          cd client
+          npm run build
 
-      - run: rm keyfile.json
-        if: always()
+      - name: Build Docker image
+        run: |
+          docker build -t your-docker-username/your-repo-name:latest .
+          docker login -u your-docker-username -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push your-docker-username/your-repo-name:latest
